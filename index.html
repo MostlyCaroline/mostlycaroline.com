@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Caroline Edwards — UX & UI Product Designer</title>
+  <meta name="description" content="UX & UI Product Designer with 15 years of experience. Specialising in accessibility, inclusive design, and end-to-end product design." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    /* ── TOKENS ── */
+    :root {
+      --cream:      #F5F2EE;
+      --stone:      #E8E3DC;
+      --slate:      #7A8491;
+      --dusk:       #4A5568;
+      --ink:        #1E2329;
+      --rose:       #B8A9B0;
+      --mist:       #C9D4D8;
+      --accent:     #7B9BAA; /* Cool summer – soft teal-blue */
+      --accent-mid: #6B8999;
+
+      --ff-display: 'DM Serif Display', Georgia, serif;
+      --ff-body:    'DM Sans', system-ui, sans-serif;
+
+      --max-w: 1080px;
+      --gutter: clamp(1.5rem, 5vw, 4rem);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--ff-body);
+      font-size: clamp(1rem, 1.1vw, 1.125rem);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem var(--gutter);
+      background: var(--cream);
+      border-bottom: 1px solid var(--stone);
+    }
+
+    .nav-monogram {
+      font-family: var(--ff-display);
+      font-size: 1.5rem;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--ff-body);
+      font-size: 0.875rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--dusk);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent-mid); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100svh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 7rem var(--gutter) 4rem;
+      gap: 4rem;
+    }
+
+    .hero-text {}
+
+    .hero-eyebrow {
+      font-family: var(--ff-body);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-name {
+      font-family: var(--ff-display);
+      font-size: clamp(3rem, 5.5vw, 5rem);
+      line-height: 1.05;
+      color: var(--ink);
+      margin-bottom: 1rem;
+    }
+
+    .hero-name em {
+      font-style: italic;
+      color: var(--accent-mid);
+    }
+
+    .hero-role {
+      font-family: var(--ff-body);
+      font-size: clamp(1rem, 1.4vw, 1.2rem);
+      font-weight: 300;
+      color: var(--dusk);
+      margin-bottom: 2rem;
+      max-width: 38ch;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 2rem;
+      background: var(--accent);
+      color: #fff;
+      font-family: var(--ff-body);
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.2s;
+    }
+
+    .hero-cta:hover { background: var(--accent-mid); }
+
+    .hero-cta-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 2rem;
+      background: transparent;
+      color: var(--dusk);
+      font-family: var(--ff-body);
+      font-size: 0.875rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      border: 1px solid var(--rose);
+      border-radius: 2px;
+      margin-left: 1rem;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .hero-cta-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* CE monogram block */
+    .hero-visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .monogram-wrap {
+      position: relative;
+      width: clamp(220px, 28vw, 360px);
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .monogram-ring {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 1px solid var(--mist);
+      animation: spin-slow 30s linear infinite;
+    }
+
+    .monogram-ring-2 {
+      position: absolute;
+      inset: 14%;
+      border-radius: 50%;
+      border: 1px solid var(--stone);
+      animation: spin-slow 20s linear infinite reverse;
+    }
+
+    @keyframes spin-slow {
+      to { transform: rotate(360deg); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .monogram-ring, .monogram-ring-2 { animation: none; }
+    }
+
+    .monogram-ce {
+      font-family: var(--ff-display);
+      font-size: clamp(4rem, 8vw, 7rem);
+      color: var(--ink);
+      letter-spacing: -0.02em;
+      position: relative;
+      z-index: 1;
+      user-select: none;
+    }
+
+    .monogram-ce span { color: var(--accent); }
+
+    /* ── INTRO STRIP ── */
+    .intro-strip {
+      background: var(--ink);
+      color: var(--cream);
+      padding: 3.5rem var(--gutter);
+    }
+
+    .intro-strip-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .intro-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      padding-top: 0.25rem;
+    }
+
+    .intro-copy {
+      font-family: var(--ff-display);
+      font-size: clamp(1.3rem, 2.2vw, 1.75rem);
+      line-height: 1.35;
+      font-weight: 400;
+      color: var(--cream);
+    }
+
+    .intro-copy em {
+      font-style: italic;
+      color: var(--rose);
+    }
+
+    /* ── SKILLS ── */
+    .skills {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 5rem var(--gutter);
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--slate);
+      margin-bottom: 3rem;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .skill-card {
+      background: var(--stone);
+      padding: 2rem 1.75rem;
+      transition: background 0.2s;
+    }
+
+    .skill-card:hover { background: var(--mist); }
+
+    .skill-card h3 {
+      font-family: var(--ff-display);
+      font-size: 1.25rem;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 0.75rem;
+    }
+
+    .skill-card p {
+      font-size: 0.9rem;
+      color: var(--dusk);
+      line-height: 1.6;
+    }
+
+    /* ── WORK TEASER ── */
+    .work-teaser {
+      background: var(--stone);
+      padding: 5rem var(--gutter);
+    }
+
+    .work-teaser-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+
+    .work-teaser-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 3rem;
+    }
+
+    .work-teaser-header h2 {
+      font-family: var(--ff-display);
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      font-weight: 400;
+    }
+
+    .work-teaser-header a {
+      font-size: 0.875rem;
+      color: var(--accent-mid);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+
+    .work-teaser-header a:hover { text-decoration: underline; }
+
+    .work-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+    }
+
+    .work-card {
+      background: var(--cream);
+      padding: 2.5rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .work-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    .work-card:hover::after { transform: scaleX(1); }
+
+    .work-card-tag {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .work-card h3 {
+      font-family: var(--ff-display);
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 0.75rem;
+    }
+
+    .work-card p {
+      font-size: 0.9rem;
+      color: var(--dusk);
+      line-height: 1.6;
+    }
+
+    .work-card-coming {
+      opacity: 0.45;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 3rem var(--gutter);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--stone);
+    }
+
+    footer p {
+      font-size: 0.8rem;
+      color: var(--slate);
+    }
+
+    footer a {
+      font-size: 0.8rem;
+      color: var(--accent-mid);
+      text-decoration: none;
+    }
+
+    footer a:hover { text-decoration: underline; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 5.5rem;
+        gap: 2.5rem;
+        min-height: auto;
+        padding-bottom: 4rem;
+      }
+
+      .hero-visual { display: none; }
+
+      .nav-links { display: none; }
+
+      .intro-strip-inner {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+
+      .skills-grid { grid-template-columns: 1fr; }
+
+      .work-cards { grid-template-columns: 1fr; }
+
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-monogram" href="/">CE</a>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <p class="hero-eyebrow">Available from September 2026</p>
+      <h1 class="hero-name">Caroline<br><em>Edwards</em></h1>
+      <p class="hero-role">UX &amp; UI Product Designer — 15 years across B2B, B2C, and SaaS. Accessibility and inclusive design at the core.</p>
+      <a class="hero-cta" href="#work">View my work</a>
+      <a class="hero-cta-ghost" href="contact.html">Get in touch</a>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="monogram-wrap">
+        <div class="monogram-ring"></div>
+        <div class="monogram-ring-2"></div>
+        <div class="monogram-ce">C<span>E</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO STRIP -->
+  <div class="intro-strip">
+    <div class="intro-strip-inner">
+      <p class="intro-label">What I do</p>
+      <p class="intro-copy">I design products that work for <em>everyone</em> — not as an afterthought, but as the starting point. End-to-end product design, from discovery through to high-fidelity UI.</p>
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <section class="skills">
+    <p class="section-label">Specialisms</p>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h3>Accessibility &amp; Inclusive Design</h3>
+        <p>WCAG-informed design practice across public and private sector products. Lived expertise in SEND contexts.</p>
+      </div>
+      <div class="skill-card">
+        <h3>End-to-End Product Design</h3>
+        <p>Discovery, research synthesis, information architecture, wireframes, and high-fidelity UI — through to handoff.</p>
+      </div>
+      <div class="skill-card">
+        <h3>B2B, B2C &amp; SaaS</h3>
+        <p>15 years across sectors and scales. Comfortable with complex systems and ambiguous briefs.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK TEASER -->
+  <section class="work-teaser" id="work">
+    <div class="work-teaser-inner">
+      <div class="work-teaser-header">
+        <h2>Selected Work</h2>
+        <a href="work.html">All case studies →</a>
+      </div>
+      <div class="work-cards">
+        <div class="work-card">
+          <p class="work-card-tag">UX · Habit Tracking App</p>
+          <h3>HabitHero</h3>
+          <p>A habit-tracking app for PrimeCare, designed around guilt-free re-engagement. Featured "Life Day" — a mechanism to return without penalty.</p>
+        </div>
+        <div class="work-card work-card-coming">
+          <p class="work-card-tag">Coming Soon</p>
+          <h3>More case studies</h3>
+          <p>Portfolio in progress. Additional case studies publishing soon.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Caroline Edwards</p>
+    <a href="mailto:hello@mostlycaroline.com">hello@mostlycaroline.com</a>
+  </footer>
+
+</body>
+</html>

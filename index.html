@@ -8,21 +8,28 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
+    /* ── TOKENS ── */
     :root {
       --coral:  #FC6C85;
       --orange: #FF8A3D;
       --peach:  #FFB37A;
-      --yellow: #FFD761;
       --cream:  #FFF8F0;
       --navy:   #33283E;
       --white:  #FFFFFF;
-      --mid:    #7A6070;
+      --mid:    #5C4A57;
       --light:  #FFF1E8;
 
       --ff-display: 'Playfair Display', Georgia, serif;
       --ff-body:    'Montserrat', system-ui, sans-serif;
+
+      --text-label:   0.72rem;
+      --text-body:    1rem;
+      --text-card-h:  1.25rem;
+      --text-section: clamp(2rem, 3.5vw, 2.5rem);
+      --text-hero:    clamp(3.2rem, 7vw, 5.5rem);
+
       --max-w: 1140px;
       --gutter: clamp(1.25rem, 5vw, 4rem);
     }
@@ -34,11 +41,88 @@
       background: var(--cream);
       color: var(--navy);
       font-family: var(--ff-body);
-      font-size: 1rem;
-      line-height: 1.7;
+      font-size: var(--text-body);
+      font-weight: 300;
+      line-height: 1.75;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
+
+    /* ── SHARED PRIMITIVES ── */
+    .label {
+      font-family: var(--ff-body);
+      font-size: var(--text-label);
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--coral);
+      display: block;
+      margin-bottom: 0.85rem;
+    }
+
+    h1 {
+      font-family: var(--ff-display);
+      font-size: var(--text-hero);
+      font-weight: 400;
+      line-height: 1.05;
+      color: var(--navy);
+      margin-bottom: 1.5rem;
+    }
+    h1 em { font-style: italic; color: var(--coral); }
+
+    h2 {
+      font-family: var(--ff-display);
+      font-size: var(--text-section);
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--navy);
+      margin-bottom: 1.25rem;
+    }
+    h2 em { font-style: italic; color: var(--coral); }
+
+    h3 {
+      font-family: var(--ff-display);
+      font-size: var(--text-card-h);
+      font-weight: 400;
+      line-height: 1.25;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+
+    p { color: var(--mid); font-weight: 300; line-height: 1.8; }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 0.85rem 2rem;
+      background: var(--coral);
+      color: var(--white);
+      font-family: var(--ff-body);
+      font-size: var(--text-label);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 100px;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { background: var(--orange); transform: translateY(-2px); }
+
+    .btn-ghost {
+      display: inline-block;
+      padding: 0.85rem 2rem;
+      background: transparent;
+      color: var(--navy);
+      font-family: var(--ff-body);
+      font-size: var(--text-label);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1.5px solid rgba(52,40,62,0.2);
+      border-radius: 100px;
+      transition: border-color 0.2s, color 0.2s, transform 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--coral); color: var(--coral); transform: translateY(-2px); }
 
     /* ── NAV ── */
     nav {
@@ -48,31 +132,33 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 1.1rem var(--gutter);
-      background: rgba(255,248,240,0.92);
+      padding: 1rem var(--gutter);
+      background: rgba(255,248,240,0.94);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(252,108,133,0.12);
+      border-bottom: 1px solid rgba(252,108,133,0.1);
     }
 
     .nav-logo {
       font-family: var(--ff-display);
-      font-size: 1.35rem;
+      font-size: 1.2rem;
+      font-weight: 400;
+      font-style: italic;
       color: var(--navy);
       text-decoration: none;
-      font-style: italic;
     }
     .nav-logo span { color: var(--coral); font-style: normal; }
 
     .nav-links {
       display: flex;
-      gap: 2.25rem;
+      align-items: center;
+      gap: 2rem;
       list-style: none;
     }
     .nav-links a {
       font-family: var(--ff-body);
-      font-size: 0.78rem;
-      font-weight: 500;
+      font-size: var(--text-label);
+      font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--navy);
@@ -81,28 +167,27 @@
     }
     .nav-links a:hover { color: var(--coral); }
     .nav-cta {
-      display: inline-block;
-      padding: 0.55rem 1.4rem;
-      background: var(--orange);
+      padding: 0.5rem 1.25rem !important;
+      background: var(--orange) !important;
       color: var(--white) !important;
       border-radius: 100px;
       transition: background 0.2s !important;
+      letter-spacing: 0.06em !important;
     }
-    .nav-cta:hover { background: var(--coral) !important; }
+    .nav-cta:hover { background: var(--coral) !important; color: var(--white) !important; }
 
     .nav-toggle {
       display: none;
       background: none;
       border: none;
       cursor: pointer;
-      padding: 0.25rem;
       flex-direction: column;
       gap: 5px;
+      padding: 0.25rem;
     }
     .nav-toggle span {
       display: block;
-      width: 24px;
-      height: 2px;
+      width: 24px; height: 2px;
       background: var(--navy);
       border-radius: 2px;
     }
@@ -120,33 +205,9 @@
       padding: 8rem var(--gutter) 5rem;
     }
 
-    .hero-eyebrow {
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--coral);
-      margin-bottom: 1.5rem;
-    }
-
-    h1 {
-      font-family: var(--ff-display);
-      font-size: clamp(3.2rem, 7vw, 6.5rem);
-      line-height: 1.0;
-      color: var(--navy);
-      margin-bottom: 1.75rem;
-      max-width: 14ch;
-    }
-    h1 em { font-style: italic; color: var(--coral); }
-
-    .hero-sub {
-      font-size: clamp(1rem, 1.4vw, 1.2rem);
-      font-weight: 300;
-      color: var(--mid);
-      max-width: 52ch;
-      margin-bottom: 2.75rem;
-      line-height: 1.8;
-    }
+    .hero .label { text-align: center; color: var(--coral); margin-bottom: 1.25rem; }
+    .hero h1 { max-width: 14ch; margin-bottom: 1.5rem; }
+    .hero p  { max-width: 50ch; margin: 0 auto 2.5rem; font-size: var(--text-body); }
 
     .hero-actions {
       display: flex;
@@ -156,42 +217,11 @@
       flex-wrap: wrap;
     }
 
-    .btn-primary {
-      display: inline-block;
-      padding: 0.9rem 2.2rem;
-      background: var(--coral);
-      color: var(--white);
-      font-family: var(--ff-body);
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      text-decoration: none;
-      border-radius: 100px;
-      transition: background 0.2s, transform 0.2s;
-    }
-    .btn-primary:hover { background: var(--orange); transform: translateY(-2px); }
-
-    .btn-ghost {
-      display: inline-block;
-      padding: 0.9rem 2.2rem;
-      background: transparent;
-      color: var(--navy);
-      font-family: var(--ff-body);
-      font-size: 0.85rem;
-      font-weight: 500;
-      letter-spacing: 0.05em;
-      text-decoration: none;
-      border: 1.5px solid rgba(52,40,62,0.2);
-      border-radius: 100px;
-      transition: border-color 0.2s, color 0.2s, transform 0.2s;
-    }
-    .btn-ghost:hover { border-color: var(--coral); color: var(--coral); transform: translateY(-2px); }
-
     /* ── MARQUEE ── */
     .marquee-wrap {
       background: var(--navy);
       overflow: hidden;
-      padding: 1.1rem 0;
+      padding: 1rem 0;
     }
     .marquee-track {
       display: flex;
@@ -204,47 +234,27 @@
     }
     @media (prefers-reduced-motion: reduce) {
       .marquee-track { animation: none; }
-      .blob-svg animate { display: none; }
     }
     .marquee-track span {
       font-family: var(--ff-display);
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-style: italic;
-      color: rgba(255,248,240,0.7);
-      padding: 0 1.5rem;
+      font-weight: 400;
+      color: rgba(255,248,240,0.65);
+      padding: 0 1.25rem;
     }
     .marquee-track span.dot {
-      color: var(--coral);
       font-style: normal;
-      font-size: 1.3rem;
+      color: var(--coral);
       padding: 0 0.25rem;
     }
 
-    /* ── SHARED SECTION STYLES ── */
+    /* ── SECTION WRAPPER ── */
     .section {
       max-width: var(--max-w);
       margin: 0 auto;
       padding: 6rem var(--gutter);
     }
-
-    .section-label {
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--coral);
-      margin-bottom: 1rem;
-    }
-
-    .section-title {
-      font-family: var(--ff-display);
-      font-size: clamp(2rem, 3.5vw, 3rem);
-      font-weight: 400;
-      color: var(--navy);
-      line-height: 1.15;
-      margin-bottom: 1.5rem;
-    }
-    .section-title em { font-style: italic; color: var(--coral); }
 
     /* ── ABOUT ── */
     .about-strip {
@@ -255,49 +265,42 @@
       max-width: var(--max-w);
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 1fr 1.5fr;
+      grid-template-columns: 1fr 1.6fr;
       gap: 5rem;
       align-items: center;
     }
 
-    .about-image-wrap {
-      position: relative;
+    .about-photo {
       width: 100%;
-    }
-    .blob-svg {
-      width: 100%;
-      height: auto;
+      max-width: 340px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: top;
       display: block;
+      border: 4px solid rgba(252,108,133,0.35);
     }
 
+    .about-text .label { color: var(--peach); }
+    .about-text h2 { color: var(--cream); }
+    .about-text h2 em { color: var(--coral); }
+    .about-text p { color: rgba(255,232,220,0.85); margin-bottom: 1.25rem; }
 
-    .about-text .section-label { color: var(--peach); }
-    .about-text .section-title { color: var(--cream); }
-    .about-text .section-title em { color: var(--coral); }
-
-    .about-body {
-      color: rgba(255,248,240,0.75);
-      font-size: 1rem;
-      font-weight: 300;
-      line-height: 1.85;
-      margin-bottom: 1.5rem;
-    }
-
-    .about-pills {
+    .pills {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.6rem;
-      margin-bottom: 2.5rem;
+      gap: 0.5rem;
+      margin: 1.75rem 0 2.25rem;
     }
     .pill {
-      display: inline-block;
-      padding: 0.45rem 1.1rem;
-      border: 1px solid rgba(252,108,133,0.4);
-      color: var(--peach);
-      font-size: 0.78rem;
+      font-family: var(--ff-body);
+      font-size: var(--text-label);
       font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--peach);
+      border: 1px solid rgba(252,108,133,0.35);
       border-radius: 100px;
-      letter-spacing: 0.04em;
+      padding: 0.4rem 1rem;
     }
 
     /* ── HOW I WORK ── */
@@ -312,8 +315,8 @@
     .values-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      margin-top: 3rem;
+      gap: 1.25rem;
+      margin-top: 2.5rem;
     }
     .value-card {
       background: var(--white);
@@ -321,9 +324,8 @@
       padding: 2rem 1.75rem;
     }
     .value-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
+      width: 44px; height: 44px;
+      border-radius: 10px;
       background: var(--coral);
       display: flex;
       align-items: center;
@@ -331,100 +333,68 @@
       margin-bottom: 1.25rem;
     }
     .value-icon svg {
-      width: 24px;
-      height: 24px;
+      width: 22px; height: 22px;
       stroke: #fff;
       fill: none;
       stroke-width: 1.75;
       stroke-linecap: round;
       stroke-linejoin: round;
     }
-    .value-card h3 {
-      font-family: var(--ff-display);
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 0.6rem;
-    }
-    .value-card p {
-      font-size: 0.88rem;
-      color: var(--mid);
-      line-height: 1.7;
-    }
+    .value-card h3 { color: var(--navy); margin-bottom: 0.5rem; }
+    .value-card p  { font-size: 0.9rem; }
 
     /* ── WORK ── */
     .work-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-      margin-top: 3rem;
+      gap: 1.25rem;
+      margin-top: 2.5rem;
     }
     .work-card {
       background: var(--white);
       border-radius: 20px;
       overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
       text-decoration: none;
       color: inherit;
       display: block;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
     .work-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 50px rgba(252,108,133,0.15);
+      transform: translateY(-5px);
+      box-shadow: 0 16px 48px rgba(252,108,133,0.14);
     }
-    .work-card-img {
+    .work-card-thumb {
       width: 100%;
       aspect-ratio: 16/9;
       display: flex;
       align-items: center;
       justify-content: center;
       font-family: var(--ff-display);
-      font-size: 3rem;
-      color: var(--white);
+      font-size: 2rem;
+      font-weight: 400;
       font-style: italic;
+      color: var(--white);
     }
-    .work-card-img.habithero {
-      background: linear-gradient(135deg, #FFD761, #FFB37A, #FF8A3D);
-    }
-    .work-card-img.coming {
-      background: linear-gradient(135deg, #f0ebe6, #e0d8d0);
-      color: rgba(52,40,62,0.2);
-    }
-    .work-card-body { padding: 1.75rem; }
-    .work-card-tag {
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--coral);
-      margin-bottom: 0.6rem;
-    }
-    .work-card h3 {
-      font-family: var(--ff-display);
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 0.6rem;
-    }
-    .work-card p {
-      font-size: 0.9rem;
-      color: var(--mid);
-      line-height: 1.65;
-    }
+    .work-card-thumb.habithero { background: linear-gradient(135deg, #FFD761, #FFB37A, #FF8A3D); }
+    .work-card-thumb.coming    { background: var(--light); color: rgba(52,40,62,0.18); }
+    .work-card-body { padding: 1.5rem; }
+    .work-card-body .label { color: var(--coral); margin-bottom: 0.5rem; }
+    .work-card-body h3 { color: var(--navy); margin-bottom: 0.4rem; }
+    .work-card-body p  { font-size: 0.9rem; }
     .work-card-coming { opacity: 0.5; pointer-events: none; }
 
     /* ── CONTACT ── */
+    .contact-bg {
+      background: var(--light);
+      padding: 6rem var(--gutter);
+    }
     .contact-inner {
-      text-align: center;
-      max-width: 600px;
+      max-width: var(--max-w);
       margin: 0 auto;
+      text-align: center;
     }
-    .contact-inner p {
-      color: var(--mid);
-      font-weight: 300;
-      margin-bottom: 2.5rem;
-    }
-    .contact-links {
+    .contact-inner p { max-width: 48ch; margin: 0 auto 2.5rem; }
+    .contact-actions {
       display: flex;
       gap: 1rem;
       justify-content: center;
@@ -432,61 +402,63 @@
     }
 
     /* ── FOOTER ── */
-    .footer-inner {
+    footer {
       border-top: 1px solid rgba(52,40,62,0.08);
-      padding: 2rem var(--gutter);
+      padding: 1.75rem var(--gutter);
+    }
+    .footer-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      max-width: var(--max-w);
-      margin: 0 auto;
     }
-    .footer-inner p { font-size: 0.8rem; color: var(--mid); }
-    .footer-inner a { font-size: 0.8rem; color: var(--coral); text-decoration: none; }
-    .footer-inner a:hover { text-decoration: underline; }
+    footer p   { font-size: 0.8rem; color: var(--mid); }
+    footer a   { font-size: 0.8rem; color: var(--coral); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
 
     /* ── SCROLL ANIMATIONS ── */
     .fade-up {
       opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
+      transform: translateY(24px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
     }
-    .fade-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       .about-inner {
         grid-template-columns: 1fr;
         gap: 2.5rem;
+        text-align: center;
       }
-      .about-image-wrap {
-        max-width: 320px;
+      .about-photo {
         margin: 0 auto;
+        max-width: 260px;
       }
+      .pills { justify-content: center; }
       .values-grid { grid-template-columns: repeat(2, 1fr); }
       .work-grid   { grid-template-columns: 1fr; }
       .nav-links   { display: none; }
       .nav-links.open {
         display: flex;
         flex-direction: column;
+        align-items: flex-start;
         position: fixed;
-        top: 60px; left: 0; right: 0;
+        top: 58px; left: 0; right: 0;
         background: var(--cream);
         padding: 1.5rem var(--gutter) 2rem;
         gap: 1.25rem;
-        border-bottom: 1px solid rgba(252,108,133,0.12);
+        border-bottom: 1px solid rgba(252,108,133,0.1);
         z-index: 199;
       }
       .nav-toggle { display: flex; }
-      .footer-inner { flex-direction: column; gap: 0.75rem; text-align: center; }
+      .footer-inner { flex-direction: column; gap: 0.6rem; text-align: center; }
     }
-
     @media (max-width: 540px) {
       .values-grid  { grid-template-columns: 1fr; }
       .hero-actions { flex-direction: column; align-items: center; }
+      .contact-actions { flex-direction: column; align-items: center; }
     }
   </style>
 </head>
@@ -508,9 +480,12 @@
 
   <!-- HERO -->
   <section class="hero">
-    <p class="hero-eyebrow fade-up">UX &amp; UI Product Designer</p>
-    <h1 class="fade-up" style="transition-delay:0.1s">Designing for <em>real people.</em></h1>
-    <p class="hero-sub fade-up" style="transition-delay:0.2s">15 years across B2B, B2C and SaaS. Accessibility and inclusive design aren't extras — they're the starting point.</p>
+    <span class="label fade-up">UX &amp; UI Product Designer</span>
+    <h1 class="fade-up" style="transition-delay:0.1s">
+      <span style="color:#33283E">Engaging, Accessible, Meaningful</span><br>
+      <em>Edtech Creative.</em>
+    </h1>
+    <p class="fade-up" style="transition-delay:0.2s">15 years across B2B, B2C and SaaS. Accessibility and inclusive design aren't extras — they're the starting point.</p>
     <div class="hero-actions fade-up" style="transition-delay:0.3s">
       <a class="btn-primary" href="#work">View my work</a>
       <a class="btn-ghost" href="#contact">Get in touch</a>
@@ -542,45 +517,15 @@
   <!-- ABOUT -->
   <div class="about-strip" id="about">
     <div class="about-inner">
-      <div class="about-image-wrap fade-up">
-        <svg class="blob-svg" viewBox="0 0 400 460" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <clipPath id="blobClip" clipPathUnits="userSpaceOnUse">
-              <path id="blobPath" d="M320,230 C340,290 310,370 250,410 C190,450 110,440 70,390 C30,340 40,250 60,190 C80,130 140,70 210,60 C280,50 340,110 350,170 C355,190 330,200 320,230 Z"/>
-            </clipPath>
-          </defs>
-          <!-- coral background shape (slightly larger, no clip) -->
-          <path id="blobBg" d="M320,230 C340,290 310,370 250,410 C190,450 110,440 70,390 C30,340 40,250 60,190 C80,130 140,70 210,60 C280,50 340,110 350,170 C355,190 330,200 320,230 Z" fill="#FC6C85" opacity="0.18"/>
-          <!-- photo clipped to blob -->
-          <image href="me.png" x="20" y="20" width="360" height="420" preserveAspectRatio="xMidYMin slice" clip-path="url(#blobClip)"/>
-          <animate xlink:href="#blobPath" attributeName="d"
-            dur="8s" repeatCount="indefinite" calcMode="spline"
-            keySplines="0.45 0.05 0.55 0.95; 0.45 0.05 0.55 0.95; 0.45 0.05 0.55 0.95; 0.45 0.05 0.55 0.95"
-            values="
-              M320,230 C340,290 310,370 250,410 C190,450 110,440 70,390 C30,340 40,250 60,190 C80,130 140,70 210,60 C280,50 340,110 350,170 C355,190 330,200 320,230 Z;
-              M300,210 C330,270 320,360 260,405 C200,450 110,445 65,385 C20,325 45,235 75,175 C105,115 175,60 245,58 C315,56 330,120 340,175 C345,195 310,190 300,210 Z;
-              M330,240 C345,305 300,375 238,412 C176,449 100,438 62,382 C24,326 42,242 68,182 C94,122 158,65 228,62 C298,59 348,118 355,178 C360,198 328,212 330,240 Z;
-              M310,225 C338,285 315,368 252,408 C189,448 108,441 67,388 C26,335 38,247 62,186 C86,125 148,68 218,62 C288,56 338,115 348,172 C353,192 325,198 310,225 Z;
-              M320,230 C340,290 310,370 250,410 C190,450 110,440 70,390 C30,340 40,250 60,190 C80,130 140,70 210,60 C280,50 340,110 350,170 C355,190 330,200 320,230 Z
-            "/>
-          <animate xlink:href="#blobBg" attributeName="d"
-            dur="8s" repeatCount="indefinite" calcMode="spline"
-            keySplines="0.45 0.05 0.55 0.95; 0.45 0.05 0.55 0.95; 0.45 0.05 0.55 0.95; 0.45 0.05 0.55 0.95"
-            values="
-              M320,230 C340,290 310,370 250,410 C190,450 110,440 70,390 C30,340 40,250 60,190 C80,130 140,70 210,60 C280,50 340,110 350,170 C355,190 330,200 320,230 Z;
-              M300,210 C330,270 320,360 260,405 C200,450 110,445 65,385 C20,325 45,235 75,175 C105,115 175,60 245,58 C315,56 330,120 340,175 C345,195 310,190 300,210 Z;
-              M330,240 C345,305 300,375 238,412 C176,449 100,438 62,382 C24,326 42,242 68,182 C94,122 158,65 228,62 C298,59 348,118 355,178 C360,198 328,212 330,240 Z;
-              M310,225 C338,285 315,368 252,408 C189,448 108,441 67,388 C26,335 38,247 62,186 C86,125 148,68 218,62 C288,56 338,115 348,172 C353,192 325,198 310,225 Z;
-              M320,230 C340,290 310,370 250,410 C190,450 110,440 70,390 C30,340 40,250 60,190 C80,130 140,70 210,60 C280,50 340,110 350,170 C355,190 330,200 320,230 Z
-            "/>
-        </svg>
+      <div class="fade-up" style="display:flex; justify-content:center;">
+        <img class="about-photo" src="me.png" alt="Caroline Edwards, UX & UI Product Designer" />
       </div>
-      <div class="about-text fade-up" style="transition-delay:0.2s">
-        <p class="section-label">About me</p>
-        <h2 class="section-title">Thoughtful design creates <em>meaningful change.</em></h2>
-        <p class="about-body">I'm a UX & UI Product Designer based in Hampshire with 15 years of experience across public and private sectors. I design intuitive, inclusive and effective digital products — with accessibility built in from the start, not bolted on at the end.</p>
-        <p class="about-body">Currently completing a Professional Certificate in UX & UI Product Design at King's College London. My SEND support background isn't a career gap — it's lived expertise in designing for people whose needs are too often overlooked.</p>
-        <div class="about-pills">
+      <div class="about-text fade-up" style="transition-delay:0.15s">
+        <span class="label">About me</span>
+        <h2>Thoughtful design creates <em>meaningful change.</em></h2>
+        <p>I'm a UX & UI Product Designer based in Hampshire with 15 years of experience across public and private sectors. I design intuitive, inclusive and effective digital products — with accessibility built in from the start, not bolted on at the end.</p>
+        <p>Currently completing a Professional Certificate in UX & UI Product Design at King's College London. My SEND support background isn't a career gap — it's lived expertise in designing for people whose needs are too often overlooked.</p>
+        <div class="pills">
           <span class="pill">Human-centred</span>
           <span class="pill">Strategic thinker</span>
           <span class="pill">Accessibility advocate</span>
@@ -595,8 +540,8 @@
   <!-- HOW I WORK -->
   <div class="values-bg">
     <div class="values-inner">
-      <p class="section-label fade-up">How I work</p>
-      <h2 class="section-title fade-up" style="transition-delay:0.1s">Design that works for <em>everyone.</em></h2>
+      <span class="label fade-up">How I work</span>
+      <h2 class="fade-up" style="transition-delay:0.1s">Design that works for <em>everyone.</em></h2>
       <div class="values-grid">
         <div class="value-card fade-up" style="transition-delay:0.1s">
           <div class="value-icon" aria-hidden="true">
@@ -625,21 +570,21 @@
 
   <!-- WORK -->
   <section class="section" id="work">
-    <p class="section-label fade-up">Selected Work</p>
-    <h2 class="section-title fade-up" style="transition-delay:0.1s">Projects that <em>made a difference.</em></h2>
+    <span class="label fade-up">Selected Work</span>
+    <h2 class="fade-up" style="transition-delay:0.1s">Projects that <em>made a difference.</em></h2>
     <div class="work-grid">
       <a class="work-card fade-up" href="#" style="transition-delay:0.1s">
-        <div class="work-card-img habithero">HabitHero</div>
+        <div class="work-card-thumb habithero">HabitHero</div>
         <div class="work-card-body">
-          <p class="work-card-tag">UX · Habit Tracking · Mobile App</p>
+          <span class="label">UX · Habit Tracking · Mobile App</span>
           <h3>HabitHero</h3>
           <p>A habit-tracking app for PrimeCare. Designed around guilt-free re-engagement — including "Life Day", a mechanism to return without penalty.</p>
         </div>
       </a>
       <div class="work-card work-card-coming fade-up" style="transition-delay:0.2s">
-        <div class="work-card-img coming">✦</div>
+        <div class="work-card-thumb coming">✦</div>
         <div class="work-card-body">
-          <p class="work-card-tag">Coming Soon</p>
+          <span class="label">Coming Soon</span>
           <h3>More case studies</h3>
           <p>Portfolio in progress. Additional case studies will be published here soon.</p>
         </div>
@@ -648,12 +593,12 @@
   </section>
 
   <!-- CONTACT -->
-  <div style="background: var(--light); padding: 6rem var(--gutter);" id="contact">
+  <div class="contact-bg" id="contact">
     <div class="contact-inner">
-      <p class="section-label fade-up">Get in touch</p>
-      <h2 class="section-title fade-up" style="transition-delay:0.1s">Let's build something <em>great together.</em></h2>
+      <span class="label fade-up">Get in touch</span>
+      <h2 class="fade-up" style="transition-delay:0.1s">Let's build something <em>great together.</em></h2>
       <p class="fade-up" style="transition-delay:0.2s">Available for roles from September 2026. Open to agency and in-house positions — end-to-end product design is my focus.</p>
-      <div class="contact-links fade-up" style="transition-delay:0.3s">
+      <div class="contact-actions fade-up" style="transition-delay:0.3s">
         <a class="btn-primary" href="mailto:hello@mostlycaroline.com">Say hello</a>
         <a class="btn-ghost" href="https://www.linkedin.com/in/mostlycaroline/" target="_blank" rel="noopener">LinkedIn</a>
       </div>
@@ -673,20 +618,13 @@
       document.getElementById('navLinks').classList.toggle('open');
     }
     document.querySelectorAll('#navLinks a').forEach(a => {
-      a.addEventListener('click', () => {
-        document.getElementById('navLinks').classList.remove('open');
-      });
+      a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
     });
-
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(el => {
-        if (el.isIntersecting) {
-          el.target.classList.add('visible');
-          observer.unobserve(el.target);
-        }
+        if (el.isIntersecting) { el.target.classList.add('visible'); observer.unobserve(el.target); }
       });
     }, { threshold: 0.12 });
-
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
   </script>
 

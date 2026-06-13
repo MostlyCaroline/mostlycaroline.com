@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Caroline Edwards — UX & UI Product Designer</title>
+  <title>Caroline Edwards - UX & UI Product Designer</title>
   <meta name="description" content="UX & UI Product Designer with 15 years of experience across B2B, B2C and SaaS. Accessibility and inclusive design at the core." />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -216,7 +216,7 @@
       width: 100%;
     }
 
-    .hero .label { text-align: center; color: var(--coral); margin-bottom: 1.25rem; }
+    .hero .label { text-align: center; color: var(--coral); margin-bottom: 1.25rem; font-size: 0.85rem; letter-spacing: 0.12em; }
     .hero h1 { max-width: 14ch; margin-bottom: 1.5rem; }
     .hero p  { max-width: 50ch; margin: 0 auto 2.5rem; font-size: var(--text-body); }
 
@@ -337,7 +337,6 @@
     .value-icon {
       width: 44px; height: 44px;
       border-radius: 50%;
-      background: var(--coral);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -351,8 +350,14 @@
       stroke-linecap: round;
       stroke-linejoin: round;
     }
-    .value-card h3 { color: var(--navy); margin-bottom: 0.5rem; }
-    .value-card p  { font-size: 0.9rem; }
+    .value-card h3 { color: var(--navy); margin-bottom: 0.5rem; font-size: 1.5rem; }
+    .value-card p  { font-size: 1rem; color: var(--mid); }
+    .value-card-1 .value-icon { background: var(--coral); }
+    .value-card-1 .value-quote { color: var(--coral); }
+    .value-card-2 .value-icon { background: var(--orange); }
+    .value-card-2 .value-quote { color: var(--orange); }
+    .value-card-3 .value-icon { background: var(--coral); }
+    .value-card-3 .value-quote { color: var(--coral); }
 
     /* ── WORK ── */
     .work-grid {
@@ -391,7 +396,7 @@
     .work-card-body { padding: 1.5rem; }
     .work-card-body .label { color: var(--coral); margin-bottom: 0.5rem; }
     .work-card-body h3 { color: var(--navy); margin-bottom: 0.4rem; }
-    .work-card-body p  { font-size: 0.9rem; }
+    .work-card-body p  { font-size: 1rem; }
     .work-card-coming { opacity: 0.5; pointer-events: none; }    /* ── TESTIMONIALS ── */
     .testimonials-bg {
       background: var(--navy);
@@ -645,7 +650,7 @@
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" onclick="toggleNav()">☰</button>
     <ul class="nav-links" id="navLinks">
       <li><a href="#about">About</a></li>
-      <li><a href="#work">Work</a></li>
+      <li><a href="#work">Portfolio</a></li>
       <li><a href="blog.html">Blog</a></li>
       <li><a href="#contact">Contact</a></li>
       <li><a href="cv.pdf" download class="nav-cta">Download CV</a></li>
@@ -670,7 +675,7 @@
     </h1>
     <p class="fade-up" style="transition-delay:0.2s">I design digital experiences that make learning more engaging, accessible, and meaningful. Combining expertise in UX design, education, and behavioural insight, I create products that help people learn with confidence and curiosity.</p>
     <div class="hero-actions fade-up" style="transition-delay:0.3s">
-      <a class="btn-primary" href="#work">View my work</a>
+      <a class="btn-primary" href="#work">View my portfolio</a>
       <a class="btn-ghost" href="#contact">Let's chat</a>
     </div>
   </section>
@@ -731,9 +736,8 @@
         <span class="label">About me</span>
         <h2>Thoughtful design creates <em>meaningful change.</em></h2>
         <p>I'm a UX & UI Product Designer based in Hampshire with 15 years of UX/UI experience and 10 years within education and teaching.</p>
-        <p>My career has been built around understanding people: how they think, what motivates them, and what helps them succeed. From supporting children with diverse learning needs to leading teams, driving business growth, and designing user-centred digital experiences, I've always been motivated by the same goal — creating environments where people can thrive.</p>
-        <p>Having worked directly in education, I've seen firsthand that learning is never one-size-fits-all. Every learner brings different strengths, challenges, motivations, and goals, yet many systems still prioritise standardisation over engagement, creativity, and inclusion. That's what drives my passion for UX and EdTech: the opportunity to create experiences that adapt to people, rather than expecting people to adapt to the system.</p>
-        <p>I combine user research, interaction design, accessibility principles, and behavioural psychology to design intuitive, engaging experiences that solve real problems. Whether improving a digital product, shaping a learning journey, or designing for behaviour change, I enjoy uncovering user needs and translating insights into meaningful solutions.</p>
+        <p>My career has been built around understanding people: how they think, what motivates them, and what helps them succeed. From supporting children with diverse learning needs to leading teams, driving business growth, and designing user-centred digital experiences, I've always been motivated by the same goal - creating environments where people can thrive.</p>
+
 
         <a class="btn-primary" href="#contact">Work with me</a>
       </div>
@@ -746,25 +750,28 @@
       <span class="label fade-up">How I work</span>
       <h2 class="fade-up" style="transition-delay:0.1s">Design that works for <em>everyone.</em></h2>
       <div class="values-grid">
-        <div class="value-card fade-up" style="transition-delay:0.1s">
+        <div class="value-card value-card-1 fade-up" style="transition-delay:0.1s">
           <div class="value-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
           </div>
           <h3>People Focused</h3>
-          <p>I advocate for real users — especially those whose needs are often overlooked. Empathy is the foundation of everything I make.</p>
+          <p class="value-quote" style="font-size:1rem; font-weight:600; margin-bottom:0.75rem; letter-spacing:0.02em;">Increased Pilates membership by 150% through user-centred service design.</p>
+          <p>I advocate for real users - especially those whose needs are often overlooked. Empathy is the foundation of everything I make.</p>
         </div>
-        <div class="value-card fade-up" style="transition-delay:0.2s">
+        <div class="value-card value-card-2 fade-up" style="transition-delay:0.2s">
           <div class="value-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="1.5"/><path d="M7 21l3-6 2 3 2-5 3 8"/><path d="M8 10h8"/><path d="M12 10v4"/></svg>
+            <svg viewBox="0 0 24 24" fill="white" stroke="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
           </div>
           <h3>Accessibility First</h3>
-          <p>WCAG-informed from the start. Inclusive design isn't a feature — it's the whole point. Everyone deserves access.</p>
+          <p class="value-quote" style="font-size:1rem; font-weight:600; margin-bottom:0.75rem; letter-spacing:0.02em;">Lead UX Designer, Government Website of the Year winner (Good Communication 2011).</p>
+          <p>WCAG-informed from the start. Inclusive design isn't a feature - it's the whole point. Everyone deserves meaningful access.</p>
         </div>
-        <div class="value-card fade-up" style="transition-delay:0.3s">
+        <div class="value-card value-card-3 fade-up" style="transition-delay:0.3s">
           <div class="value-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
           </div>
           <h3>Impact Driven</h3>
+          <p class="value-quote" style="font-size:1rem; font-weight:600; margin-bottom:0.75rem; letter-spacing:0.02em;">Contributed to £100K+ annual revenue by designing retention-focused experiences.</p>
           <p>I care about outcomes, not just outputs. Good design solves real problems and makes a measurable difference to people's lives.</p>
         </div>
       </div>
@@ -776,14 +783,15 @@
     <span class="label fade-up">Selected Work</span>
     <h2 class="fade-up" style="transition-delay:0.1s">Projects that <em>made a difference.</em></h2>
     <div class="work-grid">
-      <a class="work-card fade-up" href="#" style="transition-delay:0.1s">
+      <div class="work-card fade-up" style="transition-delay:0.1s; pointer-events:none; cursor:default;">
         <div class="work-card-thumb habithero">HabitHero</div>
         <div class="work-card-body">
           <span class="label">UX · Habit Tracking · Mobile App</span>
           <h3>HabitHero</h3>
-          <p>A habit-tracking app for PrimeCare. Designed around guilt-free re-engagement — including "Life Day", a mechanism to return without penalty.</p>
+          <p>A habit-tracking app for PrimeCare. Designed around guilt-free re-engagement - including "Life Day", a mechanism to return without penalty.</p>
+          <p style="font-size:0.85rem; font-weight:600; color:var(--coral); margin-top:0.75rem; letter-spacing:0.04em;">Full case study coming soon.</p>
         </div>
-      </a>
+      </div>
       <div class="work-card work-card-coming fade-up" style="transition-delay:0.2s">
         <div class="work-card-thumb coming">✦</div>
         <div class="work-card-body">
@@ -804,19 +812,19 @@
         <div class="carousel-track" id="carouselTrack">
           <div class="testimonial-card">
             <p class="quote">"Caroline is one of those designers that take attention to detail to a new level. A true asset to any design team."</p>
-            <p class="attribution">— Simon Taggart, Product Designer, Meta</p>
+            <p class="attribution">- Simon Taggart, Product Designer, Meta</p>
           </div>
           <div class="testimonial-card">
             <p class="quote">"Caroline is a very competent and imaginative designer. She has a very confident, professional manner with clients and her peers, at all levels."</p>
-            <p class="attribution">— Mike Daniels, Senior UX Designer, Caravan and Motorhome Club</p>
+            <p class="attribution">- Mike Daniels, Senior UX Designer, Caravan and Motorhome Club</p>
           </div>
           <div class="testimonial-card">
             <p class="quote">"I could always rely on Caroline to get the best job. A real team player and a great asset to any company."</p>
-            <p class="attribution">— Alice Lawrence, Business Analyst, RSM</p>
+            <p class="attribution">- Alice Lawrence, Business Analyst, RSM</p>
           </div>
           <div class="testimonial-card">
             <p class="quote">"Caroline is very observant and caring about the people she works with, and has very strong mediation and communication skills."</p>
-            <p class="attribution">— Simone O'Callaghan, Design Discipline Leader, University of Newcastle</p>
+            <p class="attribution">- Simone O'Callaghan, Design Discipline Leader, University of Newcastle</p>
           </div>
         </div>
         <div class="carousel-controls">
@@ -833,7 +841,7 @@
     <div class="contact-inner">
       <span class="label fade-up">Get in touch</span>
       <h2 class="fade-up" style="transition-delay:0.1s">Let's build something <em>great together.</em></h2>
-      <p class="fade-up" style="transition-delay:0.2s">Available for roles from September 2026. Open to agency and in-house positions — end-to-end product design is my focus.</p>
+      <p class="fade-up" style="transition-delay:0.2s">At the heart of everything I create is a simple goal: helping people feel capable, curious, and inspired. If you're passionate about UX, learning, education, or building products that make a difference - I'd love to connect.</p>
       <div class="contact-actions fade-up" style="transition-delay:0.3s">
         <a class="btn-primary" href="cv.pdf" download>Download CV</a>
         <a class="btn-ghost" href="https://www.linkedin.com/in/mostlycaroline/" target="_blank" rel="noopener">LinkedIn</a>
@@ -841,7 +849,7 @@
 
       <div class="contact-form fade-up" style="transition-delay:0.4s">
         <div id="formSuccess" class="form-success">
-          <p>✦ Thanks for getting in touch — I'll be back to you soon!</p>
+          <p>✦ Thanks for getting in touch - I'll be back to you soon!</p>
         </div>
         <form id="contactForm" action="https://formspree.io/f/mgobprra" method="POST">
           <div class="form-row">
@@ -957,11 +965,11 @@
             form.style.display = 'none';
             document.getElementById('formSuccess').style.display = 'block';
           } else {
-            btn.textContent = 'Something went wrong — try again';
+            btn.textContent = 'Something went wrong - try again';
             btn.disabled = false;
           }
         } catch {
-          btn.textContent = 'Something went wrong — try again';
+          btn.textContent = 'Something went wrong - try again';
           btn.disabled = false;
         }
       });

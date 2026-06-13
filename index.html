@@ -237,7 +237,7 @@
     .marquee-track {
       display: flex;
       white-space: nowrap;
-      animation: marquee 22s linear infinite;
+      animation: marquee 40s linear infinite;
     }
     @keyframes marquee {
       from { transform: translateX(0); }
@@ -392,7 +392,93 @@
     .work-card-body .label { color: var(--coral); margin-bottom: 0.5rem; }
     .work-card-body h3 { color: var(--navy); margin-bottom: 0.4rem; }
     .work-card-body p  { font-size: 0.9rem; }
-    .work-card-coming { opacity: 0.5; pointer-events: none; }
+    .work-card-coming { opacity: 0.5; pointer-events: none; }    /* ── TESTIMONIALS ── */
+    .testimonials-bg {
+      background: var(--navy);
+      padding: 6rem var(--gutter);
+    }
+    .testimonials-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      text-align: center;
+    }
+    .testimonials-inner .label { color: var(--peach); }
+    .testimonials-inner h2 { color: var(--cream); margin-bottom: 3rem; }
+    .testimonials-inner h2 em { color: var(--coral); }
+
+    .carousel-wrap { position: relative; overflow: hidden; }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .testimonial-card {
+      min-width: 100%;
+      padding: 3rem 4rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .testimonial-card .quote {
+      font-family: var(--ff-display);
+      font-size: clamp(1.2rem, 2.5vw, 1.75rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--cream);
+      line-height: 1.5;
+      max-width: 36ch;
+      margin: 0 auto;
+    }
+
+    .testimonial-card .attribution {
+      font-size: var(--text-label);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--peach);
+      text-transform: uppercase;
+    }
+
+    .carousel-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .carousel-btn {
+      background: none;
+      border: 1.5px solid rgba(252,108,133,0.4);
+      color: var(--coral);
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .carousel-btn:hover { background: rgba(252,108,133,0.15); border-color: var(--coral); }
+
+    .carousel-dots { display: flex; gap: 0.5rem; }
+    .carousel-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: rgba(255,248,240,0.25);
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      padding: 0;
+    }
+    .carousel-dot.active { background: var(--coral); transform: scale(1.3); }
+
+    @media (max-width: 768px) {
+      .testimonial-card { padding: 2rem 1rem; }
+    }
 
     /* ── CONTACT ── */
     .contact-bg {
@@ -404,12 +490,90 @@
       margin: 0 auto;
       text-align: center;
     }
-    .contact-inner p { max-width: 48ch; margin: 0 auto 2.5rem; }
+    .contact-inner > p { max-width: 48ch; margin: 0 auto 2.5rem; }
     .contact-actions {
       display: flex;
       gap: 1rem;
       justify-content: center;
       flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+
+    .contact-form {
+      max-width: 560px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
+    }
+    .form-group label {
+      font-family: var(--ff-body);
+      font-size: var(--text-label);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--navy);
+    }
+    .form-group input,
+    .form-group textarea {
+      font-family: var(--ff-body);
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--navy);
+      background: var(--white);
+      border: 1.5px solid rgba(52,40,62,0.15);
+      border-radius: 8px;
+      padding: 0.85rem 1rem;
+      width: 100%;
+      transition: border-color 0.2s;
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--coral);
+    }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 140px;
+    }
+    .form-submit {
+      width: 100%;
+      padding: 0.95rem;
+      background: var(--coral);
+      color: var(--white);
+      font-family: var(--ff-body);
+      font-size: var(--text-label);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .form-submit:hover { background: var(--orange); transform: translateY(-2px); }
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 2rem;
+      background: var(--white);
+      border-radius: 12px;
+      border: 1.5px solid rgba(252,108,133,0.3);
+    }
+    .form-success p { color: var(--navy); font-weight: 400; margin: 0; }
+
+    @media (max-width: 540px) {
+      .form-row { grid-template-columns: 1fr; }
     }
 
     /* ── FOOTER ── */
@@ -482,6 +646,7 @@
     <ul class="nav-links" id="navLinks">
       <li><a href="#about">About</a></li>
       <li><a href="#work">Work</a></li>
+      <li><a href="blog.html">Blog</a></li>
       <li><a href="#contact">Contact</a></li>
       <li><a href="cv.pdf" download class="nav-cta">Download CV</a></li>
     </ul>
@@ -499,36 +664,60 @@
     </div>
 
     <span class="label fade-up">UX &amp; UI Product Designer</span>
-    <h1 class="fade-up" style="transition-delay:0.1s">
-      <span style="color:#33283E">Engaging, Accessible, Meaningful</span><br>
-      <em>Edtech Creative.</em>
+    <h1 class="fade-up" style="transition-delay:0.1s; line-height:1.05;">
+      <span style="color:#33283E">Engaging, Accessible, Meaningful.</span><br>
+      <em style="display:block; margin-top:0.12em;">Edtech Creative.</em>
     </h1>
-    <p class="fade-up" style="transition-delay:0.2s">15 years across B2B, B2C and SaaS. Accessibility and inclusive design aren't extras — they're the starting point.</p>
+    <p class="fade-up" style="transition-delay:0.2s">I design digital experiences that make learning more engaging, accessible, and meaningful. Combining expertise in UX design, education, and behavioural insight, I create products that help people learn with confidence and curiosity.</p>
     <div class="hero-actions fade-up" style="transition-delay:0.3s">
       <a class="btn-primary" href="#work">View my work</a>
-      <a class="btn-ghost" href="#contact">Get in touch</a>
+      <a class="btn-ghost" href="#contact">Let's chat</a>
     </div>
   </section>
 
   <!-- MARQUEE -->
   <div class="marquee-wrap" aria-hidden="true">
     <div class="marquee-track">
-      <span>UX Design</span><span class="dot">✦</span>
-      <span>UI Design</span><span class="dot">✦</span>
-      <span>Accessibility</span><span class="dot">✦</span>
-      <span>Inclusive Design</span><span class="dot">✦</span>
+      <span>Senior UX Designer</span><span class="dot">✦</span>
+      <span>UX/UI Design</span><span class="dot">✦</span>
+      <span>Human-Centred Design</span><span class="dot">✦</span>
       <span>User Research</span><span class="dot">✦</span>
-      <span>Product Strategy</span><span class="dot">✦</span>
+      <span>Discovery</span><span class="dot">✦</span>
+      <span>Journey Mapping</span><span class="dot">✦</span>
+      <span>Wireframing</span><span class="dot">✦</span>
       <span>Prototyping</span><span class="dot">✦</span>
-      <span>Design Systems</span><span class="dot">✦</span>
-      <span>UX Design</span><span class="dot">✦</span>
-      <span>UI Design</span><span class="dot">✦</span>
+      <span>Usability Testing</span><span class="dot">✦</span>
       <span>Accessibility</span><span class="dot">✦</span>
+      <span>WCAG 2.1 AA</span><span class="dot">✦</span>
       <span>Inclusive Design</span><span class="dot">✦</span>
-      <span>User Research</span><span class="dot">✦</span>
-      <span>Product Strategy</span><span class="dot">✦</span>
-      <span>Prototyping</span><span class="dot">✦</span>
       <span>Design Systems</span><span class="dot">✦</span>
+      <span>Stakeholder Management</span><span class="dot">✦</span>
+      <span>Cross-Functional Collaboration</span><span class="dot">✦</span>
+      <span>Agile Delivery</span><span class="dot">✦</span>
+      <span>Enterprise Experience</span><span class="dot">✦</span>
+      <span>Learning Experience Design (LXD)</span><span class="dot">✦</span>
+      <span>Learner-Centred Design</span><span class="dot">✦</span>
+      <span>Digital Transformation</span><span class="dot">✦</span>
+      <span>Senior UX Designer</span><span class="dot">✦</span>
+      <span>UX/UI Design</span><span class="dot">✦</span>
+      <span>Human-Centred Design</span><span class="dot">✦</span>
+      <span>User Research</span><span class="dot">✦</span>
+      <span>Discovery</span><span class="dot">✦</span>
+      <span>Journey Mapping</span><span class="dot">✦</span>
+      <span>Wireframing</span><span class="dot">✦</span>
+      <span>Prototyping</span><span class="dot">✦</span>
+      <span>Usability Testing</span><span class="dot">✦</span>
+      <span>Accessibility</span><span class="dot">✦</span>
+      <span>WCAG 2.1 AA</span><span class="dot">✦</span>
+      <span>Inclusive Design</span><span class="dot">✦</span>
+      <span>Design Systems</span><span class="dot">✦</span>
+      <span>Stakeholder Management</span><span class="dot">✦</span>
+      <span>Cross-Functional Collaboration</span><span class="dot">✦</span>
+      <span>Agile Delivery</span><span class="dot">✦</span>
+      <span>Enterprise Experience</span><span class="dot">✦</span>
+      <span>Learning Experience Design (LXD)</span><span class="dot">✦</span>
+      <span>Learner-Centred Design</span><span class="dot">✦</span>
+      <span>Digital Transformation</span><span class="dot">✦</span>
     </div>
   </div>
 
@@ -541,15 +730,11 @@
       <div class="about-text fade-up" style="transition-delay:0.15s">
         <span class="label">About me</span>
         <h2>Thoughtful design creates <em>meaningful change.</em></h2>
-        <p>I'm a UX & UI Product Designer based in Hampshire with 15 years of experience across public and private sectors. I design intuitive, inclusive and effective digital products — with accessibility built in from the start, not bolted on at the end.</p>
-        <p>Currently completing a Professional Certificate in UX & UI Product Design at King's College London. My SEND support background isn't a career gap — it's lived expertise in designing for people whose needs are too often overlooked.</p>
-        <div class="pills">
-          <span class="pill">Human-centred</span>
-          <span class="pill">Strategic thinker</span>
-          <span class="pill">Accessibility advocate</span>
-          <span class="pill">Problem solver</span>
-          <span class="pill">Impact driven</span>
-        </div>
+        <p>I'm a UX & UI Product Designer based in Hampshire with 15 years of UX/UI experience and 10 years within education and teaching.</p>
+        <p>My career has been built around understanding people: how they think, what motivates them, and what helps them succeed. From supporting children with diverse learning needs to leading teams, driving business growth, and designing user-centred digital experiences, I've always been motivated by the same goal — creating environments where people can thrive.</p>
+        <p>Having worked directly in education, I've seen firsthand that learning is never one-size-fits-all. Every learner brings different strengths, challenges, motivations, and goals, yet many systems still prioritise standardisation over engagement, creativity, and inclusion. That's what drives my passion for UX and EdTech: the opportunity to create experiences that adapt to people, rather than expecting people to adapt to the system.</p>
+        <p>I combine user research, interaction design, accessibility principles, and behavioural psychology to design intuitive, engaging experiences that solve real problems. Whether improving a digital product, shaping a learning journey, or designing for behaviour change, I enjoy uncovering user needs and translating insights into meaningful solutions.</p>
+
         <a class="btn-primary" href="#contact">Work with me</a>
       </div>
     </div>
@@ -610,6 +795,39 @@
     </div>
   </section>
 
+  <!-- TESTIMONIALS -->
+  <div class="testimonials-bg">
+    <div class="testimonials-inner">
+      <span class="label fade-up">Recommendations</span>
+      <h2 class="fade-up" style="transition-delay:0.1s">Don't take my word for it.<br><em>Take theirs.</em></h2>
+      <div class="carousel-wrap fade-up" style="transition-delay:0.2s">
+        <div class="carousel-track" id="carouselTrack">
+          <div class="testimonial-card">
+            <p class="quote">"Caroline is one of those designers that take attention to detail to a new level. A true asset to any design team."</p>
+            <p class="attribution">— Simon Taggart, Product Designer, Meta</p>
+          </div>
+          <div class="testimonial-card">
+            <p class="quote">"Caroline is a very competent and imaginative designer. She has a very confident, professional manner with clients and her peers, at all levels."</p>
+            <p class="attribution">— Mike Daniels, Senior UX Designer, Caravan and Motorhome Club</p>
+          </div>
+          <div class="testimonial-card">
+            <p class="quote">"I could always rely on Caroline to get the best job. A real team player and a great asset to any company."</p>
+            <p class="attribution">— Alice Lawrence, Business Analyst, RSM</p>
+          </div>
+          <div class="testimonial-card">
+            <p class="quote">"Caroline is very observant and caring about the people she works with, and has very strong mediation and communication skills."</p>
+            <p class="attribution">— Simone O'Callaghan, Design Discipline Leader, University of Newcastle</p>
+          </div>
+        </div>
+        <div class="carousel-controls">
+          <button class="carousel-btn" id="prevBtn" aria-label="Previous">←</button>
+          <div class="carousel-dots" id="carouselDots"></div>
+          <button class="carousel-btn" id="nextBtn" aria-label="Next">→</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- CONTACT -->
   <div class="contact-bg" id="contact">
     <div class="contact-inner">
@@ -617,8 +835,35 @@
       <h2 class="fade-up" style="transition-delay:0.1s">Let's build something <em>great together.</em></h2>
       <p class="fade-up" style="transition-delay:0.2s">Available for roles from September 2026. Open to agency and in-house positions — end-to-end product design is my focus.</p>
       <div class="contact-actions fade-up" style="transition-delay:0.3s">
-        <a class="btn-primary" href="mailto:hello@mostlycaroline.com">Say hello</a>
+        <a class="btn-primary" href="cv.pdf" download>Download CV</a>
         <a class="btn-ghost" href="https://www.linkedin.com/in/mostlycaroline/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+
+      <div class="contact-form fade-up" style="transition-delay:0.4s">
+        <div id="formSuccess" class="form-success">
+          <p>✦ Thanks for getting in touch — I'll be back to you soon!</p>
+        </div>
+        <form id="contactForm" action="https://formspree.io/f/mgobprra" method="POST">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">First name</label>
+              <input type="text" id="firstName" name="firstName" placeholder="Jane" required />
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last name</label>
+              <input type="text" id="lastName" name="lastName" placeholder="Smith" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="jane@company.com" required />
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell me a bit about the role or project…" required></textarea>
+          </div>
+          <button type="submit" class="form-submit">Send message</button>
+        </form>
       </div>
     </div>
   </div>
@@ -660,6 +905,67 @@
       });
     }, { threshold: 0.12 });
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Carousel
+    const track  = document.getElementById('carouselTrack');
+    const cards  = track.querySelectorAll('.testimonial-card');
+    const dotsEl = document.getElementById('carouselDots');
+    let current  = 0;
+    let timer;
+
+    cards.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+      dot.addEventListener('click', () => goTo(i));
+      dotsEl.appendChild(dot);
+    });
+
+    function goTo(n) {
+      current = (n + cards.length) % cards.length;
+      track.style.transform = `translateX(-${current * 100}%)`;
+      dotsEl.querySelectorAll('.carousel-dot').forEach((d, i) => {
+        d.classList.toggle('active', i === current);
+      });
+      resetTimer();
+    }
+
+    function resetTimer() {
+      clearInterval(timer);
+      timer = setInterval(() => goTo(current + 1), 5000);
+    }
+
+    document.getElementById('prevBtn').addEventListener('click', () => goTo(current - 1));
+    document.getElementById('nextBtn').addEventListener('click', () => goTo(current + 1));
+    resetTimer();
+
+    // Contact form
+    const form = document.getElementById('contactForm');
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = form.querySelector('.form-submit');
+        btn.textContent = 'Sending…';
+        btn.disabled = true;
+        try {
+          const res = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+          });
+          if (res.ok) {
+            form.style.display = 'none';
+            document.getElementById('formSuccess').style.display = 'block';
+          } else {
+            btn.textContent = 'Something went wrong — try again';
+            btn.disabled = false;
+          }
+        } catch {
+          btn.textContent = 'Something went wrong — try again';
+          btn.disabled = false;
+        }
+      });
+    }
   </script>
 
 </body>

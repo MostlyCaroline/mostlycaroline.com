@@ -143,11 +143,11 @@
       font-family: var(--ff-display);
       font-size: 1.2rem;
       font-weight: 400;
-      font-style: italic;
+      font-style: normal;
       color: var(--navy);
       text-decoration: none;
     }
-    .nav-logo span { color: var(--coral); font-style: normal; }
+    .nav-logo span { color: var(--coral); }
 
     .nav-links {
       display: flex;
@@ -167,14 +167,17 @@
     }
     .nav-links a:hover { color: var(--coral); }
     .nav-cta {
-      padding: 0.5rem 1.25rem !important;
-      background: var(--orange) !important;
+      padding: 0.85rem 2rem !important;
+      background: var(--coral) !important;
       color: var(--white) !important;
       border-radius: 100px;
       transition: background 0.2s !important;
-      letter-spacing: 0.06em !important;
+      letter-spacing: 0.08em !important;
+      font-size: var(--text-label) !important;
+      font-weight: 600 !important;
+      text-transform: uppercase !important;
     }
-    .nav-cta:hover { background: var(--coral) !important; color: var(--white) !important; }
+    .nav-cta:hover { background: var(--orange) !important; color: var(--white) !important; }
 
     .nav-toggle {
       display: none;
@@ -200,9 +203,17 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      max-width: var(--max-w);
+      max-width: 100%;
       margin: 0 auto;
       padding: 8rem var(--gutter) 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero > span, .hero > h1, .hero > p, .hero > div.hero-actions {
+      position: relative;
+      z-index: 1;
+      max-width: var(--max-w);
+      width: 100%;
     }
 
     .hero .label { text-align: center; color: var(--coral); margin-bottom: 1.25rem; }
@@ -325,7 +336,7 @@
     }
     .value-icon {
       width: 44px; height: 44px;
-      border-radius: 10px;
+      border-radius: 50%;
       background: var(--coral);
       display: flex;
       align-items: center;
@@ -403,7 +414,7 @@
 
     /* ── FOOTER ── */
     footer {
-      border-top: 1px solid rgba(52,40,62,0.08);
+      background: var(--coral);
       padding: 1.75rem var(--gutter);
     }
     .footer-inner {
@@ -413,11 +424,11 @@
       align-items: center;
       justify-content: space-between;
     }
-    footer p   { font-size: 0.8rem; color: var(--mid); }
-    footer a   { font-size: 0.8rem; color: var(--coral); text-decoration: none; }
+    footer p   { font-size: 0.8rem; color: rgba(255,255,255,0.85); }
+    footer a   { font-size: 0.8rem; color: var(--white); text-decoration: none; }
     footer a:hover { text-decoration: underline; }
 
-    /* ── SCROLL ANIMATIONS ── */
+
     .fade-up {
       opacity: 0;
       transform: translateY(24px);
@@ -480,6 +491,15 @@
 
   <!-- HERO -->
   <section class="hero">
+    <!-- wave below nav -->
+    <div aria-hidden="true" style="position:absolute; top:60px; left:0; right:0; line-height:0; overflow:hidden; pointer-events:none; z-index:0;">
+      <svg viewBox="0 0 1440 160" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="width:100%; height:clamp(80px,12vw,160px); display:block; transform:scaleY(-1);">
+        <path d="M0,160 L0,80 C120,20 240,0 360,30 C480,60 560,110 720,100 C880,90 960,40 1080,20 C1200,0 1320,30 1440,60 L1440,160 Z" fill="#FFB37A"/>
+        <path d="M0,160 L0,110 C100,60 220,40 360,65 C500,90 580,130 720,120 C860,110 960,70 1100,50 C1240,30 1360,55 1440,80 L1440,160 Z" fill="#FF8A3D" opacity="0.7"/>
+        <path d="M0,160 L0,135 C80,100 200,85 340,100 C480,115 580,145 720,140 C860,135 980,105 1120,90 C1260,75 1360,95 1440,110 L1440,160 Z" fill="#FC6C85" opacity="0.6"/>
+      </svg>
+    </div>
+
     <span class="label fade-up">UX &amp; UI Product Designer</span>
     <h1 class="fade-up" style="transition-delay:0.1s">
       <span style="color:#33283E">Engaging, Accessible, Meaningful</span><br>
@@ -603,6 +623,15 @@
         <a class="btn-ghost" href="https://www.linkedin.com/in/mostlycaroline/" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
+  </div>
+
+  <!-- WAVE SWOOSH -->
+  <div aria-hidden="true" style="display:block; line-height:0; overflow:hidden; margin-bottom:-2px; background:var(--light);">
+    <svg viewBox="0 0 1440 160" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="width:100%; height:clamp(80px,12vw,160px); display:block;">
+      <path d="M0,160 L0,80 C120,20 240,0 360,30 C480,60 560,110 720,100 C880,90 960,40 1080,20 C1200,0 1320,30 1440,60 L1440,160 Z" fill="#FFB37A"/>
+      <path d="M0,160 L0,110 C100,60 220,40 360,65 C500,90 580,130 720,120 C860,110 960,70 1100,50 C1240,30 1360,55 1440,80 L1440,160 Z" fill="#FF8A3D" opacity="0.7"/>
+      <path d="M0,160 L0,135 C80,100 200,85 340,100 C480,115 580,145 720,140 C860,135 980,105 1120,90 C1260,75 1360,95 1440,110 L1440,160 Z" fill="#FC6C85" opacity="0.6"/>
+    </svg>
   </div>
 
   <!-- FOOTER -->

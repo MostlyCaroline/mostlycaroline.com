@@ -187,12 +187,12 @@
       flex-direction: column;
       gap: 5px;
       padding: 0.25rem;
-    }
-    .nav-toggle span {
-      display: block;
-      width: 24px; height: 2px;
-      background: var(--navy);
-      border-radius: 2px;
+      font-size: 1.4rem;
+      line-height: 1;
+      color: var(--navy);
+      width: 32px;
+      align-items: center;
+      justify-content: center;
     }
 
     /* ── HERO ── */
@@ -205,7 +205,7 @@
       text-align: center;
       max-width: 100%;
       margin: 0 auto;
-      padding: 8rem var(--gutter) 5rem;
+      padding: 12rem var(--gutter) 5rem;
       position: relative;
       overflow: hidden;
     }
@@ -478,9 +478,7 @@
   <!-- NAV -->
   <nav>
     <a class="nav-logo" href="/">Caroline <span>Edwards</span></a>
-    <button class="nav-toggle" aria-label="Toggle menu" onclick="toggleNav()">
-      <span></span><span></span><span></span>
-    </button>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" onclick="toggleNav()">☰</button>
     <ul class="nav-links" id="navLinks">
       <li><a href="#about">About</a></li>
       <li><a href="#work">Work</a></li>
@@ -644,10 +642,17 @@
 
   <script>
     function toggleNav() {
-      document.getElementById('navLinks').classList.toggle('open');
+      const menu = document.getElementById('navLinks');
+      const btn  = document.getElementById('navToggle');
+      const open = menu.classList.toggle('open');
+      btn.textContent = open ? '✕' : '☰';
+      btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
     }
     document.querySelectorAll('#navLinks a').forEach(a => {
-      a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
+      a.addEventListener('click', () => {
+        document.getElementById('navLinks').classList.remove('open');
+        document.getElementById('navToggle').textContent = '☰';
+      });
     });
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(el => {

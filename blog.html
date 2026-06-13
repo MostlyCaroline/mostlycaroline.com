@@ -107,7 +107,7 @@
     .page-header {
       max-width: var(--max-w);
       margin: 0 auto;
-      padding: 10rem var(--gutter) 3rem;
+      padding: 3rem var(--gutter) 3rem;
     }
     .label {
       font-family: var(--ff-body);
@@ -215,8 +215,8 @@
       align-items: center;
       justify-content: space-between;
     }
-    footer p { font-size: 0.8rem; color: rgba(255,255,255,0.85); }
-    footer a { font-size: 0.8rem; color: var(--white); text-decoration: none; }
+    footer p { font-size: 1rem; color: rgba(255,255,255,0.85); }
+    footer a { font-size: 1rem; color: var(--white); text-decoration: none; }
     footer a:hover { text-decoration: underline; }
 
     /* ── ANIMATIONS ── */
@@ -257,12 +257,21 @@
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" onclick="toggleNav()">☰</button>
     <ul class="nav-links" id="navLinks">
       <li><a href="index.html#about">About</a></li>
-      <li><a href="index.html#work">Work</a></li>
+      <li><a href="index.html#work">Portfolio</a></li>
       <li><a href="blog.html" class="active">Blog</a></li>
       <li><a href="index.html#contact">Contact</a></li>
       <li><a href="cv.pdf" download class="nav-cta">Download CV</a></li>
     </ul>
   </nav>
+
+  <!-- TOP WAVE -->
+  <div aria-hidden="true" style="line-height:0; overflow:hidden; pointer-events:none; margin-top:58px;">
+    <svg viewBox="0 0 1440 160" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="width:100%; height:clamp(80px,12vw,160px); display:block; transform:scaleY(-1);">
+      <path d="M0,160 L0,80 C120,20 240,0 360,30 C480,60 560,110 720,100 C880,90 960,40 1080,20 C1200,0 1320,30 1440,60 L1440,160 Z" fill="#FFB37A"/>
+      <path d="M0,160 L0,110 C100,60 220,40 360,65 C500,90 580,130 720,120 C860,110 960,70 1100,50 C1240,30 1360,55 1440,80 L1440,160 Z" fill="#FF8A3D" opacity="0.7"/>
+      <path d="M0,160 L0,135 C80,100 200,85 340,100 C480,115 580,145 720,140 C860,135 980,105 1120,90 C1260,75 1360,95 1440,110 L1440,160 Z" fill="#FC6C85" opacity="0.6"/>
+    </svg>
+  </div>
 
   <!-- PAGE HEADER -->
   <div class="page-header">
@@ -609,6 +618,15 @@
     </div>
 
   </section>
+
+  <!-- WAVE SWOOSH -->
+  <div aria-hidden="true" style="display:block; line-height:0; overflow:hidden; margin-bottom:-2px; background:var(--cream);">
+    <svg viewBox="0 0 1440 160" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="width:100%; height:clamp(80px,12vw,160px); display:block;">
+      <path d="M0,160 L0,80 C120,20 240,0 360,30 C480,60 560,110 720,100 C880,90 960,40 1080,20 C1200,0 1320,30 1440,60 L1440,160 Z" fill="#FFB37A"/>
+      <path d="M0,160 L0,110 C100,60 220,40 360,65 C500,90 580,130 720,120 C860,110 960,70 1100,50 C1240,30 1360,55 1440,80 L1440,160 Z" fill="#FF8A3D" opacity="0.7"/>
+      <path d="M0,160 L0,135 C80,100 200,85 340,100 C480,115 580,145 720,140 C860,135 980,105 1120,90 C1260,75 1360,95 1440,110 L1440,160 Z" fill="#FC6C85" opacity="0.6"/>
+    </svg>
+  </div>
 
   <!-- FOOTER -->
   <footer>

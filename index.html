@@ -4,435 +4,491 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Caroline Edwards — UX & UI Product Designer</title>
-  <meta name="description" content="UX & UI Product Designer with 15 years of experience. Specialising in accessibility, inclusive design, and end-to-end product design." />
+  <meta name="description" content="UX & UI Product Designer with 15 years of experience across B2B, B2C and SaaS. Accessibility and inclusive design at the core." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
-    /* ── TOKENS ── */
     :root {
-      --cream:      #F5F2EE;
-      --stone:      #E8E3DC;
-      --slate:      #7A8491;
-      --dusk:       #4A5568;
-      --ink:        #1E2329;
-      --rose:       #B8A9B0;
-      --mist:       #C9D4D8;
-      --accent:     #7B9BAA; /* Cool summer – soft teal-blue */
-      --accent-mid: #6B8999;
+      --coral:  #FC6C85;
+      --orange: #FF8A3D;
+      --peach:  #FFB37A;
+      --yellow: #FFD761;
+      --cream:  #FFF8F0;
+      --navy:   #33283E;
+      --white:  #FFFFFF;
+      --mid:    #7A6070;
+      --light:  #FFF1E8;
 
-      --ff-display: 'DM Serif Display', Georgia, serif;
-      --ff-body:    'DM Sans', system-ui, sans-serif;
-
-      --max-w: 1080px;
-      --gutter: clamp(1.5rem, 5vw, 4rem);
+      --ff-display: 'Playfair Display', Georgia, serif;
+      --ff-body:    'Montserrat', system-ui, sans-serif;
+      --max-w: 1140px;
+      --gutter: clamp(1.25rem, 5vw, 4rem);
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
 
     body {
       background: var(--cream);
-      color: var(--ink);
+      color: var(--navy);
       font-family: var(--ff-body);
-      font-size: clamp(1rem, 1.1vw, 1.125rem);
-      line-height: 1.65;
+      font-size: 1rem;
+      line-height: 1.7;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
     /* ── NAV ── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
-      z-index: 100;
+      z-index: 200;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 1.25rem var(--gutter);
-      background: var(--cream);
-      border-bottom: 1px solid var(--stone);
+      padding: 1.1rem var(--gutter);
+      background: rgba(255,248,240,0.92);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(252,108,133,0.12);
     }
 
-    .nav-monogram {
+    .nav-logo {
       font-family: var(--ff-display);
-      font-size: 1.5rem;
-      color: var(--ink);
+      font-size: 1.35rem;
+      color: var(--navy);
       text-decoration: none;
-      letter-spacing: 0.02em;
+      font-style: italic;
     }
+    .nav-logo span { color: var(--coral); font-style: normal; }
 
     .nav-links {
       display: flex;
-      gap: 2rem;
+      gap: 2.25rem;
       list-style: none;
     }
-
     .nav-links a {
       font-family: var(--ff-body);
-      font-size: 0.875rem;
-      font-weight: 400;
-      letter-spacing: 0.06em;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--dusk);
+      color: var(--navy);
       text-decoration: none;
       transition: color 0.2s;
     }
+    .nav-links a:hover { color: var(--coral); }
+    .nav-cta {
+      display: inline-block;
+      padding: 0.55rem 1.4rem;
+      background: var(--orange);
+      color: var(--white) !important;
+      border-radius: 100px;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--coral) !important; }
 
-    .nav-links a:hover { color: var(--accent-mid); }
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.25rem;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--navy);
+      border-radius: 2px;
+    }
 
     /* ── HERO ── */
     .hero {
       min-height: 100svh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      display: flex;
+      flex-direction: column;
       align-items: center;
+      justify-content: center;
+      text-align: center;
       max-width: var(--max-w);
       margin: 0 auto;
-      padding: 7rem var(--gutter) 4rem;
-      gap: 4rem;
+      padding: 8rem var(--gutter) 5rem;
     }
-
-    .hero-text {}
 
     .hero-eyebrow {
-      font-family: var(--ff-body);
-      font-size: 0.8rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1.25rem;
+      color: var(--coral);
+      margin-bottom: 1.5rem;
     }
 
-    .hero-name {
+    h1 {
       font-family: var(--ff-display);
-      font-size: clamp(3rem, 5.5vw, 5rem);
-      line-height: 1.05;
-      color: var(--ink);
-      margin-bottom: 1rem;
+      font-size: clamp(3.2rem, 7vw, 6.5rem);
+      line-height: 1.0;
+      color: var(--navy);
+      margin-bottom: 1.75rem;
+      max-width: 14ch;
     }
+    h1 em { font-style: italic; color: var(--coral); }
 
-    .hero-name em {
-      font-style: italic;
-      color: var(--accent-mid);
-    }
-
-    .hero-role {
-      font-family: var(--ff-body);
+    .hero-sub {
       font-size: clamp(1rem, 1.4vw, 1.2rem);
       font-weight: 300;
-      color: var(--dusk);
-      margin-bottom: 2rem;
-      max-width: 38ch;
+      color: var(--mid);
+      max-width: 52ch;
+      margin-bottom: 2.75rem;
+      line-height: 1.8;
     }
 
-    .hero-cta {
-      display: inline-flex;
+    .hero-actions {
+      display: flex;
       align-items: center;
-      gap: 0.5rem;
-      padding: 0.85rem 2rem;
-      background: var(--accent);
-      color: #fff;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 0.9rem 2.2rem;
+      background: var(--coral);
+      color: var(--white);
       font-family: var(--ff-body);
-      font-size: 0.875rem;
-      font-weight: 500;
-      letter-spacing: 0.04em;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
       text-decoration: none;
-      border-radius: 2px;
-      transition: background 0.2s;
+      border-radius: 100px;
+      transition: background 0.2s, transform 0.2s;
     }
+    .btn-primary:hover { background: var(--orange); transform: translateY(-2px); }
 
-    .hero-cta:hover { background: var(--accent-mid); }
-
-    .hero-cta-ghost {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.85rem 2rem;
+    .btn-ghost {
+      display: inline-block;
+      padding: 0.9rem 2.2rem;
       background: transparent;
-      color: var(--dusk);
+      color: var(--navy);
       font-family: var(--ff-body);
-      font-size: 0.875rem;
-      font-weight: 400;
-      letter-spacing: 0.04em;
-      text-decoration: none;
-      border: 1px solid var(--rose);
-      border-radius: 2px;
-      margin-left: 1rem;
-      transition: border-color 0.2s, color 0.2s;
-    }
-
-    .hero-cta-ghost:hover { border-color: var(--accent); color: var(--accent); }
-
-    /* CE monogram block */
-    .hero-visual {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .monogram-wrap {
-      position: relative;
-      width: clamp(220px, 28vw, 360px);
-      aspect-ratio: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .monogram-ring {
-      position: absolute;
-      inset: 0;
-      border-radius: 50%;
-      border: 1px solid var(--mist);
-      animation: spin-slow 30s linear infinite;
-    }
-
-    .monogram-ring-2 {
-      position: absolute;
-      inset: 14%;
-      border-radius: 50%;
-      border: 1px solid var(--stone);
-      animation: spin-slow 20s linear infinite reverse;
-    }
-
-    @keyframes spin-slow {
-      to { transform: rotate(360deg); }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .monogram-ring, .monogram-ring-2 { animation: none; }
-    }
-
-    .monogram-ce {
-      font-family: var(--ff-display);
-      font-size: clamp(4rem, 8vw, 7rem);
-      color: var(--ink);
-      letter-spacing: -0.02em;
-      position: relative;
-      z-index: 1;
-      user-select: none;
-    }
-
-    .monogram-ce span { color: var(--accent); }
-
-    /* ── INTRO STRIP ── */
-    .intro-strip {
-      background: var(--ink);
-      color: var(--cream);
-      padding: 3.5rem var(--gutter);
-    }
-
-    .intro-strip-inner {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 3rem;
-      align-items: start;
-    }
-
-    .intro-label {
-      font-size: 0.75rem;
+      font-size: 0.85rem;
       font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      padding-top: 0.25rem;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      border: 1.5px solid rgba(52,40,62,0.2);
+      border-radius: 100px;
+      transition: border-color 0.2s, color 0.2s, transform 0.2s;
     }
+    .btn-ghost:hover { border-color: var(--coral); color: var(--coral); transform: translateY(-2px); }
 
-    .intro-copy {
+    /* ── MARQUEE ── */
+    .marquee-wrap {
+      background: var(--navy);
+      overflow: hidden;
+      padding: 1.1rem 0;
+    }
+    .marquee-track {
+      display: flex;
+      white-space: nowrap;
+      animation: marquee 22s linear infinite;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .marquee-track { animation: none; }
+    }
+    .marquee-track span {
       font-family: var(--ff-display);
-      font-size: clamp(1.3rem, 2.2vw, 1.75rem);
-      line-height: 1.35;
-      font-weight: 400;
-      color: var(--cream);
-    }
-
-    .intro-copy em {
+      font-size: 1.1rem;
       font-style: italic;
-      color: var(--rose);
+      color: rgba(255,248,240,0.7);
+      padding: 0 1.5rem;
+    }
+    .marquee-track span.dot {
+      color: var(--coral);
+      font-style: normal;
+      font-size: 1.3rem;
+      padding: 0 0.25rem;
     }
 
-    /* ── SKILLS ── */
-    .skills {
+    /* ── SHARED SECTION STYLES ── */
+    .section {
       max-width: var(--max-w);
       margin: 0 auto;
-      padding: 5rem var(--gutter);
+      padding: 6rem var(--gutter);
     }
 
     .section-label {
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--slate);
-      margin-bottom: 3rem;
-    }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-    }
-
-    .skill-card {
-      background: var(--stone);
-      padding: 2rem 1.75rem;
-      transition: background 0.2s;
-    }
-
-    .skill-card:hover { background: var(--mist); }
-
-    .skill-card h3 {
-      font-family: var(--ff-display);
-      font-size: 1.25rem;
-      font-weight: 400;
-      color: var(--ink);
-      margin-bottom: 0.75rem;
-    }
-
-    .skill-card p {
-      font-size: 0.9rem;
-      color: var(--dusk);
-      line-height: 1.6;
-    }
-
-    /* ── WORK TEASER ── */
-    .work-teaser {
-      background: var(--stone);
-      padding: 5rem var(--gutter);
-    }
-
-    .work-teaser-inner {
-      max-width: var(--max-w);
-      margin: 0 auto;
-    }
-
-    .work-teaser-header {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      margin-bottom: 3rem;
-    }
-
-    .work-teaser-header h2 {
-      font-family: var(--ff-display);
-      font-size: clamp(1.75rem, 3vw, 2.5rem);
-      font-weight: 400;
-    }
-
-    .work-teaser-header a {
-      font-size: 0.875rem;
-      color: var(--accent-mid);
-      text-decoration: none;
-      letter-spacing: 0.04em;
-    }
-
-    .work-teaser-header a:hover { text-decoration: underline; }
-
-    .work-cards {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2px;
-    }
-
-    .work-card {
-      background: var(--cream);
-      padding: 2.5rem 2rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .work-card::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 3px;
-      background: var(--accent);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.3s ease;
-    }
-
-    .work-card:hover::after { transform: scaleX(1); }
-
-    .work-card-tag {
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent);
+      color: var(--coral);
       margin-bottom: 1rem;
     }
 
+    .section-title {
+      font-family: var(--ff-display);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 400;
+      color: var(--navy);
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+    }
+    .section-title em { font-style: italic; color: var(--coral); }
+
+    /* ── ABOUT ── */
+    .about-strip {
+      background: var(--navy);
+      padding: 6rem var(--gutter);
+    }
+    .about-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-image-wrap {
+      position: relative;
+    }
+    .about-img {
+      width: 100%;
+      border-radius: 20px;
+      object-fit: cover;
+      object-position: top;
+      aspect-ratio: 4/5;
+      display: block;
+      position: relative;
+      z-index: 1;
+    }
+
+
+    .about-text .section-label { color: var(--peach); }
+    .about-text .section-title { color: var(--cream); }
+    .about-text .section-title em { color: var(--coral); }
+
+    .about-body {
+      color: rgba(255,248,240,0.75);
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.85;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 2.5rem;
+    }
+    .pill {
+      display: inline-block;
+      padding: 0.45rem 1.1rem;
+      border: 1px solid rgba(252,108,133,0.4);
+      color: var(--peach);
+      font-size: 0.78rem;
+      font-weight: 500;
+      border-radius: 100px;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── HOW I WORK ── */
+    .values-bg {
+      background: var(--light);
+      padding: 6rem var(--gutter);
+    }
+    .values-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .value-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 2rem 1.75rem;
+    }
+    .value-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: var(--coral);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+    }
+    .value-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: #fff;
+      fill: none;
+      stroke-width: 1.75;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .value-card h3 {
+      font-family: var(--ff-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.6rem;
+    }
+    .value-card p {
+      font-size: 0.88rem;
+      color: var(--mid);
+      line-height: 1.7;
+    }
+
+    /* ── WORK ── */
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .work-card {
+      background: var(--white);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .work-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(252,108,133,0.15);
+    }
+    .work-card-img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--ff-display);
+      font-size: 3rem;
+      color: var(--white);
+      font-style: italic;
+    }
+    .work-card-img.habithero {
+      background: linear-gradient(135deg, #FFD761, #FFB37A, #FF8A3D);
+    }
+    .work-card-img.coming {
+      background: linear-gradient(135deg, #f0ebe6, #e0d8d0);
+      color: rgba(52,40,62,0.2);
+    }
+    .work-card-body { padding: 1.75rem; }
+    .work-card-tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--coral);
+      margin-bottom: 0.6rem;
+    }
     .work-card h3 {
       font-family: var(--ff-display);
       font-size: 1.5rem;
-      font-weight: 400;
-      color: var(--ink);
-      margin-bottom: 0.75rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.6rem;
     }
-
     .work-card p {
       font-size: 0.9rem;
-      color: var(--dusk);
-      line-height: 1.6;
+      color: var(--mid);
+      line-height: 1.65;
     }
+    .work-card-coming { opacity: 0.5; pointer-events: none; }
 
-    .work-card-coming {
-      opacity: 0.45;
+    /* ── CONTACT ── */
+    .contact-inner {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .contact-inner p {
+      color: var(--mid);
+      font-weight: 300;
+      margin-bottom: 2.5rem;
+    }
+    .contact-links {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
     }
 
     /* ── FOOTER ── */
-    footer {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 3rem var(--gutter);
+    .footer-inner {
+      border-top: 1px solid rgba(52,40,62,0.08);
+      padding: 2rem var(--gutter);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-top: 1px solid var(--stone);
+      max-width: var(--max-w);
+      margin: 0 auto;
     }
+    .footer-inner p { font-size: 0.8rem; color: var(--mid); }
+    .footer-inner a { font-size: 0.8rem; color: var(--coral); text-decoration: none; }
+    .footer-inner a:hover { text-decoration: underline; }
 
-    footer p {
-      font-size: 0.8rem;
-      color: var(--slate);
+    /* ── SCROLL ANIMATIONS ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
     }
-
-    footer a {
-      font-size: 0.8rem;
-      color: var(--accent-mid);
-      text-decoration: none;
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
-
-    footer a:hover { text-decoration: underline; }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 768px) {
-      .hero {
+    @media (max-width: 900px) {
+      .about-inner {
         grid-template-columns: 1fr;
-        padding-top: 5.5rem;
         gap: 2.5rem;
-        min-height: auto;
-        padding-bottom: 4rem;
       }
-
-      .hero-visual { display: none; }
-
-      .nav-links { display: none; }
-
-      .intro-strip-inner {
-        grid-template-columns: 1fr;
+      .about-image-wrap {
+        max-width: 320px;
+        margin: 0 auto;
+      }
+      .values-grid { grid-template-columns: repeat(2, 1fr); }
+      .work-grid   { grid-template-columns: 1fr; }
+      .nav-links   { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 60px; left: 0; right: 0;
+        background: var(--cream);
+        padding: 1.5rem var(--gutter) 2rem;
         gap: 1.25rem;
+        border-bottom: 1px solid rgba(252,108,133,0.12);
+        z-index: 199;
       }
+      .nav-toggle { display: flex; }
+      .footer-inner { flex-direction: column; gap: 0.75rem; text-align: center; }
+    }
 
-      .skills-grid { grid-template-columns: 1fr; }
-
-      .work-cards { grid-template-columns: 1fr; }
-
-      footer { flex-direction: column; gap: 1rem; text-align: center; }
+    @media (max-width: 540px) {
+      .values-grid  { grid-template-columns: 1fr; }
+      .hero-actions { flex-direction: column; align-items: center; }
     }
   </style>
 </head>
@@ -440,86 +496,171 @@
 
   <!-- NAV -->
   <nav>
-    <a class="nav-monogram" href="/">CE</a>
-    <ul class="nav-links">
+    <a class="nav-logo" href="/">Caroline <span>Edwards</span></a>
+    <button class="nav-toggle" aria-label="Toggle menu" onclick="toggleNav()">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
       <li><a href="#work">Work</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#contact" class="nav-cta">Let's talk</a></li>
     </ul>
   </nav>
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-text">
-      <p class="hero-eyebrow">Available from September 2026</p>
-      <h1 class="hero-name">Caroline<br><em>Edwards</em></h1>
-      <p class="hero-role">UX &amp; UI Product Designer — 15 years across B2B, B2C, and SaaS. Accessibility and inclusive design at the core.</p>
-      <a class="hero-cta" href="#work">View my work</a>
-      <a class="hero-cta-ghost" href="contact.html">Get in touch</a>
-    </div>
-    <div class="hero-visual" aria-hidden="true">
-      <div class="monogram-wrap">
-        <div class="monogram-ring"></div>
-        <div class="monogram-ring-2"></div>
-        <div class="monogram-ce">C<span>E</span></div>
-      </div>
+    <p class="hero-eyebrow fade-up">UX &amp; UI Product Designer</p>
+    <h1 class="fade-up" style="transition-delay:0.1s">Designing for <em>real people.</em></h1>
+    <p class="hero-sub fade-up" style="transition-delay:0.2s">15 years across B2B, B2C and SaaS. Accessibility and inclusive design aren't extras — they're the starting point.</p>
+    <div class="hero-actions fade-up" style="transition-delay:0.3s">
+      <a class="btn-primary" href="#work">View my work</a>
+      <a class="btn-ghost" href="#contact">Get in touch</a>
     </div>
   </section>
 
-  <!-- INTRO STRIP -->
-  <div class="intro-strip">
-    <div class="intro-strip-inner">
-      <p class="intro-label">What I do</p>
-      <p class="intro-copy">I design products that work for <em>everyone</em> — not as an afterthought, but as the starting point. End-to-end product design, from discovery through to high-fidelity UI.</p>
+  <!-- MARQUEE -->
+  <div class="marquee-wrap" aria-hidden="true">
+    <div class="marquee-track">
+      <span>UX Design</span><span class="dot">✦</span>
+      <span>UI Design</span><span class="dot">✦</span>
+      <span>Accessibility</span><span class="dot">✦</span>
+      <span>Inclusive Design</span><span class="dot">✦</span>
+      <span>User Research</span><span class="dot">✦</span>
+      <span>Product Strategy</span><span class="dot">✦</span>
+      <span>Prototyping</span><span class="dot">✦</span>
+      <span>Design Systems</span><span class="dot">✦</span>
+      <span>UX Design</span><span class="dot">✦</span>
+      <span>UI Design</span><span class="dot">✦</span>
+      <span>Accessibility</span><span class="dot">✦</span>
+      <span>Inclusive Design</span><span class="dot">✦</span>
+      <span>User Research</span><span class="dot">✦</span>
+      <span>Product Strategy</span><span class="dot">✦</span>
+      <span>Prototyping</span><span class="dot">✦</span>
+      <span>Design Systems</span><span class="dot">✦</span>
     </div>
   </div>
 
-  <!-- SKILLS -->
-  <section class="skills">
-    <p class="section-label">Specialisms</p>
-    <div class="skills-grid">
-      <div class="skill-card">
-        <h3>Accessibility &amp; Inclusive Design</h3>
-        <p>WCAG-informed design practice across public and private sector products. Lived expertise in SEND contexts.</p>
+  <!-- ABOUT -->
+  <div class="about-strip" id="about">
+    <div class="about-inner">
+      <div class="about-image-wrap fade-up">
+        <img class="about-img" src="me.png" alt="Caroline Edwards, UX & UI Product Designer" />
       </div>
-      <div class="skill-card">
-        <h3>End-to-End Product Design</h3>
-        <p>Discovery, research synthesis, information architecture, wireframes, and high-fidelity UI — through to handoff.</p>
+      <div class="about-text fade-up" style="transition-delay:0.2s">
+        <p class="section-label">About me</p>
+        <h2 class="section-title">Thoughtful design creates <em>meaningful change.</em></h2>
+        <p class="about-body">I'm a UX & UI Product Designer based in Hampshire with 15 years of experience across public and private sectors. I design intuitive, inclusive and effective digital products — with accessibility built in from the start, not bolted on at the end.</p>
+        <p class="about-body">Currently completing a Professional Certificate in UX & UI Product Design at King's College London. My SEND support background isn't a career gap — it's lived expertise in designing for people whose needs are too often overlooked.</p>
+        <div class="about-pills">
+          <span class="pill">Human-centred</span>
+          <span class="pill">Strategic thinker</span>
+          <span class="pill">Accessibility advocate</span>
+          <span class="pill">Problem solver</span>
+          <span class="pill">Impact driven</span>
+        </div>
+        <a class="btn-primary" href="#contact">Work with me</a>
       </div>
-      <div class="skill-card">
-        <h3>B2B, B2C &amp; SaaS</h3>
-        <p>15 years across sectors and scales. Comfortable with complex systems and ambiguous briefs.</p>
+    </div>
+  </div>
+
+  <!-- HOW I WORK -->
+  <div class="values-bg">
+    <div class="values-inner">
+      <p class="section-label fade-up">How I work</p>
+      <h2 class="section-title fade-up" style="transition-delay:0.1s">Design that works for <em>everyone.</em></h2>
+      <div class="values-grid">
+        <div class="value-card fade-up" style="transition-delay:0.1s">
+          <div class="value-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3>People Focused</h3>
+          <p>I advocate for real users — especially those whose needs are often overlooked. Empathy is the foundation of everything I make.</p>
+        </div>
+        <div class="value-card fade-up" style="transition-delay:0.2s">
+          <div class="value-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="1.5"/><path d="M7 21l3-6 2 3 2-5 3 8"/><path d="M8 10h8"/><path d="M12 10v4"/></svg>
+          </div>
+          <h3>Accessibility First</h3>
+          <p>WCAG-informed from the start. Inclusive design isn't a feature — it's the whole point. Everyone deserves access.</p>
+        </div>
+        <div class="value-card fade-up" style="transition-delay:0.3s">
+          <div class="value-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+          </div>
+          <h3>Impact Driven</h3>
+          <p>I care about outcomes, not just outputs. Good design solves real problems and makes a measurable difference to people's lives.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WORK -->
+  <section class="section" id="work">
+    <p class="section-label fade-up">Selected Work</p>
+    <h2 class="section-title fade-up" style="transition-delay:0.1s">Projects that <em>made a difference.</em></h2>
+    <div class="work-grid">
+      <a class="work-card fade-up" href="#" style="transition-delay:0.1s">
+        <div class="work-card-img habithero">HabitHero</div>
+        <div class="work-card-body">
+          <p class="work-card-tag">UX · Habit Tracking · Mobile App</p>
+          <h3>HabitHero</h3>
+          <p>A habit-tracking app for PrimeCare. Designed around guilt-free re-engagement — including "Life Day", a mechanism to return without penalty.</p>
+        </div>
+      </a>
+      <div class="work-card work-card-coming fade-up" style="transition-delay:0.2s">
+        <div class="work-card-img coming">✦</div>
+        <div class="work-card-body">
+          <p class="work-card-tag">Coming Soon</p>
+          <h3>More case studies</h3>
+          <p>Portfolio in progress. Additional case studies will be published here soon.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- WORK TEASER -->
-  <section class="work-teaser" id="work">
-    <div class="work-teaser-inner">
-      <div class="work-teaser-header">
-        <h2>Selected Work</h2>
-        <a href="work.html">All case studies →</a>
-      </div>
-      <div class="work-cards">
-        <div class="work-card">
-          <p class="work-card-tag">UX · Habit Tracking App</p>
-          <h3>HabitHero</h3>
-          <p>A habit-tracking app for PrimeCare, designed around guilt-free re-engagement. Featured "Life Day" — a mechanism to return without penalty.</p>
-        </div>
-        <div class="work-card work-card-coming">
-          <p class="work-card-tag">Coming Soon</p>
-          <h3>More case studies</h3>
-          <p>Portfolio in progress. Additional case studies publishing soon.</p>
-        </div>
+  <!-- CONTACT -->
+  <div style="background: var(--light); padding: 6rem var(--gutter);" id="contact">
+    <div class="contact-inner">
+      <p class="section-label fade-up">Get in touch</p>
+      <h2 class="section-title fade-up" style="transition-delay:0.1s">Let's build something <em>great together.</em></h2>
+      <p class="fade-up" style="transition-delay:0.2s">Available for roles from September 2026. Open to agency and in-house positions — end-to-end product design is my focus.</p>
+      <div class="contact-links fade-up" style="transition-delay:0.3s">
+        <a class="btn-primary" href="mailto:hello@mostlycaroline.com">Say hello</a>
+        <a class="btn-ghost" href="https://www.linkedin.com/in/carolineedwards" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
-  </section>
+  </div>
 
   <!-- FOOTER -->
   <footer>
-    <p>© 2026 Caroline Edwards</p>
-    <a href="mailto:hello@mostlycaroline.com">hello@mostlycaroline.com</a>
+    <div class="footer-inner">
+      <p>© 2026 Caroline Edwards</p>
+      <a href="mailto:hello@mostlycaroline.com">hello@mostlycaroline.com</a>
+    </div>
   </footer>
+
+  <script>
+    function toggleNav() {
+      document.getElementById('navLinks').classList.toggle('open');
+    }
+    document.querySelectorAll('#navLinks a').forEach(a => {
+      a.addEventListener('click', () => {
+        document.getElementById('navLinks').classList.remove('open');
+      });
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(el => {
+        if (el.isIntersecting) {
+          el.target.classList.add('visible');
+          observer.unobserve(el.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
 
 </body>
 </html>

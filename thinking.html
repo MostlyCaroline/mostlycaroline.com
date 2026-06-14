@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog - Caroline Edwards</title>
+  <meta name="description" content="Thinking about UX, EdTech, accessibility and inclusive design by Caroline Edwards." />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --coral:  #FC6C85;
+      --orange: #FF8A3D;
+      --peach:  #FFB37A;
+      --cream:  #FFF8F0;
+      --navy:   #33283E;
+      --white:  #FFFFFF;
+      --mid:    #4A3A45;
+      --light:  #FFF1E8;
+
+      --ff-display: 'Playfair Display', Georgia, serif;
+      --ff-body:    'Montserrat', system-ui, sans-serif;
+
+      --text-label:   0.72rem;
+      --text-body:    1rem;
+      --text-card-h:  1.25rem;
+      --text-hero:    clamp(2.5rem, 5vw, 4rem);
+
+      --max-w: 720px;
+      --gutter: clamp(1.25rem, 5vw, 4rem);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--navy);
+      font-family: var(--ff-body);
+      font-size: var(--text-body);
+      font-weight: 400;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem var(--gutter);
+      background: rgba(255,248,240,0.94);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(252,108,133,0.1);
+    }
+    .nav-logo {
+      font-family: var(--ff-display);
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--navy);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--coral); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: var(--ff-body);
+      font-size: var(--text-label);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--navy);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--coral); }
+    .nav-links a.active { color: var(--coral); }
+    .nav-cta {
+      padding: 0.85rem 2rem !important;
+      background: var(--coral) !important;
+      color: var(--white) !important;
+      border-radius: 100px;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--orange) !important; }
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1.4rem;
+      color: var(--navy);
+    }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 3rem var(--gutter) 3rem;
+    }
+    .label {
+      font-family: var(--ff-body);
+      font-size: var(--text-label);
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--coral);
+      display: block;
+      margin-bottom: 0.85rem;
+    }
+    h1 {
+      font-family: var(--ff-display);
+      font-size: var(--text-hero);
+      font-weight: 400;
+      line-height: 1.05;
+      color: var(--navy);
+      margin-bottom: 1rem;
+    }
+    h1 em { font-style: italic; color: var(--coral); }
+    .page-header p {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--mid);
+    }
+
+    /* ── BLOG POSTS ── */
+    .blog-section {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 1rem var(--gutter) 6rem;
+    }
+
+    .blog-post {
+      padding: 3rem 0;
+      border-bottom: 3px solid var(--coral);
+    }
+
+    .blog-post:last-child { border-bottom: none; }
+
+    .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .post-meta .label { margin-bottom: 0; }
+
+    .blog-date {
+      font-size: var(--text-label);
+      font-weight: 500;
+      color: var(--mid);
+      letter-spacing: 0.04em;
+    }
+
+    .blog-post h2 {
+      font-family: var(--ff-display);
+      font-size: clamp(1.75rem, 3vw, 2.25rem);
+      font-weight: 400;
+      color: var(--navy);
+      line-height: 1.25;
+      margin-bottom: 1.25rem;
+    }
+
+    .blog-post img {
+      width: 100%;
+      border-radius: 12px;
+      margin: 1.25rem 0;
+    }
+
+    .blog-post p {
+      font-size: 0.95rem;
+      color: var(--mid);
+      line-height: 1.8;
+      margin-bottom: 0.85rem;
+    }
+    .blog-post p:last-child { margin-bottom: 0; }
+
+    .hidden-post { display: none; }
+
+    #loadMoreBtn {
+      font-family: var(--ff-body);
+      font-size: var(--text-label);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--coral);
+      border: none;
+      border-radius: 100px;
+      padding: 0.85rem 2rem;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    #loadMoreBtn:hover { background: var(--orange); transform: translateY(-2px); }
+
+    /* ── FOOTER ── */
+    footer { background: var(--coral); padding: 1.75rem var(--gutter); }
+    .footer-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    footer p { font-size: 1rem; color: rgba(255,255,255,0.85); }
+    footer a { font-size: 1rem; color: var(--white); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ── ANIMATIONS ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        position: fixed;
+        top: 58px; left: 0; right: 0;
+        background: var(--cream);
+        padding: 1.5rem var(--gutter) 2rem;
+        gap: 1.25rem;
+        border-bottom: 1px solid rgba(252,108,133,0.1);
+        z-index: 199;
+      }
+      .nav-toggle { display: block; }
+      .footer-inner { flex-direction: column; gap: 0.6rem; text-align: center; }
+    }
+    @media (max-width: 540px) {
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="index.html">Caroline <span>Edwards</span></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" onclick="toggleNav()">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#work">Portfolio</a></li>
+      <li><a href="thinking.html" class="active">Thinking</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="cv.pdf" download class="nav-cta">Download CV</a></li>
+    </ul>
+  </nav>
+
+  <!-- TOP WAVE -->
+  <div aria-hidden="true" style="line-height:0; overflow:hidden; pointer-events:none; margin-top:58px;">
+    <svg viewBox="0 0 1440 160" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="width:100%; height:clamp(80px,12vw,160px); display:block; transform:scaleY(-1);">
+      <path d="M0,160 L0,80 C120,20 240,0 360,30 C480,60 560,110 720,100 C880,90 960,40 1080,20 C1200,0 1320,30 1440,60 L1440,160 Z" fill="#FFB37A"/>
+      <path d="M0,160 L0,110 C100,60 220,40 360,65 C500,90 580,130 720,120 C860,110 960,70 1100,50 C1240,30 1360,55 1440,80 L1440,160 Z" fill="#FF8A3D" opacity="0.7"/>
+      <path d="M0,160 L0,135 C80,100 200,85 340,100 C480,115 580,145 720,140 C860,135 980,105 1120,90 C1260,75 1360,95 1440,110 L1440,160 Z" fill="#FC6C85" opacity="0.6"/>
+    </svg>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <span class="label fade-up">Thoughts & musings</span>
+    <h1 class="fade-up" style="transition-delay:0.1s">Thinking about <em>design, learning,</em><br>and everything in between.</h1>
+    <p class="fade-up" style="transition-delay:0.2s">Short posts on UX, EdTech, accessibility and inclusive design - originally shared on LinkedIn.</p>
+  </div>
+
+  <!-- BLOG POSTS -->
+  <section class="blog-section">
+    <div style="border-top: 3px solid var(--coral); margin-bottom: 0;"></div>
+
+    <article class="blog-post fade-up" style="transition-delay:0.1s">
+      <div class="post-meta">
+        <span class="label">Hiring & UX</span>
+        <span class="blog-date">Friday, 12 June 2026</span>
+      </div>
+      <h2>The last time I interviewed for a design role, things were much simpler…</h2>
+      <img src="post1-image.jpeg" alt="Companies worry so much about hiring the wrong person. They forget to worry about losing the right one." style="width:100%; border-radius:12px; margin:1.25rem 0;" />
+      <p>The last time I interviewed for a design role, things were much simpler…</p>
+      <p>• I met people in person.<br>
+         • They'd seen my portfolio.<br>
+         • They had a printed copy of my CV in front of them.<br>
+         • We talked.<br>
+         • They asked questions.</p>
+      <p>They decided they liked my work and offered me the job.</p>
+      <p>That was it.</p>
+      <p>This time around?</p>
+      <p>• Applications.<br>
+         • Screening calls.<br>
+         • Multiple interview stages.<br>
+         • Portfolio run-throughs.<br>
+         • Tasks.<br>
+         • Presentations.<br>
+         • Weeks of waiting between conversations.</p>
+      <p>And it has me wondering:</p>
+      <p>Have we become better at hiring?<br>
+         Have we become better at reducing risk?</p>
+      <p>Because while companies are busy designing ever-longer recruitment processes, the strongest candidates are making decisions too.</p>
+      <p>The irony isn't lost on me.</p>
+      <p>As a UX designer, I've spent years advocating for removing friction from user journeys.</p>
+      <p>Then I entered the hiring market and discovered one of the most friction-filled experiences we still design.</p>
+      <p>Everyone wants the best candidates. But if you move too slowly…</p>
+      <p>don't be surprised when they stop waiting.</p>
+    </article>
+
+    <article class="blog-post fade-up" style="transition-delay:0.2s">
+      <div class="post-meta">
+        <span class="label">Personalisation & UX</span>
+        <span class="blog-date">Sunday, 7 June 2026</span>
+      </div>
+      <h2>I love personalised content… Feed me more of what I want. But also know when I've had enough.</h2>
+      <img src="post2-image.jpeg" alt="Personalisation isn't just knowing what I searched for. It's also knowing when the search is over." style="width:100%; border-radius:12px; margin:1.25rem 0;" />
+      <p>Today I spent 3.5 hours volunteering at a school fayre, painting around 40 little faces.</p>
+      <p>I'm not a professional face painter, just a mum with artistic talent. So for the last three weeks I've been researching designs, techniques, brushes, paints… the lot.</p>
+      <p>My algorithm noticed.</p>
+      <p>Fast forward to this afternoon.</p>
+      <p>I finally sat down after a back-breaking morning, opened my phone, and my feed was full of face painting.</p>
+      <p>Face painting tutorials.<br>Face painting reels.<br>Face painting products.</p>
+      <p>At that moment, I didn't want to see another painted face again. 🤣</p>
+      <p>And that's the challenge with personalisation.</p>
+      <p>It's very good at knowing what I've been interested in.<br>It's much less good at knowing when that interest has served its purpose.</p>
+      <p>The best personalised experiences don't just understand intent.<br>They understand context.</p>
+      <p>And sometimes context is:<br>
+         "I've bought the trainers."<br>
+         "I've booked the holiday."<br>
+         "I've painted enough tigers for this lifetime."</p>
+      <p>Personalisation isn't just knowing what I searched for.</p>
+      <p>It's also knowing when that search is over.</p>
+    </article>
+
+    <article class="blog-post fade-up hidden-post" style="transition-delay:0.3s">
+      <div class="post-meta">
+        <span class="label">Career & Motherhood</span>
+        <span class="blog-date">Saturday, 6 June 2026</span>
+      </div>
+      <h2>Outsourcing motherhood… It's a phrase that makes people uncomfortable.</h2>
+      <img src="post3-image.jpeg" alt="Caroline with her two children" style="width:100%; border-radius:12px; margin:1.25rem 0;" />
+      <p>For years, I stepped back from my career to be there for my children.</p>
+      <p>School runs.<br>Sports days.<br>Sick days.<br>The ordinary moments that become the important ones.</p>
+      <p>The maths was simple.</p>
+      <p>My wages were barely higher than the cost of childcare.</p>
+      <p>So I made a choice.</p>
+      <p>A choice many women make.</p>
+      <p>But as I return to the corporate world, I sometimes wonder:</p>
+      <p>Will I be judged for the years I invested in raising humans instead of climbing ladders?</p>
+      <p>Because I didn't stop learning.<br>I didn't stop solving problems.<br>I didn't stop growing.</p>
+      <p>I was just applying those skills somewhere else.</p>
+      <p>Should motherhood be treated as a career gap… or a life experience?</p>
+    </article>
+
+    <article class="blog-post fade-up hidden-post" style="transition-delay:0.1s">
+      <div class="post-meta">
+        <span class="label">Education & Inclusion</span>
+        <span class="blog-date">Monday, 1 June 2026</span>
+      </div>
+      <h2>Sunday scaries. In Year 6, in Summer 2, they're very real.</h2>
+      <img src="post4-image.jpeg" alt="Year 6 coat hook with a bag labelled 'Not goodbye, just TTFN'" style="width:100%; border-radius:12px; margin:1.25rem 0;" />
+      <p>I mostly work 1:1 with a child who isn't worried about losing friends.</p>
+      <p>They're worried about losing familiarity.</p>
+      <p>The adults who know them.<br>The routines that keep them safe.<br>The classrooms they've belonged to for six years.</p>
+      <p>In a few short weeks, all of that will change.</p>
+      <p>And that's okay.</p>
+      <p>But it's also okay to grieve it.</p>
+      <p>Sometimes we're so focused on helping children look forward to the next chapter that we forget to give them permission to be sad about closing the last one.</p>
+      <p>So we talk about secondary school.<br>We talk about new opportunities.<br>But we also talk about the things they'll miss.</p>
+      <p>Because both feelings can exist at the same time.</p>
+      <p>And while they're wondering what comes next…</p>
+      <p>I'll quietly be wondering the same thing.</p>
+      <p>Which young people need my help next year?</p>
+    </article>
+
+    <article class="blog-post fade-up hidden-post" style="transition-delay:0.2s">
+      <div class="post-meta">
+        <span class="label">AI & Design</span>
+        <span class="blog-date">Sunday, 31 May 2026</span>
+      </div>
+      <h2>I think we're safe for now…</h2>
+      <img src="post5-image.jpeg" alt="Anyone can generate. Not everyone can curate." style="width:100%; border-radius:12px; margin:1.25rem 0;" />
+    </article>
+
+    <article class="blog-post fade-up hidden-post" style="transition-delay:0.3s">
+      <div class="post-meta">
+        <span class="label">Career & UX</span>
+        <span class="blog-date">Friday, 29 May 2026</span>
+      </div>
+      <h2>10 years without an official UX job title doesn't mean I forgot everything from the 15 years before that.</h2>
+      <img src="post6-image.jpeg" alt="Experience doesn't disappear - a cycle of UX, Teaching, SEND, Communication, Problem Solving and Accessibility" style="width:100%; border-radius:12px; margin:1.25rem 0;" />
+      <p>It doesn't mean I stopped observing.<br>Stopped questioning.<br>Stopped noticing poor experiences, inaccessible systems, confusing communication, or badly designed processes.</p>
+      <p>It doesn't mean I closed my eyes to technology.<br>Or people.<br>Or change.</p>
+      <p>It means I grew.</p>
+      <p>I gained additional skills.</p>
+      <p>I took UX thinking into schools. Into SEND. Into teaching. Into real-life environments where frustration, accessibility and emotion matter deeply.</p>
+      <p>And now?</p>
+      <p>I'm bringing all of that back.</p>
+      <p>Because career paths aren't always ladders.</p>
+      <p>Sometimes they're loops 🥰</p>
+    </article>
+
+    <article class="blog-post fade-up hidden-post" style="transition-delay:0.1s">
+      <div class="post-meta">
+        <span class="label">Education & SEND</span>
+        <span class="blog-date">Thursday, 14 May 2026</span>
+      </div>
+      <h2>I've worked directly in education with SEND children and families for 5 years.</h2>
+      <img src="post7-image.jpeg" alt="Person walking past the Department for Education sign" style="width:100%; border-radius:12px; margin:1.25rem 0;" />
+      <p>Does the education system need serious change? Absolutely.</p>
+      <p>Did the DfE need a large campaign to raise awareness and gather support? Also yes.</p>
+      <p>Did they need to choose a reality TV celebrity as the face of it?</p>
+      <p>I'm not convinced.</p>
+      <p>Because this isn't a light-hearted issue.</p>
+      <p>SEND families are exhausted.</p>
+      <p>Exhausted by waiting lists. By battles for support. By inconsistent provision. By having to fight repeatedly for children who deserve better.</p>
+      <p>So when a campaign about something this serious feels more like influencer marketing than meaningful engagement… people notice.</p>
+      <p>And they remember how it made them feel.</p>
+      <p>Accessible communication matters.</p>
+      <p>But so does credibility.</p>
+      <p>And I can't help wondering:</p>
+      <p>Who was this campaign designed for?</p>
+      <p>The families living it… or the headlines?</p>
+    </article>
+
+    <article class="blog-post fade-up hidden-post" style="transition-delay:0.2s">
+      <div class="post-meta">
+        <span class="label">Just for fun</span>
+        <span class="blog-date">Friday, 14 May 2026</span>
+      </div>
+      <h2>Maybe green is my colour 💚</h2>
+      <img src="post8-image.jpeg" alt="Caroline with a green digital mesh effect over her face" style="width:100%; border-radius:12px; margin:1.25rem 0;" />
+      <p>I took inspiration from <a href="https://www.linkedin.com/in/rob-dewhirst/" target="_blank" rel="noopener" style="color:var(--coral); text-decoration:none; font-weight:500;">Rob Dewhirst</a> - no idea where he saw it first…</p>
+      <p>Maybe green is my colour 💚</p>
+    </article>
+
+    <article class="blog-post fade-up hidden-post" style="transition-delay:0.3s">
+      <div class="post-meta">
+        <span class="label">UX & Design</span>
+        <span class="blog-date">Thursday, 13 May 2026</span>
+      </div>
+      <h2>I thought my Spotify was broken…</h2>
+      <img src="post9-image.jpeg" alt="Spotify logo reimagined as a disco ball" style="width:100%; border-radius:12px; margin:1.25rem 0;" />
+      <p>Opening my phone late last night after a chaotic evening of Eurovision, I genuinely paused.</p>
+      <p>The icon looked… wrong.</p>
+      <p>Pixelated. No longer round. Just different enough to interrupt muscle memory.</p>
+      <p>For a split second:</p>
+      <p>"Has something gone wrong?"</p>
+      <p>My smooth transition into bedtime listening had been interrupted.</p>
+      <p>And that's what interested me.</p>
+      <p>Because yes - my attention was captured.</p>
+      <p>But so was my uncertainty.</p>
+      <p>Design changes are fascinating.</p>
+      <p>When does disruption create curiosity…</p>
+      <p>And when does it create friction?</p>
+      <p>Great idea or unnecessary interruption?</p>
+    </article>
+
+    <article class="blog-post fade-up hidden-post" style="transition-delay:0.1s">
+      <div class="post-meta">
+        <span class="label">Hiring & Inclusion</span>
+        <span class="blog-date">Tuesday, 12 May 2026</span>
+      </div>
+      <h2>I saw a job advert this morning, asking for… 5+ years' experience with ChatGPT.</h2>
+      <img src="post10-image.jpeg" alt="A job advert with unrealistic requirements checklist" style="width:100%; border-radius:12px; margin:1.25rem 0;" />
+      <p>ChatGPT launched in November 2022.</p>
+      <p>The maths isn't mathing.</p>
+      <p>And beyond being inaccurate… I wonder who reads requirements like that and quietly decides:</p>
+      <p>"This isn't for me."</p>
+      <p>Women returning after having children. People after career breaks. Professionals changing industries. Anyone who's had a life outside uninterrupted employment.</p>
+      <p>Technology is changing faster than ever.</p>
+      <p>The tools we're experts in today could be replaced in 12 months.</p>
+      <p>So maybe the question shouldn't always be:</p>
+      <p>"How many years have you used this?"</p>
+      <p>Maybe it should be:</p>
+      <p>"Can you learn? Adapt? Think critically?"</p>
+      <p>Because those skills tend to last longer than software.</p>
+      <p>Job adverts shape who applies.</p>
+      <p>And who quietly opts out.</p>
+      <p>Write them carefully.</p>
+    </article>
+
+    <article class="blog-post fade-up hidden-post" style="transition-delay:0.2s">
+      <div class="post-meta">
+        <span class="label">Women in Work</span>
+        <span class="blog-date">Thursday, 7 May 2026</span>
+      </div>
+      <h2>When I was 26, a CFO once said to me… "I'd never hire a woman your age."</h2>
+      <img src="post11-image.jpeg" alt="A lone chair under a spotlight - Judged before you even sit down" style="width:100%; border-radius:12px; margin:1.25rem 0;" />
+      <p>"I'd never hire a woman your age. You'll be off getting married and having babies soon."</p>
+      <p>The shock. The awkward laugh. The instant feeling that my future had already been decided for me.</p>
+      <p>Not based on my ability.</p>
+      <p>Based on an assumption.</p>
+      <p>I'm now returning to the corporate world at a very different stage of life.</p>
+      <p>Older. More experienced. More resilient.</p>
+      <p>And I can't help but wonder…</p>
+      <p>What assumptions get made about women now?</p>
+      <p>Not marriage. Not babies.</p>
+      <p>But peri-menopause. Brain fog. Energy. Flexibility. "Culture fit."</p>
+      <p>Different language.</p>
+      <p>Same risk of being quietly underestimated.</p>
+      <p>But here's what I know now that I didn't know at 26:</p>
+      <p>Women don't lose value as they move through different stages of life.</p>
+      <p>We gain perspective. Resilience. Judgement. Empathy.</p>
+      <p>The exact qualities great workplaces will appreciate! 💪🏻💪🏻💪🏻</p>
+    </article>
+
+    <article class="blog-post fade-up hidden-post" style="transition-delay:0.3s">
+      <div class="post-meta">
+        <span class="label">AI & Writing</span>
+        <span class="blog-date">Tuesday, 5 May 2026</span>
+      </div>
+      <h2>We've started treating good writing like it's suspicious.</h2>
+      <img src="post12-image.jpeg" alt="Hyphen, En Dash, Em Dash - a guide to punctuation and craft" style="width:100%; border-radius:12px; margin:1.25rem 0;" />
+      <p>Clear. Structured. Thoughtful?</p>
+      <p>"AI wrote that."</p>
+      <p>But at the same time, the standard is slipping.</p>
+      <p>Shorter. Simpler. Less precise.</p>
+      <p>Even the small things are disappearing.</p>
+      <p>Hyphen. En dash. Em dash.</p>
+      <p>Not just punctuation -</p>
+      <p>Care. Intent. Craft.</p>
+      <p>Outside of UX, it's even more noticeable.</p>
+      <p>One of my favourite parts of my current job within schools has always been reading diaries. Seeing what children choose, where they get complete free choice, what they enjoy.</p>
+      <p>But over the last few years, something's changed.</p>
+      <p>More and more 11-year-olds telling me:</p>
+      <p>"I don't have time to read."</p>
+      <p>And that's the part that stays with me.</p>
+      <p>Because writing doesn't come from nowhere.</p>
+      <p>It comes from reading. From thinking. From paying attention.</p>
+      <p>AI is a powerful tool.</p>
+      <p>But if we let it do the thinking for us - what happens to the craft?</p>
+    </article>
+
+    <article class="blog-post fade-up hidden-post" style="transition-delay:0.1s">
+      <div class="post-meta">
+        <span class="label">About Me</span>
+        <span class="blog-date">Wednesday, 22 April 2026</span>
+      </div>
+      <h2>I've been here a while… but you might not really know me.</h2>
+      <img src="post13-image.jpeg" alt="Who are you? written in clouds" style="width:100%; border-radius:12px; margin:1.25rem 0;" />
+      <p>Some of you know me from UX design - working across publishing and local government. Some from teaching Pilates in village halls (before we opened our own studio). And hopefully very few from my time working in schools… (you're not old enough to be on here anyway 😅)</p>
+      <p>I've had a varied career. If we go far enough back:</p>
+      <p>• Lifeguard<br>• Jazz band pianist<br>• Ice cream van driver (!)</p>
+      <p>But there's always been a thread running through it all.</p>
+      <p>Making life better for people. Physically. Emotionally. Digitally.</p>
+      <p>Human-centred - before I even knew what that meant.</p>
+      <p>2026 feels like a full-circle moment. I'm returning to my digital design roots - bringing all of that real-world experience back with me.</p>
+      <p>So if you're new here… thanks for being part of the journey.</p>
+      <p>(Thank you <a href="https://www.linkedin.com/in/simonvanos/" target="_blank" rel="noopener" style="color:var(--coral); text-decoration:none; font-weight:500;">Simon van Os</a> for the idea!)</p>
+    </article>
+
+    <article class="blog-post fade-up hidden-post" style="transition-delay:0.2s">
+      <div class="post-meta">
+        <span class="label">UX & Career</span>
+        <span class="blog-date">Tuesday, 14 April 2026</span>
+      </div>
+      <h2>"Are you sure you want to go back into UX?"</h2>
+      <img src="post14-image.jpeg" alt="Speech bubbles: Things have changed. It's not what it used to be. Are there even any jobs for you?" style="width:100%; border-radius:12px; margin:1.25rem 0;" />
+      <p>I heard this a lot recently.</p>
+      <p>This year I've decided to return to my UX roots.</p>
+      <p>And the reaction?</p>
+      <p>Cautious. Sceptical. Sometimes outright negative.</p>
+      <p>"Things have changed." "It's not what it used to be." "Are there even any jobs for you?"</p>
+      <p>And they're right.</p>
+      <p>UX has changed.</p>
+      <p>But here's the uncomfortable part…</p>
+      <p>A lot of designers haven't.</p>
+      <p>The tools are faster. The output is easier. The barriers are lower.</p>
+      <p>But the role of the designer has changed.</p>
+      <p>And if you're still focused on just producing screens…</p>
+      <p>You're already behind.</p>
+      <p>The most effective designers today aren't just creators.</p>
+      <p>They're curators of intent.</p>
+      <p>They decide:</p>
+      <p>• What gets built<br>• Why it matters<br>• And what shouldn't exist at all</p>
+      <p>So no… I'm not worried about going back into UX.</p>
+      <p>I'm really excited to see where it's going.</p>
+    </article>
+
+    <article class="blog-post fade-up hidden-post" style="transition-delay:0.3s">
+      <div class="post-meta">
+        <span class="label">UX & Heuristics</span>
+        <span class="blog-date">Thursday, 9 April 2026</span>
+      </div>
+      <h2>This just made me feel stupid…</h2>
+      <img src="post15-image.jpeg" alt="A search box with a prominent 'Clear search' button and no search button" style="width:100%; border-radius:12px; margin:1.25rem 0;" />
+      <p>A simple search box.</p>
+      <p>"Press Enter to search."</p>
+      <p>No search button.</p>
+      <p>A prominent 'Clear search' button - which in my evening haze, I pressed.</p>
+      <p>I obviously lost my search term.</p>
+      <p>No feedback. No results.</p>
+      <p>Humiliated (nearly 15 years of studying and working in online usability)… I tried again.</p>
+      <p>It returned a 404.</p>
+      <p>This isn't a small brand. This is a company that should know better.</p>
+      <p>We talk about heuristics like they're theory.</p>
+      <p>But this breaks so many:</p>
+      <p>• Visibility of system status<br>• User control<br>• Error prevention</p>
+      <p>UX isn't just about making things work.</p>
+      <p>It's about making people feel confident using them.</p>
+      <p>This did the opposite.</p>
+    </article>
+
+    <div id="loadMoreWrap" style="text-align:center; padding: 2.5rem 0 1rem;">
+      <button id="loadMoreBtn" onclick="loadMore()">Load more</button>
+    </div>
+
+  </section>
+
+  <!-- WAVE SWOOSH -->
+  <div aria-hidden="true" style="display:block; line-height:0; overflow:hidden; margin-bottom:-2px; background:var(--cream);">
+    <svg viewBox="0 0 1440 160" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="width:100%; height:clamp(80px,12vw,160px); display:block;">
+      <path d="M0,160 L0,80 C120,20 240,0 360,30 C480,60 560,110 720,100 C880,90 960,40 1080,20 C1200,0 1320,30 1440,60 L1440,160 Z" fill="#FFB37A"/>
+      <path d="M0,160 L0,110 C100,60 220,40 360,65 C500,90 580,130 720,120 C860,110 960,70 1100,50 C1240,30 1360,55 1440,80 L1440,160 Z" fill="#FF8A3D" opacity="0.7"/>
+      <path d="M0,160 L0,135 C80,100 200,85 340,100 C480,115 580,145 720,140 C860,135 980,105 1120,90 C1260,75 1360,95 1440,110 L1440,160 Z" fill="#FC6C85" opacity="0.6"/>
+    </svg>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <p>© 2026 Caroline Edwards</p>
+      <a href="mailto:sayhello@mostlycaroline.com">sayhello@mostlycaroline.com</a>
+    </div>
+  </footer>
+
+  <script>
+    function loadMore() {
+      const hidden = Array.from(document.querySelectorAll('.hidden-post'));
+      const toShow = hidden.slice(0, 2);
+      toShow.forEach(post => {
+        post.classList.remove('hidden-post');
+        setTimeout(() => observer.observe(post), 10);
+      });
+      if (hidden.length <= 2) {
+        document.getElementById('loadMoreWrap').style.display = 'none';
+      }
+    }
+
+    function toggleNav() {
+      const menu = document.getElementById('navLinks');
+      const btn  = document.getElementById('navToggle');
+      const open = menu.classList.toggle('open');
+      btn.textContent = open ? '✕' : '☰';
+    }
+    document.querySelectorAll('#navLinks a').forEach(a => {
+      a.addEventListener('click', () => {
+        document.getElementById('navLinks').classList.remove('open');
+        document.getElementById('navToggle').textContent = '☰';
+      });
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(el => {
+        if (el.isIntersecting) { el.target.classList.add('visible'); observer.unobserve(el.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

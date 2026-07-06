@@ -653,7 +653,7 @@
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" onclick="toggleNav()">☰</button>
     <ul class="nav-links" id="navLinks">
       <li><a href="#about">About</a></li>
-      <li><a href="#work">Portfolio</a></li>
+      <li><a href="#work">Work</a></li>
       
       <li><a href="#contact">Contact</a></li>
       <li><a href="CarolineEdwards_CV.pdf" download class="nav-cta">Download CV</a></li>
@@ -788,17 +788,17 @@
     <span class="label fade-up">Selected Work</span>
     <h2 class="fade-up" style="transition-delay:0.1s">Projects that <em>made a difference.</em></h2>
     <div class="work-grid">
-      <div class="work-card fade-up" style="transition-delay:0.1s; pointer-events:none; cursor:default;">
-        <div class="work-card-thumb habithero" style="background:none; padding:0; overflow:hidden;">
-          <img src="habithero.png" alt="HabitHero app wireframes" style="width:100%; height:100%; object-fit:cover; display:block;" />
+      <a class="work-card fade-up" href="habithero.html" style="transition-delay:0.1s;">
+        <div class="work-card-thumb habithero" style="overflow:hidden;">
+          <img src="habithero.png" alt="HabitHero app wireframes" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.style.display='none'" />
         </div>
         <div class="work-card-body">
-          <span class="label">UX · Habit Tracking · Mobile App</span>
+          <span class="label">UX · Behaviour Change · Mobile App</span>
           <h3>HabitHero</h3>
           <p>End-to-end behaviour change product for healthcare client PrimeCare, covering user research, journey mapping, design system, wireframes, and three rounds of usability testing.</p>
-          <p style="font-size:0.85rem; font-weight:600; color:var(--coral); margin-top:0.75rem; letter-spacing:0.04em;">Full case study coming soon.</p>
+          <p style="font-size:0.85rem; font-weight:600; color:var(--coral); margin-top:0.75rem; letter-spacing:0.04em;">View case study →</p>
         </div>
-      </div>
+      </a>
       <div class="work-card work-card-coming fade-up" style="transition-delay:0.2s; pointer-events:none;">
         <div class="work-card-thumb coming" style="background:none; padding:0; overflow:hidden;">
           <img src="gerri.png" alt="Gerri & The Atricks — Still 'ere" style="width:100%; height:100%; object-fit:cover; display:block; opacity:0.6;" />
@@ -806,7 +806,7 @@
         <div class="work-card-body">
           <span class="label">Coming Soon</span>
           <h3>Gerri & The Atricks</h3>
-          <p>Full case study coming soon.</p>
+          <p style="font-size:0.85rem; font-weight:600; color:var(--coral); margin-top:0.75rem; letter-spacing:0.04em;">Full case study coming soon.</p>
         </div>
       </div>
     </div>

@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HabitHero Case Study — Caroline Edwards</title>
+  <meta name="description" content="UX case study: HabitHero — a behaviour change app for healthcare client PrimeCare, designed by Caroline Edwards." />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --coral:  #FC6C85;
+      --orange: #FF8A3D;
+      --peach:  #FFB37A;
+      --cream:  #FFF8F0;
+      --light:  #FFF1E8;
+      --navy:   #33283E;
+      --white:  #FFFFFF;
+      --mid:    #4A3A45;
+      --ff-display: 'Playfair Display', Georgia, serif;
+      --ff-body: 'Montserrat', system-ui, sans-serif;
+      --max-w: 900px;
+      --gutter: clamp(1.25rem, 5vw, 4rem);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--navy);
+      font-family: var(--ff-body);
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem var(--gutter);
+      background: rgba(255,248,240,0.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(252,108,133,0.1);
+    }
+    .nav-logo {
+      font-family: var(--ff-display);
+      font-size: 1.2rem;
+      color: var(--navy);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--coral); }
+    .nav-back {
+      font-family: var(--ff-body);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--coral); }
+
+    /* ── HERO ── */
+    .case-hero {
+      background: var(--navy);
+      padding: 8rem var(--gutter) 5rem;
+      text-align: center;
+    }
+    .case-hero-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    .case-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--coral);
+      display: block;
+      margin-bottom: 1rem;
+    }
+    .case-hero h1 {
+      font-family: var(--ff-display);
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 1.25rem;
+    }
+    .case-hero h1 em { font-style: italic; color: var(--coral); }
+    .case-hero p {
+      font-size: 1.1rem;
+      color: rgba(255,248,240,0.75);
+      max-width: 56ch;
+      margin: 0 auto 3rem;
+      line-height: 1.8;
+    }
+
+    /* Meta strip */
+    .meta-strip {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 2rem;
+    }
+    .meta-item { text-align: center; }
+    .meta-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--coral);
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+    .meta-value {
+      font-size: 0.9rem;
+      color: rgba(255,248,240,0.85);
+      font-weight: 400;
+    }
+
+    /* ── HERO IMAGE ── */
+    .hero-image {
+      background: linear-gradient(135deg, #FFD761, #FFB37A, #FF8A3D);
+      padding: 3rem var(--gutter);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-image img {
+      max-width: 1000px;
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 24px 60px rgba(52,40,62,0.25);
+    }
+    .hero-image-placeholder {
+      max-width: 1000px;
+      width: 100%;
+      aspect-ratio: 16/7;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--ff-display);
+      font-size: 1.5rem;
+      font-style: italic;
+      color: rgba(255,255,255,0.5);
+      border: 2px dashed rgba(255,255,255,0.2);
+    }
+
+    /* ── CONTENT ── */
+    .content {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 5rem var(--gutter);
+    }
+
+    .section-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--coral);
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+
+    h2 {
+      font-family: var(--ff-display);
+      font-size: clamp(1.75rem, 3vw, 2.25rem);
+      font-weight: 400;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 1.25rem;
+    }
+    h2 em { font-style: italic; color: var(--coral); }
+
+    h3 {
+      font-family: var(--ff-display);
+      font-size: 1.25rem;
+      font-weight: 400;
+      color: var(--navy);
+      margin-bottom: 0.6rem;
+    }
+
+    p { color: var(--mid); line-height: 1.8; margin-bottom: 1.25rem; }
+    p:last-child { margin-bottom: 0; }
+
+    /* ── DIVIDER ── */
+    .divider {
+      border: none;
+      border-top: 3px solid var(--coral);
+      margin: 4rem 0;
+    }
+
+    /* ── OUTCOME STATS ── */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin: 2.5rem 0;
+    }
+    .stat-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+    .stat-number {
+      font-family: var(--ff-display);
+      font-size: 3rem;
+      font-weight: 400;
+      color: var(--coral);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .stat-label {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--mid);
+      line-height: 1.4;
+    }
+
+    /* ── ROLE TABLE ── */
+    .role-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .role-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+    .role-card h4 {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--coral);
+      margin-bottom: 0.75rem;
+    }
+    .role-card ul {
+      list-style: none;
+      padding: 0;
+    }
+    .role-card ul li {
+      font-size: 0.9rem;
+      color: var(--mid);
+      padding: 0.25rem 0;
+      border-bottom: 1px solid var(--light);
+      line-height: 1.5;
+    }
+    .role-card ul li:last-child { border-bottom: none; }
+
+    /* ── CALLOUT ── */
+    .callout {
+      background: var(--navy);
+      border-radius: 16px;
+      padding: 2.5rem;
+      margin: 2.5rem 0;
+    }
+    .callout p {
+      font-family: var(--ff-display);
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      font-style: italic;
+      color: var(--white);
+      line-height: 1.5;
+      margin: 0;
+    }
+    .callout p em { color: var(--coral); font-style: normal; }
+
+    /* ── IMAGE PLACEHOLDER ── */
+    .img-placeholder {
+      background: var(--light);
+      border-radius: 12px;
+      aspect-ratio: 16/9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: rgba(74,58,69,0.4);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin: 2rem 0;
+      border: 2px dashed rgba(252,108,133,0.2);
+    }
+    .img-placeholder.tall { aspect-ratio: 4/3; }
+    .img-placeholder.wide { aspect-ratio: 21/9; }
+
+    .img-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    /* ── PROCESS STEPS ── */
+    .process-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin: 2rem 0;
+    }
+    .process-step {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 1.25rem;
+      padding-bottom: 2rem;
+      position: relative;
+    }
+    .process-step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 23px;
+      top: 48px;
+      bottom: 0;
+      width: 2px;
+      background: var(--light);
+    }
+    .step-num {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--coral);
+      color: white;
+      font-weight: 600;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+    .step-content h3 { margin-top: 0.6rem; }
+
+    /* ── INSIGHT CARDS ── */
+    .insight-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .insight-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 1.5rem;
+      border-left: 4px solid var(--coral);
+    }
+    .insight-card.orange { border-left-color: var(--orange); }
+    .insight-card h4 {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--coral);
+      margin-bottom: 0.5rem;
+    }
+    .insight-card.orange h4 { color: var(--orange); }
+    .insight-card p { font-size: 0.9rem; margin: 0; }
+
+    /* ── DARK SECTION ── */
+    .dark-section {
+      background: var(--navy);
+      padding: 5rem var(--gutter);
+      margin: 0;
+    }
+    .dark-section .content {
+      padding: 0;
+    }
+    .dark-section .section-eyebrow { color: var(--peach); }
+    .dark-section h2 { color: var(--white); }
+    .dark-section h3 { color: var(--white); }
+    .dark-section p { color: rgba(255,248,240,0.75); }
+
+    /* ── NEXT PROJECT ── */
+    .next-project {
+      background: var(--light);
+      padding: 4rem var(--gutter);
+      text-align: center;
+    }
+    .next-project p { color: var(--mid); margin-bottom: 1.5rem; }
+    .btn-primary {
+      display: inline-block;
+      padding: 0.85rem 2rem;
+      background: var(--coral);
+      color: var(--white);
+      font-family: var(--ff-body);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+      margin: 0.5rem;
+    }
+    .btn-primary:hover { background: var(--orange); transform: translateY(-2px); }
+    .btn-ghost {
+      display: inline-block;
+      padding: 0.85rem 2rem;
+      background: transparent;
+      color: var(--navy);
+      font-family: var(--ff-body);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 100px;
+      border: 1.5px solid rgba(52,40,62,0.2);
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s, transform 0.2s;
+      margin: 0.5rem;
+    }
+    .btn-ghost:hover { border-color: var(--coral); color: var(--coral); transform: translateY(-2px); }
+
+    /* ── FOOTER ── */
+    footer { background: var(--coral); padding: 1.75rem var(--gutter); }
+    .footer-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    footer p { font-size: 1rem; color: rgba(255,255,255,0.85); }
+    footer a { font-size: 1rem; color: var(--white); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ── WAVE ── */
+    .wave-wrap { display: block; line-height: 0; overflow: hidden; margin-bottom: -2px; background: var(--light); }
+
+    /* ── ANIMATIONS ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .stats-row { grid-template-columns: 1fr; }
+      .role-grid  { grid-template-columns: 1fr; }
+      .img-row    { grid-template-columns: 1fr; }
+      .insight-grid { grid-template-columns: 1fr; }
+      .meta-strip { gap: 1.5rem; }
+      .footer-inner { flex-direction: column; gap: 0.6rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="index.html">Caroline <span>Edwards</span></a>
+    <a class="nav-back" href="index.html#work">← Back to work</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="case-hero">
+    <div class="case-hero-inner">
+      <span class="case-label">UX Case Study · Behaviour Change · Mobile App</span>
+      <h1>HabitHero — <em>designing for</em><br>the days that don't go to plan</h1>
+      <p>An end-to-end wellness tracking product for healthcare client PrimeCare. Built around a simple insight: habit-tracking apps fail people not when they're motivated, but when life gets in the way.</p>
+      <div class="meta-strip">
+        <div class="meta-item">
+          <span class="meta-label">Client</span>
+          <span class="meta-value">PrimeCare</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">My Role</span>
+          <span class="meta-value">Lead UX/UI Designer</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Duration</span>
+          <span class="meta-value">Feb – July 2026</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Tools</span>
+          <span class="meta-value">Figma</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Platform</span>
+          <span class="meta-value">iOS Mobile</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO IMAGE -->
+  <div class="hero-image">
+    <div class="hero-image-placeholder">Add your wireframe composite image here</div>
+  </div>
+
+  <!-- OVERVIEW -->
+  <div class="content fade-up">
+    <span class="section-eyebrow">Overview</span>
+    <h2>The brief: a habit tracking app that <em>doesn't punish</em> real life</h2>
+    <p>PrimeCare wanted a digital product to support their patients in building sustainable health habits — tracking steps, distance, and calories across daily, weekly, and monthly views. The challenge wasn't building a tracker. It was building one that people would actually keep using.</p>
+    <p>Most habit apps create anxiety around missed days. Streaks break, motivation drops, users churn. PrimeCare needed something different — a product built around behaviour change principles that treated users as humans, not data points.</p>
+
+    <div class="stats-row">
+      <div class="stat-card">
+        <span class="stat-number">3</span>
+        <span class="stat-label">Rounds of usability testing</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">100%</span>
+        <span class="stat-label">WCAG 2.1 AA compliant flows</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">1</span>
+        <span class="stat-label">Key feature that changed everything</span>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" style="max-width:var(--max-w); margin: 0 auto 4rem;">
+
+  <!-- MY ROLE -->
+  <div class="content fade-up">
+    <span class="section-eyebrow">My Role</span>
+    <h2>End-to-end ownership, from <em>discovery to prototype</em></h2>
+    <p>I led the full design lifecycle on HabitHero — research, synthesis, IA, wireframes, design system, and three rounds of usability testing.</p>
+    <div class="role-grid">
+      <div class="role-card">
+        <h4>What I did</h4>
+        <ul>
+          <li>User research & synthesis</li>
+          <li>Stakeholder interviews</li>
+          <li>Journey mapping</li>
+          <li>Information architecture</li>
+          <li>Wireframing (lo-fi to hi-fi)</li>
+          <li>Design system build</li>
+          <li>Usability testing (3 rounds)</li>
+          <li>Accessibility audit</li>
+        </ul>
+      </div>
+      <div class="role-card">
+        <h4>Deliverables</h4>
+        <ul>
+          <li>User personas & research synthesis</li>
+          <li>User flow diagrams</li>
+          <li>Lo-fi & mid-fi wireframes</li>
+          <li>High-fidelity Figma prototype</li>
+          <li>Design system & component library</li>
+          <li>Usability test reports</li>
+          <li>Accessibility-compliant UI</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" style="max-width:var(--max-w); margin: 0 auto 4rem;">
+
+  <!-- RESEARCH -->
+  <div class="content fade-up">
+    <span class="section-eyebrow">Research</span>
+    <h2>What we learned about <em>why habits fail</em></h2>
+    <p>Before designing anything, I conducted user interviews and competitive analysis to understand why existing habit tracking products weren't working for PrimeCare's patient group — people managing long-term health conditions who needed sustainable behaviour change, not gamified pressure.</p>
+
+    <div class="callout">
+      <p>"I gave up after missing two days. There didn't seem to be any point carrying on." <em>— Research participant</em></p>
+    </div>
+
+    <div class="insight-grid">
+      <div class="insight-card">
+        <h4>Key insight 1</h4>
+        <p>Users felt punished for missing days. Broken streaks were the single biggest trigger for app abandonment.</p>
+      </div>
+      <div class="insight-card orange">
+        <h4>Key insight 2</h4>
+        <p>Progress felt invisible. Users couldn't see how far they'd come — only how much they'd missed.</p>
+      </div>
+      <div class="insight-card orange">
+        <h4>Key insight 3</h4>
+        <p>One-size tracking didn't fit. "Bad days" — illness, family, travel — weren't accommodated by any existing solution.</p>
+      </div>
+      <div class="insight-card">
+        <h4>Key insight 4</h4>
+        <p>Accessibility was largely ignored. Small touch targets, poor contrast, and dense data created barriers for older users.</p>
+      </div>
+    </div>
+
+    <div class="img-placeholder">Add research artefact image here — affinity map, persona, or research synthesis</div>
+  </div>
+
+  <!-- DARK — LIFE DAY -->
+  <div class="dark-section">
+    <div class="content fade-up" style="max-width:var(--max-w); margin: 0 auto;">
+      <span class="section-eyebrow">The Key Design Decision</span>
+      <h2>Life Day — the feature that <em>changes everything</em></h2>
+      <p>The single most important design decision in HabitHero was the Life Day feature. It emerged directly from research: users didn't need more motivation. They needed permission to be human.</p>
+      <p>A Life Day acts as a shield. When life gets in the way — illness, a difficult day, unexpected circumstances — a user can log a Life Day instead of a missed day. Their streak is preserved. Their progress is protected. They return to the app tomorrow instead of giving up entirely.</p>
+
+      <div class="callout" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(252,108,133,0.3);">
+        <p>Life Days are earned, not given. Users receive 3 Life Days per month for every 10 consecutive days tracked — building responsibility alongside <em>compassion.</em></p>
+      </div>
+
+      <div class="img-row">
+        <div class="img-placeholder tall">Life Day prompt screen</div>
+        <div class="img-placeholder tall">Life Day confirmed state</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROCESS -->
+  <div class="content fade-up">
+    <span class="section-eyebrow">Process</span>
+    <h2>From discovery to <em>validated prototype</em></h2>
+
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h3>Discovery & Research</h3>
+          <p>User interviews, competitive analysis, and stakeholder sessions to define the problem space. Created a primary persona — Alex, a time-pressured professional managing a long-term health condition.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h3>Synthesis & IA</h3>
+          <p>Affinity mapping, How Might We questions, and information architecture to structure the app. Defined the core user flows — happy path, alternative path (Life Day), and retroactive logging.</p>
+          <div class="img-placeholder">User flow diagram</div>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h3>Lo-fi Wireframes</h3>
+          <p>Paper prototypes and low-fidelity sketches to explore the core screens — onboarding, daily dashboard, weekly view, monthly calendar, and the Life Day flow — before committing to visual design.</p>
+          <div class="img-placeholder">Lo-fi wireframe sketches</div>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h3>Usability Testing — Round 1</h3>
+          <p>Tested lo-fi prototype with 5 participants. Key findings: the Life Day concept needed clearer explanation; the leaderboard was motivating for some users but anxiety-inducing for others; onboarding felt too long.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <h3>Mid-fi Iteration</h3>
+          <p>Iterated based on testing. Simplified onboarding to 3 screens. Redesigned the Life Day prompt to appear contextually — triggered by low activity, not by user request. Made leaderboard opt-in.</p>
+          <div class="img-placeholder">Mid-fi wireframes — daily view and Life Day flow</div>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">6</div>
+        <div class="step-content">
+          <h3>Design System</h3>
+          <p>Built a structured design system in Figma covering typography, colour, spacing tokens, component states (default, active, disabled, error), and interaction patterns — maintaining consistency across all 20+ screens.</p>
+          <div class="img-placeholder">Design system components</div>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">7</div>
+        <div class="step-content">
+          <h3>Hi-fi Prototype & Final Testing</h3>
+          <p>Two further rounds of usability testing on the high-fidelity prototype — including accessibility testing with users with visual impairments and motor difficulties. All flows validated to WCAG 2.1 AA standard.</p>
+          <div class="img-placeholder wide">Hi-fi screens composite</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" style="max-width:var(--max-w); margin: 0 auto 4rem;">
+
+  <!-- ACCESSIBILITY -->
+  <div class="content fade-up">
+    <span class="section-eyebrow">Accessibility</span>
+    <h2>Designed for <em>everyone</em> from the start</h2>
+    <p>Accessibility wasn't a final checklist. It shaped every design decision — from touch target sizing (minimum 44px) to colour contrast ratios, from error state design to the language used throughout the app.</p>
+    <div class="insight-grid">
+      <div class="insight-card">
+        <h4>WCAG 2.1 AA</h4>
+        <p>All text and interactive elements meet or exceed AA contrast requirements throughout the app.</p>
+      </div>
+      <div class="insight-card orange">
+        <h4>Touch targets</h4>
+        <p>Minimum 44px across all interactive elements, with generous spacing to prevent mis-taps.</p>
+      </div>
+      <div class="insight-card orange">
+        <h4>Plain language</h4>
+        <p>All copy written at a clear, accessible reading level — no jargon, no punishing language.</p>
+      </div>
+      <div class="insight-card">
+        <h4>Error recovery</h4>
+        <p>Clear, compassionate error states throughout — designed around how people actually behave, not how we wish they would.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" style="max-width:var(--max-w); margin: 0 auto 4rem;">
+
+  <!-- OUTCOME -->
+  <div class="content fade-up">
+    <span class="section-eyebrow">Outcome</span>
+    <h2>A validated product that <em>respects real life</em></h2>
+    <p>HabitHero delivered a tested, accessible, high-fidelity prototype ready for development handoff. Three rounds of usability testing validated the core user flows and confirmed that the Life Day feature — the product's defining differentiator — was both understood and valued by users.</p>
+    <p>Post-testing feedback showed that users felt the app was "on their side" — a significant shift from the punishing tone of competitor products.</p>
+
+    <div class="callout">
+      <p>"This actually makes me want to come back tomorrow." <em>— Usability testing participant, Round 3</em></p>
+    </div>
+  </div>
+
+  <!-- NEXT PROJECT -->
+  <div class="next-project">
+    <span class="section-eyebrow">What's next</span>
+    <h2 style="font-family:'Playfair Display',serif; font-weight:400; margin-bottom:1rem;">More case studies <em style="color:var(--coral); font-style:italic;">coming soon</em></h2>
+    <p>Gerri & The Atricks and further client work in progress.</p>
+    <a class="btn-primary" href="index.html#work">Back to work</a>
+    <a class="btn-ghost" href="index.html#contact">Get in touch</a>
+  </div>
+
+  <!-- WAVE -->
+  <div class="wave-wrap" aria-hidden="true">
+    <svg viewBox="0 0 1440 160" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="width:100%; height:clamp(80px,12vw,160px); display:block;">
+      <path d="M0,160 L0,80 C120,20 240,0 360,30 C480,60 560,110 720,100 C880,90 960,40 1080,20 C1200,0 1320,30 1440,60 L1440,160 Z" fill="#FFB37A"/>
+      <path d="M0,160 L0,110 C100,60 220,40 360,65 C500,90 580,130 720,120 C860,110 960,70 1100,50 C1240,30 1360,55 1440,80 L1440,160 Z" fill="#FF8A3D" opacity="0.7"/>
+      <path d="M0,160 L0,135 C80,100 200,85 340,100 C480,115 580,145 720,140 C860,135 980,105 1120,90 C1260,75 1360,95 1440,110 L1440,160 Z" fill="#FC6C85" opacity="0.6"/>
+    </svg>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <p>© 2026 Caroline Edwards</p>
+      <a href="mailto:sayhello@mostlycaroline.com">sayhello@mostlycaroline.com</a>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(el => {
+        if (el.isIntersecting) { el.target.classList.add('visible'); observer.unobserve(el.target); }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

@@ -315,6 +315,64 @@
     .step-content { padding-top: 0.5rem; }
     .step-content p { font-size: 0.95rem; }
 
+    /* ── PERSONA ── */
+    .persona-card { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; }
+    .persona-photo { border-radius: 50%; width: 88px; height: 88px; flex-shrink: 0; font-size: 0.65rem; }
+    .persona-info h3 { margin-bottom: 0.15rem; }
+    .persona-role { font-size: 0.9rem; color: var(--mid); margin: 0; }
+    .persona-details { display: flex; flex-direction: column; gap: 1.5rem; margin: 2rem 0; }
+    .persona-col h4 {
+      font-family: var(--ff-body); font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--coral); margin-bottom: 0.75rem;
+    }
+    .persona-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .persona-col li { font-size: 0.92rem; color: var(--mid); padding-left: 1.25rem; position: relative; }
+    .persona-col li::before { content: '-'; position: absolute; left: 0; color: var(--coral); }
+
+    /* ── JOURNEY ── */
+    .journey-list { display: flex; flex-direction: column; gap: 0; margin: 2.5rem 0; }
+    .journey-stage { display: grid; grid-template-columns: 44px 1fr; gap: 1.25rem; padding-bottom: 2rem; position: relative; }
+    .journey-stage:not(:last-child)::after {
+      content: ''; position: absolute; left: 21px; top: 44px; bottom: 0; width: 2px; background: var(--cream);
+    }
+    .journey-icon {
+      width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center;
+      justify-content: center; flex-shrink: 0; font-size: 1.2rem; position: relative; z-index: 1;
+    }
+    .journey-icon.before { background: rgba(74,58,69,0.08); }
+    .journey-icon.after { background: var(--coral); color: var(--white); font-weight: 600; font-size: 1rem; }
+    .journey-phase-label {
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--coral); margin-bottom: 1.25rem; margin-top: 2.5rem; display: block;
+    }
+    .journey-phase-label:first-child { margin-top: 0; }
+
+    /* ── FLOW / STORYBOARD ── */
+    .flow-panel, .storyboard-panel { margin-bottom: 2.5rem; }
+    .flow-panel:last-child, .storyboard-panel:last-child { margin-bottom: 0; }
+    .flow-caption, .storyboard-caption { margin-top: 0.85rem; }
+    .flow-caption h4, .storyboard-caption h4 {
+      font-family: var(--ff-display); font-size: 1rem; font-weight: 400; color: var(--navy); margin-bottom: 0.25rem;
+      display: flex; align-items: center;
+    }
+    .flow-caption p, .storyboard-caption p { font-size: 0.9rem; margin: 0; }
+    .storyboard-num {
+      display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px;
+      border-radius: 50%; background: var(--coral); color: white; font-size: 0.7rem; font-weight: 600;
+      margin-right: 0.6rem; flex-shrink: 0; font-family: var(--ff-body);
+    }
+
+    /* ── ANNOTATIONS ── */
+    .annotation-list { display: flex; flex-direction: column; gap: 1rem; margin: 1.5rem 0 0; }
+    .annotation-item { display: flex; gap: 1rem; align-items: flex-start; background: var(--cream); border-radius: 10px; padding: 1.1rem 1.25rem; }
+    .annotation-tag {
+      flex-shrink: 0; font-family: var(--ff-body); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.06em;
+      text-transform: uppercase; color: white; border-radius: 100px; padding: 0.3rem 0.7rem; white-space: nowrap;
+    }
+    .annotation-tag.issue { background: var(--coral); }
+    .annotation-tag.fixed { background: var(--orange); }
+    .annotation-item p { font-size: 0.9rem; margin: 0; }
+
     /* ── DARK SECTION ── */
     .dark-section { background: var(--navy); padding: 6rem var(--gutter); }
     .dark-inner { max-width: var(--max-w); margin: 0 auto; }
@@ -464,6 +522,43 @@
     <div class="img-placeholder std">Image coming soon</div>
   </div>
 
+  <!-- PERSONA -->
+  <div class="section fade-up">
+    <span class="label">Persona</span>
+    <h2>Meet <em>Alex</em></h2>
+    <div class="persona-card">
+      <div class="persona-photo img-placeholder">Photo</div>
+      <div class="persona-info">
+        <h3>Alex, 34</h3>
+        <p class="persona-role">Time-pressured professional managing a long-term health condition</p>
+      </div>
+    </div>
+    <p>Alex was built from the interview data, not invented before it. Every goal and frustration below came directly from research participants who shared Alex's core situation: motivated to build a habit, but not on the terms most tracking apps demand.</p>
+
+    <div class="persona-details">
+      <div class="persona-col">
+        <h4>Goals</h4>
+        <ul>
+          <li>Build a sustainable daily habit without it taking over her life</li>
+          <li>Feel progress even on weeks that don't go to plan</li>
+          <li>Fit tracking around a demanding job, not the other way round</li>
+        </ul>
+      </div>
+      <div class="persona-col">
+        <h4>Frustrations</h4>
+        <ul>
+          <li>Existing apps treat one missed day as total failure</li>
+          <li>Streak-based design makes her afraid to open the app after a bad day</li>
+          <li>No accommodation for illness, travel, or ordinary life</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout">
+      <p>"I don't need another thing telling me I've failed." <em>- Alex, persona quote drawn from research</em></p>
+    </div>
+  </div>
+
   <!-- LIFE DAY - DARK -->
   <div class="dark-section">
     <div class="dark-inner fade-up">
@@ -480,6 +575,103 @@
         <div class="img-placeholder tall dark-ph">Image coming soon</div>
         <div class="img-placeholder tall dark-ph">Image coming soon</div>
       </div>
+    </div>
+  </div>
+
+  <!-- USER JOURNEY -->
+  <div class="section fade-up">
+    <span class="label">User Journey</span>
+    <h2>From <em>one bad day</em> to giving up</h2>
+    <p>Mapping Alex's journey through a typical existing habit app showed exactly where the emotional damage happened, and confirmed Life Day as the point to intervene.</p>
+
+    <div class="journey-list">
+      <span class="journey-phase-label">Before HabitHero</span>
+      <div class="journey-stage">
+        <div class="journey-icon before">1</div>
+        <div class="step-content"><h3>Building momentum</h3><p>Alex tracks daily, streak climbing, feeling good about the habit.</p></div>
+      </div>
+      <div class="journey-stage">
+        <div class="journey-icon before">2</div>
+        <div class="step-content"><h3>Life gets in the way</h3><p>Illness, travel, or a hard week at work. The habit slips for a day.</p></div>
+      </div>
+      <div class="journey-stage">
+        <div class="journey-icon before">3</div>
+        <div class="step-content"><h3>Streak breaks</h3><p>The app registers a failure. No distinction between "gave up" and "had a bad day."</p></div>
+      </div>
+      <div class="journey-stage">
+        <div class="journey-icon before">4</div>
+        <div class="step-content"><h3>Abandonment</h3><p>Motivation collapses. Alex deletes the app rather than face restarting from zero.</p></div>
+      </div>
+
+      <span class="journey-phase-label">With HabitHero</span>
+      <div class="journey-stage">
+        <div class="journey-icon after">1</div>
+        <div class="step-content"><h3>Same bad day happens</h3><p>Illness, travel, or a hard week. Nothing about Alex's life has changed.</p></div>
+      </div>
+      <div class="journey-stage">
+        <div class="journey-icon after">2</div>
+        <div class="step-content"><h3>Logs a Life Day</h3><p>Instead of a missed day, Alex marks it as a Life Day. The streak holds.</p></div>
+      </div>
+      <div class="journey-stage">
+        <div class="journey-icon after">3</div>
+        <div class="step-content"><h3>Feels supported, not judged</h3><p>The product acknowledges real life instead of punishing it.</p></div>
+      </div>
+      <div class="journey-stage">
+        <div class="journey-icon after">4</div>
+        <div class="step-content"><h3>Returns tomorrow</h3><p>Progress feels intact, so Alex comes straight back the next day.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- USER FLOW -->
+  <div class="section fade-up">
+    <span class="label">User Flow</span>
+    <h2>Three paths, <em>one system</em></h2>
+    <p>Synthesis surfaced three core flows that the design needed to support without adding complexity for the majority of users following the simplest path.</p>
+
+    <div class="flow-panel">
+      <div class="img-placeholder wide">Image coming soon</div>
+      <div class="flow-caption"><h4>Happy path</h4><p>Open app, log today's activity, see progress, done.</p></div>
+    </div>
+    <div class="flow-panel">
+      <div class="img-placeholder wide">Image coming soon</div>
+      <div class="flow-caption"><h4>Life Day path</h4><p>Open app, mark today as a Life Day, streak preserved, reassurance screen.</p></div>
+    </div>
+    <div class="flow-panel">
+      <div class="img-placeholder wide">Image coming soon</div>
+      <div class="flow-caption"><h4>Retroactive logging path</h4><p>Open app, select a past date, log activity or Life Day, weekly view updates.</p></div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- STORYBOARD -->
+  <div class="section fade-up">
+    <span class="label">Storyboard</span>
+    <h2>A bad day, <em>told in five frames</em></h2>
+    <p>Before any screens existed, this storyboard was used to align stakeholders around the emotional arc Life Day needed to deliver.</p>
+
+    <div class="storyboard-panel">
+      <div class="img-placeholder std">Image coming soon</div>
+      <div class="storyboard-caption"><h4><span class="storyboard-num">1</span>Alex wakes up unwell</h4><p>A migraine rules out any activity today. The habit is already at risk.</p></div>
+    </div>
+    <div class="storyboard-panel">
+      <div class="img-placeholder std">Image coming soon</div>
+      <div class="storyboard-caption"><h4><span class="storyboard-num">2</span>Opens HabitHero anyway</h4><p>Expecting bad news, but checking in out of habit.</p></div>
+    </div>
+    <div class="storyboard-panel">
+      <div class="img-placeholder std">Image coming soon</div>
+      <div class="storyboard-caption"><h4><span class="storyboard-num">3</span>Sees the Life Day option</h4><p>A visible, judgement-free alternative to logging a miss.</p></div>
+    </div>
+    <div class="storyboard-panel">
+      <div class="img-placeholder std">Image coming soon</div>
+      <div class="storyboard-caption"><h4><span class="storyboard-num">4</span>Taps Life Day</h4><p>Streak protected. A short, warm confirmation screen appears.</p></div>
+    </div>
+    <div class="storyboard-panel">
+      <div class="img-placeholder std">Image coming soon</div>
+      <div class="storyboard-caption"><h4><span class="storyboard-num">5</span>Returns the next day</h4><p>No restart, no guilt. Alex picks the habit straight back up.</p></div>
     </div>
   </div>
 
@@ -503,7 +695,6 @@
         <div class="step-content">
           <h3>Synthesis & User Flows</h3>
           <p>Affinity mapping and How Might We sessions in Miro to cluster insights and define the core user flows - happy path, Life Day path, and retroactive multi-day logging.</p>
-          <div class="step-img"><div class="img-placeholder std">Image coming soon</div></div>
         </div>
       </div>
 
@@ -512,7 +703,6 @@
         <div class="step-content">
           <h3>Lo-fi Wireframes</h3>
           <p>Paper prototypes and low-fidelity sketches across the core screens - onboarding, daily dashboard, weekly view, monthly calendar, and the Life Day flow - before committing to any visual direction.</p>
-          <div class="step-img"><div class="img-placeholder std">Image coming soon</div></div>
         </div>
       </div>
 
@@ -529,7 +719,6 @@
         <div class="step-content">
           <h3>Mid-fi Iteration</h3>
           <p>Iterated based on Round 1 findings. Simplified onboarding to 3 screens. Redesigned the Life Day prompt to appear contextually. Made the leaderboard opt-in. Tightened information hierarchy across all views.</p>
-          <div class="step-img"><div class="img-placeholder std">Image coming soon</div></div>
         </div>
       </div>
 
@@ -546,8 +735,6 @@
         <div class="step-content">
           <h3>Design System & Hi-fi Build</h3>
           <p>Built a structured Figma design system covering typography, colour, spacing tokens, and component states. Designed all 20+ screens to WCAG 2.1 AA standard, with Figma Motion used for key micro-interactions and transitions.</p>
-          <div class="step-img"><div class="img-placeholder std">Image coming soon</div></div>
-          <div class="step-img"><div class="img-placeholder wide">Image coming soon</div></div>
         </div>
       </div>
 
@@ -559,6 +746,64 @@
         </div>
       </div>
 
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- USABILITY - LOFI -->
+  <div class="section fade-up">
+    <span class="label">Usability Testing · Round 1</span>
+    <h2>Testing the <em>lo-fi prototype</em></h2>
+    <p>Five in-person sessions on the paper prototype, run before any visual design decisions were locked in.</p>
+
+    <div class="img-placeholder std">Image coming soon</div>
+
+    <div class="annotation-list">
+      <div class="annotation-item"><span class="annotation-tag issue">Finding</span><p>Life Day concept needed clearer explanation during onboarding. Three of five participants asked what happens if they used it wrong.</p></div>
+      <div class="annotation-item"><span class="annotation-tag issue">Finding</span><p>Leaderboard created anxiety for two participants managing health conditions privately.</p></div>
+      <div class="annotation-item"><span class="annotation-tag issue">Finding</span><p>Onboarding ran to 6 screens. Every participant tried to skip past screen 3.</p></div>
+    </div>
+  </div>
+
+  <!-- USABILITY - MIDFI -->
+  <div class="section fade-up">
+    <span class="label">Usability Testing · Round 2</span>
+    <h2>Testing the <em>mid-fi prototype</em></h2>
+    <p>Changes from Round 1 went straight into a mid-fidelity prototype, tested with a fresh set of participants to check the fixes actually worked.</p>
+
+    <div class="img-placeholder std">Image coming soon</div>
+
+    <div class="annotation-list">
+      <div class="annotation-item"><span class="annotation-tag fixed">Validated</span><p>Simplified 3-screen onboarding was understood immediately. No participant asked what Life Day meant.</p></div>
+      <div class="annotation-item"><span class="annotation-tag fixed">Validated</span><p>Opt-in leaderboard removed the anxiety flagged in Round 1. Two participants opted in anyway.</p></div>
+      <div class="annotation-item"><span class="annotation-tag issue">Finding</span><p>New issue surfaced: the weekly bar chart didn't visually distinguish a Life Day from a missed day at a glance.</p></div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- HI-FI GRAPHICS -->
+  <div class="section fade-up">
+    <span class="label">Hi-Fi Graphics</span>
+    <h2>The <em>finished screens</em></h2>
+    <p>The validated flows moved into a full Figma design system, built to WCAG 2.1 AA across all 20+ screens.</p>
+
+    <div class="flow-panel">
+      <div class="img-placeholder wide">Image coming soon</div>
+      <div class="flow-caption"><h4>Daily dashboard</h4><p>Today's status, streak, and quick Life Day access.</p></div>
+    </div>
+    <div class="flow-panel">
+      <div class="img-placeholder wide">Image coming soon</div>
+      <div class="flow-caption"><h4>Weekly view</h4><p>Life Days and missed days now visually distinct, fixing the Round 2 finding.</p></div>
+    </div>
+    <div class="flow-panel">
+      <div class="img-placeholder wide">Image coming soon</div>
+      <div class="flow-caption"><h4>Monthly calendar</h4><p>Long-view progress, built to reassure rather than pressure.</p></div>
+    </div>
+    <div class="flow-panel">
+      <div class="img-placeholder wide">Image coming soon</div>
+      <div class="flow-caption"><h4>Design system</h4><p>Typography, colour, spacing tokens, and component states.</p></div>
     </div>
   </div>
 

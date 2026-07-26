@@ -304,7 +304,15 @@
     .img-placeholder.std  { aspect-ratio: 16/9; }
     .img-placeholder.wide { aspect-ratio: 21/9; }
     .img-placeholder.tall { aspect-ratio: 3/4; }
+    .img-placeholder.phone { aspect-ratio: 9/19; }
     .img-placeholder.dark-ph { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.15); color: rgba(255,255,255,0.3); }
+
+    /* ── SCREENS ROW - phone-width shots side by side ── */
+    .screens-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.75rem; margin: 2.5rem 0 0; }
+    .screen-item { width: 200px; flex-shrink: 0; }
+    .screen-item img { border-radius: 16px; }
+    .screen-item .flow-caption { text-align: center; margin-top: 0.85rem; }
+    .screen-item .flow-caption h4 { justify-content: center; }
 
     .img-row { display: flex; flex-direction: column; gap: 1.5rem; margin: 2.5rem 0; }
     .step-img { margin-top: 1.5rem; }
@@ -694,15 +702,21 @@
   <!-- HI-FI SCREENS -->
   <div class="section fade-up">
     <span class="label">Hi-Fi Screens</span>
-    <h2>The <em>finished design</em></h2>
-    <p>The validated flows moved into a full Figma design system, built to WCAG 2.1 AA across all 20+ screens.</p>
-    <div class="flow-panel">
-      <div class="img-placeholder wide">Image coming soon</div>
-      <div class="flow-caption"><h4>Daily dashboard</h4><p>Today's status, streak, and quick Life Day access.</p></div>
-    </div>
-    <div class="flow-panel">
-      <div class="img-placeholder wide">Image coming soon</div>
-      <div class="flow-caption"><h4>Weekly view</h4><p>Life Days and missed days shown as visually distinct entries.</p></div>
+    <h2>From wireframe <em>to prototype</em></h2>
+    <p>The validated flows moved into a full Figma design system across all 20+ screens, with WCAG 2.1 AA as the target throughout.</p>
+    <div class="screens-row">
+      <div class="screen-item">
+        <div class="img-placeholder phone">Image coming soon</div>
+        <div class="flow-caption"><h4>Daily dashboard</h4><p>Today's status, streak, and quick Life Day access.</p></div>
+      </div>
+      <div class="screen-item">
+        <div class="img-placeholder phone">Image coming soon</div>
+        <div class="flow-caption"><h4>Weekly view</h4><p>Life Days and missed days shown as visually distinct entries.</p></div>
+      </div>
+      <div class="screen-item">
+        <div class="img-placeholder phone">Image coming soon</div>
+        <div class="flow-caption"><h4>Monthly calendar</h4><p>Long-view progress, built to reassure rather than pressure.</p></div>
+      </div>
     </div>
   </div>
 

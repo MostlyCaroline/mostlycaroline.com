@@ -315,20 +315,6 @@
     .step-content { padding-top: 0.5rem; }
     .step-content p { font-size: 0.95rem; }
 
-    /* ── PERSONA ── */
-    .persona-card { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; }
-    .persona-photo { border-radius: 50%; width: 88px; height: 88px; flex-shrink: 0; font-size: 0.65rem; }
-    .persona-info h3 { margin-bottom: 0.15rem; }
-    .persona-role { font-size: 0.9rem; color: var(--mid); margin: 0; }
-    .persona-details { display: flex; flex-direction: column; gap: 1.5rem; margin: 2rem 0; }
-    .persona-col h4 {
-      font-family: var(--ff-body); font-size: 0.72rem; font-weight: 600;
-      letter-spacing: 0.1em; text-transform: uppercase; color: var(--coral); margin-bottom: 0.75rem;
-    }
-    .persona-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
-    .persona-col li { font-size: 0.92rem; color: var(--mid); padding-left: 1.25rem; position: relative; }
-    .persona-col li::before { content: '-'; position: absolute; left: 0; color: var(--coral); }
-
     /* ── JOURNEY ── */
     .journey-list { display: flex; flex-direction: column; gap: 0; margin: 2.5rem 0; }
     .journey-stage { display: grid; grid-template-columns: 44px 1fr; gap: 1.25rem; padding-bottom: 2rem; position: relative; }
@@ -518,44 +504,18 @@
         </div>
       </div>
     </div>
-
-    <div class="img-placeholder std">Image coming soon</div>
   </div>
 
   <!-- PERSONA -->
   <div class="section fade-up">
     <span class="label">Persona</span>
     <h2>Meet <em>Alex</em></h2>
-    <div class="persona-card">
-      <div class="persona-photo img-placeholder">Photo</div>
-      <div class="persona-info">
-        <h3>Alex, 34</h3>
-        <p class="persona-role">Time-pressured professional managing a long-term health condition</p>
-      </div>
-    </div>
-    <p>Alex was built from the interview data, not invented before it. Every goal and frustration below came directly from research participants who shared Alex's core situation: motivated to build a habit, but not on the terms most tracking apps demand.</p>
+    <img src="hh-persona.png" alt="Persona profile for Alex, the time-constrained tracker: a 35-50 year old working professional in the UK, with goals, frustrations, motivations, challenges, and behaviours drawn from research" class="img-placeholder std" style="object-fit: contain; background: var(--white); border: 1px solid rgba(52,40,62,0.08); margin-bottom: 2rem;" />
 
-    <div class="persona-details">
-      <div class="persona-col">
-        <h4>Goals</h4>
-        <ul>
-          <li>Build a sustainable daily habit without it taking over her life</li>
-          <li>Feel progress even on weeks that don't go to plan</li>
-          <li>Fit tracking around a demanding job, not the other way round</li>
-        </ul>
-      </div>
-      <div class="persona-col">
-        <h4>Frustrations</h4>
-        <ul>
-          <li>Existing apps treat one missed day as total failure</li>
-          <li>Streak-based design makes her afraid to open the app after a bad day</li>
-          <li>No accommodation for illness, travel, or ordinary life</li>
-        </ul>
-      </div>
-    </div>
+    <p>Alex was built from the interview data, not invented before it. Every goal and frustration below came directly from research participants navigating the same reality: busy schedules, shifting energy levels, and caring responsibilities that most tracking apps don't account for.</p>
 
     <div class="callout">
-      <p>"I don't need another thing telling me I've failed." <em>- Alex, persona quote drawn from research</em></p>
+      <p>"I don't need another thing telling me I've failed." <em>- Research participant</em></p>
     </div>
   </div>
 
@@ -686,7 +646,7 @@
         <div class="step-num">1</div>
         <div class="step-content">
           <h3>Discovery & Research</h3>
-          <p>User interviews, competitive analysis, and stakeholder sessions to define the problem space. Created a primary persona - Alex, a time-pressured professional managing a long-term health condition - and mapped the emotional journey of current habit tracking products.</p>
+          <p>User interviews, competitive analysis, and stakeholder sessions to define the problem space. Created a primary persona - Alex, a time-constrained professional balancing a busy schedule against shifting energy and caring responsibilities - and mapped the emotional journey of current habit tracking products.</p>
         </div>
       </div>
 

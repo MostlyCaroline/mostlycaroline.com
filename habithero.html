@@ -255,17 +255,13 @@
     .method-grid li { font-size: 0.92rem; color: var(--mid); margin-bottom: 0.6rem; line-height: 1.6; }
     .method-grid li:last-child { margin-bottom: 0; }
 
-    /* ── DESIGN EVOLUTION ── */
-    .evolution-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin: 2.5rem 0 0; }
-    .evolution-item .flow-caption { margin-top: 0.85rem; }
-
     /* ── INSIGHT LIST - single column with icon ── */
-    .insight-list { display: flex; flex-direction: column; gap: 1.25rem; margin: 2.5rem 0; }
+    .insight-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin: 2.5rem 0; }
     .insight-item {
-      display: grid;
-      grid-template-columns: 48px 1fr;
-      gap: 1.25rem;
-      align-items: start;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
       background: var(--cream);
       border-radius: 12px;
       padding: 1.5rem;
@@ -314,7 +310,6 @@
     .step-img { margin-top: 1.5rem; }
 
     /* ── JOURNEY ── */
-    .journey-list { display: flex; flex-direction: column; gap: 0; margin: 2.5rem 0; }
     .journey-stage { display: grid; grid-template-columns: 44px 1fr; gap: 1.25rem; padding-bottom: 2rem; position: relative; }
     .journey-stage:not(:last-child)::after {
       content: ''; position: absolute; left: 21px; top: 44px; bottom: 0; width: 2px; background: var(--cream);
@@ -327,9 +322,12 @@
     .journey-icon.after { background: var(--coral); color: var(--white); font-weight: 600; font-size: 1rem; }
     .journey-phase-label {
       font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--coral); margin-bottom: 1.25rem; margin-top: 2.5rem; display: block;
+      color: var(--coral); margin-bottom: 1.25rem; margin-top: 0; display: block;
     }
-    .journey-phase-label:first-child { margin-top: 0; }
+
+    /* ── JOURNEY - TWO COLUMN ── */
+    .journey-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin: 2.5rem 0; }
+    .journey-column { display: flex; flex-direction: column; }
 
     /* ── FLOW / STORYBOARD ── */
     .flow-panel, .storyboard-panel { margin-bottom: 2.5rem; }
@@ -407,7 +405,8 @@
       .img-row { grid-template-columns: 1fr; }
       .meta-strip { gap: 1.25rem; }
       .method-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .evolution-grid { grid-template-columns: 1fr; }
+      .journey-columns { grid-template-columns: 1fr; gap: 1rem; }
+      .insight-list { grid-template-columns: 1fr; }
       .footer-inner { flex-direction: column; gap: 0.6rem; text-align: center; }
     }
   </style>
@@ -430,7 +429,7 @@
         <div class="meta-item"><span class="meta-label">Client</span><span class="meta-value">PrimeCare</span></div>
         <div class="meta-item"><span class="meta-label">My Role</span><span class="meta-value">Lead UX/UI Designer</span></div>
         <div class="meta-item"><span class="meta-label">Duration</span><span class="meta-value">Feb – July 2026</span></div>
-        <div class="meta-item"><span class="meta-label">Platform</span><span class="meta-value">Mobile App</span></div>
+        <div class="meta-item"><span class="meta-label">Platform</span><span class="meta-value">Existing Mobile App, New Feature</span></div>
       </div>
     </div>
   </div>
@@ -447,7 +446,7 @@
     <p>PrimeCare needed a digital product to help patients build sustainable health habits - tracking steps, distance, and calories across daily, weekly, and monthly views. The challenge wasn't building a tracker. It was building one that people would stick with.</p>
 
     <div class="stats-row">
-      <div class="stat-card"><span class="stat-number">3</span><span class="stat-label">Rounds of in-person usability testing</span></div>
+      <div class="stat-card"><span class="stat-number">7</span><span class="stat-label">Usability issues identified and resolved</span></div>
       <div class="stat-card"><span class="stat-number">AA</span><span class="stat-label">WCAG 2.1 AA target throughout design</span></div>
       <div class="stat-card"><span class="stat-number">1</span><span class="stat-label">Feature that changed everything</span></div>
     </div>
@@ -467,12 +466,10 @@
       <div class="glance-step"><span class="glance-num">1</span><span class="glance-label">Discovery & Research</span></div>
       <div class="glance-step"><span class="glance-num">2</span><span class="glance-label">Synthesis & Opportunity</span></div>
       <div class="glance-step"><span class="glance-num">3</span><span class="glance-label">Lo-fi Wireframes</span></div>
-      <div class="glance-step"><span class="glance-num">4</span><span class="glance-label">Testing · Round 1</span></div>
-      <div class="glance-step"><span class="glance-num">5</span><span class="glance-label">Mid-fi Iteration</span></div>
-      <div class="glance-step"><span class="glance-num">6</span><span class="glance-label">Testing · Round 2</span></div>
-      <div class="glance-step"><span class="glance-num">7</span><span class="glance-label">Hi-fi Design System</span></div>
-      <div class="glance-step"><span class="glance-num">8</span><span class="glance-label">Testing · Round 3</span></div>
-      <div class="glance-step"><span class="glance-num">9</span><span class="glance-label">Reflection</span></div>
+      <div class="glance-step"><span class="glance-num">4</span><span class="glance-label">Mid-fi Iteration</span></div>
+      <div class="glance-step"><span class="glance-num">5</span><span class="glance-label">Usability Testing</span></div>
+      <div class="glance-step"><span class="glance-num">6</span><span class="glance-label">Hi-fi Design System</span></div>
+      <div class="glance-step"><span class="glance-num">7</span><span class="glance-label">Reflection</span></div>
     </div>
   </div>
 
@@ -543,8 +540,6 @@
     </div>
   </div>
 
-  <hr class="divider">
-
   <!-- DEFINING THE OPPORTUNITY -->
   <div class="section fade-up">
     <span class="label">Defining the Opportunity</span>
@@ -563,6 +558,20 @@
     </ul>
   </div>
 
+  <hr class="divider">
+
+  <!-- INITIAL SKETCHES -->
+  <div class="section fade-up">
+    <span class="label">Initial Sketches</span>
+    <h2>Testing structure <em>before style</em></h2>
+    <p>Early analysis of the HabitHero MVP found users struggled with visual flow and information hierarchy, so these lo-fi sketches tested structure before style. Some concepts leaned on high-level summaries - progress rings, weekly bars, streaks, milestones - for quick check-ins during a busy day. Others surfaced richer data - steps, calories, sleep, heart rate, hydration, trends - for people who trust evidence over encouragement. Card-based layouts, single-day summaries, and weekly trend graphs each answered the same question differently: how much should Alex see at once, and when? Light gamification - leaderboards, milestone pop-ups, encouraging messages - was tested too, alongside different navigation patterns, to see what felt supportive rather than competitive.</p>
+    <p><strong>Why this direction:</strong> Alex is a busy professional who wants insight and measurable progress, not another leaderboard to keep up with. Locking in visual design before testing structure and motivation would have meant polishing the wrong screen. The calm, reflection-first concepts won out here for the same reason Life Day did later - competition wasn't the fix. Clarity and permission were.</p>
+    <a href="hh-lowfi.png" target="_blank" rel="noopener" style="display: block; margin-bottom: 0.75rem;">
+      <img src="hh-lowfi.png" alt="Four photos of hand-drawn lo-fi wireframe sketches on lined paper, exploring HabitHero dashboard concepts: a leaderboard and progress-ring layout, a data-heavy view with steps, distance, calories and streaks, a swipe-navigation concept, an overlay screen introducing a shield-style Life Day icon, and a monthly calendar view" style="width: 100%; height: auto; display: block; border-radius: 12px; border: 1px solid rgba(52,40,62,0.08);" />
+    </a>
+    <p style="font-size: 0.78rem; color: var(--mid); margin-bottom: 2rem;">Click image to view full size</p>
+  </div>
+
   <!-- LIFE DAY - DARK -->
   <div class="dark-section">
     <div class="dark-inner fade-up">
@@ -574,11 +583,6 @@
       <div class="callout" style="border-left: 3px solid var(--coral); padding: 1.5rem 0 1.5rem 2rem; margin: 3rem 0;">
         <p style="color:var(--white); font-family:'Playfair Display',serif; font-style:italic;">Life Days are <em style="color:var(--coral); font-style:normal;">earned, not given</em> - 3 per month for every 10 consecutive days tracked. Compassion built on responsibility.</p>
       </div>
-
-      <div class="img-row">
-        <div class="img-placeholder tall dark-ph">Image coming soon</div>
-        <div class="img-placeholder tall dark-ph">Image coming soon</div>
-      </div>
     </div>
   </div>
 
@@ -588,66 +592,117 @@
     <h2>From <em>one bad day</em> to giving up</h2>
     <p>Mapping Alex's journey through a typical existing habit app showed exactly where the emotional damage happened, and confirmed Life Day as the point to intervene.</p>
 
-    <div class="journey-list">
-      <span class="journey-phase-label">Before HabitHero</span>
-      <div class="journey-stage">
-        <div class="journey-icon before">1</div>
-        <div class="step-content"><h3>Building momentum</h3><p>Alex tracks daily, streak climbing, feeling good about the habit.</p></div>
-      </div>
-      <div class="journey-stage">
-        <div class="journey-icon before">2</div>
-        <div class="step-content"><h3>Life gets in the way</h3><p>Illness, travel, or a hard week at work. The habit slips for a day.</p></div>
-      </div>
-      <div class="journey-stage">
-        <div class="journey-icon before">3</div>
-        <div class="step-content"><h3>Streak breaks</h3><p>The app registers a failure. No distinction between "gave up" and "had a bad day."</p></div>
-      </div>
-      <div class="journey-stage">
-        <div class="journey-icon before">4</div>
-        <div class="step-content"><h3>Abandonment</h3><p>Motivation collapses. Alex deletes the app rather than face restarting from zero.</p></div>
+    <a href="hh-userjourney.png" target="_blank" rel="noopener" style="display: block; margin-bottom: 0.75rem;">
+      <img src="hh-userjourney.png" alt="User journey map for HabitHero across five stages - Discovery, Registration, Onboarding and First Use, Using, and Sharing - showing actions, touchpoints, needs and pains, customer feeling, and opportunities at each stage" style="width: 100%; height: auto; display: block; border-radius: 12px; border: 1px solid rgba(52,40,62,0.08);" />
+    </a>
+    <p style="font-size: 0.78rem; color: var(--mid); margin-bottom: 2rem;">Click image to view full size</p>
+
+    <p>Zooming into the single stage that decides whether someone stays or goes - a bad day during Using - shows the shift Life Day makes:</p>
+
+    <div class="journey-columns">
+      <div class="journey-column">
+        <span class="journey-phase-label">Before Life Day</span>
+        <div class="journey-stage">
+          <div class="journey-icon before">1</div>
+          <div class="step-content"><h3>Building momentum</h3><p>Alex tracks daily, streak climbing, feeling good about the habit.</p></div>
+        </div>
+        <div class="journey-stage">
+          <div class="journey-icon before">2</div>
+          <div class="step-content"><h3>Life gets in the way</h3><p>Illness, travel, or a hard week at work. The habit slips for a day.</p></div>
+        </div>
+        <div class="journey-stage">
+          <div class="journey-icon before">3</div>
+          <div class="step-content"><h3>Streak breaks</h3><p>The app registers a failure. No distinction between "gave up" and "had a bad day."</p></div>
+        </div>
+        <div class="journey-stage">
+          <div class="journey-icon before">4</div>
+          <div class="step-content"><h3>Abandonment</h3><p>Motivation collapses. Alex deletes the app rather than face restarting from zero.</p></div>
+        </div>
       </div>
 
-      <span class="journey-phase-label">With HabitHero</span>
-      <div class="journey-stage">
-        <div class="journey-icon after">1</div>
-        <div class="step-content"><h3>Same bad day happens</h3><p>Illness, travel, or a hard week. Nothing about Alex's life has changed.</p></div>
-      </div>
-      <div class="journey-stage">
-        <div class="journey-icon after">2</div>
-        <div class="step-content"><h3>Logs a Life Day</h3><p>Instead of a missed day, Alex marks it as a Life Day. The streak holds.</p></div>
-      </div>
-      <div class="journey-stage">
-        <div class="journey-icon after">3</div>
-        <div class="step-content"><h3>Feels supported, not judged</h3><p>The product acknowledges real life instead of punishing it.</p></div>
-      </div>
-      <div class="journey-stage">
-        <div class="journey-icon after">4</div>
-        <div class="step-content"><h3>Returns tomorrow</h3><p>Progress feels intact, so Alex comes straight back the next day.</p></div>
+      <div class="journey-column">
+        <span class="journey-phase-label">After Life Day</span>
+        <div class="journey-stage">
+          <div class="journey-icon after">1</div>
+          <div class="step-content"><h3>Same bad day happens</h3><p>Illness, travel, or a hard week. Nothing about Alex's life has changed.</p></div>
+        </div>
+        <div class="journey-stage">
+          <div class="journey-icon after">2</div>
+          <div class="step-content"><h3>Logs a Life Day</h3><p>Instead of a missed day, Alex marks it as a Life Day. The streak holds.</p></div>
+        </div>
+        <div class="journey-stage">
+          <div class="journey-icon after">3</div>
+          <div class="step-content"><h3>Feels supported, not judged</h3><p>The product acknowledges real life instead of punishing it.</p></div>
+        </div>
+        <div class="journey-stage">
+          <div class="journey-icon after">4</div>
+          <div class="step-content"><h3>Returns tomorrow</h3><p>Progress feels intact, so Alex comes straight back the next day.</p></div>
+        </div>
       </div>
     </div>
   </div>
 
   <hr class="divider">
 
-  <!-- DESIGN EVOLUTION -->
+  <!-- USER FLOW -->
   <div class="section fade-up">
-    <span class="label">Design Evolution</span>
-    <h2>From sketch to <em>finished screen</em></h2>
-    <p>The daily dashboard evolved through three fidelity stages - lo-fi, mid-fi, and hi-fi - each shaped by a round of in-person usability testing along the way.</p>
+    <span class="label">User Flow</span>
+    <h2>Three paths, <em>one system</em></h2>
+    <p>Whether Alex is logging today, catching up on yesterday, or returning after several missed days, every path treats a Life Day as a shield rather than a failure.</p>
 
-    <div class="evolution-grid">
-      <div class="evolution-item">
-        <div class="img-placeholder std">Image coming soon</div>
-        <div class="flow-caption"><h4>Lo-fi</h4><p>Paper wireframes, tested before any visual decisions were locked in.</p></div>
-      </div>
-      <div class="evolution-item">
-        <div class="img-placeholder std">Image coming soon</div>
-        <div class="flow-caption"><h4>Mid-fi</h4><p>Simplified onboarding and a contextual Life Day prompt, refined from early testing.</p></div>
-      </div>
-      <div class="evolution-item">
-        <div class="img-placeholder std">Image coming soon</div>
-        <div class="flow-caption"><h4>Hi-fi</h4><p>Full Figma design system, built to WCAG 2.1 AA and signed off for development.</p></div>
-      </div>
+    <a href="hh-userflow.png" target="_blank" rel="noopener" style="display: block; margin-bottom: 0.75rem;">
+      <img src="hh-userflow.png" alt="HabitHero user flow diagram showing three paths - Happy Today, Alternative Yesterday, and Retroactive multiple days in the past - all converging on the Life Day mechanic, which shields a user's streak and progress when they mark a day as a Life Day instead of a missed day" style="width: 100%; height: auto; display: block; border-radius: 12px; border: 1px solid rgba(52,40,62,0.08);" />
+    </a>
+    <p style="font-size: 0.78rem; color: var(--mid); margin-bottom: 2rem;">Click image to view full size</p>
+
+    <p>Every path - happy, alternative, or retroactive - runs through the same question: is this day covered by a Life Day? Users stay in control of that choice, and the system only steps in to confirm they have enough Life Days available to cover it.</p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- MID-FI & USABILITY FEEDBACK -->
+  <div class="section fade-up">
+    <span class="label">Mid-Fi & Usability Feedback</span>
+    <h2>What testing <em>actually found</em></h2>
+    <p>Before moving into hi-fi, the mid-fidelity prototype went through moderated usability testing on the Life Day feature. Seven issues came out of it, triaged by severity: high-severity issues blocked understanding or adoption outright, medium-severity issues caused friction without stopping the task.</p>
+
+    <a href="hh-testingresults.png" target="_blank" rel="noopener" style="display: block; margin-bottom: 0.75rem;">
+      <img src="hh-testingresults.png" alt="Usability testing results table listing seven issues found on the Life Day feature, each with a recommendation, severity rating of high or medium, and rationale for why it matters" style="width: 100%; height: auto; display: block; border-radius: 12px; border: 1px solid rgba(52,40,62,0.08);" />
+    </a>
+    <p style="font-size: 0.78rem; color: var(--mid); margin-bottom: 2rem;">Click image to view full size</p>
+
+    <div class="annotation-list">
+      <div class="annotation-item"><span class="annotation-tag issue">High</span><p>Users didn't understand what a Life Day actually is. Fixed with a full-page takeover screen explaining what it is, how it's earned, and why it matters, rather than a dismissible popup.</p></div>
+      <div class="annotation-item"><span class="annotation-tag issue">High</span><p>Goal rings weren't clearly linked to specific goals. Fixed by adding labels, colour coding, and legends so each ring reads at a glance.</p></div>
+      <div class="annotation-item"><span class="annotation-tag issue">High</span><p>Users asked whether goals could be adjusted if tied to an insurance package. Flagged for full clarification from PrimeCare before shipping any goal-editing guidance.</p></div>
+      <div class="annotation-item"><span class="annotation-tag issue">High</span><p>Users questioned how streak rewards and incentives actually worked. Fixed with clearer messaging on how streaks are earned and what breaking one costs.</p></div>
+      <div class="annotation-item"><span class="annotation-tag fixed">Medium</span><p>Users expected to add a Life Day through the Activity nav, not just the header's one-tap option. Fixed by increasing the Life Day button's prominence in the header and reorganising footer navigation to put Add centrally, with Activity and Life Day discoverable from there.</p></div>
+      <div class="annotation-item"><span class="annotation-tag fixed">Medium</span><p>Users weren't sure if a Life Day could be undone, cancelled, or reinstated. Fixed with confirmation prompts and clearer guidance on editing Life Days.</p></div>
+      <div class="annotation-item"><span class="annotation-tag fixed">Medium</span><p>Users worried they wouldn't think to use Life Day during a genuinely hard day. Addressed with timely nudges via notifications, prompting the option when it's most useful.</p></div>
+    </div>
+
+    <p style="margin-top:2.5rem;">Always understanding the <strong>why</strong>:</p>
+
+    <a href="hh-midfi.png" target="_blank" rel="noopener" style="display: block; margin-bottom: 0.75rem;">
+      <img src="hh-midfi.png" alt="Annotated HabitHero screens documenting two design changes made in response to usability testing: a full-page Life Day confirmation takeover explaining what a Life Day is and how it protects a user's streak, and a redesigned dashboard with a more prominent Life Day button in the header and reordered footer navigation making Add central" style="width: 100%; height: auto; display: block; border-radius: 12px; border: 1px solid rgba(52,40,62,0.08);" />
+    </a>
+    <p style="font-size: 0.78rem; color: var(--mid); margin-bottom: 2rem;">Click image to view full size</p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- HI-FI SCREENS -->
+  <div class="section fade-up">
+    <span class="label">Hi-Fi Screens</span>
+    <h2>The <em>finished design</em></h2>
+    <p>The validated flows moved into a full Figma design system, built to WCAG 2.1 AA across all 20+ screens.</p>
+    <div class="flow-panel">
+      <div class="img-placeholder wide">Image coming soon</div>
+      <div class="flow-caption"><h4>Daily dashboard</h4><p>Today's status, streak, and quick Life Day access.</p></div>
+    </div>
+    <div class="flow-panel">
+      <div class="img-placeholder wide">Image coming soon</div>
+      <div class="flow-caption"><h4>Weekly view</h4><p>Life Days and missed days shown as visually distinct entries.</p></div>
     </div>
   </div>
 
@@ -657,10 +712,10 @@
   <div class="section fade-up">
     <span class="label">Outcome</span>
     <h2>A product that's <em>on your side</em></h2>
-    <p>Three rounds of in-person usability testing validated HabitHero's core flows and confirmed the Life Day feature achieved exactly what the research called for - permission to have a bad day without losing everything already built. The prototype was signed off for development handoff via Figma Dev Mode.</p>
+    <p>Moderated usability testing on the mid-fi prototype validated HabitHero's core flows and confirmed the Life Day feature achieved exactly what the research called for - permission to have a bad day without losing everything already built. The prototype was signed off for development handoff via Figma Dev Mode.</p>
 
     <div class="callout">
-      <p>"This actually makes me want to come back tomorrow." <em>- Usability testing participant, Round 3</em></p>
+      <p>"This actually makes me want to come back tomorrow." <em>- Usability testing participant</em></p>
     </div>
   </div>
 

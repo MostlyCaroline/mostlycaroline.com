@@ -156,8 +156,25 @@
     .navlinks{gap:20px;}
     .wrap{padding:0 22px;}
   }
+  .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px;flex-direction:column;gap:5px;flex-shrink:0;}
+  .nav-toggle span{display:block;width:22px;height:2px;background:var(--ink);border-radius:2px;transition:transform .25s ease, opacity .25s ease;}
+  .nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .nav-toggle.open span:nth-child(2){opacity:0;}
+  .nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
   @media (max-width:600px){
-    .navlinks a.navlink:not(.btn){display:none;}
+    .nav-toggle{display:flex;}
+    .navlinks{
+      position:absolute;top:100%;left:0;right:0;
+      flex-direction:column;align-items:stretch;gap:0;
+      background:#fff;border-bottom:1px solid var(--line);
+      max-height:0;overflow:hidden;
+      transition:max-height .3s ease;
+    }
+    .navlinks.open{max-height:420px;}
+    .navlinks a.navlink{width:100%;padding:16px 22px;border-bottom:1px solid var(--line);display:flex !important;}
+    .navlinks a.navlink::after{display:none;}
+    .navlinks .btn-nav-cv{margin:16px 22px;justify-content:center;}
     .cs-title{font-size:56px;}
   }
 </style>
@@ -169,13 +186,14 @@
 <header>
   <nav class="wrap">
     <a href="index.html#top" class="wordmark">mostlycaroline.com</a>
-    <div class="navlinks">
+    <div class="navlinks" id="navlinks">
       <a href="index.html#top" class="navlink">Home</a>
       <a href="index.html#about" class="navlink">About</a>
       <a href="index.html#work" class="navlink">Work</a>
       <a href="index.html#contact" class="navlink">Contact</a>
       <a href="https://mostlycaroline.com/CarolineEdwards_CV.pdf" class="btn btn-fill btn-nav-cv" target="_blank" rel="noopener">Download CV</a>
     </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </nav>
 </header>
 
@@ -308,6 +326,22 @@
     });
   }, {threshold:0.1});
   document.querySelectorAll('.reveal').forEach(function(el){ obs.observe(el); });
+
+  // mobile nav toggle
+  var navToggle = document.getElementById('navToggle');
+  var navlinks = document.getElementById('navlinks');
+  navToggle.addEventListener('click', function(){
+    var isOpen = navlinks.classList.toggle('open');
+    navToggle.classList.toggle('open', isOpen);
+    navToggle.setAttribute('aria-expanded', isOpen);
+  });
+  navlinks.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      navlinks.classList.remove('open');
+      navToggle.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
 </script>
 
 </body>

@@ -1,503 +1,314 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Harley Hospital Case Study - Caroline Edwards</title>
-  <meta name="description" content="UX case study: Harley Hospital appointment booking app, developed with Creative Navy as part of the KCL Product Design programme." />
-  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --coral:   #FC6C85;
-      --orange:  #FF8A3D;
-      --peach:   #FFB37A;
-      --cream:   #FFF8F0;
-      --light:   #FFF1E8;
-      --navy:    #33283E;
-      --teal:    #0B7B8B;
-      --teal-lt: #E6F4F6;
-      --white:   #FFFFFF;
-      --mid:     #4A3A45;
-      --ff-display: 'Playfair Display', Georgia, serif;
-      --ff-body: 'Montserrat', system-ui, sans-serif;
-      --max-w: 860px;
-      --gutter: clamp(1.25rem, 5vw, 4rem);
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harley Hospital Case Study - Caroline Edwards</title>
+<meta name="description" content="UX case study: Harley Hospital appointment booking app, developed with Creative Navy as part of the KCL Product Design programme.">
+<meta name="author" content="Caroline Edwards, Product Designer">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Urbanist:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:#ffffff;
+    --ink:#231a2e;
+    --ink-soft:#5b5265;
+    --coral:#f2617c;
+    --coral-deep:#e8506c;
+    --coral-tint:#fdedf0;
+    --orange:#f4a35c;
+    --orange-tint:#fdf1e2;
+    --line:#e8e3e6;
+    --line-strong:#d9d2d8;
+    --maxw:1240px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--white);
+    color:var(--ink);
+    font-family:'Archivo', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{font-family:'Archivo', sans-serif;margin:0;letter-spacing:-0.02em;}
+  .label{font-family:'Archivo', sans-serif;text-transform:uppercase;letter-spacing:0.14em;font-size:13px;font-weight:600;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 40px;}
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      background: var(--white);
-      color: var(--navy);
-      font-family: var(--ff-body);
-      font-size: 1rem;
-      font-weight: 400;
-      line-height: 1.75;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
+  #progress{position:fixed;top:0;left:0;height:3px;background:var(--coral);width:0%;z-index:999;transition:width .08s linear;}
 
-    /* ── NAV ── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 200;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem var(--gutter);
-      background: rgba(255,255,255,0.98);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(252,108,133,0.1);
-    }
-    .nav-logo { font-family: var(--ff-display); font-size: 1.2rem; color: var(--navy); text-decoration: none; }
-    .nav-logo span { color: var(--coral); }
-    .nav-back { font-family: var(--ff-body); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color 0.2s; }
-    .nav-back:hover { color: var(--coral); }
+  header{
+    position:sticky;top:0;left:0;right:0;
+    background:rgba(255,255,255,0.88);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+    z-index:100;
+  }
+  nav.wrap{display:flex;align-items:center;justify-content:space-between;height:88px;}
+  .wordmark{font-family:'Urbanist', sans-serif;font-weight:800;font-size:19px;letter-spacing:-0.01em;color:var(--coral);}
+  .navlinks{display:flex;align-items:center;gap:44px;}
+  .navlinks a.navlink{
+    font-family:'Archivo', sans-serif;font-size:13px;font-weight:600;
+    text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-soft);
+    position:relative;padding:4px 0;
+  }
+  .navlinks a.navlink:hover{color:var(--ink);}
+  .navlinks a.navlink::after{
+    content:'';position:absolute;left:0;bottom:-2px;width:0;height:4px;background:var(--coral);
+    transition:width .25s ease;
+  }
+  .navlinks a.navlink:hover::after{width:100%;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:'Archivo', sans-serif;font-size:13px;font-weight:600;
+    text-transform:uppercase;letter-spacing:0.08em;
+    padding:13px 26px;border-radius:999px;border:1px solid transparent;
+    cursor:pointer;transition:background .2s ease, color .2s ease;
+  }
+  .btn-fill{background:var(--coral);color:#fff;}
+  .btn-fill:hover{background:var(--coral-deep);}
+  .btn-nav-cv:hover{background:var(--orange);}
+  .btn-outline{border-color:var(--line-strong);color:var(--ink);background:#fff;}
+  .btn-outline:hover{background:var(--coral-tint);}
 
-    /* ── HERO ── */
-    .case-hero {
-      background: var(--teal);
-      padding: 11rem var(--gutter) 5rem;
-    }
-    .case-hero-inner { max-width: var(--max-w); margin: 0 auto; }
+  section{position:relative;z-index:1;}
+  .section-pad{padding:64px 0;}
+  .section-title{font-size:clamp(19px,2vw,23px);font-weight:700;max-width:720px;color:var(--ink-soft);}
+  .hl{position:relative;display:inline-block;z-index:0;}
+  .hl::after{content:'';position:absolute;left:-3%;right:-3%;bottom:-0.03em;height:0.52em;z-index:-1;border-radius:2px;}
+  .hl-coral::after{background:var(--coral);}
+  .hl-orange::after{background:var(--orange);}
+  .star-content{max-width:820px;margin:0 auto;}
 
-    .label {
-      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em;
-      text-transform: uppercase; color: rgba(255,255,255,0.6);
-      display: block; margin-bottom: 1rem;
-    }
-    .label-coral { color: var(--coral); }
+  .cs-hero{padding:56px 0 0;}
+  .cs-tags{font-family:'Archivo', sans-serif;font-size:13px;text-transform:uppercase;letter-spacing:0.08em;color:var(--coral);font-weight:700;margin-bottom:20px;text-align:center;}
+  .cs-title{font-family:'Urbanist', sans-serif;font-size:100px;font-weight:900;line-height:0.88;letter-spacing:-0.03em;max-width:920px;margin:0 auto;text-align:center;}
+  .cs-intro{max-width:920px;margin:24px auto 0;color:var(--ink-soft);font-size:20px;text-align:center;}
 
-    .case-hero h1 {
-      font-family: var(--ff-display);
-      font-size: clamp(2.25rem, 5vw, 3.75rem);
-      font-weight: 400; color: var(--white);
-      line-height: 1.1; margin-bottom: 1.25rem;
-    }
-    .case-hero h1 em { font-style: italic; color: rgba(255,255,255,0.6); }
+  .status-banner{
+    display:flex;align-items:center;gap:10px;width:fit-content;
+    background:var(--orange-tint);color:var(--ink);
+    padding:12px 20px;border-radius:999px;
+    font-family:'Archivo', sans-serif;font-size:13px;font-weight:700;
+    margin:24px auto 0;
+  }
+  .status-dot{width:8px;height:8px;border-radius:50%;background:var(--orange);flex-shrink:0;}
 
-    .case-hero .intro {
-      font-size: 1.05rem; color: rgba(255,255,255,0.8);
-      max-width: 52ch; line-height: 1.8; margin-bottom: 3rem;
-    }
+  .meta-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:48px;}
+  .meta-item{background:#fff;padding:22px 24px;}
+  .meta-item .label{color:var(--ink-soft);}
+  .meta-item .value{font-family:'Archivo', sans-serif;font-weight:800;font-size:16px;margin-top:8px;}
+  .meta-link{text-decoration:underline;text-decoration-color:transparent;text-underline-offset:3px;transition:text-decoration-color .2s ease;}
+  .meta-link:hover{text-decoration-color:currentColor;}
 
-    .meta-strip { display: flex; gap: 2.5rem; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 2rem; }
-    .meta-label { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.5); display: block; margin-bottom: 0.25rem; }
-    .meta-value { font-size: 0.88rem; color: rgba(255,255,255,0.85); }
+  .star-tag{
+    font-family:'Archivo', sans-serif;
+    font-weight:900;
+    font-size:clamp(30px,4vw,52px);
+    max-width:820px;
+    margin-bottom:22px;
+  }
+  .prose{max-width:760px;color:var(--ink-soft);font-size:20px;margin-top:18px;}
+  .prose strong{color:var(--ink);}
 
-    /* ── HERO IMAGE ── */
-    .hero-image { width: 100%; overflow: hidden; line-height: 0; background: var(--teal-lt); }
-    .hero-image img { width: 100%; display: block; }
-    .hero-image-placeholder { width: 100%; aspect-ratio: 16/6; background: var(--teal-lt); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(11,123,139,0.35); border-bottom: 1px solid rgba(11,123,139,0.1); }
+  .pull-callout{
+    font-family:'Archivo', sans-serif;font-weight:700;font-size:clamp(19px,2vw,24px);
+    max-width:640px;margin-top:28px;color:var(--ink);
+  }
+  .pull-callout cite{font-style:normal;font-weight:500;color:var(--ink-soft);font-size:15px;display:block;margin-top:10px;}
 
-    /* ── PROGRESS BANNER ── */
-    .progress-banner {
-      background: #FFF8E6;
-      border-left: 4px solid var(--orange);
-      padding: 1rem 1.5rem;
-      max-width: var(--max-w);
-      margin: 3rem auto 0;
-      border-radius: 0 8px 8px 0;
-      font-size: 0.88rem;
-      color: var(--mid);
-    }
-    .progress-banner strong { color: var(--orange); }
+  .cs-figure{margin:36px 0 0;max-width:760px;}
+  .cs-figure img{width:100%;height:auto;border-radius:8px;background:var(--line);}
+  .cs-caption{color:var(--ink-soft);font-size:14px;margin-top:12px;}
+  .cs-figure-full{width:100vw;max-width:100vw;margin:40px calc(50% - 50vw) 0;}
+  .cs-figure-full img{border-radius:0;}
+  .cs-figure-full .cs-caption{padding:12px 40px 0;}
 
-    /* ── SECTIONS ── */
-    .section { max-width: var(--max-w); margin: 0 auto; padding: 5rem var(--gutter); }
+  .process-pills{list-style:none;margin:28px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:10px;}
+  .process-pill{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--coral-tint);color:var(--ink);border-radius:999px;
+    padding:9px 18px 9px 14px;font-family:'Archivo', sans-serif;font-size:14px;font-weight:700;
+  }
+  .pill-num{font-family:'Archivo', sans-serif;font-weight:900;font-size:12px;color:var(--coral-deep);}
 
-    h2 {
-      font-family: var(--ff-display);
-      font-size: clamp(1.6rem, 3vw, 2rem);
-      font-weight: 400; color: var(--navy);
-      line-height: 1.2; margin-bottom: 1.25rem;
-    }
-    h2 em { font-style: italic; color: var(--teal); }
+  .hmw-list{list-style:none;margin:24px 0 0;padding:0;border-top:1px solid var(--line);}
+  .hmw-item{display:flex;align-items:baseline;gap:20px;padding:16px 0;border-bottom:1px solid var(--line);}
+  .hmw-tag{font-family:'Archivo', sans-serif;font-weight:900;font-size:12px;letter-spacing:0.08em;color:var(--orange);flex-shrink:0;}
+  .hmw-text{font-family:'Archivo', sans-serif;font-weight:700;font-size:19px;max-width:640px;}
 
-    h3 { font-family: var(--ff-display); font-size: 1.2rem; font-weight: 400; color: var(--navy); margin-bottom: 0.5rem; }
+  .next-card{
+    display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;
+    background:var(--coral-tint);border-radius:12px;padding:48px;margin-top:8px;
+  }
+  .next-card .label{color:var(--coral);margin-bottom:14px;display:block;}
+  .next-card h3{font-size:clamp(22px,2.6vw,32px);font-weight:800;}
+  .next-card p{color:var(--ink-soft);font-size:16px;margin-top:14px;}
+  .next-card img{width:100%;border-radius:8px;aspect-ratio:4/3;object-fit:cover;}
 
-    p { color: var(--mid); line-height: 1.8; margin-bottom: 1.25rem; }
-    p:last-child { margin-bottom: 0; }
+  footer{padding:34px 0;border-top:1px solid var(--line);}
+  .footer-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+  .footer-row .label{color:var(--ink-soft);}
 
-    .divider { border: none; border-top: 1px solid rgba(52,40,62,0.08); max-width: var(--max-w); margin: 0 auto; }
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
 
-    /* ── STATS ── */
-    .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin: 3rem 0; }
-    .stat-card { background: var(--navy); border-radius: 16px; padding: 2rem 1.5rem; text-align: center; }
-    .stat-number { font-family: var(--ff-display); font-size: 2.75rem; color: var(--white); line-height: 1; margin-bottom: 0.5rem; display: block; }
-    .stat-label { font-size: 0.82rem; font-weight: 500; color: rgba(255,255,255,0.75); line-height: 1.4; }
-
-    /* ── TOOLS ── */
-    .tools-grid { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1.5rem 0 0; }
-    .tool-pill { font-size: 0.78rem; font-weight: 600; color: var(--white); background: var(--teal); border-radius: 100px; padding: 0.45rem 1.1rem; letter-spacing: 0.03em; }
-
-    /* ── CALLOUT ── */
-    .callout {
-      padding: 2rem 0 2rem 2rem;
-      margin: 3rem 0;
-      border-left: 3px solid var(--teal);
-    }
-    .callout p {
-      font-family: var(--ff-display);
-      font-size: clamp(1.05rem, 2vw, 1.3rem);
-      font-style: italic; color: var(--navy);
-      line-height: 1.5; margin: 0;
-    }
-    .callout p em { color: var(--teal); font-style: normal; }
-
-    /* ── IMAGE PLACEHOLDERS ── */
-    .img-placeholder {
-      background: #F0F8F9; border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.75rem; font-weight: 500; color: rgba(11,123,139,0.35);
-      letter-spacing: 0.06em; text-transform: uppercase;
-      border: 2px dashed rgba(11,123,139,0.2);
-    }
-    .img-placeholder.std { aspect-ratio: 16/9; }
-    .img-placeholder.wide { aspect-ratio: 21/9; }
-
-    /* ── FULL IMAGE ── */
-    .full-img { width: 100%; border-radius: 12px; display: block; margin: 2rem 0; box-shadow: 0 4px 24px rgba(11,123,139,0.1); }
-    .img-caption { font-size: 0.78rem; color: var(--mid); text-align: center; margin-top: -1rem; margin-bottom: 2rem; font-style: italic; }
-
-    /* ── INSIGHT LIST ── */
-    .insight-list { display: flex; flex-direction: column; gap: 1.25rem; margin: 2.5rem 0; }
-    .insight-item { display: grid; grid-template-columns: 44px 1fr; gap: 1.25rem; align-items: start; background: #F0F8F9; border-radius: 12px; padding: 1.5rem; }
-    .insight-icon { width: 44px; height: 44px; border-radius: 50%; background: var(--teal); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    .insight-icon svg { width: 22px; height: 22px; stroke: white; fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
-    .insight-text h4 { font-family: var(--ff-display); font-size: 1.1rem; font-weight: 400; color: var(--navy); margin-bottom: 0.35rem; }
-    .insight-text p { font-size: 0.92rem; margin: 0; }
-
-    /* ── COMPETITOR SECTION ── */
-    .competitor-grid { display: flex; flex-direction: column; gap: 3rem; margin: 2.5rem 0; }
-    .competitor-card { background: #F0F8F9; border-radius: 16px; overflow: hidden; }
-    .competitor-card img { width: 100%; display: block; }
-    .competitor-body { padding: 2rem; }
-    .competitor-body h3 { color: var(--teal); margin-bottom: 0.75rem; }
-    .competitor-body p { font-size: 0.92rem; }
-
-    /* ── PROCESS ── */
-    .process-steps { display: flex; flex-direction: column; gap: 0; margin: 2.5rem 0; }
-    .process-step { display: grid; grid-template-columns: 44px 1fr; gap: 1.5rem; padding-bottom: 3rem; position: relative; }
-    .process-step:not(:last-child)::after { content: ''; position: absolute; left: 21px; top: 44px; bottom: 0; width: 2px; background: #E6F4F6; }
-    .step-num { width: 44px; height: 44px; border-radius: 50%; background: var(--teal); color: white; font-weight: 600; font-size: 0.82rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; position: relative; z-index: 1; }
-    .step-content { padding-top: 0.5rem; }
-    .step-content p { font-size: 0.95rem; }
-    .step-img { margin-top: 1.5rem; }
-
-    /* ── COMING SOON ── */
-    .coming-section { background: #F0F8F9; border-radius: 16px; padding: 3rem; margin: 3rem 0; text-align: center; }
-    .coming-section h3 { color: var(--teal); margin-bottom: 0.75rem; }
-    .coming-section p { max-width: 48ch; margin: 0 auto; font-size: 0.92rem; }
-    .coming-pills { display: flex; gap: 0.6rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem; }
-    .coming-pill { font-size: 0.78rem; font-weight: 600; color: var(--teal); background: white; border: 1.5px solid rgba(11,123,139,0.2); border-radius: 100px; padding: 0.4rem 1rem; }
-
-    /* ── DARK SECTION ── */
-    .dark-section { background: var(--navy); padding: 5rem var(--gutter); }
-    .dark-inner { max-width: var(--max-w); margin: 0 auto; }
-    .dark-section .label { color: var(--peach); }
-    .dark-section h2 { color: var(--white); }
-    .dark-section h3 { color: var(--white); }
-    .dark-section p { color: rgba(255,248,240,0.75); }
-
-    /* ── NEXT ── */
-    .next-section { background: var(--cream); padding: 5rem var(--gutter); text-align: center; }
-    .next-section h2 { font-family: var(--ff-display); font-weight: 400; margin-bottom: 0.75rem; }
-    .next-section p { max-width: 44ch; margin: 0 auto 2.5rem; }
-
-    .btn-primary { display: inline-block; padding: 0.85rem 2rem; background: var(--coral); color: var(--white); font-family: var(--ff-body); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; border-radius: 100px; text-decoration: none; transition: background 0.2s, transform 0.2s; margin: 0.4rem; }
-    .btn-primary:hover { background: var(--orange); transform: translateY(-2px); }
-    .btn-ghost { display: inline-block; padding: 0.85rem 2rem; background: transparent; color: var(--navy); font-family: var(--ff-body); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; border-radius: 100px; border: 1.5px solid rgba(52,40,62,0.2); text-decoration: none; transition: all 0.2s; margin: 0.4rem; }
-    .btn-ghost:hover { border-color: var(--coral); color: var(--coral); transform: translateY(-2px); }
-
-    /* ── WAVE + FOOTER ── */
-    .wave-wrap { display: block; line-height: 0; overflow: hidden; margin-bottom: -2px; background: var(--cream); }
-    footer { background: var(--coral); padding: 1.75rem var(--gutter); }
-    .footer-inner { max-width: 1140px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
-    footer p { font-size: 1rem; color: rgba(255,255,255,0.85); }
-    footer a { font-size: 1rem; color: var(--white); text-decoration: none; }
-    footer a:hover { text-decoration: underline; }
-
-    /* ── ANIMATIONS ── */
-    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
-    .fade-up.visible { opacity: 1; transform: translateY(0); }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 680px) {
-      .stats-row { grid-template-columns: 1fr; }
-      .meta-strip { gap: 1.25rem; }
-      .footer-inner { flex-direction: column; gap: 0.6rem; text-align: center; }
-    }
-  </style>
+  @media (max-width:900px){
+    .meta-grid{grid-template-columns:1fr 1fr;}
+    .next-card{grid-template-columns:1fr;padding:32px;}
+    .navlinks{gap:20px;}
+    .wrap{padding:0 22px;}
+  }
+  @media (max-width:600px){
+    .navlinks a.navlink:not(.btn){display:none;}
+    .cs-title{font-size:56px;}
+  }
+</style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <a class="nav-logo" href="index.html">Caroline <span>Edwards</span></a>
-    <a class="nav-back" href="index.html#work">← Back to work</a>
+<div id="progress"></div>
+
+<header>
+  <nav class="wrap">
+    <a href="index.html#top" class="wordmark">mostlycaroline.com</a>
+    <div class="navlinks">
+      <a href="index.html#top" class="navlink">Home</a>
+      <a href="index.html#about" class="navlink">About</a>
+      <a href="index.html#work" class="navlink">Work</a>
+      <a href="index.html#contact" class="navlink">Contact</a>
+      <a href="https://mostlycaroline.com/CarolineEdwards_CV.pdf" class="btn btn-fill btn-nav-cv" target="_blank" rel="noopener">Download CV</a>
+    </div>
   </nav>
+</header>
 
-  <!-- HERO -->
-  <div class="case-hero">
-    <div class="case-hero-inner">
-      <span class="label">UX Case Study · Healthcare · Mobile App · KCL Programme</span>
-      <h1>Harley Hospital - <em>making healthcare</em><br>booking feel human</h1>
-      <p class="intro">An end-to-end UX project for Harley Hospital's private appointment booking experience, developed in collaboration with Creative Navy as part of the King's College London Product Design programme.</p>
-      <div class="meta-strip">
-        <div class="meta-item"><span class="meta-label">Industry Partner</span><span class="meta-value">Creative Navy</span></div>
-        <div class="meta-item"><span class="meta-label">Client</span><span class="meta-value">Harley Hospital</span></div>
-        <div class="meta-item"><span class="meta-label">My Role</span><span class="meta-value">Project Lead, Team 2</span></div>
-        <div class="meta-item"><span class="meta-label">Programme</span><span class="meta-value">KCL Product Design</span></div>
-        <div class="meta-item"><span class="meta-label">Platform</span><span class="meta-value">iOS Mobile</span></div>
+<main>
+
+  <section class="cs-hero section-pad" style="padding-bottom:0;">
+    <div class="wrap">
+      <div class="cs-tags reveal">UX Case Study &middot; Healthcare &middot; Mobile App &middot; KCL Programme</div>
+      <h1 class="cs-title reveal">Harley Hospital</h1>
+      <p class="cs-intro reveal">Making healthcare booking feel human. A mobile booking experience for a private healthcare network, built with design agency Creative Navy as part of the King's College London Product Design programme.</p>
+
+      <div class="status-banner reveal"><span class="status-dot"></span>In progress - research &amp; synthesis complete. User flows and prototype coming in Module 3.</div>
+
+      <div class="meta-grid reveal">
+        <div class="meta-item"><div class="label">Industry Partner</div><div class="value"><a href="https://interface-design.co.uk/" target="_blank" rel="noopener" class="meta-link">Creative Navy</a></div></div>
+        <div class="meta-item"><div class="label">Client</div><div class="value">Harley Hospital</div></div>
+        <div class="meta-item"><div class="label">My Role</div><div class="value">Project Lead, Team 2</div></div>
+        <div class="meta-item"><div class="label">Platform</div><div class="value">iOS Mobile</div></div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- PROGRESS BANNER -->
-  <div class="progress-banner" style="margin: 3rem auto; max-width: var(--max-w); margin-left: auto; margin-right: auto; padding-left: var(--gutter); padding-right: var(--gutter);">
-    <strong>🚧 Case study in progress</strong> - Module 1 (research & synthesis) complete. User flows, mid-fidelity designs and prototype coming in Module 3.
-  </div>
+  <section class="section-pad">
+    <div class="wrap">
+    <div class="star-content">
+      <h2 class="star-tag reveal"><span class="hl hl-coral">Situation</span></h2>
+      <h3 class="section-title reveal">A brief built on an assumption</h3>
+      <p class="prose reveal">Harley Hospital needed a unified mobile booking experience across its private healthcare network. The brief assumed the main blocker was speed - it asked us to get patients through a booking in under one minute.</p>
+    </div>
+    </div>
+  </section>
 
-  <!-- OVERVIEW -->
-  <div class="section fade-up">
-    <span class="label label-coral">Overview</span>
-    <h2>The brief: help patients book <em>the right appointment</em> with confidence</h2>
-    <p>Harley Hospital needed a unified mobile booking experience enabling patients to identify and book appointments across its private healthcare network. The initial brief emphasised completing a booking in under one minute - but our research quickly revealed that speed alone wasn't the real problem.</p>
-    <p>Patients begin the booking process already worried about their health. They need guidance to identify the right specialist, compare options, understand pricing, and feel confident their booking has been successfully placed.</p>
+  <section class="section-pad">
+    <div class="wrap">
+    <div class="star-content">
+      <h2 class="star-tag reveal"><span class="hl hl-orange">Insight</span></h2>
+      <h3 class="section-title reveal">Speed wasn't the problem. Confidence was.</h3>
+      <p class="prose reveal">Seven user interviews and analysis of twelve direct, indirect and analogous competitors surfaced the same six themes again and again: uncertainty, trust, guidance, transparency, availability and cognitive effort. Speed was secondary to all of them.</p>
+      <ol class="hmw-list">
+        <li class="hmw-item reveal"><span class="hmw-tag">HMW</span><span class="hmw-text">reduce uncertainty before someone knows which specialist they need?</span></li>
+        <li class="hmw-item reveal"><span class="hmw-tag">HMW</span><span class="hmw-text">make costs transparent before a patient commits?</span></li>
+        <li class="hmw-item reveal"><span class="hmw-tag">HMW</span><span class="hmw-text">keep a human option visible if someone gets stuck?</span></li>
+      </ol>
+    </div>
+    </div>
+  </section>
 
-    <div class="stats-row">
-      <div class="stat-card"><span class="stat-number">7</span><span class="stat-label">User interviews conducted</span></div>
-      <div class="stat-card"><span class="stat-number">12</span><span class="stat-label">Direct, indirect & analogous competitors analysed</span></div>
-      <div class="stat-card"><span class="stat-number">6</span><span class="stat-label">Critical user needs identified</span></div>
+  <section class="section-pad">
+    <div class="wrap">
+    <div class="star-content">
+      <h2 class="star-tag reveal"><span class="hl hl-coral">Task</span></h2>
+      <h3 class="section-title reveal">Find the real problem</h3>
+      <p class="prose reveal">As Project Lead for a team of seven, my job was to validate or challenge the speed-first assumption before anyone designed a single screen - and to turn whatever we found into a problem statement the whole team could design against.</p>
+      <ol class="process-pills">
+        <li class="process-pill reveal"><span class="pill-num">01</span>Discovery &amp; Brief Review</li>
+        <li class="process-pill reveal"><span class="pill-num">02</span>User Interviews</li>
+        <li class="process-pill reveal"><span class="pill-num">03</span>Competitor &amp; Analogous Analysis</li>
+        <li class="process-pill reveal"><span class="pill-num">04</span>Affinity Mapping &amp; Synthesis</li>
+        <li class="process-pill reveal"><span class="pill-num">05</span>Problem Definition &amp; Requirements</li>
+      </ol>
+    </div>
+    </div>
+  </section>
+
+  <section class="section-pad">
+    <div class="wrap">
+    <div class="star-content">
+      <h2 class="star-tag reveal"><span class="hl hl-orange">Action</span></h2>
+      <h3 class="section-title reveal">Confidence, not speed</h3>
+      <p class="prose reveal">I directed the interviews, competitor analysis and a full affinity and empathy mapping synthesis workshop in Miro. Patients begin the booking process already worried about their health - what they actually needed was guidance to find the right specialist, transparent pricing, and visible access to a human if they got stuck.</p>
+      <p class="pull-callout reveal">"I'm already worried. I don't want this to make me more stressed."<cite>- User interview participant</cite></p>
+    </div>
     </div>
 
-    <span class="label label-coral" style="margin-top: 2rem;">Tools</span>
-    <div class="tools-grid">
-      <span class="tool-pill">Miro</span>
-      <span class="tool-pill">User interviews</span>
-      <span class="tool-pill">Secondary research</span>
-      <span class="tool-pill">Competitor analysis</span>
-      <span class="tool-pill">Affinity mapping</span>
-      <span class="tool-pill">Empathy mapping</span>
-      <span class="tool-pill">Problem definition</span>
-      <span class="tool-pill">Stakeholder management</span>
-      <span class="tool-pill">Project leadership</span>
+    <figure class="cs-figure cs-figure-full reveal">
+      <img src="https://mostlycaroline.com/harley-empathy-map-raw.png" alt="Raw empathy map from the Miro synthesis workshop, showing all sticky notes before clustering">
+      <div class="cs-caption wrap">The raw Miro synthesis workshop - every sticky note before clustering into the empathy map.</div>
+    </figure>
+  </section>
+
+  <section class="section-pad">
+    <div class="wrap">
+    <div class="star-content">
+      <h2 class="star-tag reveal"><span class="hl hl-coral">Result</span></h2>
+      <h3 class="section-title reveal">A reframed brief</h3>
+      <p class="prose reveal">The research reframed the design direction toward minimising cognitive effort rather than steps, and produced a prioritised set of requirements now driving the design phase. Leading the team also taught me the difference between project management and leadership: keeping tasks on schedule versus giving people direction when the brief itself is still being defined.</p>
     </div>
-  </div>
-
-  <hr class="divider">
-
-  <!-- RESEARCH -->
-  <div class="section fade-up">
-    <span class="label label-coral">Research</span>
-    <h2>What patients actually need <em>isn't speed</em></h2>
-    <p>As Project Lead, I directed the research phase - coordinating user interviews, competitor analysis, analogous market research and secondary research across the team. Findings were synthesised through affinity mapping and empathy mapping in Miro.</p>
-    <p>The research consistently surfaced the same six themes: uncertainty, trust, guidance, transparency, availability and cognitive effort. Speed was secondary to all of them.</p>
-
-    <div class="callout">
-      <p>"I'm already worried. I don't want this to make me <em>more stressed.</em>"<br><span style="font-size:0.85rem; font-style:normal; color:var(--mid); display:block; margin-top:0.5rem;">- User interview participant</span></p>
     </div>
+  </section>
 
-    <div class="insight-list">
-      <div class="insight-item">
-        <div class="insight-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+  <section class="section-pad">
+    <div class="wrap">
+      <a href="habithero.html" class="next-card reveal">
+        <div>
+          <span class="label">Next case study</span>
+          <h3>HabitHero</h3>
+          <p>A behaviour change feature for PrimeCare, built around giving users permission to have a bad day.</p>
         </div>
-        <div class="insight-text">
-          <h4>Uncertainty before booking</h4>
-          <p>Patients don't always know which specialist they need. Navigating medical terminology at an already stressful moment creates significant cognitive effort and doubt.</p>
-        </div>
-      </div>
-      <div class="insight-item">
-        <div class="insight-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <div class="insight-text">
-          <h4>Hidden costs destroy trust</h4>
-          <p>Patients need to understand subscription entitlements, additional charges and what is included before they commit - not after. Unexpected costs were the most cited source of frustration.</p>
-        </div>
-      </div>
-      <div class="insight-item">
-        <div class="insight-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        </div>
-        <div class="insight-text">
-          <h4>Human support as a safety net</h4>
-          <p>Even digitally confident users wanted visible access to a human if they became unsure. The absence of this option caused abandonment rather than completion.</p>
-        </div>
-      </div>
+        <img src="https://mostlycaroline.com/hh-hero.png" alt="HabitHero daily dashboard showing today's steps, distance, calories and streak">
+      </a>
     </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-row">
+    <span class="label">© 2026 Caroline Edwards</span>
   </div>
+</footer>
 
-  <!-- EMPATHY MAP -->
-  <div class="section fade-up" style="padding-top: 0;">
-    <span class="label label-coral">Empathy Mapping</span>
-    <h2>Synthesising research into <em>a shared understanding</em></h2>
-    <p>Following interviews and secondary research, the team synthesised all findings into a research-informed empathy map. Rather than representing a single participant, it captures the collective needs, behaviours, motivations and frustrations identified across all evidence sources.</p>
-
-    <img src="harley-empathy-map.png" alt="Collated empathy map - Who, Do, See, Say, Hear, Think & Feel" class="full-img" />
-    <p class="img-caption">Collated empathy map - synthesised from user interviews, competitor analysis and secondary research</p>
-
-    <img src="harley-empathy-map-raw.png" alt="Raw empathy map from Miro synthesis workshop" class="full-img" />
-    <p class="img-caption">Raw empathy map from the Miro synthesis workshop - all sticky notes before clustering</p>
-  </div>
-
-  <hr class="divider">
-
-  <!-- PROBLEM STATEMENT -->
-  <div class="dark-section">
-    <div class="dark-inner fade-up">
-      <span class="label">Refined Problem Statement</span>
-      <h2>Speed wasn't the problem. <em>Confidence</em> was.</h2>
-      <p>The initial brief asked us to enable patients to complete a booking in under one minute. Our research showed this was the wrong design question.</p>
-
-      <div class="callout" style="border-left-color: rgba(255,255,255,0.3); padding-left: 2rem; margin: 3rem 0;">
-        <p style="color: var(--white);">Adults seeking private healthcare need a clear and trustworthy way to confidently identify and book the right appointment - because navigating unfamiliar services, specialists and booking options creates <em>uncertainty at an already stressful time.</em></p>
-      </div>
-
-      <p>The refined design direction was therefore to minimise unnecessary cognitive effort rather than simply minimise steps. The right balance is:</p>
-      <p style="color:rgba(255,248,240,0.75);">
-        Speed with informed decision-making &nbsp;·&nbsp;
-        Guidance with patient control &nbsp;·&nbsp;
-        Simplicity with necessary healthcare information &nbsp;·&nbsp;
-        Digital self-service with access to human support
-      </p>
-    </div>
-  </div>
-
-  <!-- COMPETITOR ANALYSIS -->
-  <div class="section fade-up">
-    <span class="label label-coral">Competitor Analysis</span>
-    <h2>What the market gets right - <em>and wrong</em></h2>
-    <p>Twelve competitors were analysed across direct (private healthcare booking), indirect (NHS and GP services) and analogous (travel, hospitality, financial services) markets. Two direct competitors are featured here in detail - alongside the broader patterns identified across the full analysis.</p>
-
-    <div class="competitor-grid">
-      <div class="competitor-card">
-        <img src="harley-competitor-circle.png" alt="Circle Health Group competitor analysis - mobile booking walkthrough" />
-        <div class="competitor-body">
-          <h3>Circle Health Group</h3>
-          <p><strong>Strengths:</strong> Symptom-based search reduces upfront decisions. Appointment availability visible before account creation. Step-by-step journey presents information progressively.<br><br>
-          <strong>Weaknesses:</strong> Multiple major decisions required before pricing is revealed. Limited guidance for users uncertain which specialist they need. Filtering requires prior knowledge of what you're looking for.</p>
-        </div>
-      </div>
-      <div class="competitor-card">
-        <img src="harley-competitor-pushdoctor.png" alt="Push Doctor competitor analysis - mobile app walkthrough" />
-        <div class="competitor-body">
-          <h3>Push Doctor</h3>
-          <p><strong>Strengths:</strong> Simple onboarding reduces cognitive load. Clean pricing presented clearly before commitment. Focused journey minimises distraction.<br><br>
-          <strong>Weaknesses:</strong> Focused only on speed - limited guidance for uncertain users. No clear pathway for users who need to find the right service or clinician. Trustpilot reviews surface frustration when the speed-first approach fails.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <hr class="divider">
-
-  <!-- PROCESS -->
-  <div class="section fade-up">
-    <span class="label label-coral">Process</span>
-    <h2>How we got <em>to the insight</em></h2>
-
-    <div class="process-steps">
-      <div class="process-step">
-        <div class="step-num">1</div>
-        <div class="step-content">
-          <h3>Discovery & Brief Review</h3>
-          <p>Reviewed the Creative Navy brief and attended a Live Q&A with the client team. Identified key assumptions in the speed-first framing and proposed a research-led approach to validate or challenge them.</p>
-        </div>
-      </div>
-      <div class="process-step">
-        <div class="step-num">2</div>
-        <div class="step-content">
-          <h3>User Interviews</h3>
-          <p>Led a structured programme of user interviews with adults who had experience booking private healthcare. Developed the research objectives, interview guide and participant criteria as Project Lead. Interviews focused on booking journeys, decision points, moments of uncertainty and abandonment triggers.</p>
-        </div>
-      </div>
-      <div class="process-step">
-        <div class="step-num">3</div>
-        <div class="step-content">
-          <h3>Competitor & Analogous Analysis</h3>
-          <p>Analysed Circle Health Group and Push Doctor through first-hand walkthroughs and user review data. Also conducted analogous market research across other booking platforms - travel, restaurant, financial services - to identify transferable patterns.</p>
-        </div>
-      </div>
-      <div class="process-step">
-        <div class="step-num">4</div>
-        <div class="step-content">
-          <h3>Affinity Mapping & Synthesis</h3>
-          <p>Ran a collaborative synthesis workshop in Miro. Individual observations, quotes and behavioural insights from all research sources were grouped through affinity mapping before being organised into the empathy map to identify recurring patterns.</p>
-        </div>
-      </div>
-      <div class="process-step">
-        <div class="step-num">5</div>
-        <div class="step-content">
-          <h3>Problem Definition & Requirements</h3>
-          <p>Reframed the problem statement based on research findings. Produced a prioritised list of user needs and requirements - from critical (booking with confidence, transparent pricing) to important (plain language, human support access) - and mapped them against Harley Hospital's organisational objectives.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- REFLECTION -->
-  <div class="section fade-up" style="padding-top: 0;">
-    <span class="label label-coral">Reflection</span>
-    <h2>What I learned about <em>leading, not just managing</em></h2>
-    <p>No one initially wanted to take on the project lead role. I recognised that without someone coordinating the work, the team risked falling behind - so I stepped in, with an amazing team member joining me as co-lead. That decision gave the team direction at a point when it needed it most.</p>
-    <p>What I hadn't anticipated was how much of the role would be invisible. I wasn't just allocating tasks - I was breaking down an open-ended brief into manageable pieces, organising the Miro board, planning meetings, coordinating with the client, and pulling together work from seven different people to make it feel like one coherent report rather than seven separate assignments.</p>
-    <p>The three biggest challenges I faced were managing communication across different schedules, jobs, family commitments and time zones; adapting to very different working styles within the team; and learning to lead while simultaneously delivering - without the luxury of observing someone else do it first.</p>
-    <p>The honest reflection is that I took on too much. I didn't just lead - I also became the UX strategist, quality assurer, editor, proofreader, client liaison and meeting organiser. That undoubtedly raised the quality of the submission, but it put significant pressure on me personally. In a longer project, I would distribute those responsibilities more deliberately from the start.</p>
-    <p>What I'm most proud of is how I handled the team dynamics. I consistently thanked people for their contributions, acknowledged the pressure everyone was under, and looked for ways to support rather than criticise when someone was struggling. I learned that leadership in a team with no formal authority is less about direction and more about making people feel capable and valued.</p>
-    <p>The distinction I took away from this week: project management is about keeping tasks on schedule. Leadership is about giving people direction, maintaining standards, making decisions when information is incomplete, and helping a group produce something better than the sum of its individual contributions.</p>
-  </div>
-
-  <hr class="divider">
-
-
-  <div class="section fade-up" style="padding-top: 0;">
-    <div class="coming-section">
-      <h3>Coming soon</h3>
-      <p>User flows, mid-fidelity wireframes, prototype and stakeholder presentation are in progress. This section will update as the project progresses.</p>
-    </div>
-  </div>
-
-  <!-- NEXT -->
-  <div class="next-section">
-    <span class="label label-coral">More work</span>
-    <h2>See another <em style="font-style:italic; color:var(--coral);">case study</em></h2>
-    <p>Return to the portfolio or get in touch to find out more about this project.</p>
-    <a class="btn-primary" href="habithero.html">View HabitHero</a>
-    <a class="btn-ghost" href="index.html#work">Back to work</a>
-  </div>
-
-  <!-- WAVE -->
-  <div class="wave-wrap" aria-hidden="true">
-    <svg viewBox="0 0 1440 160" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="width:100%; height:clamp(80px,12vw,160px); display:block;">
-      <path d="M0,160 L0,80 C120,20 240,0 360,30 C480,60 560,110 720,100 C880,90 960,40 1080,20 C1200,0 1320,30 1440,60 L1440,160 Z" fill="#FFB37A"/>
-      <path d="M0,160 L0,110 C100,60 220,40 360,65 C500,90 580,130 720,120 C860,110 960,70 1100,50 C1240,30 1360,55 1440,80 L1440,160 Z" fill="#FF8A3D" opacity="0.7"/>
-      <path d="M0,160 L0,135 C80,100 200,85 340,100 C480,115 580,145 720,140 C860,135 980,105 1120,90 C1260,75 1360,95 1440,110 L1440,160 Z" fill="#FC6C85" opacity="0.6"/>
-    </svg>
-  </div>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-inner">
-      <p>© 2026 Caroline Edwards</p>
-      <a href="mailto:sayhello@mostlycaroline.com">sayhello@mostlycaroline.com</a>
-    </div>
-  </footer>
-
-  <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(el => {
-        if (el.isIntersecting) { el.target.classList.add('visible'); observer.unobserve(el.target); }
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-  </script>
+<script>
+  var bar = document.getElementById('progress');
+  window.addEventListener('scroll', function(){
+    var h = document.documentElement;
+    var pct = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+    bar.style.width = pct + '%';
+  });
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); }
+    });
+  }, {threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(function(el){ obs.observe(el); });
+</script>
 
 </body>
 </html>

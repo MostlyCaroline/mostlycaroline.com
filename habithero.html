@@ -1,768 +1,314 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HabitHero Case Study - Caroline Edwards</title>
-  <meta name="description" content="UX case study: HabitHero - a behaviour change app for healthcare client PrimeCare, designed by Caroline Edwards." />
-  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --coral:  #FC6C85;
-      --orange: #FF8A3D;
-      --peach:  #FFB37A;
-      --cream:  #FFF8F0;
-      --light:  #FFF1E8;
-      --navy:   #33283E;
-      --white:  #FFFFFF;
-      --mid:    #4A3A45;
-      --ff-display: 'Playfair Display', Georgia, serif;
-      --ff-body: 'Montserrat', system-ui, sans-serif;
-      --max-w: 860px;
-      --gutter: clamp(1.25rem, 5vw, 4rem);
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HabitHero Case Study - Caroline Edwards</title>
+<meta name="description" content="UX case study: HabitHero - a behaviour change app for healthcare client PrimeCare, designed by Caroline Edwards.">
+<meta name="author" content="Caroline Edwards, Product Designer">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Urbanist:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:#ffffff;
+    --ink:#231a2e;
+    --ink-soft:#5b5265;
+    --coral:#f2617c;
+    --coral-deep:#e8506c;
+    --coral-tint:#fdedf0;
+    --orange:#f4a35c;
+    --orange-tint:#fdf1e2;
+    --line:#e8e3e6;
+    --line-strong:#d9d2d8;
+    --maxw:1240px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--white);
+    color:var(--ink);
+    font-family:'Archivo', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{font-family:'Archivo', sans-serif;margin:0;letter-spacing:-0.02em;}
+  .label{font-family:'Archivo', sans-serif;text-transform:uppercase;letter-spacing:0.14em;font-size:13px;font-weight:600;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 40px;}
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      background: var(--white);
-      color: var(--navy);
-      font-family: var(--ff-body);
-      font-size: 1rem;
-      font-weight: 400;
-      line-height: 1.75;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
+  #progress{position:fixed;top:0;left:0;height:3px;background:var(--coral);width:0%;z-index:999;transition:width .08s linear;}
 
-    /* ── NAV ── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 200;
-      height: 5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 var(--gutter);
-      background: rgba(255,248,240,0.94);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(252,108,133,0.1);
-    }
-    .nav-logo { font-family: var(--ff-display); font-size: 1.2rem; color: var(--navy); text-decoration: none; }
-    .nav-logo span { color: var(--coral); }
-    .nav-back {
-      font-family: var(--ff-body);
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--mid);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .nav-back:hover { color: var(--coral); }
+  header{
+    position:sticky;top:0;left:0;right:0;
+    background:rgba(255,255,255,0.88);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+    z-index:100;
+  }
+  nav.wrap{display:flex;align-items:center;justify-content:space-between;height:88px;}
+  .wordmark{font-family:'Urbanist', sans-serif;font-weight:800;font-size:19px;letter-spacing:-0.01em;color:var(--coral);}
+  .navlinks{display:flex;align-items:center;gap:44px;}
+  .navlinks a.navlink{
+    font-family:'Archivo', sans-serif;font-size:13px;font-weight:600;
+    text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-soft);
+    position:relative;padding:4px 0;
+  }
+  .navlinks a.navlink:hover{color:var(--ink);}
+  .navlinks a.navlink::after{
+    content:'';position:absolute;left:0;bottom:-2px;width:0;height:4px;background:var(--coral);
+    transition:width .25s ease;
+  }
+  .navlinks a.navlink:hover::after{width:100%;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:'Archivo', sans-serif;font-size:13px;font-weight:600;
+    text-transform:uppercase;letter-spacing:0.08em;
+    padding:13px 26px;border-radius:999px;border:1px solid transparent;
+    cursor:pointer;transition:background .2s ease, color .2s ease;
+  }
+  .btn-fill{background:var(--coral);color:#fff;}
+  .btn-fill:hover{background:var(--coral-deep);}
+  .btn-nav-cv:hover{background:var(--orange);}
+  .btn-outline{border-color:var(--line-strong);color:var(--ink);background:#fff;}
+  .btn-outline:hover{background:var(--coral-tint);}
 
-    /* ── HERO ── */
-    .case-hero {
-      background: var(--navy);
-      margin-top: 5rem;
-      padding: 6rem var(--gutter) 5rem;
-    }
-    .case-hero-inner { max-width: var(--max-w); margin: 0 auto; }
+  section{position:relative;z-index:1;}
+  .section-pad{padding:64px 0;}
+  .section-title{font-size:clamp(19px,2vw,23px);font-weight:700;max-width:720px;color:var(--ink-soft);}
+  .hl{position:relative;display:inline-block;z-index:0;}
+  .hl::after{content:'';position:absolute;left:-3%;right:-3%;bottom:-0.03em;height:0.52em;z-index:-1;border-radius:2px;}
+  .hl-coral::after{background:var(--coral);}
+  .hl-orange::after{background:var(--orange);}
+  .star-content{max-width:820px;margin:0 auto;}
 
-    .label {
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--coral);
-      display: block;
-      margin-bottom: 1rem;
-    }
+  .cs-hero{padding:56px 0 0;}
+  .cs-tags{font-family:'Archivo', sans-serif;font-size:13px;text-transform:uppercase;letter-spacing:0.08em;color:var(--coral);font-weight:700;margin-bottom:20px;text-align:center;}
+  .cs-title{font-family:'Urbanist', sans-serif;font-size:100px;font-weight:900;line-height:0.88;letter-spacing:-0.03em;max-width:920px;margin:0 auto;text-align:center;}
+  .cs-intro{max-width:920px;margin:24px auto 0;color:var(--ink-soft);font-size:20px;text-align:center;}
 
-    .case-hero h1 {
-      font-family: var(--ff-display);
-      font-size: clamp(2.25rem, 5vw, 3.75rem);
-      font-weight: 400;
-      color: var(--white);
-      line-height: 1.1;
-      margin-bottom: 1.25rem;
-    }
-    .case-hero h1 em { font-style: italic; color: var(--coral); }
+  .meta-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:48px;}
+  .meta-item{background:#fff;padding:22px 24px;}
+  .meta-item .label{color:var(--ink-soft);}
+  .meta-item .value{font-family:'Archivo', sans-serif;font-weight:800;font-size:16px;margin-top:8px;}
 
-    .case-hero .intro {
-      font-size: 1.05rem;
-      color: rgba(255,248,240,0.75);
-      max-width: 52ch;
-      line-height: 1.8;
-      margin-bottom: 3rem;
-    }
+  .cs-hero-img{width:100vw;margin:48px calc(50% - 50vw) 0;background:var(--line);}
+  .cs-hero-img img{width:100%;height:auto;display:block;}
 
-    .meta-strip {
-      display: flex;
-      gap: 2.5rem;
-      flex-wrap: wrap;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      padding-top: 2rem;
-    }
-    .meta-label {
-      font-size: 0.65rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--coral);
-      display: block;
-      margin-bottom: 0.25rem;
-    }
-    .meta-value { font-size: 0.88rem; color: rgba(255,248,240,0.8); }
+  .star-tag{
+    font-family:'Archivo', sans-serif;
+    font-weight:900;
+    font-size:clamp(30px,4vw,52px);
+    max-width:820px;
+    margin-bottom:22px;
+  }
+  .prose{max-width:760px;color:var(--ink-soft);font-size:20px;margin-top:18px;}
+  .prose strong{color:var(--ink);}
 
-    /* ── HERO IMAGE - full width, no background ── */
-    .hero-image {
-      width: 100%;
-      overflow: hidden;
-      line-height: 0;
-    }
-    .hero-image img {
-      width: 100%;
-      display: block;
-    }
-    .hero-image-placeholder {
-      width: 100%;
-      aspect-ratio: 16/6;
-      background: var(--cream);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.8rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: rgba(74,58,69,0.3);
-      border-bottom: 1px solid rgba(252,108,133,0.1);
-    }
+  .pull-callout{
+    font-family:'Archivo', sans-serif;font-weight:700;font-size:clamp(19px,2vw,24px);
+    max-width:640px;margin-top:28px;color:var(--ink);
+  }
+  .pull-callout cite{font-style:normal;font-weight:500;color:var(--ink-soft);font-size:15px;display:block;margin-top:10px;}
 
-    /* ── SECTIONS ── */
-    .section {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 6rem var(--gutter);
-    }
+  .cs-figure{margin:36px 0 0;max-width:760px;}
+  .cs-figure img{width:100%;height:auto;border-radius:8px;background:var(--line);}
+  .cs-caption{color:var(--ink-soft);font-size:14px;margin-top:12px;}
+  .cs-figure-full{width:100vw;max-width:100vw;margin:40px calc(50% - 50vw) 0;}
+  .cs-figure-full img{border-radius:0;}
+  .cs-figure-full .cs-caption{padding:12px 40px 0;}
 
-    h2 {
-      font-family: var(--ff-display);
-      font-size: clamp(1.6rem, 3vw, 2rem);
-      font-weight: 400;
-      color: var(--navy);
-      line-height: 1.2;
-      margin-bottom: 1.25rem;
-    }
-    h2 em { font-style: italic; color: var(--coral); }
+  .process-pills{list-style:none;margin:28px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:10px;}
+  .process-pill{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--coral-tint);color:var(--ink);border-radius:999px;
+    padding:9px 18px 9px 14px;font-family:'Archivo', sans-serif;font-size:14px;font-weight:700;
+  }
+  .pill-num{font-family:'Archivo', sans-serif;font-weight:900;font-size:12px;color:var(--coral-deep);}
 
-    h3 {
-      font-family: var(--ff-display);
-      font-size: 1.2rem;
-      font-weight: 400;
-      color: var(--navy);
-      margin-bottom: 0.5rem;
-    }
+  .hmw-list{list-style:none;margin:24px 0 0;padding:0;border-top:1px solid var(--line);}
+  .hmw-item{display:flex;align-items:baseline;gap:20px;padding:16px 0;border-bottom:1px solid var(--line);}
+  .hmw-tag{font-family:'Archivo', sans-serif;font-weight:900;font-size:12px;letter-spacing:0.08em;color:var(--orange);flex-shrink:0;}
+  .hmw-text{font-family:'Archivo', sans-serif;font-weight:700;font-size:19px;max-width:640px;}
 
-    p { color: var(--mid); line-height: 1.8; margin-bottom: 1.25rem; }
-    p:last-child { margin-bottom: 0; }
+  .next-card{
+    display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;
+    background:var(--coral-tint);border-radius:12px;padding:48px;margin-top:8px;
+  }
+  .next-card .label{color:var(--coral);margin-bottom:14px;display:block;}
+  .next-card h3{font-size:clamp(22px,2.6vw,32px);font-weight:800;}
+  .next-card p{color:var(--ink-soft);font-size:16px;margin-top:14px;}
+  .next-card img{width:100%;border-radius:8px;aspect-ratio:4/3;object-fit:cover;}
 
-    .divider { border: none; border-top: 1px solid rgba(52,40,62,0.08); max-width: var(--max-w); margin: 0 auto; }
+  footer{padding:34px 0;border-top:1px solid var(--line);}
+  .footer-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+  .footer-row .label{color:var(--ink-soft);}
 
-    /* ── STATS - coral/orange/peach ── */
-    .stats-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.25rem;
-      margin: 3rem 0;
-    }
-    .stat-card {
-      border-radius: 16px;
-      padding: 2rem 1.5rem;
-      text-align: center;
-    }
-    .stat-card:nth-child(1) { background: var(--navy); }
-    .stat-card:nth-child(2) { background: var(--navy); }
-    .stat-card:nth-child(3) { background: var(--navy); }
-    .stat-number {
-      font-family: var(--ff-display);
-      font-size: 2.75rem;
-      color: var(--white);
-      line-height: 1;
-      margin-bottom: 0.5rem;
-      display: block;
-    }
-    .stat-label { font-size: 0.82rem; font-weight: 500; color: rgba(255,255,255,0.85); line-height: 1.4; }
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
 
-    /* ── TOOLS ── */
-    .tools-grid { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1.5rem 0 0; }
-    .tool-pill {
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--white);
-      background: var(--coral);
-      border-radius: 100px;
-      padding: 0.45rem 1.1rem;
-      letter-spacing: 0.03em;
-    }
-
-    .callout {
-      padding: 2rem 0;
-      margin: 3rem 0;
-      border-left: 3px solid var(--coral);
-      padding-left: 2rem;
-    }
-    .callout p {
-      font-family: var(--ff-display);
-      font-size: clamp(1.05rem, 2vw, 1.3rem);
-      font-style: italic;
-      color: var(--navy);
-      line-height: 1.5;
-      margin: 0;
-    }
-    .callout p em { color: var(--coral); font-style: normal; }
-
-    /* ── PROCESS AT A GLANCE ── */
-    .glance-row { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 2rem 0 0; }
-    .glance-step {
-      display: flex; align-items: center; gap: 0.65rem;
-      background: var(--cream); border-radius: 100px;
-      padding: 0.55rem 1.15rem 0.55rem 0.55rem;
-    }
-    .glance-num {
-      width: 26px; height: 26px; border-radius: 50%; background: var(--coral); color: var(--white);
-      font-size: 0.68rem; font-weight: 600; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-    }
-    .glance-label { font-size: 0.8rem; font-weight: 500; color: var(--navy); white-space: nowrap; }
-
-    /* ── HOW MIGHT WE LIST ── */
-    .hmw-list { list-style: none; margin: 1.5rem 0 0; padding: 0; }
-    .hmw-list li { position: relative; padding-left: 1.85rem; margin-bottom: 1.1rem; font-size: 1rem; color: var(--mid); line-height: 1.7; }
-    .hmw-list li::before { content: '✦'; position: absolute; left: 0; top: 0.1em; color: var(--coral); font-size: 0.85em; }
-    .hmw-list li:last-child { margin-bottom: 0; }
-
-    /* ── METHODOLOGY GRID ── */
-    .method-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin: 2rem 0 0; }
-    .method-grid h4 { font-family: var(--ff-display); font-size: 1rem; font-weight: 400; color: var(--navy); margin-bottom: 0.85rem; }
-    .method-grid ol, .method-grid ul { padding-left: 1.15rem; }
-    .method-grid li { font-size: 0.92rem; color: var(--mid); margin-bottom: 0.6rem; line-height: 1.6; }
-    .method-grid li:last-child { margin-bottom: 0; }
-
-    /* ── INSIGHT LIST - single column with icon ── */
-    .insight-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin: 2.5rem 0; }
-    .insight-item {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 1rem;
-      background: var(--cream);
-      border-radius: 12px;
-      padding: 1.5rem;
-    }
-    .insight-icon {
-      width: 44px; height: 44px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .insight-icon svg { width: 22px; height: 22px; stroke: white; fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
-    .insight-icon.coral  { background: var(--coral); }
-    .insight-icon.orange { background: var(--orange); }
-    .insight-icon.peach  { background: var(--peach); }
-    .insight-text h4 {
-      font-family: var(--ff-display);
-      font-size: 1.1rem;
-      font-weight: 400;
-      color: var(--navy);
-      margin-bottom: 0.35rem;
-    }
-    .insight-text p { font-size: 0.92rem; margin: 0; }
-
-    /* ── IMAGE PLACEHOLDERS ── */
-    .img-placeholder {
-      background: var(--cream);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.75rem;
-      font-weight: 500;
-      color: rgba(74,58,69,0.3);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      border: 2px dashed rgba(252,108,133,0.2);
-    }
-    .img-placeholder.std  { aspect-ratio: 16/9; }
-    .img-placeholder.wide { aspect-ratio: 21/9; }
-    .img-placeholder.tall { aspect-ratio: 3/4; }
-    .img-placeholder.dark-ph { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.15); color: rgba(255,255,255,0.3); }
-
-    .img-row { display: flex; flex-direction: column; gap: 1.5rem; margin: 2.5rem 0; }
-    .step-img { margin-top: 1.5rem; }
-
-    /* ── JOURNEY ── */
-    .journey-stage { display: grid; grid-template-columns: 44px 1fr; gap: 1.25rem; padding-bottom: 2rem; position: relative; }
-    .journey-stage:not(:last-child)::after {
-      content: ''; position: absolute; left: 21px; top: 44px; bottom: 0; width: 2px; background: var(--cream);
-    }
-    .journey-icon {
-      width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center;
-      justify-content: center; flex-shrink: 0; font-size: 1.2rem; position: relative; z-index: 1;
-    }
-    .journey-icon.before { background: rgba(74,58,69,0.08); }
-    .journey-icon.after { background: var(--coral); color: var(--white); font-weight: 600; font-size: 1rem; }
-    .journey-phase-label {
-      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--coral); margin-bottom: 1.25rem; margin-top: 0; display: block;
-    }
-
-    /* ── JOURNEY - TWO COLUMN ── */
-    .journey-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin: 2.5rem 0; }
-    .journey-column { display: flex; flex-direction: column; }
-
-    /* ── FLOW / STORYBOARD ── */
-    .flow-panel, .storyboard-panel { margin-bottom: 2.5rem; }
-    .flow-panel:last-child, .storyboard-panel:last-child { margin-bottom: 0; }
-    .flow-caption, .storyboard-caption { margin-top: 0.85rem; }
-    .flow-caption h4, .storyboard-caption h4 {
-      font-family: var(--ff-display); font-size: 1rem; font-weight: 400; color: var(--navy); margin-bottom: 0.25rem;
-      display: flex; align-items: center;
-    }
-    .flow-caption p, .storyboard-caption p { font-size: 0.9rem; margin: 0; }
-    .storyboard-num {
-      display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px;
-      border-radius: 50%; background: var(--coral); color: white; font-size: 0.7rem; font-weight: 600;
-      margin-right: 0.6rem; flex-shrink: 0; font-family: var(--ff-body);
-    }
-
-    /* ── ANNOTATIONS ── */
-    .annotation-list { display: flex; flex-direction: column; gap: 1rem; margin: 1.5rem 0 0; }
-    .annotation-item { display: flex; gap: 1rem; align-items: flex-start; background: var(--cream); border-radius: 10px; padding: 1.1rem 1.25rem; }
-    .annotation-tag {
-      flex-shrink: 0; font-family: var(--ff-body); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.06em;
-      text-transform: uppercase; color: white; border-radius: 100px; padding: 0.3rem 0.7rem; white-space: nowrap;
-    }
-    .annotation-tag.issue { background: var(--coral); }
-    .annotation-tag.fixed { background: var(--orange); }
-    .annotation-item p { font-size: 0.9rem; margin: 0; }
-
-    /* ── DARK SECTION ── */
-    .dark-section { background: var(--navy); padding: 6rem var(--gutter); }
-    .dark-inner { max-width: var(--max-w); margin: 0 auto; }
-    .dark-section .label { color: var(--peach); }
-    .dark-section h2 { color: var(--white); }
-    .dark-section h3 { color: var(--white); }
-    .dark-section p { color: rgba(255,248,240,0.75); }
-
-    /* ── NEXT ── */
-    .next-section { background: var(--cream); padding: 5rem var(--gutter); text-align: center; }
-    .next-section h2 { font-family: var(--ff-display); font-weight: 400; margin-bottom: 0.75rem; }
-    .next-section p { max-width: 44ch; margin: 0 auto 2.5rem; }
-
-    .btn-primary {
-      display: inline-block; padding: 0.85rem 2rem;
-      background: var(--coral); color: var(--white);
-      font-family: var(--ff-body); font-size: 0.72rem; font-weight: 600;
-      letter-spacing: 0.08em; text-transform: uppercase;
-      border-radius: 100px; text-decoration: none;
-      transition: background 0.2s, transform 0.2s; margin: 0.4rem;
-    }
-    .btn-primary:hover { background: var(--orange); transform: translateY(-2px); }
-    .btn-ghost {
-      display: inline-block; padding: 0.85rem 2rem;
-      background: transparent; color: var(--navy);
-      font-family: var(--ff-body); font-size: 0.72rem; font-weight: 600;
-      letter-spacing: 0.08em; text-transform: uppercase;
-      border-radius: 100px; border: 1.5px solid rgba(52,40,62,0.2);
-      text-decoration: none; transition: all 0.2s; margin: 0.4rem;
-    }
-    .btn-ghost:hover { border-color: var(--coral); color: var(--coral); transform: translateY(-2px); }
-
-    /* ── WAVE + FOOTER ── */
-    .wave-wrap { display: block; line-height: 0; overflow: hidden; margin-bottom: -2px; background: var(--cream); }
-    footer { background: var(--coral); padding: 1.75rem var(--gutter); }
-    .footer-inner { max-width: 1140px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
-    footer p { font-size: 1rem; color: rgba(255,255,255,0.85); }
-    footer a { font-size: 1rem; color: var(--white); text-decoration: none; }
-    footer a:hover { text-decoration: underline; }
-
-    /* ── ANIMATIONS ── */
-    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
-    .fade-up.visible { opacity: 1; transform: translateY(0); }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 680px) {
-      .stats-row { grid-template-columns: 1fr; }
-      .img-row { grid-template-columns: 1fr; }
-      .meta-strip { gap: 1.25rem; }
-      .method-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .journey-columns { grid-template-columns: 1fr; gap: 1rem; }
-      .insight-list { grid-template-columns: 1fr; }
-      .footer-inner { flex-direction: column; gap: 0.6rem; text-align: center; }
-    }
-  </style>
+  @media (max-width:900px){
+    .meta-grid{grid-template-columns:1fr 1fr;}
+    .next-card{grid-template-columns:1fr;padding:32px;}
+    .navlinks{gap:20px;}
+    .wrap{padding:0 22px;}
+  }
+  @media (max-width:600px){
+    .navlinks a.navlink:not(.btn){display:none;}
+    .cs-title{font-size:56px;}
+  }
+</style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <a class="nav-logo" href="index.html">Caroline <span>Edwards</span></a>
-    <a class="nav-back" href="index.html">← Back to Home</a>
+<div id="progress"></div>
+
+<header>
+  <nav class="wrap">
+    <a href="index.html#top" class="wordmark">mostlycaroline.com</a>
+    <div class="navlinks">
+      <a href="index.html#top" class="navlink">Home</a>
+      <a href="index.html#about" class="navlink">About</a>
+      <a href="index.html#work" class="navlink">Work</a>
+      <a href="index.html#contact" class="navlink">Contact</a>
+      <a href="https://mostlycaroline.com/CarolineEdwards_CV.pdf" class="btn btn-fill btn-nav-cv" target="_blank" rel="noopener">Download CV</a>
+    </div>
   </nav>
+</header>
 
-  <!-- HERO -->
-  <div class="case-hero">
-    <div class="case-hero-inner">
-      <span class="label">UX Case Study · Behaviour Change · Mobile App</span>
-      <h1>HabitHero - <em>designed for</em><br>the days that don't go to plan</h1>
-      <p class="intro">An end-to-end behaviour change product for healthcare client PrimeCare. Most habit-tracking apps punish users for missing days. HabitHero was designed to do the opposite.</p>
-      <div class="meta-strip">
-        <div class="meta-item"><span class="meta-label">Client</span><span class="meta-value">PrimeCare</span></div>
-        <div class="meta-item"><span class="meta-label">My Role</span><span class="meta-value">Lead UX/UI Designer</span></div>
-        <div class="meta-item"><span class="meta-label">Duration</span><span class="meta-value">Feb – July 2026</span></div>
-        <div class="meta-item"><span class="meta-label">Platform</span><span class="meta-value">Existing Mobile App, New Feature</span></div>
+<main>
+
+  <section class="cs-hero section-pad" style="padding-bottom:0;">
+    <div class="wrap">
+      <div class="cs-tags reveal">UX Case Study &middot; Behaviour Change &middot; Mobile App</div>
+      <h1 class="cs-title reveal">Habit Hero</h1>
+      <p class="cs-intro reveal">Designed for the days that don't go to plan. A behaviour change feature for healthcare client PrimeCare, built around one idea: don't punish people for missing a day.</p>
+
+      <div class="meta-grid reveal">
+        <div class="meta-item"><div class="label">Client</div><div class="value">PrimeCare</div></div>
+        <div class="meta-item"><div class="label">My Role</div><div class="value">Product Designer</div></div>
+        <div class="meta-item"><div class="label">Duration</div><div class="value">Feb - July 2026</div></div>
+        <div class="meta-item"><div class="label">Platform</div><div class="value">Mobile App</div></div>
       </div>
     </div>
-  </div>
 
-  <!-- HERO IMAGE - full width -->
-  <div class="hero-image">
-    <img src="hh-hero.png" alt="HabitHero's daily dashboard on a phone screen, showing today's steps, distance, calories, streak, and Life Days used, resting on a desk between work notes and home life" style="width:100%; display:block;" />
-  </div>
+    <figure class="cs-hero-img reveal">
+      <img src="https://mostlycaroline.com/hh-hero.png" alt="HabitHero's daily dashboard on a phone screen, showing today's steps, distance, calories, streak, and Life Days used">
+    </figure>
+  </section>
 
-  <!-- OVERVIEW -->
-  <div class="section fade-up">
-    <span class="label">Overview</span>
-    <h2>The brief: build a tracker people <em>actually keep using</em></h2>
-    <p>PrimeCare needed a digital product to help patients build sustainable health habits - tracking steps, distance, and calories across daily, weekly, and monthly views. The challenge wasn't building a tracker. It was building one that people would stick with.</p>
+  <section class="section-pad">
+    <div class="wrap">
+    <div class="star-content">
+      <h2 class="star-tag reveal"><span class="hl hl-coral">Situation</span></h2>
+      <h3 class="section-title reveal">Habit apps punish bad days</h3>
+      <p class="prose reveal">PrimeCare needed a digital product to help patients build sustainable health habits. Research quickly surfaced why most habit-tracking apps fail: a single missed day gets treated as failure, with no distinction between "life got in the way" and "gave up." Every patient who abandons the app after one bad day is a habit that never gets the chance to stick.</p>
+      <p class="pull-callout reveal">"I gave up after missing two days. There didn't seem to be any point carrying on."<cite>- Research participant</cite></p>
+    </div>
+    </div>
+  </section>
 
-    <div class="stats-row">
-      <div class="stat-card"><span class="stat-number">7</span><span class="stat-label">Usability issues identified and resolved</span></div>
-      <div class="stat-card"><span class="stat-number">AA</span><span class="stat-label">WCAG 2.1 AA target throughout design</span></div>
-      <div class="stat-card"><span class="stat-number">1</span><span class="stat-label">Feature that changed everything</span></div>
+  <section class="section-pad">
+    <div class="wrap">
+    <div class="star-content">
+      <h2 class="star-tag reveal"><span class="hl hl-orange">Insight</span></h2>
+      <h3 class="section-title reveal">A bad day and giving up looked identical</h3>
+      <p class="prose reveal">Interviews and competitive analysis kept surfacing the same three patterns: streaks punished any missed day, progress felt invisible next to what had been missed, and no product accounted for real life getting in the way. Reframing the job to be done - protect progress, don't police it - pointed straight at three questions.</p>
+      <ol class="hmw-list">
+        <li class="hmw-item reveal"><span class="hmw-tag">HMW</span><span class="hmw-text">make a missed day feel different from giving up?</span></li>
+        <li class="hmw-item reveal"><span class="hmw-tag">HMW</span><span class="hmw-text">make progress visible, not just what's been missed?</span></li>
+        <li class="hmw-item reveal"><span class="hmw-tag">HMW</span><span class="hmw-text">accommodate real life without diluting the habit?</span></li>
+      </ol>
+    </div>
+    </div>
+  </section>
+
+  <section class="section-pad">
+    <div class="wrap">
+    <div class="star-content">
+      <h2 class="star-tag reveal"><span class="hl hl-coral">Task</span></h2>
+      <h3 class="section-title reveal">Build a tracker people keep using</h3>
+      <p class="prose reveal">Design a feature for PrimeCare's existing app that helps patients build lasting habits - without the shame-based mechanics that were driving people to quit. The target: WCAG 2.1 AA throughout, validated through real usability testing rather than assumption.</p>
+      <ol class="process-pills">
+        <li class="process-pill reveal"><span class="pill-num">01</span>Discovery &amp; Research</li>
+        <li class="process-pill reveal"><span class="pill-num">02</span>MVP Usability Testing</li>
+        <li class="process-pill reveal"><span class="pill-num">03</span>Synthesis &amp; Opportunity</li>
+        <li class="process-pill reveal"><span class="pill-num">04</span>Lo-fi Sketches</li>
+        <li class="process-pill reveal"><span class="pill-num">05</span>Mid-fi Wireframes</li>
+        <li class="process-pill reveal"><span class="pill-num">06</span>Usability Testing</li>
+        <li class="process-pill reveal"><span class="pill-num">07</span>Hi-fi Design System</li>
+        <li class="process-pill reveal"><span class="pill-num">08</span>Handover Notes &amp; Dev Annotations</li>
+        <li class="process-pill reveal"><span class="pill-num">09</span>Reflection</li>
+      </ol>
+    </div>
+    </div>
+  </section>
+
+  <section class="section-pad">
+    <div class="wrap">
+    <div class="star-content">
+      <h2 class="star-tag reveal"><span class="hl hl-orange">Action</span></h2>
+      <h3 class="section-title reveal">Life Day - permission to be human</h3>
+      <p class="prose reveal">I led research, journey mapping and three rounds of usability testing. Interviews and competitive analysis confirmed streak-breaking as the single biggest trigger for app abandonment - which shaped the core feature: <strong>Life Day</strong>, a shield users can log instead of a missed day. Their streak holds. Their progress stays protected. Life Days are earned, not given - three per month for every ten consecutive days tracked.</p>
+      <p class="prose reveal">Mid-fi usability testing on the feature surfaced seven issues, from users not understanding what a Life Day is to needing more prominent access to it - all resolved before the design moved into a full design system across 20+ hi-fi screens.</p>
+    </div>
     </div>
 
-    <span class="label">Tools</span>
-    <div class="tools-grid">
-      <span class="tool-pill">Figma</span>
-      <span class="tool-pill">Figma Motion</span>
-      <span class="tool-pill">Figma Dev Mode</span>
-      <span class="tool-pill">Miro</span>
-      <span class="tool-pill">Adobe Suite</span>
-      <span class="tool-pill">In-person usability testing</span>
+    <figure class="cs-figure cs-figure-full reveal">
+      <img src="https://mostlycaroline.com/hh-prototype.png" alt="Composite of HabitHero hi-fi screens including calendar, weekly chart, navigation and dashboard">
+      <div class="cs-caption wrap">Validated flows moved into a full Figma design system across 20+ screens.</div>
+    </figure>
+  </section>
+
+  <section class="section-pad">
+    <div class="wrap">
+    <div class="star-content">
+      <h2 class="star-tag reveal"><span class="hl hl-coral">Result</span></h2>
+      <h3 class="section-title reveal">Signed off, and tested well</h3>
+      <p class="prose reveal">Usability testing on the mid-fi prototype validated HabitHero's core flows and confirmed Life Day achieved exactly what the research called for. The design was signed off for development handoff via Figma Dev Mode.</p>
+      <p class="pull-callout reveal">"This actually makes me want to come back tomorrow."<cite>- Usability testing participant</cite></p>
     </div>
-
-    <span class="label" style="margin-top:2.5rem;">Process</span>
-    <div class="glance-row">
-      <div class="glance-step"><span class="glance-num">1</span><span class="glance-label">Discovery & Research</span></div>
-      <div class="glance-step"><span class="glance-num">2</span><span class="glance-label">MVP Usability Testing</span></div>
-      <div class="glance-step"><span class="glance-num">3</span><span class="glance-label">Synthesis & Opportunity</span></div>
-      <div class="glance-step"><span class="glance-num">4</span><span class="glance-label">Lo-fi Sketches</span></div>
-      <div class="glance-step"><span class="glance-num">5</span><span class="glance-label">Mid-fi Wireframes</span></div>
-      <div class="glance-step"><span class="glance-num">6</span><span class="glance-label">Usability Testing</span></div>
-      <div class="glance-step"><span class="glance-num">7</span><span class="glance-label">Hi-fi Design System</span></div>
-      <div class="glance-step"><span class="glance-num">8</span><span class="glance-label">Handover Notes & Dev Annotations</span></div>
-      <div class="glance-step"><span class="glance-num">9</span><span class="glance-label">Reflection</span></div>
     </div>
-  </div>
+  </section>
 
-  <hr class="divider">
-
-  <!-- THE PROBLEM -->
-  <div class="section fade-up">
-    <span class="label">The Problem</span>
-    <h2>Why do habit apps <em>fail people?</em></h2>
-    <p>Before designing anything, I conducted user interviews and competitive analysis with PrimeCare's patient group - people managing long-term health conditions who needed sustainable behaviour change, not gamified pressure.</p>
-    <p>The pattern held across every product tested: a single missed day was treated as failure, with no distinction between "life got in the way" and "gave up." For a healthcare client, that's more than a frustrating detail. Every patient who abandons the app after one bad day is a habit that never gets the chance to stick, and a loss of the engagement data PrimeCare needed to support them.</p>
-
-    <div class="callout">
-      <p>"I gave up after missing two days. There didn't seem to be any point carrying on." <em>- Research participant</em></p>
+  <section class="section-pad">
+    <div class="wrap">
+      <a href="https://medium.com/design-bootcamp/less-friction-for-parents-less-admin-for-schools-880387ad793b" target="_blank" rel="noopener" class="next-card reveal">
+        <div>
+          <span class="label">What's next</span>
+          <h3>Less Friction for Parents, Less Admin for Schools</h3>
+          <p>A redesign of Arbor's event ticket journey for school parents.</p>
+        </div>
+        <img src="https://miro.medium.com/v2/resize:fit:1200/1*F_v5KMhdJT93qFSeG2E0gw.png" alt="Parent outside a primary school using a redesigned Arbor app">
+      </a>
     </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-row">
+    <span class="label">© 2026 Caroline Edwards</span>
   </div>
+</footer>
 
-  <!-- RESEARCH -->
-  <div class="section fade-up">
-    <span class="label">Research & Key Insights</span>
-    <h2>Three patterns, <em>one root cause</em></h2>
-    <p>Synthesising the interviews against the competitive analysis surfaced three recurring patterns behind every abandoned habit-tracking app.</p>
-
-    <div class="insight-list">
-      <div class="insight-item">
-        <div class="insight-icon coral" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-        </div>
-        <div class="insight-text">
-          <h4>Streaks punish users</h4>
-          <p>Missing a day broke streaks - the single biggest trigger for app abandonment in every product tested.</p>
-        </div>
-      </div>
-      <div class="insight-item">
-        <div class="insight-icon orange" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-        </div>
-        <div class="insight-text">
-          <h4>Progress felt invisible</h4>
-          <p>Users could only see what they'd missed, never how far they'd come. Motivation collapsed as a result.</p>
-        </div>
-      </div>
-      <div class="insight-item">
-        <div class="insight-icon peach" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        </div>
-        <div class="insight-text">
-          <h4>One size doesn't fit all</h4>
-          <p>Bad days - illness, family, travel - weren't accommodated by any existing solution. Life was treated as failure.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- PERSONA -->
-  <div class="section fade-up">
-    <span class="label">Persona</span>
-    <h2>Meet <em>Alex</em></h2>
-    <a href="hh-persona.png" target="_blank" rel="noopener" style="display: block; margin-bottom: 0.75rem;">
-      <img src="hh-persona.png" alt="Persona profile for Alex, the time-constrained tracker: a 35-50 year old working professional in the UK, with goals, frustrations, motivations, challenges, and behaviours drawn from research" style="width: 100%; height: auto; display: block; border-radius: 12px; border: 1px solid rgba(52,40,62,0.08);" />
-    </a>
-    <p style="font-size: 0.78rem; color: var(--mid); margin-bottom: 2rem;">Click image to view full size</p>
-
-    <p>Alex was built from the interview data, not invented before it. Every goal and frustration above came directly from research participants navigating the same reality: busy schedules, shifting energy levels, and caring responsibilities that most tracking apps don't account for.</p>
-
-    <div class="callout">
-      <p>"I don't need another thing telling me I've failed." <em>- Research participant</em></p>
-    </div>
-  </div>
-
-  <!-- DEFINING THE OPPORTUNITY -->
-  <div class="section fade-up">
-    <span class="label">Defining the Opportunity</span>
-    <h2>What is Alex actually <em>trying to do?</em></h2>
-    <p>The insight wasn't that Alex needed more motivation. It was that the app needed to tell the difference between giving up and having a bad day - and respond to each differently. That reframing is what the design opportunity below actually targets.</p>
-
-    <div class="callout">
-      <p>"When I have a day I can't keep up with my habit, I want a way to protect the progress I've already made, so one bad day doesn't feel like starting over." <em>- Job to be done</em></p>
-    </div>
-
-    <span class="label" style="margin-top:2.5rem;">How might we...</span>
-    <ul class="hmw-list">
-      <li>...make a missed day feel different from giving up?</li>
-      <li>...make progress visible, rather than just what's been missed?</li>
-      <li>...accommodate real life without diluting the habit?</li>
-    </ul>
-  </div>
-
-  <hr class="divider">
-
-  <!-- INITIAL SKETCHES -->
-  <div class="section fade-up">
-    <span class="label">Initial Sketches</span>
-    <h2>Testing structure <em>before style</em></h2>
-    <p>Early analysis of the HabitHero MVP found users struggled with visual flow and information hierarchy, so these lo-fi sketches tested structure before style. Some concepts leaned on high-level summaries - progress rings, weekly bars, streaks, milestones - for quick check-ins during a busy day. Others surfaced richer data - steps, calories, sleep, heart rate, hydration, trends - for people who trust evidence over encouragement. Card-based layouts, single-day summaries, and weekly trend graphs each answered the same question differently: how much should Alex see at once, and when? Light gamification - leaderboards, milestone pop-ups, encouraging messages - was tested too, alongside different navigation patterns, to see what felt supportive rather than competitive.</p>
-    <p><strong>Why this direction:</strong> Alex is a busy professional who wants insight and measurable progress, not another leaderboard to keep up with. Locking in visual design before testing structure and motivation would have meant polishing the wrong screen. The calm, reflection-first concepts won out here for the same reason Life Day did later - competition wasn't the fix. Clarity and permission were.</p>
-  </div>
-
-  <div class="hero-image" style="margin-bottom: 60px;">
-    <a href="hh-lowfi.png" target="_blank" rel="noopener" style="display: block; line-height: 0;">
-      <img src="hh-lowfi.png" alt="Four photos of hand-drawn lo-fi wireframe sketches on lined paper, exploring HabitHero dashboard concepts: a leaderboard and progress-ring layout, a data-heavy view with steps, distance, calories and streaks, a swipe-navigation concept, an overlay screen introducing a shield-style Life Day icon, and a monthly calendar view" style="width: 100%; display: block;" />
-    </a>
-  </div>
-
-  <!-- LIFE DAY - DARK -->
-  <div class="dark-section">
-    <div class="dark-inner fade-up">
-      <span class="label">The Recommended Direction</span>
-      <h2>Life Day - <em>permission to be human</em></h2>
-      <p>The defining feature of HabitHero emerged directly from research. Users didn't need more motivation - they needed permission to have a bad day without losing everything they'd built.</p>
-      <p>A Life Day acts as a shield. When life gets in the way, a user logs a Life Day instead of a missed day. Their streak is preserved. Their progress is protected. They come back tomorrow instead of giving up entirely.</p>
-
-      <div class="callout" style="border-left: 3px solid var(--coral); padding: 1.5rem 0 1.5rem 2rem; margin: 3rem 0;">
-        <p style="color:var(--white); font-family:'Playfair Display',serif; font-style:italic;">Life Days are <em style="color:var(--coral); font-style:normal;">earned, not given</em> - 3 per month for every 10 consecutive days tracked. Compassion built on responsibility.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- USER JOURNEY -->
-  <div class="section fade-up">
-    <span class="label">User Journey</span>
-    <h2>From <em>one bad day</em> to giving up</h2>
-    <p>Mapping Alex's journey through a typical existing habit app showed exactly where the emotional damage happened, and confirmed Life Day as the point to intervene.</p>
-
-    <a href="hh-userjourney.png" target="_blank" rel="noopener" style="display: block; margin-bottom: 0.75rem;">
-      <img src="hh-userjourney.png" alt="User journey map for HabitHero across five stages - Discovery, Registration, Onboarding and First Use, Using, and Sharing - showing actions, touchpoints, needs and pains, customer feeling, and opportunities at each stage" style="width: 100%; height: auto; display: block; border-radius: 12px; border: 1px solid rgba(52,40,62,0.08);" />
-    </a>
-    <p style="font-size: 0.78rem; color: var(--mid); margin-bottom: 2rem;">Click image to view full size</p>
-
-    <p>Zooming into the single stage that decides whether someone stays or goes - a bad day during Using - shows the shift Life Day makes:</p>
-
-    <div class="journey-columns">
-      <div class="journey-column">
-        <span class="journey-phase-label">Before Life Day</span>
-        <div class="journey-stage">
-          <div class="journey-icon before">1</div>
-          <div class="step-content"><h3>Building momentum</h3><p>Alex tracks daily, streak climbing, feeling good about the habit.</p></div>
-        </div>
-        <div class="journey-stage">
-          <div class="journey-icon before">2</div>
-          <div class="step-content"><h3>Life gets in the way</h3><p>Illness, travel, or a hard week at work. The habit slips for a day.</p></div>
-        </div>
-        <div class="journey-stage">
-          <div class="journey-icon before">3</div>
-          <div class="step-content"><h3>Streak breaks</h3><p>The app registers a failure. No distinction between "gave up" and "had a bad day."</p></div>
-        </div>
-        <div class="journey-stage">
-          <div class="journey-icon before">4</div>
-          <div class="step-content"><h3>Abandonment</h3><p>Motivation collapses. Alex deletes the app rather than face restarting from zero.</p></div>
-        </div>
-      </div>
-
-      <div class="journey-column">
-        <span class="journey-phase-label">After Life Day</span>
-        <div class="journey-stage">
-          <div class="journey-icon after">1</div>
-          <div class="step-content"><h3>Same bad day happens</h3><p>Illness, travel, or a hard week. Nothing about Alex's life has changed.</p></div>
-        </div>
-        <div class="journey-stage">
-          <div class="journey-icon after">2</div>
-          <div class="step-content"><h3>Logs a Life Day</h3><p>Instead of a missed day, Alex marks it as a Life Day. The streak holds.</p></div>
-        </div>
-        <div class="journey-stage">
-          <div class="journey-icon after">3</div>
-          <div class="step-content"><h3>Feels supported, not judged</h3><p>The product acknowledges real life instead of punishing it.</p></div>
-        </div>
-        <div class="journey-stage">
-          <div class="journey-icon after">4</div>
-          <div class="step-content"><h3>Returns tomorrow</h3><p>Progress feels intact, so Alex comes straight back the next day.</p></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <hr class="divider">
-
-  <!-- USER FLOW -->
-  <div class="section fade-up">
-    <span class="label">User Flow</span>
-    <h2>Three paths, <em>one system</em></h2>
-    <p>Whether Alex is logging today, catching up on yesterday, or returning after several missed days, every path treats a Life Day as a shield rather than a failure.</p>
-
-    <a href="hh-userflow.png" target="_blank" rel="noopener" style="display: block; margin-bottom: 0.75rem;">
-      <img src="hh-userflow.png" alt="HabitHero user flow diagram showing three paths - Happy Today, Alternative Yesterday, and Retroactive multiple days in the past - all converging on the Life Day mechanic, which shields a user's streak and progress when they mark a day as a Life Day instead of a missed day" style="width: 100%; height: auto; display: block; border-radius: 12px; border: 1px solid rgba(52,40,62,0.08);" />
-    </a>
-    <p style="font-size: 0.78rem; color: var(--mid); margin-bottom: 2rem;">Click image to view full size</p>
-
-    <p>Every path - happy, alternative, or retroactive - runs through the same question: is this day covered by a Life Day? Users stay in control of that choice, and the system only steps in to confirm they have enough Life Days available to cover it.</p>
-  </div>
-
-  <hr class="divider">
-
-  <!-- MID-FI & USABILITY FEEDBACK -->
-  <div class="section fade-up">
-    <span class="label">Mid-Fi & Usability Feedback</span>
-    <h2>What testing <em>actually found</em></h2>
-    <p>Before moving into hi-fi, the mid-fidelity prototype went through moderated usability testing on the Life Day feature. Seven issues came out of it, triaged by severity: high-severity issues blocked understanding or adoption outright, medium-severity issues caused friction without stopping the task.</p>
-
-    <a href="hh-testingresults.png" target="_blank" rel="noopener" style="display: block; margin-bottom: 0.75rem;">
-      <img src="hh-testingresults.png" alt="Usability testing results table listing seven issues found on the Life Day feature, each with a recommendation, severity rating of high or medium, and rationale for why it matters" style="width: 100%; height: auto; display: block; border-radius: 12px; border: 1px solid rgba(52,40,62,0.08);" />
-    </a>
-    <p style="font-size: 0.78rem; color: var(--mid); margin-bottom: 2rem;">Click image to view full size</p>
-
-    <div class="annotation-list">
-      <div class="annotation-item"><span class="annotation-tag issue">High</span><p>Users didn't understand what a Life Day actually is. Fixed with a full-page takeover screen explaining what it is, how it's earned, and why it matters, rather than a dismissible popup.</p></div>
-      <div class="annotation-item"><span class="annotation-tag issue">High</span><p>Goal rings weren't clearly linked to specific goals. Fixed by adding labels, colour coding, and legends so each ring reads at a glance.</p></div>
-      <div class="annotation-item"><span class="annotation-tag issue">High</span><p>Users asked whether goals could be adjusted if tied to an insurance package. Flagged for full clarification from PrimeCare before shipping any goal-editing guidance.</p></div>
-      <div class="annotation-item"><span class="annotation-tag issue">High</span><p>Users questioned how streak rewards and incentives actually worked. Fixed with clearer messaging on how streaks are earned and what breaking one costs.</p></div>
-      <div class="annotation-item"><span class="annotation-tag fixed">Medium</span><p>Users expected to add a Life Day through the Activity nav, not just the header's one-tap option. Fixed by increasing the Life Day button's prominence in the header and reorganising footer navigation to put Add centrally, with Activity and Life Day discoverable from there.</p></div>
-      <div class="annotation-item"><span class="annotation-tag fixed">Medium</span><p>Users weren't sure if a Life Day could be undone, cancelled, or reinstated. Fixed with confirmation prompts and clearer guidance on editing Life Days.</p></div>
-      <div class="annotation-item"><span class="annotation-tag fixed">Medium</span><p>Users worried they wouldn't think to use Life Day during a genuinely hard day. Addressed with timely nudges via notifications, prompting the option when it's most useful.</p></div>
-    </div>
-
-    <p style="margin-top:2.5rem;">Always understanding the <strong>why</strong>:</p>
-
-    <a href="hh-midfi.png" target="_blank" rel="noopener" style="display: block; margin-bottom: 0.75rem;">
-      <img src="hh-midfi.png" alt="Annotated HabitHero screens documenting two design changes made in response to usability testing: a full-page Life Day confirmation takeover explaining what a Life Day is and how it protects a user's streak, and a redesigned dashboard with a more prominent Life Day button in the header and reordered footer navigation making Add central" style="width: 100%; height: auto; display: block; border-radius: 12px; border: 1px solid rgba(52,40,62,0.08);" />
-    </a>
-    <p style="font-size: 0.78rem; color: var(--mid); margin-bottom: 2rem;">Click image to view full size</p>
-  </div>
-
-  <hr class="divider">
-
-  <!-- HI-FI SCREENS -->
-  <div class="section fade-up">
-    <span class="label">Hi-Fi Screens</span>
-    <h2>From wireframe <em>to prototype</em></h2>
-    <p>The validated flows moved into a full Figma design system across all 20+ screens, with WCAG 2.1 AA as the target throughout.</p>
-  </div>
-
-  <div class="hero-image">
-    <a href="hh-prototype.png" target="_blank" rel="noopener" style="display: block; line-height: 0;">
-      <img src="hh-prototype.png" alt="Composite of HabitHero hi-fi screens: a monthly calendar view with Life Day markers, a weekly bar chart comparing steps, distance and calories with Life Day entries visually distinct, the app's navigation menu with Life Day as a primary action, a Life Day confirmation screen reading 'Well done for taking control!', a 'Meet Life Day' introduction screen, and a daily dashboard showing today's steps, distance, calories, streak, Life Days used, and a leaderboard" style="width: 100%; display: block;" />
-    </a>
-  </div>
-
-  <hr class="divider">
-
-  <!-- OUTCOME -->
-  <div class="section fade-up">
-    <span class="label">Outcome</span>
-    <h2>A product that's <em>on your side</em></h2>
-    <p>Moderated usability testing on the mid-fi prototype validated HabitHero's core flows and confirmed the Life Day feature achieved exactly what the research called for - permission to have a bad day without losing everything already built. The prototype was signed off for development handoff via Figma Dev Mode.</p>
-
-    <div class="callout">
-      <p>"This actually makes me want to come back tomorrow." <em>- Usability testing participant</em></p>
-    </div>
-  </div>
-
-  <!-- REFLECTION -->
-  <div class="section fade-up">
-    <span class="label">Reflection</span>
-    <h2>What this project <em>changed for me</em></h2>
-    <p>The biggest lesson wasn't a UI pattern - it was where I went looking for the solution. The instinct with a habit tracker is to add more motivation: streaks, badges, leaderboards. Research showed the opposite was true here. Alex didn't need more encouragement, he needed the product to stop treating a bad day as a failure.</p>
-    <p>Testing across three fidelities, rather than just once at the end, also changed what I'd consider "done." The leaderboard anxiety and the weekly chart confusion were both things I wouldn't have caught without putting rough versions in front of real people early. If I extended this project, I'd want to test Life Day's earning mechanic against real usage data - three per month is a hypothesis, not yet a validated number.</p>
-  </div>
-
-  <!-- NEXT -->
-  <div class="next-section">
-    <span class="label">What's next</span>
-    <h2>Less Friction for Parents, <em>Less Admin for Schools</em></h2>
-    <p>A redesign of Arbor's event ticket journey for school parents, built on heuristic evaluation, secondary research, and moderated usability testing after hitting the problem myself as a parent and school staff member.</p>
-    <a class="btn-primary" href="https://medium.com/@mostlycaroline/880387ad793b" target="_blank" rel="noopener">Read on Medium</a>
-    <a class="btn-ghost" href="mailto:sayhello@mostlycaroline.com">Email me</a>
-  </div>
-
-  <!-- WAVE -->
-  <div class="wave-wrap" aria-hidden="true">
-    <svg viewBox="0 0 1440 160" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="width:100%; height:clamp(80px,12vw,160px); display:block;">
-      <path d="M0,160 L0,80 C120,20 240,0 360,30 C480,60 560,110 720,100 C880,90 960,40 1080,20 C1200,0 1320,30 1440,60 L1440,160 Z" fill="#FFB37A"/>
-      <path d="M0,160 L0,110 C100,60 220,40 360,65 C500,90 580,130 720,120 C860,110 960,70 1100,50 C1240,30 1360,55 1440,80 L1440,160 Z" fill="#FF8A3D" opacity="0.7"/>
-      <path d="M0,160 L0,135 C80,100 200,85 340,100 C480,115 580,145 720,140 C860,135 980,105 1120,90 C1260,75 1360,95 1440,110 L1440,160 Z" fill="#FC6C85" opacity="0.6"/>
-    </svg>
-  </div>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-inner">
-      <p>© 2026 Caroline Edwards</p>
-      <a href="mailto:sayhello@mostlycaroline.com">sayhello@mostlycaroline.com</a>
-    </div>
-  </footer>
-
-  <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(el => {
-        if (el.isIntersecting) { el.target.classList.add('visible'); observer.unobserve(el.target); }
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-  </script>
+<script>
+  var bar = document.getElementById('progress');
+  window.addEventListener('scroll', function(){
+    var h = document.documentElement;
+    var pct = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+    bar.style.width = pct + '%';
+  });
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); }
+    });
+  }, {threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(function(el){ obs.observe(el); });
+</script>
 
 </body>
 </html>

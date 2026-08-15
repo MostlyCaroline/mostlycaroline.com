@@ -115,6 +115,10 @@
   }
   .pull-callout cite{font-style:normal;font-weight:500;color:var(--ink-soft);font-size:15px;display:block;margin-top:10px;}
 
+  .who-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:32px;padding-top:28px;border-top:1px solid var(--line);}
+  .who-label{font-family:'Archivo', sans-serif;text-transform:uppercase;letter-spacing:0.1em;font-size:12px;font-weight:700;color:var(--coral);margin-bottom:10px;}
+  .who-text{font-family:'Archivo', sans-serif;font-size:16px;color:var(--ink-soft);line-height:1.5;}
+
   .cs-figure{margin:36px 0 0;max-width:760px;}
   .cs-figure img{width:100%;height:auto;border-radius:8px;background:var(--line);}
   .cs-caption{color:var(--ink-soft);font-size:14px;margin-top:12px;}
@@ -177,6 +181,7 @@
     .navlinks a.navlink::after{display:none;}
     .navlinks .btn-nav-cv{margin:16px 22px;justify-content:center;}
     .cs-title{font-size:56px;}
+    .who-grid{grid-template-columns:1fr;gap:20px;}
   }
 </style>
 </head>
@@ -226,6 +231,18 @@
       <h3 class="section-title reveal">Habit apps punish bad days</h3>
       <p class="prose reveal">PrimeCare needed a digital product to help patients build sustainable health habits. Research quickly surfaced why most habit-tracking apps fail: a single missed day gets treated as failure, with no distinction between "life got in the way" and "gave up." Every patient who abandons the app after one bad day is a habit that never gets the chance to stick.</p>
       <p class="pull-callout reveal">"I gave up after missing two days. There didn't seem to be any point carrying on."<cite>- Research participant</cite></p>
+
+      <div class="who-grid">
+        <div class="who-col reveal">
+          <div class="who-label">Users</div>
+          <p class="who-text">Patients managing long-term health conditions, enrolled in a PrimeCare care programme and tracking daily habits as part of it.</p>
+        </div>
+        <div class="who-col reveal">
+          <div class="who-label">Stakeholders</div>
+          <p class="who-text">PrimeCare's clinical team, who review engagement patterns to spot when a patient may need follow-up support.</p>
+        </div>
+      </div>
+      <p class="prose reveal">The app isn't the whole service. A run of Life Days in a row is also a signal PrimeCare's care team can act on - not just a stat on a dashboard.</p>
     </div>
     </div>
   </section>

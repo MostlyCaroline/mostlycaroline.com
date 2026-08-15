@@ -123,6 +123,10 @@
   }
   .pull-callout cite{font-style:normal;font-weight:500;color:var(--ink-soft);font-size:15px;display:block;margin-top:10px;}
 
+  .who-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:32px;padding-top:28px;border-top:1px solid var(--line);}
+  .who-label{font-family:'Archivo', sans-serif;text-transform:uppercase;letter-spacing:0.1em;font-size:12px;font-weight:700;color:var(--coral);margin-bottom:10px;}
+  .who-text{font-family:'Archivo', sans-serif;font-size:16px;color:var(--ink-soft);line-height:1.5;}
+
   .cs-figure{margin:36px 0 0;max-width:760px;}
   .cs-figure img{width:100%;height:auto;border-radius:8px;background:var(--line);}
   .cs-caption{color:var(--ink-soft);font-size:14px;margin-top:12px;}
@@ -185,6 +189,7 @@
     .navlinks a.navlink::after{display:none;}
     .navlinks .btn-nav-cv{margin:16px 22px;justify-content:center;}
     .cs-title{font-size:56px;}
+    .who-grid{grid-template-columns:1fr;gap:20px;}
   }
 </style>
 </head>
@@ -231,6 +236,18 @@
       <h2 class="star-tag reveal"><span class="hl hl-coral">Situation</span></h2>
       <h3 class="section-title reveal">A brief built on an assumption</h3>
       <p class="prose reveal">Harley Hospital needed a unified mobile booking experience across its private healthcare network. The brief assumed the main blocker was speed - it asked us to get patients through a booking in under one minute.</p>
+
+      <div class="who-grid">
+        <div class="who-col reveal">
+          <div class="who-label">Users</div>
+          <p class="who-text">Adults seeking private healthcare, already anxious about a health concern before they've even opened the app.</p>
+        </div>
+        <div class="who-col reveal">
+          <div class="who-label">Stakeholders</div>
+          <p class="who-text">The specialists and clinics on the other end of each booking, who need enough context to prepare - and Harley Hospital's admin team, who currently field the calls and questions the app is meant to absorb.</p>
+        </div>
+      </div>
+      <p class="prose reveal">A booking isn't the end of the interaction. Patients still need to feel confident between confirming and walking through the door, and admin staff need fewer avoidable calls asking what happens next.</p>
     </div>
     </div>
   </section>

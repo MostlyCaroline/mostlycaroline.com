@@ -6,7 +6,7 @@
 <title>Caroline Edwards - Product Designer</title>
 <meta name="description" content="Product Designer with 15 years of experience across B2B, B2C and SaaS. Accessibility and inclusive design at the core.">
 <meta name="author" content="Caroline Edwards, Product Designer">
-<link rel="icon" href="https://mostlycaroline.com/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="https://mostlycaroline.com/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Urbanist:wght@700;800;900&display=swap" rel="stylesheet">
@@ -129,6 +129,7 @@
     max-width:820px;
     margin-top:32px;
   }
+  .pullquote strong{font-weight:700;}
   /* SPECIALISMS */
   .specialisms{padding-top:6px;}
   .specialism-list{list-style:none;margin:0;padding:0;}
@@ -249,7 +250,7 @@
   .review-card:nth-child(3n){background:var(--orange-tint);border-color:transparent;}
   .review-mark{font-family:'Archivo', sans-serif;font-size:34px;font-weight:900;color:var(--coral);line-height:1;}
   .review-quote{font-size:20px;color:var(--ink);margin:12px 0 18px;}
-  .review-name{font-family:'Archivo', sans-serif;font-weight:700;font-size:16px;}
+  .review-name{font-family:'Archivo', sans-serif;font-weight:700;font-size:16px;font-style:normal;}
   .review-role{color:var(--ink-soft);font-size:16px;margin-top:2px;}
 
   /* CONTACT */
@@ -306,6 +307,10 @@
     .navlinks .btn-nav-cv{margin:16px 22px;justify-content:center;}
     .hero{padding:90px 0 40px;}
   }
+  /* reflow: un-fix the sticky header when the viewport is very short (e.g. zoomed to 400%) so it doesn't block content */
+  @media screen and (max-height:450px){
+    header{position:static;}
+  }
 </style>
 </head>
 <body>
@@ -334,7 +339,7 @@
       <div class="hero-main">
         <h1 class="headline reveal accent">Caroline<br>Edwards</h1>
         <p class="hero-copy reveal">I am a Product Designer helping organisations turn difficult digital journeys into products that are simple, accessible and trustworthy. I've led UX on award-winning platforms for TES Jobs, Macmillan, Condé Nast, Lincolnshire County Council and the BBC, combining research, accessibility and product thinking to create genuinely useful services that people can navigate with confidence.</p>
-        <p class="pullquote reveal">Good design starts with understanding people, not just their data.</p>
+        <p class="pullquote reveal"><strong>Good design starts with understanding people, not just their data.</strong></p>
       </div>
       <div class="specialisms reveal">
         <ul class="specialism-list">
@@ -422,46 +427,60 @@
 
       <div class="reviews-cols" style="margin-top:60px;">
         <div class="review-card reveal">
-          <div class="review-mark">“</div>
-          <p class="review-quote">Caroline is an amazing UI/UX designer with a sharp eye for detail. I worked with her for a number of years. Caroline is a true professional who really takes time to understand client needs.</p>
-          <div class="review-name">Qasim Alyas</div>
-          <div class="review-role">Web Developer, ITV.com</div>
+          <div class="review-mark" aria-hidden="true">&ldquo;</div>
+          <blockquote class="review-quote">Caroline is an amazing UI/UX designer with a sharp eye for detail. I worked with her for a number of years. Caroline is a true professional who really takes time to understand client needs.</blockquote>
+          <footer>
+            <cite class="review-name">Qasim Alyas</cite>
+            <div class="review-role">Web Developer, ITV.com</div>
+          </footer>
         </div>
         <div class="review-card reveal">
-          <div class="review-mark">“</div>
-          <p class="review-quote">Caroline is one of those designers that take attention to detail to a new level. A true asset to any design team.</p>
-          <div class="review-name">Simon Taggart</div>
-          <div class="review-role">Product Designer, Meta</div>
+          <div class="review-mark" aria-hidden="true">&ldquo;</div>
+          <blockquote class="review-quote">Caroline is one of those designers that take attention to detail to a new level. A true asset to any design team.</blockquote>
+          <footer>
+            <cite class="review-name">Simon Taggart</cite>
+            <div class="review-role">Product Designer, Meta</div>
+          </footer>
         </div>
         <div class="review-card reveal">
-          <div class="review-mark">“</div>
-          <p class="review-quote">Caroline is a very competent and imaginative designer. She has a very confident, professional manner with clients and her peers, at all levels.</p>
-          <div class="review-name">Mike Daniels</div>
-          <div class="review-role">Senior UX Designer, Caravan and Motorhome Club</div>
+          <div class="review-mark" aria-hidden="true">&ldquo;</div>
+          <blockquote class="review-quote">Caroline is a very competent and imaginative designer. She has a very confident, professional manner with clients and her peers, at all levels.</blockquote>
+          <footer>
+            <cite class="review-name">Mike Daniels</cite>
+            <div class="review-role">Senior UX Designer, Caravan and Motorhome Club</div>
+          </footer>
         </div>
         <div class="review-card reveal">
-          <div class="review-mark">“</div>
-          <p class="review-quote">I could always rely on Caroline to get the best job. A real team player and a great asset to any company.</p>
-          <div class="review-name">Alice Lawrence</div>
-          <div class="review-role">Business Analyst, RSM</div>
+          <div class="review-mark" aria-hidden="true">&ldquo;</div>
+          <blockquote class="review-quote">I could always rely on Caroline to get the best job. A real team player and a great asset to any company.</blockquote>
+          <footer>
+            <cite class="review-name">Alice Lawrence</cite>
+            <div class="review-role">Business Analyst, RSM</div>
+          </footer>
         </div>
         <div class="review-card reveal">
-          <div class="review-mark">“</div>
-          <p class="review-quote">Caroline is very observant and caring about the people she works with, and has very strong mediation and communication skills.</p>
-          <div class="review-name">Simone O'Callaghan</div>
-          <div class="review-role">Design Discipline Leader, University of Newcastle</div>
+          <div class="review-mark" aria-hidden="true">&ldquo;</div>
+          <blockquote class="review-quote">Caroline is very observant and caring about the people she works with, and has very strong mediation and communication skills.</blockquote>
+          <footer>
+            <cite class="review-name">Simone O'Callaghan</cite>
+            <div class="review-role">Design Discipline Leader, University of Newcastle</div>
+          </footer>
         </div>
         <div class="review-card reveal">
-          <div class="review-mark">“</div>
-          <p class="review-quote">Caroline is incredibly detail-oriented, brilliant at handling stakeholders, and possessed a deep understanding of the digital space. No matter how challenging a project, Caroline always handled it with absolute professionalism and a calm, positive attitude.</p>
-          <div class="review-name">Graeme Palmer</div>
-          <div class="review-role">Product Experience Design Manager, VideoJet</div>
+          <div class="review-mark" aria-hidden="true">&ldquo;</div>
+          <blockquote class="review-quote">Caroline is incredibly detail-oriented, brilliant at handling stakeholders, and possessed a deep understanding of the digital space. No matter how challenging a project, Caroline always handled it with absolute professionalism and a calm, positive attitude.</blockquote>
+          <footer>
+            <cite class="review-name">Graeme Palmer</cite>
+            <div class="review-role">Product Experience Design Manager, VideoJet</div>
+          </footer>
         </div>
         <div class="review-card reveal">
-          <div class="review-mark">“</div>
-          <p class="review-quote">Caroline's designs are always very thoughtful and detailed, enabling them to be translated to code much more easily. She is a very warm, engaging and empathetic person - with peers and clients alike. She's an ideal team-mate!</p>
-          <div class="review-name">Kevin Bonnet</div>
-          <div class="review-role">UX Engineer, FinUA</div>
+          <div class="review-mark" aria-hidden="true">&ldquo;</div>
+          <blockquote class="review-quote">Caroline's designs are always very thoughtful and detailed, enabling them to be translated to code much more easily. She is a very warm, engaging and empathetic person - with peers and clients alike. She's an ideal team-mate!</blockquote>
+          <footer>
+            <cite class="review-name">Kevin Bonnet</cite>
+            <div class="review-role">UX Engineer, FinUA</div>
+          </footer>
         </div>
       </div>
     </div>

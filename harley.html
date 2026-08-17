@@ -6,7 +6,7 @@
 <title>Harley Hospital Case Study - Caroline Edwards</title>
 <meta name="description" content="UX case study: Harley Hospital appointment booking app, developed with Creative Navy as part of the KCL Product Design programme.">
 <meta name="author" content="Caroline Edwards, Product Designer">
-<link rel="icon" href="https://mostlycaroline.com/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="https://mostlycaroline.com/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Urbanist:wght@700;800;900&display=swap" rel="stylesheet">
@@ -119,7 +119,7 @@
 
   .pull-callout{
     font-family:'Archivo', sans-serif;font-weight:700;font-size:clamp(19px,2vw,24px);
-    max-width:640px;margin-top:28px;color:var(--ink);
+    max-width:640px;margin:28px 0 0;color:var(--ink);
   }
   .pull-callout cite{font-style:normal;font-weight:500;color:var(--ink-soft);font-size:15px;display:block;margin-top:10px;}
 
@@ -190,6 +190,10 @@
     .navlinks .btn-nav-cv{margin:16px 22px;justify-content:center;}
     .cs-title{font-size:56px;}
     .who-grid{grid-template-columns:1fr;gap:20px;}
+  }
+  /* reflow: un-fix the sticky header when the viewport is very short (e.g. zoomed to 400%) so it doesn't block content */
+  @media screen and (max-height:450px){
+    header{position:static;}
   }
 </style>
 </head>
@@ -290,7 +294,7 @@
       <h2 class="star-tag reveal"><span class="hl hl-orange">Action</span></h2>
       <h3 class="section-title reveal">Confidence, not speed</h3>
       <p class="prose reveal">I directed the interviews, competitor analysis and a full affinity and empathy mapping synthesis workshop in Miro. Patients begin the booking process already worried about their health - what they actually needed was guidance to find the right specialist, transparent pricing, and visible access to a human if they got stuck.</p>
-      <p class="pull-callout reveal">"I'm already worried. I don't want this to make me more stressed."<cite>- User interview participant</cite></p>
+      <blockquote class="pull-callout reveal">"I'm already worried. I don't want this to make me more stressed."<cite>- User interview participant</cite></blockquote>
     </div>
     </div>
 

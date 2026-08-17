@@ -6,7 +6,7 @@
 <title>HabitHero Case Study - Caroline Edwards</title>
 <meta name="description" content="UX case study: HabitHero - a behaviour change app for healthcare client PrimeCare, designed by Caroline Edwards.">
 <meta name="author" content="Caroline Edwards, Product Designer">
-<link rel="icon" href="https://mostlycaroline.com/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="https://mostlycaroline.com/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Urbanist:wght@700;800;900&display=swap" rel="stylesheet">
@@ -111,7 +111,7 @@
 
   .pull-callout{
     font-family:'Archivo', sans-serif;font-weight:700;font-size:clamp(19px,2vw,24px);
-    max-width:640px;margin-top:28px;color:var(--ink);
+    max-width:640px;margin:28px 0 0;color:var(--ink);
   }
   .pull-callout cite{font-style:normal;font-weight:500;color:var(--ink-soft);font-size:15px;display:block;margin-top:10px;}
 
@@ -183,6 +183,10 @@
     .cs-title{font-size:56px;}
     .who-grid{grid-template-columns:1fr;gap:20px;}
   }
+  /* reflow: un-fix the sticky header when the viewport is very short (e.g. zoomed to 400%) so it doesn't block content */
+  @media screen and (max-height:450px){
+    header{position:static;}
+  }
 </style>
 </head>
 <body>
@@ -230,7 +234,7 @@
       <h2 class="star-tag reveal"><span class="hl hl-coral">Situation</span></h2>
       <h3 class="section-title reveal">Habit apps punish bad days</h3>
       <p class="prose reveal">PrimeCare needed a digital product to help patients build sustainable health habits. Research quickly surfaced why most habit-tracking apps fail: a single missed day gets treated as failure, with no distinction between "life got in the way" and "gave up." Every patient who abandons the app after one bad day is a habit that never gets the chance to stick.</p>
-      <p class="pull-callout reveal">"I gave up after missing two days. There didn't seem to be any point carrying on."<cite>- Research participant</cite></p>
+      <blockquote class="pull-callout reveal">"I gave up after missing two days. There didn't seem to be any point carrying on."<cite>- Research participant</cite></blockquote>
 
       <div class="who-grid">
         <div class="who-col reveal">
@@ -305,7 +309,7 @@
       <h2 class="star-tag reveal"><span class="hl hl-coral">Result</span></h2>
       <h3 class="section-title reveal">Signed off, and tested well</h3>
       <p class="prose reveal">Usability testing on the mid-fi prototype validated HabitHero's core flows and confirmed Life Day achieved exactly what the research called for. The design was signed off for development handoff via Figma Dev Mode.</p>
-      <p class="pull-callout reveal">"This actually makes me want to come back tomorrow."<cite>- Usability testing participant</cite></p>
+      <blockquote class="pull-callout reveal">"This actually makes me want to come back tomorrow."<cite>- Usability testing participant</cite></blockquote>
     </div>
     </div>
   </section>

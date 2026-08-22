@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Making healthcare booking feel human - Caroline Edwards</title>
-<meta name="description" content="UX case study: a private hospital's appointment booking app, developed with Creative Navy as part of the KCL Product Design programme.">
+<title>Working with, not in - Caroline Edwards</title>
+<meta name="description" content="UX case study: what being an outside agency, not a council employee, made possible on local government websites, by Caroline Edwards.">
 <meta name="author" content="Caroline Edwards, Product Designer">
 <link rel="icon" type="image/svg+xml" href="https://mostlycaroline.com/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -88,7 +88,7 @@
 
   .cs-hero{padding:56px 0 0;}
   .cs-tags{font-family:'Archivo', sans-serif;font-size:13px;text-transform:uppercase;letter-spacing:0.08em;color:var(--coral);font-weight:700;margin-bottom:20px;text-align:center;}
-  .cs-title{font-family:'Urbanist', sans-serif;font-size:100px;font-weight:900;line-height:0.88;letter-spacing:-0.03em;max-width:920px;margin:0 auto;text-align:center;}
+  .cs-title{font-family:'Urbanist', sans-serif;font-size:88px;font-weight:900;line-height:0.92;letter-spacing:-0.03em;max-width:920px;margin:0 auto;text-align:center;}
   .cs-intro{max-width:920px;margin:24px auto 0;color:var(--ink-soft);font-size:20px;text-align:center;}
 
   .status-banner{
@@ -100,12 +100,13 @@
   }
   .status-dot{width:8px;height:8px;border-radius:50%;background:var(--orange);flex-shrink:0;}
 
+  .cs-hero-img{width:100vw;margin:48px calc(50% - 50vw) 0;background:var(--line);}
+  .cs-hero-img img{width:100%;height:auto;display:block;}
+
   .meta-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:48px;}
   .meta-item{background:#fff;padding:22px 24px;}
   .meta-item .label{color:var(--ink-soft);}
-  .meta-item .value{font-family:'Archivo', sans-serif;font-weight:800;font-size:16px;margin-top:8px;}
-  .meta-link{text-decoration:underline;text-decoration-color:transparent;text-underline-offset:3px;transition:text-decoration-color .2s ease;}
-  .meta-link:hover{text-decoration-color:currentColor;}
+  .meta-item .value{font-family:'Archivo', sans-serif;font-weight:800;font-size:15px;margin-top:8px;}
 
   .star-tag{
     font-family:'Archivo', sans-serif;
@@ -116,23 +117,30 @@
   }
   .prose{max-width:760px;color:var(--ink-soft);font-size:20px;margin-top:18px;}
   .prose strong{color:var(--ink);}
+  .prose em.placeholder{color:var(--coral-deep);font-style:italic;}
 
   .pull-callout{
     font-family:'Archivo', sans-serif;font-weight:700;font-size:clamp(19px,2vw,24px);
     max-width:640px;margin:28px 0 0;color:var(--ink);
   }
-  .pull-callout cite{font-style:normal;font-weight:500;color:var(--ink-soft);font-size:15px;display:block;margin-top:10px;}
+
+  .result-list{list-style:none;margin:22px 0 0;padding:0;max-width:760px;}
+  .result-list li{position:relative;padding-left:26px;margin-bottom:12px;font-family:'Archivo', sans-serif;font-size:20px;color:var(--ink-soft);}
+  .result-list li::before{content:'';position:absolute;left:0;top:0.6em;width:8px;height:8px;border-radius:50%;background:var(--coral);}
 
   .who-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:32px;padding-top:28px;border-top:1px solid var(--line);}
   .who-label{font-family:'Archivo', sans-serif;text-transform:uppercase;letter-spacing:0.1em;font-size:12px;font-weight:700;color:var(--coral);margin-bottom:10px;}
   .who-text{font-family:'Archivo', sans-serif;font-size:16px;color:var(--ink-soft);line-height:1.5;}
 
-  .cs-figure{margin:36px 0 0;max-width:760px;}
-  .cs-figure img{width:100%;height:auto;border-radius:8px;background:var(--line);}
-  .cs-caption{color:var(--ink-soft);font-size:14px;margin-top:12px;}
-  .cs-figure-full{width:100vw;max-width:100vw;margin:40px calc(50% - 50vw) 0;}
-  .cs-figure-full img{border-radius:0;}
-  .cs-figure-full .cs-caption{padding:12px 40px 0;}
+  .client-list-wrap{margin-top:32px;padding-top:28px;border-top:1px solid var(--line);}
+  .client-list{list-style:none;margin:16px 0 0;padding:0;columns:2 240px;column-gap:32px;}
+  .client-list li{
+    font-family:'Archivo', sans-serif;font-size:16px;color:var(--ink-soft);
+    padding:9px 0;border-bottom:1px solid var(--line);break-inside:avoid;
+  }
+  .client-list li a{color:var(--ink);font-weight:700;}
+  .client-list li a:hover{color:var(--coral-deep);}
+  .client-list li .note{display:block;font-size:13px;color:var(--ink-soft);margin-top:2px;}
 
   .process-pills{list-style:none;margin:28px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:10px;}
   .process-pill{
@@ -142,11 +150,6 @@
   }
   .pill-num{font-family:'Archivo', sans-serif;font-weight:900;font-size:12px;color:var(--coral-deep);}
 
-  .hmw-list{list-style:none;margin:24px 0 0;padding:0;border-top:1px solid var(--line);}
-  .hmw-item{display:flex;align-items:baseline;gap:20px;padding:16px 0;border-bottom:1px solid var(--line);}
-  .hmw-tag{font-family:'Archivo', sans-serif;font-weight:900;font-size:12px;letter-spacing:0.08em;color:var(--orange);flex-shrink:0;}
-  .hmw-text{font-family:'Archivo', sans-serif;font-weight:700;font-size:19px;max-width:640px;}
-
   .next-card{
     display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;
     background:var(--coral-tint);border-radius:12px;padding:48px;margin-top:8px;
@@ -154,7 +157,6 @@
   .next-card .label{color:var(--coral);margin-bottom:14px;display:block;}
   .next-card h3{font-size:clamp(22px,2.6vw,32px);font-weight:800;}
   .next-card p{color:var(--ink-soft);font-size:16px;margin-top:14px;}
-  .next-card img{width:100%;border-radius:8px;aspect-ratio:4/3;object-fit:cover;}
 
   footer{padding:34px 0;border-top:1px solid var(--line);}
   .footer-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
@@ -188,7 +190,7 @@
     .navlinks a.navlink{width:100%;padding:16px 22px;border-bottom:1px solid var(--line);display:flex !important;}
     .navlinks a.navlink::after{display:none;}
     .navlinks .btn-nav-cv{margin:16px 22px;justify-content:center;}
-    .cs-title{font-size:56px;}
+    .cs-title{font-size:46px;}
     .who-grid{grid-template-columns:1fr;gap:20px;}
   }
   @media screen and (max-height:450px){
@@ -218,39 +220,60 @@
 
   <section class="cs-hero section-pad" style="padding-bottom:0;">
     <div class="wrap">
-      <div class="cs-tags reveal">UX Case Study &middot; Healthcare &middot; Mobile App &middot; KCL Programme</div>
-      <h1 class="cs-title reveal">Making healthcare booking feel human</h1>
-      <p class="cs-intro reveal">A mobile booking experience for a private healthcare network, built with design agency Creative Navy as part of the King's College London Product Design programme.</p>
+      <div class="cs-tags reveal">UX Case Study &middot; Public Sector &middot; Stakeholder Practice</div>
+      <h1 class="cs-title reveal">Working with, not in</h1>
+      <p class="cs-intro reveal">Years working with local government, never inside it. Being the outside agency, not a council employee, meant I could ask the question a permanent team member couldn't always risk asking - and that changed what actually got built.</p>
 
-      <div class="status-banner reveal"><span class="status-dot"></span>In progress - prototype built and through a first round of client feedback (extremely positive, with some refinements based on detail that wasn't in the original brief). Usability testing with real users starts this week.</div>
 
       <div class="meta-grid reveal">
-        <div class="meta-item"><div class="label">Industry Partner</div><div class="value"><a href="https://interface-design.co.uk/" target="_blank" rel="noopener" class="meta-link">Creative Navy</a></div></div>
-        <div class="meta-item"><div class="label">Client</div><div class="value">Private Healthcare Network</div></div>
-        <div class="meta-item"><div class="label">My Role</div><div class="value">Project Lead for project kick off with client</div></div>
-        <div class="meta-item"><div class="label">Platform</div><div class="value">Native mobile app</div></div>
+        <div class="meta-item"><div class="label">Client</div><div class="value">Local Government</div></div>
+        <div class="meta-item"><div class="label">My Role</div><div class="value">Lead Designer</div></div>
+        <div class="meta-item"><div class="label">Year</div><div class="value">2006 - 2016</div></div>
+        <div class="meta-item"><div class="label">Platform</div><div class="value">Responsive Web &middot; Recruitment System &amp; CMS</div></div>
       </div>
     </div>
+
+    <figure class="cs-hero-img reveal">
+      <img src="images/lincolnshire-c4yp-devices.png" alt="A desktop monitor showing the Lincolnshire County Council homepage, with a laptop in front showing C4YP, the council's Connecting 4 Young People site, both built on the Webstructure CMS platform">
+    </figure>
   </section>
 
   <section class="section-pad">
     <div class="wrap">
     <div class="star-content">
       <h2 class="star-tag reveal"><span class="hl hl-coral">Situation</span></h2>
-      <h3 class="section-title reveal">A brief built on an assumption</h3>
-      <p class="prose reveal">The client needed a unified mobile booking experience across its private healthcare network. The brief assumed the main blocker was speed - it asked us to get patients through a booking in under one minute.</p>
+      <h3 class="section-title reveal">On the outside of local government</h3>
+      <p class="prose reveal">At Abacus, I worked on Webstructure, the CMS platform behind local authority websites across the UK. I sat one step removed from each council - close enough to understand the work, but never bound by the internal governance, sign-off processes and regulatory compliance that shaped how their own teams could operate.</p>
 
       <div class="who-grid">
         <div class="who-col reveal">
           <div class="who-label">Users</div>
-          <p class="who-text">Adults seeking private healthcare, already anxious about a health concern before they've even opened the app.</p>
+          <p class="who-text">Residents, jobseekers and council employees trying to get something done online - often when they were busy, under pressure or dealing with something important. The website wasn't the thing they came for. It was the thing they had to get through.</p>
         </div>
         <div class="who-col reveal">
           <div class="who-label">Stakeholders</div>
-          <p class="who-text">The specialists and clinics on the other end of each booking, who need enough context to prepare - and the hospital's admin team, who currently field the calls and questions the app is meant to absorb.</p>
+          <p class="who-text">Council officers balancing what people needed with what the organisation could approve, fund, build and support - while answering to legal, communications, technical and governance teams.</p>
         </div>
       </div>
-      <p class="prose reveal">A booking isn't the end of the interaction. Patients still need to feel confident between confirming and walking through the door, and admin staff need fewer avoidable calls asking what happens next.</p>
+
+      <div class="client-list-wrap reveal">
+        <div class="who-label">Councils I led UX/UI design for</div>
+        <ul class="client-list">
+          <li><a href="https://www.bcpcouncil.gov.uk/" target="_blank" rel="noopener">Bournemouth Borough Council</a></li>
+          <li><a href="https://www.cambridgeshire.gov.uk/" target="_blank" rel="noopener">Cambridgeshire County Council</a></li>
+          <li><a href="https://www.derbyshire.gov.uk/" target="_blank" rel="noopener">Derbyshire County Council</a></li>
+          <li><a href="https://www.devon.gov.uk/" target="_blank" rel="noopener">Devon County Council</a></li>
+          <li><a href="https://www.dorsetcouncil.gov.uk/" target="_blank" rel="noopener">Dorset County Council</a></li>
+          <li><a href="https://www.eastriding.gov.uk/" target="_blank" rel="noopener">East Riding of Yorkshire Council</a></li>
+          <li><a href="https://www.anglesey.gov.wales/" target="_blank" rel="noopener">Isle of Anglesey County Council</a><span class="note">Dual language (English/Welsh)</span></li>
+          <li><a href="https://www.lincolnshire.gov.uk/" target="_blank" rel="noopener">Lincolnshire County Council</a><span class="note">Including 460 parish councils - <a href="https://www.itpro.com/110809/lincolnshire-to-offer-free-websites-to-460-parish-councils" target="_blank" rel="noopener">source</a></span></li>
+          <li><a href="https://www.n-kesteven.gov.uk/" target="_blank" rel="noopener">North Kesteven District Council</a></li>
+          <li><a href="https://www.oxfordshire.gov.uk/" target="_blank" rel="noopener">Oxfordshire County Council</a></li>
+          <li><a href="https://www.kingston.gov.uk/" target="_blank" rel="noopener">Royal Borough of Kingston upon Thames</a></li>
+          <li><a href="https://www.suffolk.gov.uk/" target="_blank" rel="noopener">Suffolk County Council</a></li>
+          <li><a href="https://www.telford.gov.uk/" target="_blank" rel="noopener">Telford &amp; Wrekin Council</a></li>
+        </ul>
+      </div>
     </div>
     </div>
   </section>
@@ -259,13 +282,8 @@
     <div class="wrap">
     <div class="star-content">
       <h2 class="star-tag reveal"><span class="hl hl-orange">Insight</span></h2>
-      <h3 class="section-title reveal">Speed wasn't the problem. Confidence was.</h3>
-      <p class="prose reveal">Seven user interviews and analysis of twelve direct, indirect and analogous competitors surfaced the same six themes again and again: uncertainty, trust, guidance, transparency, availability and cognitive effort. Speed was secondary to all of them.</p>
-      <ol class="hmw-list">
-        <li class="hmw-item reveal"><span class="hmw-tag">HMW</span><span class="hmw-text">reduce uncertainty before someone knows which specialist they need?</span></li>
-        <li class="hmw-item reveal"><span class="hmw-tag">HMW</span><span class="hmw-text">make costs transparent before a patient commits?</span></li>
-        <li class="hmw-item reveal"><span class="hmw-tag">HMW</span><span class="hmw-text">keep a human option visible if someone gets stuck?</span></li>
-      </ol>
+      <h3 class="section-title reveal">Distance was an advantage, not a gap</h3>
+      <p class="prose reveal">Working with government, not in it, meant I wasn't the one who had to defend last year's decision, or protect a relationship with the compliance team. I hadn't signed anything off, so I had nothing to lose by questioning it. That distance was often exactly what let an awkward question get asked, and actually heard, in a way it might not have been from inside the building.</p>
     </div>
     </div>
   </section>
@@ -274,14 +292,14 @@
     <div class="wrap">
     <div class="star-content">
       <h2 class="star-tag reveal"><span class="hl hl-coral">Task</span></h2>
-      <h3 class="section-title reveal">Find the real problem</h3>
-      <p class="prose reveal">As Project Lead for a team of seven, my job was to validate or challenge the speed-first assumption before anyone designed a single screen - and to turn whatever we found into a problem statement the whole team could design against.</p>
+      <h3 class="section-title reveal">Use the outsider's licence, don't waste it</h3>
+      <p class="prose reveal">My job was to bring a view the internal team couldn't always afford to bring themselves - including questioning whether "compliant" accessibility work actually worked, and whether an assumed audience had ever really been asked what they needed.</p>
       <ol class="process-pills">
-        <li class="process-pill reveal"><span class="pill-num">01</span>Discovery &amp; Brief Review</li>
-        <li class="process-pill reveal"><span class="pill-num">02</span>User Interviews</li>
-        <li class="process-pill reveal"><span class="pill-num">03</span>Competitor &amp; Analogous Analysis</li>
-        <li class="process-pill reveal"><span class="pill-num">04</span>Affinity Mapping &amp; Synthesis</li>
-        <li class="process-pill reveal"><span class="pill-num">05</span>Problem Definition &amp; Requirements</li>
+        <li class="process-pill reveal"><span class="pill-num">01</span>Independent accessibility audit</li>
+        <li class="process-pill reveal"><span class="pill-num">02</span>Stakeholder challenge &amp; negotiation</li>
+        <li class="process-pill reveal"><span class="pill-num">03</span>User &amp; stakeholder workshop facilitation</li>
+        <li class="process-pill reveal"><span class="pill-num">04</span>Developer collaboration on fixes</li>
+        <li class="process-pill reveal"><span class="pill-num">05</span>CMS design</li>
       </ol>
     </div>
     </div>
@@ -291,25 +309,25 @@
     <div class="wrap">
     <div class="star-content">
       <h2 class="star-tag reveal"><span class="hl hl-orange">Action</span></h2>
-      <h3 class="section-title reveal">Confidence, not speed</h3>
-      <p class="prose reveal">As project lead, my first job was bringing a brand-new team together across multiple time zones and setting our first deadline: establish what patients actually needed before designing anything. I directed the interviews, competitor analysis and a full affinity and empathy mapping synthesis workshop in Miro, then used what we learned to refine the problem statement.</p>
-      <p class="prose reveal">Patients begin the booking process already worried about their health - what they actually needed was guidance to find the right specialist, transparent pricing, and visible access to a human if they got stuck.</p>
-      <blockquote class="pull-callout reveal">"I'm already worried. I don't want this to make me more stressed."<cite>- User interview participant</cite></blockquote>
+      <h3 class="section-title reveal">Three questions an insider might not have asked</h3>
+      <p class="prose reveal"><strong>"Is this form actually usable, or just compliant?"</strong> Auditing a set of third-party forms, I found a key one couldn't be completed using a keyboard alone. It had presumably been signed off by someone internally already - but I hadn't been the one to sign it off, so flagging it wasn't a criticism of my own work, or anyone I had to keep working alongside indefinitely. I worked with the developer to fix the interaction itself: controls reachable and operable in a logical sequence, with visible focus at every step, addressing the Keyboard and Focus Order success criteria still core to WCAG today.</p>
+      <p class="prose reveal"><strong>"Have you actually asked them?"</strong> Running workshops with groups of teenagers for Lincolnshire County Council's new children's services website, I could tell the client directly that what they'd assumed about their own users didn't hold up - without it costing me a reporting line or a future performance review. What the teenagers told us reshaped the approach entirely.</p>
+      <p class="prose reveal"><strong>"Why does this take two weeks?"</strong> At Derbyshire County Council, recruitment ran entirely on paper: more than 60,000 applicant packs sent out every year, at over £2 each, with roughly a two-week gap between a vacancy going live and an application reaching a manager. Nobody inside had seriously questioned whether that was fixable - it was just how recruitment worked. I led UX and UI to implement the system to replace it.</p>
     </div>
     </div>
-
-    <figure class="cs-figure cs-figure-full reveal">
-      <img src="https://mostlycaroline.com/harley-empathy-map-raw.png" alt="Raw empathy map from the Miro synthesis workshop, showing all sticky notes before clustering">
-      <div class="cs-caption wrap">The raw Miro synthesis workshop - every sticky note before clustering into the empathy map.</div>
-    </figure>
   </section>
 
   <section class="section-pad">
     <div class="wrap">
     <div class="star-content">
       <h2 class="star-tag reveal"><span class="hl hl-coral">Result</span></h2>
-      <h3 class="section-title reveal">A reframed brief</h3>
-      <p class="prose reveal">The research reframed the design direction toward minimising cognitive effort rather than steps, and produced a prioritised set of requirements now driving the design phase.</p>
+      <h3 class="section-title reveal">Being outside made the question easier. Being good made it land.</h3>
+      <ul class="result-list reveal">
+        <li>The keyboard and focus-order fix got made, rather than waved through on existing sign-off.</li>
+        <li>Workshop findings directly reshaped the children's services site before launch, rather than being retrofitted after complaints.</li>
+        <li>Lincolnshire County Council's website went on to win Government Website of the Year.</li>
+        <li>At Derbyshire, redesigning the recruitment flow saved close to £190,000 a year - £100,000 from cutting candidate-pack costs, £90,000 from eliminating manual re-keying - and took 60% of the council's 5,000 annual vacancies fully online.</li>
+      </ul>
     </div>
     </div>
   </section>
@@ -317,38 +335,25 @@
   <section class="section-pad">
     <div class="wrap">
     <div class="star-content">
-      <h2 class="star-tag reveal"><span class="hl hl-orange">Next steps</span></h2>
-      <h3 class="section-title reveal">Usability testing, starting this week</h3>
-      <p class="prose reveal">The prototype has been through a first round of client feedback - extremely positive, with a few refinements based on detail that wasn't part of the original brief. We're now taking it into usability testing with real users this week, ahead of further iteration and dev handover.</p>
+      <h2 class="star-tag reveal"><span class="hl hl-orange">Reflection</span></h2>
+      <h3 class="section-title reveal">The outsider's licence has a limit</h3>
+      <p class="prose reveal">Being the outsider gave me permission to ask questions that might otherwise have gone unasked. But it also gave me a responsibility: if I challenged a decision, I needed to understand what it would take to change it, not just point out that it was wrong.</p>
+      <p class="prose reveal">The trade-off was that I could leave. The people I was challenging couldn't. They still had to get the service through governance, budget, procurement, legal and political scrutiny - and live with the consequences after I had moved on to the next project.</p>
+      <p class="prose reveal">Looking back, I would do more to understand those constraints before pushing against them. Not to make the challenge softer, but to make it more useful. I'd spend more time understanding who needed to be convinced, what evidence they needed, and what could realistically change within the organisation.</p>
+      <p class="prose reveal">That is probably the biggest thing this work taught me about stakeholder practice: being the person who asks the difficult question is only half the job. The other half is helping people feel safe enough - and equipped enough - to do something about the answer.</p>
+      <p class="prose reveal">I still value the outsider's perspective. I just understand now that good stakeholder practice isn't about having the freedom to challenge. It's about using that freedom responsibly.</p>
     </div>
     </div>
   </section>
 
   <section class="section-pad">
     <div class="wrap">
-    <div class="star-content">
-      <h2 class="star-tag reveal"><span class="hl hl-coral">Reflection</span></h2>
-      <h3 class="section-title reveal">You learn a team by working with it</h3>
-      <p class="prose reveal">I really enjoyed leading this project. I had to hit the ground running with a team I'd never worked with before, across multiple time zones, and quickly create enough structure for seven people to move in the same direction without knowing yet what everyone was capable of.</p>
-      <p class="prose reveal">One of the things I learned was that you can't always take someone's stated strengths at face value. What someone says they're good at and what they naturally bring to a project aren't necessarily the same thing. I had to discover that through the work - watching how people approached ambiguity, where they took ownership, where they needed direction and where they could contribute more than their initial role suggested.</p>
-      <p class="prose reveal">I also learned how differently people need to be supported. Some people are happy to take a task and run with it. Others do their best work when a large piece of work is broken into smaller, clearer steps. Some need more regular check-ins, context or reassurance than the project schedule seems to allow.</p>
-      <p class="prose reveal">The temptation, particularly on a tight project, is to give everyone the same level of attention and call that fair. I don't think that's good leadership. People don't need equal amounts of support; they need the support that allows them to do their best work.</p>
-      <p class="prose reveal">Sometimes that means making time I don't appear to have. I've learned that time spent helping someone get unstuck, build confidence or understand what good looks like rarely disappears from the project. It comes back later as greater ownership, better work and more support for the rest of the team.</p>
-      <p class="prose reveal">I'd do some things differently next time. I'd spend more time at the beginning understanding how each person works, rather than assuming a role description or introduction tells me enough. But I wouldn't try to solve that by creating a more rigid process. I'd keep observing, adapting and making space for people to tell me what they need.</p>
-      <p class="prose reveal">The biggest lesson was that leading a team is another form of discovery. You don't just discover the problem and the users - you discover the people you're solving it with, and how to help each of them do their best work.</p>
-    </div>
-    </div>
-  </section>
-
-  <section class="section-pad">
-    <div class="wrap">
-      <a href="publishing.html" class="next-card reveal">
+      <a href="habithero.html" class="next-card reveal">
         <div>
           <span class="label">Next case study</span>
-          <h3>One design system, an industry's worth of titles</h3>
-          <p>A shared design system for competing publishers who didn't want to lose what made their brands distinct.</p>
+          <h3>Designed for the days that don't go to plan</h3>
+          <p>A behaviour change feature for PrimeCare, built around giving users permission to have a bad day.</p>
         </div>
-        <img src="images/publishing-brands-collage.jpg" alt="A collage of publishing website homepages built on the shared platform, including Music Week, The Grocer, The Lawyer, Creative Review and Bridal Buyer">
       </a>
     </div>
   </section>

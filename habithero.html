@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HabitHero Case Study - Caroline Edwards</title>
+<title>Designed for the days that don't go to plan - Caroline Edwards</title>
 <meta name="description" content="UX case study: HabitHero - a behaviour change app for healthcare client PrimeCare, designed by Caroline Edwards.">
 <meta name="author" content="Caroline Edwards, Product Designer">
 <link rel="icon" type="image/svg+xml" href="https://mostlycaroline.com/favicon.svg">
@@ -183,7 +183,6 @@
     .cs-title{font-size:56px;}
     .who-grid{grid-template-columns:1fr;gap:20px;}
   }
-  /* reflow: un-fix the sticky header when the viewport is very short (e.g. zoomed to 400%) so it doesn't block content */
   @media screen and (max-height:450px){
     header{position:static;}
   }
@@ -212,8 +211,8 @@
   <section class="cs-hero section-pad" style="padding-bottom:0;">
     <div class="wrap">
       <div class="cs-tags reveal">UX Case Study &middot; Behaviour Change &middot; Mobile App</div>
-      <h1 class="cs-title reveal">Habit Hero</h1>
-      <p class="cs-intro reveal">Designed for the days that don't go to plan. A behaviour change feature for healthcare client PrimeCare, built around one idea: don't punish people for missing a day.</p>
+      <h1 class="cs-title reveal">Designed for the days that don't go to plan</h1>
+      <p class="cs-intro reveal">A behaviour change feature for healthcare client PrimeCare, built around one idea: don't punish people for missing a day.</p>
 
       <div class="meta-grid reveal">
         <div class="meta-item"><div class="label">Client</div><div class="value">PrimeCare</div></div>
@@ -316,13 +315,27 @@
 
   <section class="section-pad">
     <div class="wrap">
-      <a href="https://medium.com/design-bootcamp/less-friction-for-parents-less-admin-for-schools-880387ad793b" target="_blank" rel="noopener" class="next-card reveal">
+    <div class="star-content">
+      <h2 class="star-tag reveal"><span class="hl hl-coral">Reflection</span></h2>
+      <h3 class="section-title reveal">Research isn't a stage - it's a conversation you keep having</h3>
+      <p class="prose reveal">The idea of Life Day came directly from listening to people describe what actually happened when life got in the way. But once it existed as an interaction rather than an idea, different questions appeared. Did people understand what it was? Did they know when to use it? Did it feel like permission to continue, or another rule they had to manage?</p>
+      <p class="prose reveal">That reinforced something I already believe about product design: research isn't a stage you complete before designing. It's a conversation you keep having with the people you're designing for.</p>
+      <p class="prose reveal">I also wouldn't consider the current result proof that Life Day will change behaviour over the long term. The usability testing showed that people understood the mechanic and responded positively to it. It didn't tell me whether three Life Days per month, earned after ten consecutive days, is the right behavioural intervention over six months.</p>
+      <p class="prose reveal">If this were going into live development, my next step would be to define what success looks like beyond usability - return rates, habit continuation, use of Life Days, and whether people who use them are more likely to come back rather than abandon the product.</p>
+      <p class="prose reveal">The biggest lesson for me was that good product design isn't about getting the answer right first time. It's about creating enough opportunities to find out when you've got it wrong.</p>
+    </div>
+    </div>
+  </section>
+
+  <section class="section-pad">
+    <div class="wrap">
+      <a href="hospital.html" class="next-card reveal">
         <div>
-          <span class="label">What's next</span>
-          <h3>Less Friction for Parents, Less Admin for Schools</h3>
-          <p>A redesign of Arbor's event ticket journey for school parents.</p>
+          <span class="label">Next case study</span>
+          <h3>Making healthcare booking feel human</h3>
+          <p>A mobile booking experience for a private healthcare network, built with design agency Creative Navy.</p>
         </div>
-        <img src="https://miro.medium.com/v2/resize:fit:1200/1*F_v5KMhdJT93qFSeG2E0gw.png" alt="Parent outside a primary school using a redesigned Arbor app">
+        <img src="https://mostlycaroline.com/harley-empathy-map-raw.png" alt="Raw empathy map from the hospital booking research synthesis workshop">
       </a>
     </div>
   </section>
@@ -349,7 +362,6 @@
   }, {threshold:0.1});
   document.querySelectorAll('.reveal').forEach(function(el){ obs.observe(el); });
 
-  // mobile nav toggle
   var navToggle = document.getElementById('navToggle');
   var navlinks = document.getElementById('navlinks');
   navToggle.addEventListener('click', function(){

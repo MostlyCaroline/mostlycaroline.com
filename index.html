@@ -51,11 +51,8 @@
   img{max-width:100%;display:block;}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 40px;}
 
-  /* scroll progress */
   #progress{position:fixed;top:0;left:0;height:3px;background:var(--coral);width:0%;z-index:999;transition:width .08s linear;}
 
-  /* MASTHEAD SWIRL */
-  /* NAV */
   header{
     position:sticky;top:0;left:0;right:0;
     background:rgba(255,255,255,0.88);
@@ -107,7 +104,6 @@
 
   section{position:relative;z-index:1;}
 
-  /* HERO */
   .hero{padding:120px 0 60px;}
   .hero-grid{display:grid;grid-template-columns:1fr 280px;gap:56px;align-items:start;}
   h1.headline{
@@ -130,7 +126,6 @@
     margin-top:32px;
   }
   .pullquote strong{font-weight:700;}
-  /* SPECIALISMS */
   .specialisms{padding-top:6px;}
   .specialism-list{list-style:none;margin:0;padding:0;}
   .specialism-list li{
@@ -140,7 +135,6 @@
   }
   .specialism-list li:last-child{border-bottom:1px solid var(--line);}
 
-  /* SECTION HEADER PATTERN */
   .section-head{display:flex;align-items:baseline;gap:14px;margin-bottom:52px;}
   .section-head .num{
     font-family:'Archivo', sans-serif;
@@ -156,7 +150,6 @@
   .section-title em{font-style:normal;}
   .section-pad{padding:120px 0;}
 
-  /* HIGHLIGHT UNDERLINE */
   .hl{position:relative;display:inline-block;z-index:0;}
   .hl::after{
     content:'';
@@ -170,7 +163,6 @@
   .hl-coral::after{background:var(--coral);}
   .hl-orange::after{background:var(--orange);}
 
-  /* ABOUT */
   .about-grid{display:grid;grid-template-columns:1fr 280px;gap:56px;align-items:start;}
   .about-text{order:1;}
   .about-photo-wrap{position:relative;order:2;}
@@ -184,12 +176,15 @@
   .about-photo-frame img{width:100%;height:100%;object-fit:cover;display:block;}
   .about-text p{color:var(--ink-soft);font-size:20px;margin:0 0 20px;}
 
-  /* WORK */
-  .work-list{display:flex;flex-direction:column;}
+  /* WORK - two column grid */
+  .work-list{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:48px 40px;
+  }
   .work-card{
-    display:grid;grid-template-columns:1.1fr 1fr;
-    gap:64px;align-items:center;
-    padding:70px 0;
+    display:flex;
+    flex-direction:column;
     text-decoration:none;
   }
   .work-media{
@@ -204,6 +199,10 @@
     transform:scale(1.02);
     transition:transform .6s ease;
   }
+  .work-media.placeholder{
+    display:flex;align-items:flex-end;
+    background:linear-gradient(135deg, var(--coral-tint), var(--orange-tint));
+  }
   .work-media-num{
     position:absolute;bottom:16px;left:18px;
     font-family:'Archivo', sans-serif;font-weight:900;
@@ -211,11 +210,12 @@
     letter-spacing:0.02em;
     z-index:2;
   }
+  .work-media.placeholder .work-media-num{color:var(--coral-deep);}
   .work-card:hover .work-media img{transform:scale(1.06);}
-  .work-content{position:relative;}
+  .work-content{position:relative;padding-top:24px;}
   .work-tags{font-family:'Archivo', sans-serif;font-size:13px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:10px;}
   .work-title{
-    font-family:'Archivo', sans-serif;font-weight:800;font-size:clamp(28px,3.2vw,44px);line-height:1.02;
+    font-family:'Archivo', sans-serif;font-weight:800;font-size:clamp(24px,2.4vw,32px);line-height:1.05;
     position:relative;display:inline-block;z-index:0;
   }
   .work-title::after{
@@ -230,13 +230,12 @@
     transition:background .25s ease;
   }
   .work-card:hover .work-title::after{background:var(--coral);}
-  .work-desc{color:var(--ink-soft);font-size:20px;margin-top:16px;max-width:440px;}
-  .work-link{margin-top:26px;}
+  .work-desc{color:var(--ink-soft);font-size:17px;margin-top:14px;}
+  .work-link{margin-top:22px;}
   .work-link:hover{background:var(--coral);border-color:var(--coral);color:#fff;}
   .arrow{transition:transform .25s ease;}
   .work-link:hover .arrow{transform:translateX(6px);}
 
-  /* REVIEWS */
   .reviews-cols{columns:3 320px;column-gap:24px;}
   .review-card{
     break-inside:avoid;
@@ -253,7 +252,6 @@
   .review-name{font-family:'Archivo', sans-serif;font-weight:700;font-size:16px;font-style:normal;}
   .review-role{color:var(--ink-soft);font-size:16px;margin-top:2px;}
 
-  /* CONTACT */
   .contact-pad{padding:130px 0 100px;}
   .contact-title{
     font-size:clamp(30px,4vw,52px);font-weight:900;
@@ -268,8 +266,6 @@
 
   .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease;}
   .reveal.in{opacity:1;transform:translateY(0);}
-  .work-card.reveal:nth-of-type(2){transition-delay:.08s;}
-  .work-card.reveal:nth-of-type(3){transition-delay:.16s;}
   .review-card.reveal:nth-of-type(2){transition-delay:.05s;}
   .review-card.reveal:nth-of-type(3){transition-delay:.1s;}
   .review-card.reveal:nth-of-type(4){transition-delay:.15s;}
@@ -281,7 +277,7 @@
     .hero-grid{grid-template-columns:1fr;gap:44px;}
     .specialisms{max-width:420px;}
     .about-grid{grid-template-columns:1fr;gap:50px;}
-    .work-card{grid-template-columns:1fr;gap:26px;padding:44px 0;}
+    .work-list{grid-template-columns:1fr;gap:44px;}
     .reviews-cols{columns:1;}
     .navlinks{gap:20px;}
     .wrap{padding:0 22px;}
@@ -307,7 +303,6 @@
     .navlinks .btn-nav-cv{margin:16px 22px;justify-content:center;}
     .hero{padding:90px 0 40px;}
   }
-  /* reflow: un-fix the sticky header when the viewport is very short (e.g. zoomed to 400%) so it doesn't block content */
   @media screen and (max-height:450px){
     header{position:static;}
   }
@@ -338,7 +333,7 @@
     <div class="wrap hero-grid">
       <div class="hero-main">
         <h1 class="headline reveal accent">Caroline<br>Edwards</h1>
-        <p class="hero-copy reveal">I am a Product Designer helping organisations turn difficult digital journeys into products that are simple, accessible and trustworthy. I've led UX on award-winning platforms for TES Jobs, Macmillan, Condé Nast, Lincolnshire County Council and the BBC, combining research, accessibility and product thinking to create genuinely useful services that people can navigate with confidence.</p>
+        <p class="hero-copy reveal">I am a Product Designer helping organisations turn difficult digital journeys into products that are simple, accessible and trustworthy. I've led UX on award-winning platforms for Centaur Media, Macmillan, EMAP and Lincolnshire County Council, combining research, accessibility and product thinking to create genuinely useful services that people can navigate with confidence.</p>
         <p class="pullquote reveal"><strong>Good design starts with understanding people, not just their data.</strong></p>
       </div>
       <div class="specialisms reveal">
@@ -368,7 +363,8 @@
         <div class="about-text reveal">
           <p>Some of the most valuable lessons I've learned about accessibility, inclusion and human behaviour haven't come from workshops or personas. They've come from working closely with people who experience the world differently every day.</p>
           <p>That perspective shapes how I approach product design. I'm interested in the moments where digital products quietly create friction - when someone is stressed, distracted, short on time or needs additional support to complete an important task.</p>
-          <p>My background spans healthcare, education, publishing and public services, and it has taught me that successful products rarely succeed because of clever interfaces alone. They succeed because they respect people's context, reduce unnecessary effort and help users feel confident about what happens next.</p>
+          <p>My background spans healthcare, publishing and public services, and it has taught me that successful products rarely succeed because of clever interfaces alone. They succeed because they respect people's context, reduce unnecessary effort and help users feel confident about what happens next.</p>
+          <p>I don't believe in a one-size-fits-all process. I have a consistent set of principles, but every project starts with understanding the people and constraints in front of me - not applying a template regardless of context.</p>
         </div>
       </div>
     </div>
@@ -380,42 +376,72 @@
       <h2 class="section-title reveal"><span class="hl hl-orange">Work</span></h2>
 
       <div class="work-list" style="margin-top:60px;">
-        <a class="work-card reveal" href="habithero.html">
+
+        <a class="work-card reveal" href="public-sector.html">
           <div class="work-media">
-            <img src="https://mostlycaroline.com/hh-hero.png" alt="HabitHero daily dashboard showing steps, distance, calories and streak" loading="lazy">
+            <img src="images/lincolnshire-c4yp-devices.png" alt="A desktop monitor showing the Lincolnshire County Council homepage, with a laptop in front showing C4YP, the council's Connecting 4 Young People site" loading="lazy">
             <span class="work-media-num">01</span>
           </div>
           <div class="work-content">
-            <div class="work-tags">UX · Behaviour Change · Mobile App</div>
-            <h3 class="work-title">HabitHero</h3>
+            <div class="work-tags">UX &middot; Public Sector &middot; Accessibility</div>
+            <h3 class="work-title">Working with, not in</h3>
+            <p class="work-desc">What being the outside agency, not a council employee, made possible on countless local government websites - including a keyboard accessibility fix and a teen co-design workshop that reset my assumptions.</p>
+            <span class="work-link btn btn-outline">View case study</span>
+          </div>
+        </a>
+
+        <a class="work-card reveal" href="habithero.html">
+          <div class="work-media">
+            <img src="https://mostlycaroline.com/hh-hero.png" alt="HabitHero daily dashboard showing steps, distance, calories and streak" loading="lazy">
+            <span class="work-media-num">02</span>
+          </div>
+          <div class="work-content">
+            <div class="work-tags">UX &middot; Behaviour Change &middot; Mobile App</div>
+            <h3 class="work-title">Designed for the days that don't go to plan</h3>
             <p class="work-desc">End-to-end behaviour change product for healthcare client PrimeCare - user research, journey mapping, design system, wireframes and three rounds of usability testing.</p>
             <span class="work-link btn btn-outline">View case study</span>
           </div>
         </a>
+
         <a class="work-card reveal" href="hospital.html">
           <div class="work-media">
             <img src="https://mostlycaroline.com/harley-empathy-map-raw.png" alt="Raw empathy map from the hospital booking research synthesis workshop" loading="lazy">
-            <span class="work-media-num">02</span>
+            <span class="work-media-num">03</span>
           </div>
           <div class="work-content">
-            <div class="work-tags">UX · Healthcare · Mobile App</div>
-            <h3 class="work-title">Private hospital booking system</h3>
+            <div class="work-tags">UX &middot; Healthcare &middot; Mobile App</div>
+            <h3 class="work-title">Making healthcare booking feel human</h3>
             <p class="work-desc">Appointment booking experience for a private healthcare network, developed with design agency Creative Navy as part of the KCL programme.</p>
             <span class="work-link btn btn-outline">View case study</span>
           </div>
         </a>
+
+        <a class="work-card reveal" href="publishing.html">
+          <div class="work-media">
+            <img src="images/publishing-brands-collage.jpg" alt="A collage of publishing website homepages built on the shared platform, including Music Week, The Grocer, The Lawyer, Creative Review and Bridal Buyer" loading="lazy">
+            <span class="work-media-num">04</span>
+          </div>
+          <div class="work-content">
+            <div class="work-tags">UX &middot; Publishing &amp; Media &middot; Design Systems</div>
+            <h3 class="work-title">One design system, an industry's worth of titles</h3>
+            <p class="work-desc">A shared design system for competing publishers who didn't want to lose what made their brands distinct. Sharing patterns doesn't mean losing identity.</p>
+            <span class="work-link btn btn-outline">View case study</span>
+          </div>
+        </a>
+
         <a class="work-card reveal" href="https://medium.com/design-bootcamp/less-friction-for-parents-less-admin-for-schools-880387ad793b" target="_blank" rel="noopener">
           <div class="work-media">
             <img src="https://miro.medium.com/v2/resize:fit:1200/1*F_v5KMhdJT93qFSeG2E0gw.png" alt="Parent outside a primary school using a redesigned Arbor app to find event tickets" loading="lazy">
-            <span class="work-media-num">03</span>
+            <span class="work-media-num">05</span>
           </div>
           <div class="work-content">
-            <div class="work-tags">UX · EdTech · Mobile App</div>
-            <h3 class="work-title">Arbor</h3>
+            <div class="work-tags">UX &middot; EdTech &middot; Mobile App</div>
+            <h3 class="work-title">Less friction for parents, less admin for schools</h3>
             <p class="work-desc">Improving Arbor's event ticket system. Less friction for parents, less admin for schools. How a small change to Arbor's ticket journey could benefit everyone.</p>
             <span class="work-link btn btn-outline">Read on Medium <span class="arrow">→</span></span>
           </div>
         </a>
+
       </div>
     </div>
   </section>
@@ -507,7 +533,6 @@
 </footer>
 
 <script>
-  // scroll progress bar
   var bar = document.getElementById('progress');
   window.addEventListener('scroll', function(){
     var h = document.documentElement;
@@ -515,7 +540,6 @@
     bar.style.width = pct + '%';
   });
 
-  // reveal on scroll
   var obs = new IntersectionObserver(function(entries){
     entries.forEach(function(e){
       if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); }
@@ -523,7 +547,6 @@
   }, {threshold:0.12});
   document.querySelectorAll('.reveal').forEach(function(el){ obs.observe(el); });
 
-  // mobile nav toggle
   var navToggle = document.getElementById('navToggle');
   var navlinks = document.getElementById('navlinks');
   navToggle.addEventListener('click', function(){

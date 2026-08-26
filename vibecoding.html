@@ -3,19 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Making healthcare booking feel human - Caroline Edwards</title>
-<meta name="description" content="UX case study: a private hospital's appointment booking app, developed with Creative Navy as part of the KCL Product Design programme.">
+<title>Levelling the playing field - Caroline Edwards</title>
+<meta name="description" content="UX case study: how I vibe coded my own portfolio site with Claude, by Caroline Edwards.">
 <meta name="author" content="Caroline Edwards, Product Designer">
 <link rel="icon" type="image/svg+xml" href="https://mostlycaroline.com/favicon.svg">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://mostlycaroline.com/hospital.html">
-<meta property="og:title" content="Making healthcare booking feel human - Caroline Edwards">
-<meta property="og:description" content="UX case study: a private hospital's appointment booking app, developed with Creative Navy as part of the KCL Product Design programme.">
-<meta property="og:image" content="https://mostlycaroline.com/harley-empathy-map-raw.png">
+<meta property="og:url" content="https://mostlycaroline.com/vibe-coding.html">
+<meta property="og:title" content="Levelling the playing field - Caroline Edwards">
+<meta property="og:description" content="UX case study: how I vibe coded my own portfolio site with Claude, by Caroline Edwards.">
+<meta property="og:image" content="https://mostlycaroline.com/me.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Making healthcare booking feel human - Caroline Edwards">
-<meta name="twitter:description" content="UX case study: a private hospital's appointment booking app, developed with Creative Navy as part of the KCL Product Design programme.">
-<meta name="twitter:image" content="https://mostlycaroline.com/harley-empathy-map-raw.png">
+<meta name="twitter:title" content="Levelling the playing field - Caroline Edwards">
+<meta name="twitter:description" content="UX case study: how I vibe coded my own portfolio site with Claude, by Caroline Edwards.">
+<meta name="twitter:image" content="https://mostlycaroline.com/me.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Urbanist:wght@700;800;900&display=swap" rel="stylesheet">
@@ -100,21 +100,10 @@
   .cs-title{font-family:'Urbanist', sans-serif;font-size:100px;font-weight:900;line-height:0.88;letter-spacing:-0.03em;max-width:920px;margin:0 auto;text-align:center;}
   .cs-intro{max-width:920px;margin:24px auto 0;color:var(--ink-soft);font-size:20px;text-align:center;}
 
-  .status-banner{
-    display:flex;align-items:center;gap:10px;width:fit-content;
-    background:var(--orange-tint);color:var(--ink);
-    padding:12px 20px;border-radius:999px;
-    font-family:'Archivo', sans-serif;font-size:13px;font-weight:700;
-    margin:24px auto 0;
-  }
-  .status-dot{width:8px;height:8px;border-radius:50%;background:var(--orange);flex-shrink:0;}
-
   .meta-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:48px;}
   .meta-item{background:#fff;padding:22px 24px;}
   .meta-item .label{color:var(--ink-soft);}
   .meta-item .value{font-family:'Archivo', sans-serif;font-weight:800;font-size:16px;margin-top:8px;}
-  .meta-link{text-decoration:underline;text-decoration-color:transparent;text-underline-offset:3px;transition:text-decoration-color .2s ease;}
-  .meta-link:hover{text-decoration-color:currentColor;}
 
   .star-tag{
     font-family:'Archivo', sans-serif;
@@ -132,9 +121,8 @@
   }
   .pull-callout cite{font-style:normal;font-weight:500;color:var(--ink-soft);font-size:15px;display:block;margin-top:10px;}
 
-  .who-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:32px;padding-top:28px;border-top:1px solid var(--line);}
-  .who-label{font-family:'Archivo', sans-serif;text-transform:uppercase;letter-spacing:0.1em;font-size:12px;font-weight:700;color:var(--coral);margin-bottom:10px;}
-  .who-text{font-family:'Archivo', sans-serif;font-size:16px;color:var(--ink-soft);line-height:1.5;}
+  .cs-hero-img{width:100vw;margin:48px calc(50% - 50vw) 0;background:var(--line);}
+  .cs-hero-img img{width:100%;height:auto;display:block;}
 
   .cs-figure{margin:36px 0 0;max-width:760px;}
   .cs-figure img{width:100%;height:auto;border-radius:8px;background:var(--line);}
@@ -142,6 +130,24 @@
   .cs-figure-full{width:100vw;max-width:100vw;margin:40px calc(50% - 50vw) 0;}
   .cs-figure-full img{border-radius:0;}
   .cs-figure-full .cs-caption{padding:12px 40px 0;}
+
+  .who-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:32px;padding-top:28px;border-top:1px solid var(--line);}
+  .who-label{font-family:'Archivo', sans-serif;text-transform:uppercase;letter-spacing:0.1em;font-size:12px;font-weight:700;color:var(--coral);margin-bottom:10px;}
+  .who-text{font-family:'Archivo', sans-serif;font-size:16px;color:var(--ink-soft);line-height:1.5;}
+
+  .client-list-wrap{margin-top:32px;padding-top:28px;border-top:1px solid var(--line);}
+  .client-list{list-style:none;margin:16px 0 0;padding:0;columns:2 240px;column-gap:32px;}
+  .client-list li{
+    font-family:'Archivo', sans-serif;font-size:16px;color:var(--ink-soft);
+    padding:9px 0;border-bottom:1px solid var(--line);break-inside:avoid;
+  }
+  .client-list li strong{color:var(--ink);font-weight:700;}
+  .client-list li.done{text-decoration:line-through;text-decoration-color:var(--coral);text-decoration-thickness:1.5px;}
+  .client-list li .note{display:block;font-size:13px;color:var(--ink-soft);margin-top:2px;}
+
+  .result-list{list-style:none;margin:22px 0 0;padding:0;max-width:760px;}
+  .result-list li{position:relative;padding-left:26px;margin-bottom:12px;font-family:'Archivo', sans-serif;font-size:20px;color:var(--ink-soft);}
+  .result-list li::before{content:'';position:absolute;left:0;top:0.6em;width:8px;height:8px;border-radius:50%;background:var(--coral);}
 
   .process-pills{list-style:none;margin:28px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:10px;}
   .process-pill{
@@ -197,7 +203,7 @@
     .navlinks a.navlink{width:100%;padding:16px 22px;border-bottom:1px solid var(--line);display:flex !important;}
     .navlinks a.navlink::after{display:none;}
     .navlinks .btn-nav-cv{margin:16px 22px;justify-content:center;}
-    .cs-title{font-size:56px;}
+    .cs-title{font-size:52px;}
     .who-grid{grid-template-columns:1fr;gap:20px;}
   }
   @media screen and (max-height:450px){
@@ -236,39 +242,40 @@
 
   <section class="cs-hero section-pad" style="padding-bottom:0;">
     <div class="wrap">
-      <div class="cs-tags reveal">UX Case Study &middot; Healthcare &middot; Mobile App &middot; KCL Programme</div>
-      <h1 class="cs-title reveal">Making healthcare booking feel human</h1>
-      <p class="cs-intro reveal">A mobile booking experience for a private healthcare network, built with design agency Creative Navy as part of the King's College London Product Design programme.</p>
-
-      <div class="status-banner reveal"><span class="status-dot"></span>In progress - prototype built and through a first round of client feedback (extremely positive, with some refinements based on detail that wasn't in the original brief). Usability testing with real users starts this week.</div>
+      <div class="cs-tags reveal">Personal Project &middot; Vibe Coding &middot; Portfolio Build</div>
+      <h1 class="cs-title reveal">Levelling the playing field</h1>
+      <p class="cs-intro reveal">My own portfolio, built end-to-end with Claude directing the code. I design well. My code has never quite matched. This is what happened when I stopped trying to close that gap alone.</p>
 
       <div class="meta-grid reveal">
-        <div class="meta-item"><div class="label">Industry Partner</div><div class="value"><a href="https://interface-design.co.uk/" target="_blank" rel="noopener" class="meta-link">Creative Navy</a></div></div>
-        <div class="meta-item"><div class="label">Client</div><div class="value">Private Healthcare Network</div></div>
-        <div class="meta-item"><div class="label">My Role</div><div class="value">Project Lead for project kick off with client</div></div>
-        <div class="meta-item"><div class="label">Platform</div><div class="value">Native mobile app</div></div>
+        <div class="meta-item"><div class="label">Client</div><div class="value">Personal Project</div></div>
+        <div class="meta-item"><div class="label">My Role</div><div class="value">Designer &amp; Vibe Coder</div></div>
+        <div class="meta-item"><div class="label">Duration</div><div class="value">~4 weeks, 2026</div></div>
+        <div class="meta-item"><div class="label">Platform</div><div class="value">Claude &amp; GitHub Pages</div></div>
       </div>
     </div>
+
+    <figure class="cs-hero-img reveal">
+      <img src="images/vibecoding-devices.png" alt="This site's homepage shown on a laptop and phone, propped up on a garden table">
+    </figure>
   </section>
 
   <section class="section-pad">
     <div class="wrap">
     <div class="star-content">
       <h2 class="star-tag reveal"><span class="hl hl-coral">Situation</span></h2>
-      <h3 class="section-title reveal">A brief built on an assumption</h3>
-      <p class="prose reveal">The client needed a unified mobile booking experience across its private healthcare network. The brief assumed the main blocker was speed - it asked us to get patients through a booking in under one minute.</p>
+      <h3 class="section-title reveal">I could design it. I couldn't build it.</h3>
+      <p class="prose reveal">Fifteen years into design, my code skill still hadn't caught up with my design skill. I'd built the brand system, the case-study template and the content for this site - what I hadn't done was own the code behind it. A templated builder would get something live, but it wasn't going to prove anything about how I actually work, especially applying into EdTech and public-sector roles where an AI-forward workflow is a real asset, not a gimmick. My husband had already built his own portfolio this way. Watching him do it is what convinced me I could too.</p>
 
       <div class="who-grid">
         <div class="who-col reveal">
           <div class="who-label">Users</div>
-          <p class="who-text">Adults seeking private healthcare, already anxious about a health concern before they've even opened the app.</p>
+          <p class="who-text">Recruiters and hiring managers reading the site the way anyone reads a portfolio - fast, a little skeptical, looking for a reason to shortlist or move on.</p>
         </div>
         <div class="who-col reveal">
           <div class="who-label">Stakeholders</div>
-          <p class="who-text">The specialists and clinics on the other end of each booking, who need enough context to prepare - and the hospital's admin team, who currently field the calls and questions the app is meant to absorb.</p>
+          <p class="who-text">Me, as both client and design authority. The only person who had to sign off on every decision - and the only one with any brand guidelines to defend.</p>
         </div>
       </div>
-      <p class="prose reveal">A booking isn't the end of the interaction. Patients still need to feel confident between confirming and walking through the door, and admin staff need fewer avoidable calls asking what happens next.</p>
     </div>
     </div>
   </section>
@@ -277,12 +284,13 @@
     <div class="wrap">
     <div class="star-content">
       <h2 class="star-tag reveal"><span class="hl hl-orange">Insight</span></h2>
-      <h3 class="section-title reveal">Speed wasn't the problem. Confidence was.</h3>
-      <p class="prose reveal">Seven user interviews and analysis of twelve direct, indirect and analogous competitors surfaced the same six themes again and again: uncertainty, trust, guidance, transparency, availability and cognitive effort. Speed was secondary to all of them.</p>
+      <h3 class="section-title reveal">I didn't need to learn to code. I needed a coder who'd listen.</h3>
+      <p class="prose reveal">I was vibe coding before it had a name - describing what I wanted and nudging it into shape, rather than writing it myself. My value here was never going to be syntax. It's taste, structure and knowing what to reject. Once I stopped trying to become a developer and started treating Claude as one, the whole thing levelled out.</p>
+      <blockquote class="pull-callout reveal">Claude could code. I could vibe and tweak.</blockquote>
       <ol class="hmw-list">
-        <li class="hmw-item reveal"><span class="hmw-tag">HMW</span><span class="hmw-text">reduce uncertainty before someone knows which specialist they need?</span></li>
-        <li class="hmw-item reveal"><span class="hmw-tag">HMW</span><span class="hmw-text">make costs transparent before a patient commits?</span></li>
-        <li class="hmw-item reveal"><span class="hmw-tag">HMW</span><span class="hmw-text">keep a human option visible if someone gets stuck?</span></li>
+        <li class="hmw-item reveal"><span class="hmw-tag">HMW</span><span class="hmw-text">find a partner who could code as fast as I could decide?</span></li>
+        <li class="hmw-item reveal"><span class="hmw-tag">HMW</span><span class="hmw-text">stop treating "can't code" as a blocker rather than a role?</span></li>
+        <li class="hmw-item reveal"><span class="hmw-tag">HMW</span><span class="hmw-text">keep real ownership of the code without writing all of it myself?</span></li>
       </ol>
     </div>
     </div>
@@ -292,14 +300,15 @@
     <div class="wrap">
     <div class="star-content">
       <h2 class="star-tag reveal"><span class="hl hl-coral">Task</span></h2>
-      <h3 class="section-title reveal">Find the real problem</h3>
-      <p class="prose reveal">As Project Lead for a team of seven, my job was to validate or challenge the speed-first assumption before anyone designed a single screen - and to turn whatever we found into a problem statement the whole team could design against.</p>
+      <h3 class="section-title reveal">Build the site myself - properly, this time</h3>
+      <p class="prose reveal">Ship a coded, self-hosted portfolio that actually reflected how I work - not another prototype, and not another tool doing the deciding for me. Roughly four weeks, around an active job search.</p>
       <ol class="process-pills">
-        <li class="process-pill reveal"><span class="pill-num">01</span>Discovery &amp; Brief Review</li>
-        <li class="process-pill reveal"><span class="pill-num">02</span>User Interviews</li>
-        <li class="process-pill reveal"><span class="pill-num">03</span>Competitor &amp; Analogous Analysis</li>
-        <li class="process-pill reveal"><span class="pill-num">04</span>Affinity Mapping &amp; Synthesis</li>
-        <li class="process-pill reveal"><span class="pill-num">05</span>Problem Definition &amp; Requirements</li>
+        <li class="process-pill reveal"><span class="pill-num">01</span>Sketch the pages</li>
+        <li class="process-pill reveal"><span class="pill-num">02</span>Build the design system</li>
+        <li class="process-pill reveal"><span class="pill-num">03</span>Attempt it in Framer</li>
+        <li class="process-pill reveal"><span class="pill-num">04</span>Detour through Figma Make</li>
+        <li class="process-pill reveal"><span class="pill-num">05</span>Rebuild from scratch with Claude</li>
+        <li class="process-pill reveal"><span class="pill-num">06</span>Ship on GitHub Pages</li>
       </ol>
     </div>
     </div>
@@ -309,35 +318,25 @@
     <div class="wrap">
     <div class="star-content">
       <h2 class="star-tag reveal"><span class="hl hl-orange">Action</span></h2>
-      <h3 class="section-title reveal">Confidence, not speed</h3>
-      <p class="prose reveal">As project lead, my first job was bringing a brand-new team together across multiple time zones and setting our first deadline: establish what patients actually needed before designing anything. I directed the interviews, competitor analysis and a full affinity and empathy mapping synthesis workshop in Miro, then used what we learned to refine the problem statement.</p>
-      <p class="prose reveal">Patients begin the booking process already worried about their health - what they actually needed was guidance to find the right specialist, transparent pricing, and visible access to a human if they got stuck.</p>
-      <blockquote class="pull-callout reveal">"I'm already worried. I don't want this to make me more stressed."<cite>- User interview participant</cite></blockquote>
-    </div>
-    </div>
+      <h3 class="section-title reveal">Interviews, not instructions</h3>
+      <p class="prose reveal">The build worked more like an interview than a set of instructions. I'd describe what I wanted, Claude would ask questions, and answering them is where most of the actual thinking happened. GitHub, directed by Claude, turned out to be the simple part - the back-and-forth was the real work, and it moved fast.</p>
+      <blockquote class="pull-callout reveal">Faster iteration is great - unless it's having one of its bloated days.</blockquote>
+      <p class="prose reveal">Most of what "vibing and tweaking" meant in practice was saying no. Some of these were Claude's first pass. Some were my own early ideas that didn't survive a second look. Either way, this is most of what taste actually looked like on this project.</p>
 
-    <figure class="cs-figure cs-figure-full reveal">
-      <img src="https://mostlycaroline.com/harley-empathy-map-raw.png" alt="Raw empathy map from the Miro synthesis workshop, showing all sticky notes before clustering">
-      <div class="cs-caption wrap">The raw Miro synthesis workshop - every sticky note before clustering into the empathy map.</div>
-    </figure>
-  </section>
-
-  <section class="section-pad">
-    <div class="wrap">
-    <div class="star-content">
-      <h2 class="star-tag reveal"><span class="hl hl-coral">Result</span></h2>
-      <h3 class="section-title reveal">A reframed brief</h3>
-      <p class="prose reveal">The research reframed the design direction toward minimising cognitive effort rather than steps, and produced a prioritised set of requirements now driving the design phase.</p>
-    </div>
-    </div>
-  </section>
-
-  <section class="section-pad">
-    <div class="wrap">
-    <div class="star-content">
-      <h2 class="star-tag reveal"><span class="hl hl-orange">Next steps</span></h2>
-      <h3 class="section-title reveal">Usability testing, starting this week</h3>
-      <p class="prose reveal">The prototype has been through a first round of client feedback - extremely positive, with a few refinements based on detail that wasn't part of the original brief. We're now taking it into usability testing with real users this week, ahead of further iteration and dev handover.</p>
+      <div class="client-list-wrap reveal">
+        <div class="who-label">What I said no to</div>
+        <ul class="client-list">
+          <li class="done">Animated blob photo frame</li>
+          <li class="done">Solid coral How-I-Work cards</li>
+          <li class="done">Left border stripe on cards</li>
+          <li class="done">Emoji icons</li>
+          <li class="done">Rounded square icon containers</li>
+          <li class="done">Em dashes (this makes me really sad)</li>
+          <li class="done">Speech marks on pull quotes</li>
+          <li class="done">Modal overlays for blog posts</li>
+          <li class="done">Cool Summer blue palette</li>
+        </ul>
+      </div>
     </div>
     </div>
   </section>
@@ -345,28 +344,38 @@
   <section class="section-pad">
     <div class="wrap">
     <div class="star-content">
-      <h2 class="star-tag reveal"><span class="hl hl-coral">Reflection</span></h2>
-      <h3 class="section-title reveal">You learn a team by working with it</h3>
-      <p class="prose reveal">I really enjoyed leading this project. I had to hit the ground running with a team I'd never worked with before, across multiple time zones, and quickly create enough structure for seven people to move in the same direction without knowing yet what everyone was capable of.</p>
-      <p class="prose reveal">One of the things I learned was that you can't always take someone's stated strengths at face value. What someone says they're good at and what they naturally bring to a project aren't necessarily the same thing. I had to discover that through the work - watching how people approached ambiguity, where they took ownership, where they needed direction and where they could contribute more than their initial role suggested.</p>
-      <p class="prose reveal">I also learned how differently people need to be supported. Some people are happy to take a task and run with it. Others do their best work when a large piece of work is broken into smaller, clearer steps. Some need more regular check-ins, context or reassurance than the project schedule seems to allow.</p>
-      <p class="prose reveal">The temptation, particularly on a tight project, is to give everyone the same level of attention and call that fair. I don't think that's good leadership. People don't need equal amounts of support; they need the support that allows them to do their best work.</p>
-      <p class="prose reveal">Sometimes that means making time I don't appear to have. I've learned that time spent helping someone get unstuck, build confidence or understand what good looks like rarely disappears from the project. It comes back later as greater ownership, better work and more support for the rest of the team.</p>
-      <p class="prose reveal">I'd do some things differently next time. I'd spend more time at the beginning understanding how each person works, rather than assuming a role description or introduction tells me enough. But I wouldn't try to solve that by creating a more rigid process. I'd keep observing, adapting and making space for people to tell me what they need.</p>
-      <p class="prose reveal">The biggest lesson was that leading a team is another form of discovery. You don't just discover the problem and the users - you discover the people you're solving it with, and how to help each of them do their best work.</p>
+      <h2 class="star-tag reveal"><span class="hl hl-coral">Result</span></h2>
+      <h3 class="section-title reveal">A real site, not another prototype</h3>
+      <ul class="result-list reveal">
+        <li>It's live, it's mine, and I can keep changing it myself - which is exactly what I was doing the day I started writing this case study, despite promising I wouldn't.</li>
+        <li>The interview-style process made me think harder about my own site than any visual tool did.</li>
+        <li>The iteration loop is faster than designing alone ever was, bloated days notwithstanding.</li>
+        <li>It's a live demonstration of the AI-forward workflow I'm pitching for EdTech and public-sector roles - not a claim on a CV.</li>
+      </ul>
     </div>
     </div>
   </section>
 
   <section class="section-pad">
     <div class="wrap">
-      <a href="publishing.html" class="next-card reveal">
+    <div class="star-content">
+      <h2 class="star-tag reveal"><span class="hl hl-orange">Reflection</span></h2>
+      <h3 class="section-title reveal">What this project changed for me</h3>
+      <p class="prose reveal">The line between "designer" and "person who ships things" got a lot thinner. I don't need to become a developer to own a product end-to-end - I need to be good at directing one, and honest about which parts aren't mine to do. That's not a compromise. For the kind of AI-forward EdTech and public-sector work I'm applying for, it's the actual pitch.</p>
+      <p class="prose reveal">I also learned I'm not very good at leaving a finished thing alone. I said I wouldn't touch this site again. This case study exists because I did.</p>
+    </div>
+    </div>
+  </section>
+
+  <section class="section-pad">
+    <div class="wrap">
+      <a href="habithero.html" class="next-card reveal">
         <div>
           <span class="label">Next case study</span>
-          <h3>One design system, an industry's worth of titles</h3>
-          <p>A shared design system for competing publishers who didn't want to lose what made their brands distinct.</p>
+          <h3>Designed for the days that don't go to plan</h3>
+          <p>A behaviour change feature for PrimeCare, built around giving users permission to have a bad day.</p>
         </div>
-        <img src="images/publishing-brands-collage.jpg" alt="A collage of publishing website homepages built on the shared platform, including Music Week, The Grocer, The Lawyer, Creative Review and Bridal Buyer">
+        <img src="https://mostlycaroline.com/hh-hero.png" alt="HabitHero's daily dashboard on a phone screen, showing today's steps, distance, calories, streak, and Life Days used">
       </a>
     </div>
   </section>

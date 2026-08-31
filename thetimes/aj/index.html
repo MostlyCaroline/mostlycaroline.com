@@ -1,3 +1,8 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Caroline Edwards</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:wght@400;500;600;700&display=swap">
 <style>
@@ -243,6 +248,7 @@
     #opinion .opinion-primary-grid{ grid-template-columns:1fr; }
     #hero .hero-primary-grid{ grid-template-columns:1fr; }
     #culture .culture-primary-grid{ grid-template-columns:1fr; }
+    #hero .hero-image{ max-width:100%; }
     #hero .headline{ font-size:27px; }
     #product-desk .feature-grid{ grid-template-columns:1fr; }
     #product-desk .feature-panel{ padding:26px; }
@@ -258,7 +264,63 @@
     .module-title{ font-size:19px; }
     .footer-skills-grid{ grid-template-columns:1fr; }
   }
+
+  /* ---------- responsive: tablet fine-tuning ---------- */
+  @media (max-width:1180px) and (min-width:981px){
+    #hero .hero-grid{ grid-template-columns: 2.4fr 1fr; }
+  }
+
+  /* ---------- responsive: small tablet / large phone ---------- */
+  @media (max-width:768px){
+    .page{ padding:0 18px; }
+    .module{ padding-top:22px; margin-top:26px; }
+    .module-head{ padding-bottom:12px; margin-bottom:18px; }
+    #hero .headline{ font-size:24px; }
+    #opinion .primary-text .headline,
+    #culture .culture-primary-text .headline{ font-size:22px; }
+    #why-news-uk .expert-copy .headline{ font-size:19px; }
+    #culture .culture-rail-item{ grid-template-columns:1fr; gap:10px; }
+    #culture .culture-rail-thumb{ max-width:220px; }
+    #why-news-uk .ad-box{ width:100%; max-width:300px; height:auto; aspect-ratio:300/250; }
+    #why-news-uk .expert-ad{ display:flex; justify-content:center; }
+  }
+
+  /* ---------- responsive: phone ---------- */
+  @media (max-width:600px){
+    .page{ padding:0 16px; }
+    .header-row{ padding:16px 0; gap:10px 20px; }
+    .identity .name{ font-size:20px; }
+    .site-nav{ gap:16px; font-size:13px; padding-bottom:2px; }
+    .site-nav::-webkit-scrollbar{ display:none; }
+    .site-nav{ scrollbar-width:none; -ms-overflow-style:none; }
+    .module-title{ font-size:18px; }
+    .kicker{ font-size:10.5px; }
+    #hero .headline{ font-size:22px; }
+    #hero .hero-sub-grid .headline{ font-size:16px; }
+    #hero .hero-primary-text .dek{ font-size:14px; }
+    #opinion .primary-text .headline,
+    #culture .culture-primary-text .headline{ font-size:20px; }
+    #opinion .opinion-summary-row .headline{ font-size:17px; line-height:1.3; }
+    #opinion .opinion-rail-title{ font-size:16px; }
+    #product-desk .feature-panel .headline{ font-size:23px; }
+    #product-desk .feature-panel{ padding:22px 18px; }
+    #why-news-uk .expert-copy .headline{ font-size:18px; }
+    #archive .headline{ font-size:16px; }
+    #ai-ideas .headline{ font-size:18px; }
+    #ai-ideas .byline .headline{ font-size:19px; }
+    .footer-wordmark{ font-size:19px; }
+    .footer-main{ padding:28px 18px 22px; }
+    .back-to-top{ padding:14px 18px; }
+  }
+
+  @media (max-width:380px){
+    .page{ padding:0 14px; }
+    #hero .headline{ font-size:20px; }
+    .identity .name{ font-size:18px; }
+  }
 </style>
+</head>
+<body>
 
 <!-- shared icon defs -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -690,3 +752,5 @@
     </div>
   </div>
 </footer>
+</body>
+</html>

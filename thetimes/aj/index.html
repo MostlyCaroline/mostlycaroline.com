@@ -1,1 +1,692 @@
+<title>Caroline Edwards</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:wght@400;500;600;700&display=swap">
+<style>
+  :root{
+    --paper:      #ffffff;
+    --paper-alt:  #eaedf4;
+    --ink:        #14120f;
+    --ink-soft:   #55524c;
+    --ink-faint:  #8a867c;
+    --rule:       #d7d7d3;
+    --chevron-bg: #eceae5;
+    --blue:       #1f4e96;
+    --maroon:     #7a1420;
+    --plum:       #7c3a63;
+    --jade:       #00694e;
 
+    --font-serif: "PT Serif", Georgia, "Times New Roman", serif;
+    --font-sans:  -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper: #141310; --paper-alt: #1d2430; --ink: #ece7dc; --ink-soft: #b6b0a2;
+      --ink-faint: #847e70; --rule: #38352d; --chevron-bg: #262521;
+      --blue: #7fa6e0; --maroon: #d9707a; --plum: #d99bc2; --jade: #3ba580; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper: #141310; --paper-alt: #1d2430; --ink: #ece7dc; --ink-soft: #b6b0a2;
+    --ink-faint: #847e70; --rule: #38352d; --chevron-bg: #262521;
+    --blue: #7fa6e0; --maroon: #d9707a; --plum: #d99bc2; --jade: #3ba580; color-scheme: dark;
+  }
+
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; overflow-x:hidden; }
+  body{ background:var(--paper); color:var(--ink); font-family:var(--font-serif); -webkit-font-smoothing:antialiased; }
+  img,svg{ max-width:100%; display:block; }
+  a{ color:inherit; text-decoration:none; }
+  h1,h2,h3,h4{ margin:0; font-weight:700; text-wrap:balance; }
+  p{ margin:0; }
+  ul{ margin:0; padding:0; list-style:none; }
+
+  .page{ max-width:1216px; margin:0 auto; padding:0 24px; }
+
+  /* ---------- header ---------- */
+  .site-header{
+    background:#000;
+    --ink:#ffffff; --ink-soft:#d9d6cf; --ink-faint:#9a968c; --blue:#8fb4ea;
+    color:var(--ink);
+  }
+  .header-row{ display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap; gap:14px 28px; padding:20px 0; }
+  .identity{ display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; }
+  .identity .name{ font-family:var(--font-serif); font-weight:700; font-size:25px; text-transform:uppercase; letter-spacing:.02em; }
+  .site-nav{ display:flex; gap:22px; font-family:'Roboto', var(--font-sans); font-size:14px; font-weight:500; letter-spacing:.01em; overflow-x:auto; }
+  .site-nav a{ padding:4px 0; border-bottom:2px solid transparent; color:#ffffff; white-space:nowrap; }
+  .site-nav a:hover{ color:var(--blue); border-bottom-color:var(--blue); }
+
+  /* ---------- footer ---------- */
+  .site-footer{
+    background:#000; margin-top:40px;
+    --ink:#ffffff; --ink-soft:#c9c6c0; --ink-faint:#8f8b84; --rule:#333333; --blue:#8fb4ea;
+    color:var(--ink);
+  }
+  .back-to-top{ display:flex; align-items:center; gap:10px; background:#3a3d42; color:#fff; padding:16px 24px; font-family:var(--font-sans); font-weight:700; font-size:13px; letter-spacing:.06em; text-transform:uppercase; text-decoration:none; }
+  .back-to-top svg{ width:13px; height:13px; transform:rotate(-90deg); color:#fff; }
+  .footer-main{ padding:40px 24px 28px; }
+  .footer-wordmark{ font-family:var(--font-serif); font-weight:700; font-size:22px; text-transform:uppercase; letter-spacing:.02em; margin:0 0 28px; }
+  .footer-columns{ grid-template-columns:1fr 3.2fr; align-items:start; }
+  .footer-heading{ font-family:var(--font-sans); font-weight:700; font-size:13px; letter-spacing:.03em; color:var(--ink); margin:0 0 14px; padding-bottom:10px; border-bottom:1px solid var(--rule); }
+  .footer-kicker{ font-family:var(--font-sans); font-weight:700; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--blue); margin-bottom:6px; }
+  .footer-bio{ font-family:var(--font-serif); color:var(--ink-soft); line-height:1.5; font-size:14px; margin:0 0 18px; }
+  .footer-links{ list-style:none; margin:0; padding:0; }
+  .footer-links li{ margin-bottom:12px; }
+  .footer-links a{ color:var(--ink-soft); font-family:var(--font-sans); font-size:14px; }
+  .footer-links a:hover{ color:var(--ink); text-decoration:underline; }
+  .footer-note{ font-family:var(--font-serif); font-style:italic; color:var(--ink-soft); font-size:13.5px; line-height:1.5; max-width:70ch; margin:0 0 24px; }
+  .footer-skills-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:24px; }
+  .footer-group-title{ font-family:var(--font-sans); font-weight:700; font-size:11px; letter-spacing:.05em; text-transform:uppercase; color:var(--blue); margin:0 0 12px; }
+  .footer-links.plain li{ color:var(--ink-soft); font-family:var(--font-sans); font-size:13.5px; margin-bottom:10px; }
+  .footer-copyright{ font-family:var(--font-sans); font-size:12px; color:var(--ink-faint); margin-top:36px; padding-top:20px; border-top:1px solid var(--rule); }
+  .footer-copyright p{ margin-top:6px; }
+  .footer-copyright p:first-child{ margin-top:0; }
+  .footer-tagline{ font-weight:700; color:var(--ink-soft); }
+
+  /* ---------- shared module chrome ---------- */
+  .module{ padding-top:26px; margin-top:32px; border-top:1px dashed var(--rule); }
+  .module:first-of-type{ border-top:none; margin-top:24px; }
+  .module.section-block{ border-top:2px solid var(--ink); border-top-style:solid; }
+  .module-head{ display:flex; align-items:center; gap:12px; padding-bottom:14px; margin-bottom:22px; border-bottom:1px dashed var(--rule); }
+  .module-title{ font-family:var(--font-serif); font-weight:700; font-size:23px; }
+  .module-title.maroon{ color:var(--maroon); }
+  .module-title.blue{ color:var(--blue); }
+  .module-title.plum{ color:var(--plum); }
+  .chevron-btn{ width:26px; height:26px; border-radius:50%; background:var(--chevron-bg); display:flex; align-items:center; justify-content:center; flex:none; }
+  .chevron-btn svg{ width:9px; height:9px; }
+
+  .kicker{ font-family:var(--font-sans); font-weight:700; font-size:11px; letter-spacing:.07em; text-transform:uppercase; color:var(--blue); }
+  .kicker.maroon{ color:var(--maroon); }
+  .kicker.plum{ color:var(--plum); }
+  .headline{ font-family:var(--font-serif); font-weight:700; line-height:1.12; margin-top:8px; }
+  .dek{ font-family:var(--font-serif); color:var(--ink-soft); line-height:1.45; margin-top:8px; }
+  .meta{ font-family:var(--font-sans); font-size:11px; color:var(--ink-faint); margin-top:12px; }
+  .more-link{ font-family:var(--font-sans); font-size:12px; font-weight:700; color:var(--blue); display:inline-flex; align-items:center; gap:5px; margin-top:10px; }
+  .more-link svg{ width:9px; height:9px; }
+  .figure{ background:var(--paper-alt); overflow:hidden; }
+  .figure svg{ width:60%; height:60%; margin:auto; }
+  .figure{ display:flex; }
+  .figure img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .caption{ font-family:var(--font-sans); font-size:11px; color:var(--ink-faint); margin-top:8px; }
+
+  .byline{ display:flex; align-items:flex-start; gap:12px; }
+  .avatar{ width:44px; height:44px; border-radius:50%; flex:none; overflow:hidden; background:var(--paper-alt); }
+  .byline-name{ font-family:var(--font-sans); font-weight:700; font-size:11.5px; letter-spacing:.04em; text-transform:uppercase; color:var(--blue); }
+  .byline-name.maroon{ color:var(--maroon); }
+  .byline .headline{ font-size:16px; margin-top:6px; }
+
+  /* ---------- divided grid ---------- */
+  .divided{ display:grid; }
+  .divided > *{ padding:0 24px; min-width:0; }
+  .divided > *:first-child{ padding-left:0; }
+  .divided > *:last-child{ padding-right:0; }
+  .divided > *:not(:last-child){ border-right:1px solid var(--rule); }
+
+  .stack > * + *{ border-top:1px dashed var(--rule); margin-top:12px; padding-top:12px; }
+
+  /* ---------- module 1: hero ---------- */
+  /* image column sized so the hero photo renders at 448x298 (3:2) on a full
+     1168px-wide desktop content area, while staying fluid at narrower widths */
+  /* primary (text+image, then research/prototype) sits in one column so the
+     divider and the Analysis/Comment/Brief rail run the full height beside it */
+  #hero .hero-grid{ grid-template-columns: 2.9fr 1fr; }
+  #hero .hero-grid > *:last-child{ padding-left:32px; }
+  #hero .hero-primary-grid{ display:grid; grid-template-columns:1.25fr 1.66fr; gap:24px; align-items:start; }
+  #hero .headline{ font-size:32px; }
+  #hero .hero-primary-text .dek{ font-size:15px; }
+  #hero .hero-image{ aspect-ratio:3/2; max-width:448px; }
+  #hero .hero-sub-grid{ grid-template-columns:1fr 1fr; margin-top:24px; padding-top:20px; border-top:1px dashed var(--rule); }
+  #hero .hero-sub-grid .headline{ font-size:18px; }
+
+  /* ---------- module 2: feature panel ---------- */
+  #product-desk .feature-grid{ display:grid; grid-template-columns:1fr 1fr; gap:0; background:var(--paper-alt); }
+  #product-desk .feature-panel{ display:flex; flex-direction:column; justify-content:center; padding:36px; }
+  #product-desk .feature-panel{ text-align:center; align-items:center; }
+  #product-desk .feature-panel .kicker{ text-align:center; }
+  #product-desk .feature-panel .headline{ font-size:30px; }
+  #product-desk .feature-panel .dek{ font-size:15px; max-width:60ch; margin-left:auto; margin-right:auto; }
+
+  /* ---------- the bigger picture ---------- */
+  #why-news-uk .expert-row{ display:grid; grid-template-columns: 110px 1fr 300px; column-gap:32px; align-items:start; }
+  #why-news-uk .expert-date{ font-family:var(--font-sans); font-weight:700; font-size:13px; color:var(--ink); }
+  #why-news-uk .expert-copy .headline{ font-size:22px; margin-top:8px; }
+  #why-news-uk .expert-copy .dek{ font-size:15px; }
+  #why-news-uk .ad-label{ font-family:var(--font-sans); font-size:11px; letter-spacing:.05em; text-transform:uppercase; color:var(--ink-faint); text-align:center; margin-bottom:8px; }
+  .page-ad{ background:var(--paper-alt); border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); margin-top:48px; padding:20px 0 28px; width:100vw; position:relative; left:50%; right:50%; margin-left:-50vw; margin-right:-50vw; }
+  .page-ad .ad-label{ font-family:var(--font-sans); font-size:11px; letter-spacing:.05em; text-transform:uppercase; color:var(--ink-faint); text-align:center; margin-bottom:10px; }
+  .page-ad-banner{ max-width:900px; margin:0 auto; border:1px solid var(--rule); }
+  .page-ad-banner img{ width:100%; height:auto; display:block; }
+  #why-news-uk .ad-box{ width:300px; height:250px; background:var(--paper-alt); overflow:hidden; margin:0 auto; }
+  #why-news-uk .ad-box img{ width:100%; height:100%; object-fit:cover; display:block; }
+  #product-desk .feature-image{ aspect-ratio:750/500; max-width:750px; margin-left:auto; }
+
+  /* ---------- module 3: opinion ---------- */
+  #opinion .opinion-grid{ grid-template-columns:1.85fr 1fr; }
+  #opinion .opinion-primary-grid{ display:grid; grid-template-columns:1fr 1.9fr; gap:24px; align-items:start; }
+  #opinion .opinion-image{ aspect-ratio:3/2; }
+  #opinion .primary-text .headline{ font-size:27px; }
+  #opinion .primary-text .dek{ font-size:15px; margin-top:10px; }
+  #opinion .opinion-summary-row{ grid-template-columns:1fr 1fr 1fr; margin-top:28px; padding-top:20px; border-top:1px dashed var(--rule); }
+  #opinion .opinion-summary-row .headline{ font-family:"Times Modern", "Times Modern-fallback", serif; font-size:20px; font-weight:700; letter-spacing:normal; line-height:22.5px; }
+  #opinion .opinion-rail-title{ font-size:18px; margin-top:6px; }
+  #opinion .side-stacks{ grid-template-columns:1fr 1fr; margin-top:16px; }
+  #opinion .stack .headline{ font-size:15.5px; }
+  #opinion .stack .kicker{ font-size:10.5px; margin-bottom:4px; }
+
+  /* ---------- module 4: AI ideas (comment pattern) ---------- */
+  #ai-ideas{
+    position:relative;
+    isolation:isolate;
+    color:var(--ink);
+    --ink:#ffffff; --ink-soft:#c9c6c0; --ink-faint:#8f8b84;
+    --paper-alt:#1c1c1c; --rule:#333333; --maroon:#ff8a90; --blue:#8fb4ea; --chevron-bg:#2a2a2a;
+    padding-top:34px; padding-bottom:34px; margin-top:32px; margin-bottom:0;
+  }
+  #ai-ideas::before{
+    content:""; position:absolute; top:0; bottom:0; left:50%; width:100vw;
+    transform:translateX(-50%); background:#0a0a0a; z-index:-1;
+  }
+  #ai-ideas .comment-grid{ grid-template-columns:1.3fr 1fr 1fr; }
+  #ai-ideas .headline{ font-size:21px; }
+  #ai-ideas .idea-item .kicker{ font-size:13px; font-weight:700; }
+  #ai-ideas .idea-item .headline{ font-size:15.5px; margin-top:4px; }
+
+  #archive.module{ margin-top:64px; }
+
+  /* ---------- module 5: archive (case-study grid) ---------- */
+  /* equal-width columns with a symmetric gap: the shared .divided padding is
+     asymmetric on the first/last child (flush to the row's outer edge), which
+     is invisible for text but makes a fixed-aspect-ratio image box in column 1
+     genuinely wider (and, via aspect-ratio, taller) than columns 2/3. A gap-based
+     grid with the rule drawn as a positioned line keeps every column identical. */
+  #archive .archive-grid{ grid-template-columns:1fr 1fr 1fr 1fr; align-items:start; column-gap:26px; }
+  #archive .archive-grid > *{ padding:0; border-right:none; position:relative; }
+  #archive .archive-grid > *:not(:last-child)::after{ content:""; position:absolute; top:0; bottom:0; right:-13px; width:1px; background:var(--rule); }
+  #archive .case-card{ display:block; }
+  #archive .case-card:hover .headline{ text-decoration:underline; }
+  #archive .case-card:hover .more-link{ text-decoration:underline; color:var(--jade); }
+  #archive .case-image{ aspect-ratio:3/2; margin-bottom:12px; }
+  #archive .case-card .kicker{ margin-bottom:4px; }
+  #archive .headline{ font-size:17px; }
+  #archive .forecast-widget .kicker{ margin-bottom:2px; }
+  #archive .forecast-grid{ display:grid; grid-template-columns:1fr 1fr; gap:18px 14px; margin-top:12px; }
+  #archive .fs-icon{ width:22px; height:22px; margin-bottom:7px; }
+  #archive .fs-label{ font-family:var(--font-sans); font-size:11px; color:var(--ink-faint); }
+  #archive .fs-value{ font-family:var(--font-serif); font-weight:700; font-size:15px; margin-top:2px; }
+
+  /* ---------- kicker row + category label (shared) ---------- */
+  .kicker-row{ display:flex; align-items:center; gap:6px; }
+  .kicker-row .kicker{ margin:0; }
+  .kicker-sep{ color:var(--ink-faint); font-size:11px; }
+  .category-label{ font-family:var(--font-sans); font-weight:700; font-size:12.5px; color:var(--ink); margin-top:10px; }
+
+  /* ---------- culture ---------- */
+  #culture .culture-grid{ grid-template-columns: 1.9fr 1fr; align-items:start; }
+  #culture .culture-grid > *:last-child{ padding-left:32px; }
+  #culture .culture-primary-grid{ display:grid; grid-template-columns:1fr 1.8fr; gap:24px; align-items:start; }
+  #culture .culture-primary-text .headline{ font-size:27px; }
+  #culture .culture-primary-text .dek{ font-size:15px; margin-top:10px; }
+  #culture .culture-image{ aspect-ratio:3/2; }
+  #culture .culture-secondary{ grid-template-columns:1fr 1fr; margin-top:20px; padding-top:16px; border-top:1px dashed var(--rule); }
+  #culture .culture-secondary .headline{ font-size:17px; }
+  #culture .culture-rail-item{ display:grid; grid-template-columns:1.2fr 1fr; gap:16px; align-items:start; }
+  #culture .culture-rail-item .headline{ font-size:16px; }
+  #culture .culture-rail-item .kicker{ margin-bottom:6px; }
+  #culture .culture-rail-item .dek{ font-size:13.5px; }
+  #culture .culture-rail-thumb{ aspect-ratio:3/2; }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:980px){
+    .divided{ grid-template-columns:1fr !important; }
+    .divided > *{ padding:18px 0 !important; border-right:none !important; border-bottom:1px dashed var(--rule); }
+    .divided > *:first-child{ padding-top:0 !important; }
+    .divided > *:last-child{ border-bottom:none; }
+    #opinion .opinion-primary-grid{ grid-template-columns:1fr; }
+    #hero .hero-primary-grid{ grid-template-columns:1fr; }
+    #culture .culture-primary-grid{ grid-template-columns:1fr; }
+    #hero .headline{ font-size:27px; }
+    #product-desk .feature-grid{ grid-template-columns:1fr; }
+    #product-desk .feature-panel{ padding:26px; }
+    #why-news-uk .expert-row{ grid-template-columns:1fr; row-gap:16px; }
+    #archive .archive-grid > *::after{ display:none; }
+    #archive .archive-grid > *{ border-bottom:1px dashed var(--rule); padding-bottom:18px !important; margin-bottom:18px; }
+    #archive .archive-grid > *:last-child{ border-bottom:none; }
+    .footer-skills-grid{ grid-template-columns:1fr 1fr; }
+  }
+  @media (max-width:600px){
+    .header-row{ flex-direction:column; align-items:flex-start; }
+    .site-nav{ width:100%; }
+    .module-title{ font-size:19px; }
+    .footer-skills-grid{ grid-template-columns:1fr; }
+  }
+</style>
+
+<!-- shared icon defs -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+  <symbol id="ic-chevron" viewBox="0 0 12 12"><path d="M3 1l6 5-6 5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="ic-avatar" viewBox="0 0 44 44"><circle cx="22" cy="22" r="22" fill="var(--paper-alt)"/><text x="22" y="28" text-anchor="middle" font-family="PT Serif, Georgia, serif" font-weight="700" font-size="15" fill="var(--ink)">CE</text></symbol>
+  <symbol id="ic-desk" viewBox="0 0 220 176"><line x1="14" y1="150" x2="206" y2="150" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/><rect x="118" y="118" width="66" height="34" rx="2" fill="none" stroke="var(--ink)" stroke-width="2"/><rect x="118" y="104" width="66" height="16" rx="2" fill="none" stroke="var(--ink)" stroke-width="2"/><rect x="40" y="128" width="52" height="34" rx="2" fill="none" stroke="var(--ink)" stroke-width="2"/><line x1="48" y1="138" x2="80" y2="138" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/><line x1="48" y1="146" x2="72" y2="146" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/><line x1="86" y1="118" x2="96" y2="102" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/><circle cx="128" cy="66" r="17" fill="none" stroke="var(--ink)" stroke-width="2"/><path d="M104 122 Q106 84 128 84 Q150 84 152 122" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/><path d="M34 150 Q36 132 46 132 Q56 132 56 146" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round"/><rect x="30" y="140" width="18" height="16" rx="2" fill="var(--blue)"/></symbol>
+  <symbol id="ic-sketchwall" viewBox="0 0 160 130"><rect x="6" y="6" width="148" height="86" rx="2" fill="none" stroke="var(--ink)" stroke-width="2"/><rect x="16" y="16" width="16" height="12" rx="1.5" fill="var(--blue)" transform="rotate(-4 24 22)"/><rect x="38" y="14" width="16" height="12" rx="1.5" fill="none" stroke="var(--ink)" stroke-width="1.6" transform="rotate(3 46 20)"/><rect x="60" y="18" width="16" height="12" rx="1.5" fill="none" stroke="var(--ink)" stroke-width="1.6" transform="rotate(-6 68 24)"/><rect x="20" y="36" width="16" height="12" rx="1.5" fill="none" stroke="var(--ink)" stroke-width="1.6" transform="rotate(5 28 42)"/><rect x="44" y="38" width="16" height="12" rx="1.5" fill="var(--maroon)" transform="rotate(-3 52 44)"/><rect x="68" y="34" width="16" height="12" rx="1.5" fill="none" stroke="var(--ink)" stroke-width="1.6" transform="rotate(4 76 40)"/><rect x="24" y="58" width="16" height="12" rx="1.5" fill="none" stroke="var(--ink)" stroke-width="1.6" transform="rotate(-5 32 64)"/><rect x="50" y="60" width="16" height="12" rx="1.5" fill="none" stroke="var(--ink)" stroke-width="1.6" transform="rotate(3 58 66)"/><circle cx="112" cy="46" r="9" fill="none" stroke="var(--ink)" stroke-width="2"/><path d="M96 92 Q100 68 112 68 Q124 68 128 92" fill="none" stroke="var(--ink)" stroke-width="2"/><circle cx="134" cy="50" r="7" fill="none" stroke="var(--ink)" stroke-width="2"/><path d="M122 92 Q125 74 134 74 Q143 74 146 92" fill="none" stroke="var(--ink)" stroke-width="2"/><line x1="6" y1="104" x2="154" y2="104" stroke="var(--ink)" stroke-width="2"/></symbol>
+  <symbol id="ic-pencil" viewBox="0 0 200 100"><path d="M40 78 L128 22 L142 34 L54 90 Z" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linejoin="round"/><path d="M128 22 L138 15 L149 26 L142 34 Z" fill="var(--maroon)"/><line x1="42" y1="76" x2="54" y2="88" stroke="var(--ink)" stroke-width="2"/><line x1="118" y1="30" x2="132" y2="42" stroke="var(--ink)" stroke-width="2"/></symbol>
+  <symbol id="ic-photostack" viewBox="0 0 40 40"><rect x="4" y="8" width="18" height="22" rx="1.5" fill="none" stroke="var(--ink)" stroke-width="1.6" transform="rotate(-6 13 19)"/><rect x="16" y="10" width="18" height="22" rx="1.5" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.6" transform="rotate(5 25 21)"/><circle cx="25" cy="18" r="3" fill="var(--blue)" transform="rotate(5 25 21)"/></symbol>
+  <symbol id="ic-food" viewBox="0 0 40 40"><path d="M8 8 Q20 6 24 16 Q26 22 18 24" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="30" r="3" fill="var(--ink)"/><path d="M14 30 Q22 28 30 32" fill="none" stroke="var(--ink)" stroke-width="1.6" stroke-linecap="round"/></symbol>
+  <symbol id="ic-building" viewBox="0 0 220 130"><line x1="14" y1="112" x2="206" y2="112" stroke="var(--ink)" stroke-width="2"/><rect x="30" y="106" width="160" height="8" fill="none" stroke="var(--ink)" stroke-width="2"/><path d="M30 106 L110 66 L190 106 Z" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linejoin="round"/><line x1="46" y1="106" x2="46" y2="70" stroke="var(--ink)" stroke-width="1.6"/><line x1="66" y1="106" x2="66" y2="70" stroke="var(--ink)" stroke-width="1.6"/><line x1="86" y1="106" x2="86" y2="70" stroke="var(--ink)" stroke-width="1.6"/><line x1="134" y1="106" x2="134" y2="70" stroke="var(--ink)" stroke-width="1.6"/><line x1="154" y1="106" x2="154" y2="70" stroke="var(--ink)" stroke-width="1.6"/><line x1="174" y1="106" x2="174" y2="70" stroke="var(--ink)" stroke-width="1.6"/><rect x="102" y="86" width="16" height="26" fill="var(--maroon)"/></symbol>
+  <symbol id="ic-tree" viewBox="0 0 60 60"><rect x="27" y="34" width="6" height="20" rx="1" fill="var(--ink)"/><circle cx="23" cy="24" r="12" fill="none" stroke="var(--ink)" stroke-width="2"/><circle cx="37" cy="21" r="10" fill="none" stroke="var(--ink)" stroke-width="2"/><circle cx="30" cy="14" r="9" fill="none" stroke="var(--ink)" stroke-width="2"/></symbol>
+  <symbol id="ic-code" viewBox="0 0 60 60"><rect x="8" y="13" width="44" height="28" rx="2" fill="none" stroke="var(--ink)" stroke-width="2"/><path d="M23 21 L17 27 L23 33" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M37 21 L43 27 L37 33" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><line x1="20" y1="48" x2="40" y2="48" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="ic-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5" fill="none" stroke="var(--ink)" stroke-width="1.6"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1" stroke="var(--ink)" stroke-width="1.6" stroke-linecap="round"/></symbol>
+  <symbol id="ic-cloud" viewBox="0 0 24 24"><path d="M6 11 Q6 6 11 6 Q13 3 17 5 Q21 6 20 11 Q22 12 21 15 L6 15 Q3 14 6 11Z" fill="none" stroke="var(--ink)" stroke-width="1.6"/></symbol>
+  <symbol id="ic-wind" viewBox="0 0 24 24"><path d="M2 9h13a3 3 0 1 0-3-3" fill="none" stroke="var(--ink)" stroke-width="1.6" stroke-linecap="round"/><path d="M2 14h17a3 3 0 1 1-3 3" fill="none" stroke="var(--ink)" stroke-width="1.6" stroke-linecap="round"/></symbol>
+  <symbol id="ic-rainbow" viewBox="0 0 24 24"><path d="M2 20 A10 10 0 0 1 22 20" fill="none" stroke="var(--ink)" stroke-width="1.6"/><path d="M6 20 A6 6 0 0 1 18 20" fill="none" stroke="var(--ink)" stroke-width="1.6"/></symbol>
+  <symbol id="ic-coffee" viewBox="0 0 40 40"><path d="M12 16 L12 26 Q12 31 20 31 Q28 31 28 26 L28 16 Z" fill="none" stroke="var(--ink)" stroke-width="1.8"/><path d="M28 19 Q34 19 34 23.5 Q34 28 28.5 28" fill="none" stroke="var(--ink)" stroke-width="1.8"/></symbol>
+  <symbol id="ic-notebook" viewBox="0 0 40 40"><rect x="10" y="7" width="20" height="26" rx="1.5" fill="none" stroke="var(--ink)" stroke-width="1.8"/><line x1="15" y1="14" x2="25" y2="14" stroke="var(--ink)" stroke-width="1.6"/><line x1="15" y1="20" x2="25" y2="20" stroke="var(--ink)" stroke-width="1.6"/><line x1="15" y1="26" x2="21" y2="26" stroke="var(--maroon)" stroke-width="1.6"/></symbol>
+</defs>
+</svg>
+
+<header class="site-header" id="page-top">
+  <div class="page header-row">
+    <div class="identity">
+      <span class="name">Caroline Edwards</span>
+    </div>
+    <nav class="site-nav">
+      <a href="#why-news-uk">Problem</a>
+      <a href="#product-desk">Discover</a>
+      <a href="#opinion">Define</a>
+      <a href="#archive">Make/Test</a>
+      <a href="#ai-ideas">Learn/Iterate</a>
+      <a href="#culture">Reflect</a>
+    </nav>
+  </div>
+</header>
+
+<main class="page">
+
+  <!-- ============ MODULE 1 — HERO ============ -->
+  <section class="module" id="hero">
+    <div class="divided hero-grid">
+      <div class="hero-primary">
+        <div class="hero-primary-grid">
+          <div class="hero-primary-text">
+            <p class="kicker">Exclusive interview</p>
+            <h1 class="headline">Caroline Edwards wants to solve the right problem.</h1>
+            <p class="dek">A product designer who starts with questions, evidence and people — then turns what she learns into products worth using.</p>
+          </div>
+          <div class="figure hero-image"><img src="images/hero-portrait.jpg" alt=""></div>
+        </div>
+
+        <div class="divided hero-sub-grid">
+          <div>
+            <h3 class="headline">Research over assumptions.</h3>
+            <p class="dek" style="font-size:13.5px;">Why good research changes everything.</p>
+          </div>
+          <div>
+            <h3 class="headline">Prototype. Test. Learn. Repeat.</h3>
+            <p class="dek" style="font-size:13.5px;">Why the messy middle is where products actually improve.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-rail">
+        <div>
+          <p class="kicker">Analysis</p>
+          <h3 class="headline" style="font-size:18px;">AI isn't a product strategy.</h3>
+          <p class="dek" style="font-size:13px;">The interesting question isn't where can we add AI? It's what becomes possible now that it exists.</p>
+        </div>
+        <div style="border-top:1px dashed var(--rule); margin-top:16px; padding-top:14px;">
+          <p class="kicker">Comment</p>
+          <h3 class="headline" style="font-size:18px;">Is the Double Diamond dead?</h3>
+          <p class="dek" style="font-size:13px;">Product doesn't happen in neat diamonds. The principles evolve with the problem.</p>
+        </div>
+        <div style="border-top:1px dashed var(--rule); margin-top:16px; padding-top:14px;">
+          <p class="kicker">The Brief</p>
+          <h3 class="headline" style="font-size:18px;">What does The Times need from its next Product Designer?</h3>
+          <p class="dek" style="font-size:13px;">A designer who can find the problem, make something, test it and bring people with them.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MODULE — WHY NEWS UK (more-from-experts pattern) ============ -->
+  <section class="module section-block" id="why-news-uk">
+    <div class="module-head">
+      <h2 class="module-title blue">Problem</h2>
+      <span class="chevron-btn"><svg><use href="#ic-chevron"/></svg></span>
+    </div>
+    <div class="expert-row">
+      <div class="expert-date">Sept 3, 2026</div>
+      <div class="expert-copy">
+        <p class="kicker">The bigger picture</p>
+        <h3 class="headline">News isn't just a content problem. It's a product problem.</h3>
+        <p class="dek">The Times has extraordinary journalism, recognisable brands and millions of people listening, reading and watching.</p>
+        <p class="dek">But the way people discover, consume and interact with content is changing.</p>
+        <p class="dek">That's the interesting bit.</p>
+        <p class="dek">How do you turn great content into digital experiences people actively choose, return to and build into their lives?</p>
+        <p class="more-link">That's the problem I'd like to help solve.</p>
+      </div>
+      <div class="expert-ad">
+        <p class="ad-label">Advertisement</p>
+        <div class="ad-box"><img src="images/why-the-times-ad.jpg" alt="Advertisement placeholder" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MODULE 2 — PRODUCT DESK (feature panel) ============ -->
+  <section class="module" id="product-desk">
+    <div class="feature-grid">
+      <div class="feature-panel">
+        <p class="kicker">Discover</p>
+        <h2 class="headline">It starts with the problem.</h2>
+        <p class="dek">Before the screens, there's a question.</p>
+        <p class="dek">Who are we designing for? What do we actually know? What's the business trying to achieve? And what happens if we're wrong?</p>
+        <p class="dek">I use research, synthesis, prototyping and testing to turn uncertainty into something we can act on.</p>
+      </div>
+      <div class="figure feature-image"><img src="images/discover-crowd.jpg" alt=""></div>
+    </div>
+  </section>
+
+  <!-- ============ MODULE 3 — OPINION (interview pattern) ============ -->
+  <section class="module section-block" id="opinion">
+    <div class="divided opinion-grid">
+    <div>
+    <div class="opinion-primary-grid">
+      <div class="primary-text">
+        <p class="kicker">Define</p>
+        <h2 class="headline">Good research should change your mind.</h2>
+        <p class="dek">If your usability testing doesn't change anything, why did you run it? The point was never the report.</p>
+        <p class="meta">Product thinking &nbsp;·&nbsp; updated this morning</p>
+      </div>
+      <div class="figure opinion-image"><img src="images/define-research.jpg" alt=""></div>
+    </div>
+    </div>
+
+      <div class="opinion-rail">
+        <p class="kicker">The Brief</p>
+        <h3 class="headline opinion-rail-title">What are The Times looking for?</h3>
+
+        <div class="divided side-stacks">
+          <div class="stack">
+            <div>
+              <p class="kicker">01 — Customer</p>
+              <h4 class="headline">Challenge assumptions. Find out what people actually need.</h4>
+            </div>
+            <div>
+              <p class="kicker">02 — Evidence</p>
+              <h4 class="headline">Use research and data to turn insight into better decisions.</h4>
+            </div>
+          </div>
+          <div class="stack">
+            <div>
+              <p class="kicker">03 — Making</p>
+              <h4 class="headline">Turn ideas into prototypes. Test them. Learn. Make them better.</h4>
+            </div>
+            <div>
+              <p class="kicker">04 — Influence</p>
+              <h4 class="headline">Bring product, technology, business and stakeholders with you.</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divided opinion-summary-row">
+      <div>
+        <h4 class="headline">Start with the problem.<br>Not the solution.</h4>
+      </div>
+      <div>
+        <h4 class="headline">We don't need more features. We need fewer, better ones.</h4>
+      </div>
+      <div>
+        <h4 class="headline">Find the right problem. Make something. Test it. Learn. Improve it.</h4>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MODULE 5 — ARCHIVE (travel pattern) ============ -->
+  <section class="module section-block" id="archive">
+    <div class="module-head">
+      <h2 class="module-title blue">Make · Test</h2>
+      <span class="chevron-btn"><svg><use href="#ic-chevron"/></svg></span>
+    </div>
+    <div class="divided archive-grid">
+      <a href="https://medium.com/design-bootcamp/less-friction-for-parents-less-admin-for-schools-880387ad793b" target="_blank" rel="noopener" class="case-card">
+        <div class="figure case-image"><img src="images/case-schools-app.jpg" alt="Arbor school-events booking app, shown on a phone" loading="lazy"></div>
+        <p class="kicker">Investigation</p>
+        <h3 class="headline">Less friction for parents, less admin for schools</h3>
+        <p class="dek" style="font-size:13px;">Finding the problem behind the problem.</p>
+        <p class="more-link">Read case study</p>
+      </a>
+      <a href="https://mostlycaroline.com/hospital.html" target="_blank" rel="noopener" class="case-card">
+        <div class="figure case-image"><img src="images/case-hospital-research.jpg" alt="Empathy-map research board for the Harley Street Hospital booking project" loading="lazy"></div>
+        <p class="kicker">Case study</p>
+        <h3 class="headline">Making healthcare booking feel human</h3>
+        <p class="dek" style="font-size:13px;">Research → synthesis → prioritisation → prototype → test.</p>
+        <p class="more-link">Read case study</p>
+      </a>
+      <a href="https://mostlycaroline.com/vibe-coding.html" target="_blank" rel="noopener" class="case-card">
+        <div class="figure case-image"><img src="images/case-vibe-coding.jpg" alt="mostlycaroline.com portfolio site shown on laptop and phone" loading="lazy"></div>
+        <p class="kicker">Experiment</p>
+        <h3 class="headline">Levelling the playing field</h3>
+        <p class="dek" style="font-size:13px;">Exploring how technology can make making things more accessible.</p>
+        <p class="more-link">Read case study</p>
+      </a>
+      <div class="forecast-widget">
+        <p class="kicker">Product forecast</p>
+        <div class="forecast-grid">
+          <div class="forecast-stat">
+            <svg class="fs-icon"><use href="#ic-sun"/></svg>
+            <p class="fs-label">Chance of curiosity</p>
+            <p class="fs-value">100%</p>
+          </div>
+          <div class="forecast-stat">
+            <svg class="fs-icon"><use href="#ic-cloud"/></svg>
+            <p class="fs-label">Stakeholder showers</p>
+            <p class="fs-value">Likely</p>
+          </div>
+          <div class="forecast-stat">
+            <svg class="fs-icon"><use href="#ic-wind"/></svg>
+            <p class="fs-label">AI headwinds</p>
+            <p class="fs-value">Strong</p>
+          </div>
+          <div class="forecast-stat">
+            <svg class="fs-icon"><use href="#ic-rainbow"/></svg>
+            <p class="fs-label">Probability of shipping</p>
+            <p class="fs-value">Very high</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MODULE 4 — AI IDEAS (comment pattern) ============ -->
+  <section class="module section-block" id="ai-ideas">
+    <div class="module-head">
+      <h2 class="module-title maroon">Learn · Iterate</h2>
+      <span class="chevron-btn"><svg><use href="#ic-chevron"/></svg></span>
+    </div>
+    <div class="divided comment-grid">
+      <div class="byline">
+        <div>
+          <p class="byline-name maroon">Caroline Edwards</p>
+          <h3 class="headline">If I joined The Times tomorrow...</h3>
+          <p class="dek" style="font-size:13px;">These are the questions I'd start asking.</p>
+        </div>
+      </div>
+      <div class="stack idea-item">
+        <div>
+          <p class="kicker maroon">01</p>
+          <h4 class="headline">How might we make brilliant content easier to discover?</h4>
+        </div>
+        <div>
+          <p class="kicker maroon">02</p>
+          <h4 class="headline">How might we help someone understand a story without diluting the journalism?</h4>
+        </div>
+        <div>
+          <p class="kicker maroon">03</p>
+          <h4 class="headline">How might personalisation broaden someone's world rather than narrow it?</h4>
+        </div>
+      </div>
+      <div class="stack idea-item">
+        <div>
+          <p class="kicker maroon">04</p>
+          <h4 class="headline">What could AI unlock that wasn't previously possible?</h4>
+        </div>
+        <div>
+          <p class="kicker maroon">05</p>
+          <h4 class="headline">How might we make younger audiences feel that trusted journalism is for them too?</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MODULE — CULTURE (placeholder content, to be filled) ============ -->
+  <section class="module section-block" id="culture">
+    <div class="module-head">
+      <h2 class="module-title plum">Reflect</h2>
+      <span class="chevron-btn"><svg><use href="#ic-chevron"/></svg></span>
+    </div>
+
+    <div class="divided culture-grid">
+      <div class="culture-primary">
+        <div class="culture-primary-grid">
+          <div class="culture-primary-text">
+            <p class="kicker plum">Curious</p>
+            <h2 class="headline">So, what kind of designer am I?</h2>
+            <p class="dek">Evidence-led enough to change my mind.</p>
+            <p class="dek">Hands-on enough to make the idea real.</p>
+            <p class="dek">Collaborative enough to bring people with me.</p>
+            <p class="dek">And stubborn enough to keep asking whether we're solving the right problem.</p>
+          </div>
+          <div class="figure culture-image"><img src="images/reflect-toy-computer.jpg" alt=""></div>
+        </div>
+
+        <div class="divided culture-secondary">
+          <div>
+            <h3 class="headline">Understanding people, not just their data.</h3>
+            <p class="dek" style="font-size:13.5px;">It's the thread running through everything I do...</p>
+          </div>
+          <div>
+            <h3 class="headline">Curious about people. Curious about technology. Always looking for the space between the two.</h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="stack culture-rail">
+        <div class="culture-rail-item">
+          <div class="rail-text">
+            <p class="kicker plum">A family tradition</p>
+            <h4 class="headline">First, Dad had to read the paper.</h4>
+            <p class="dek">We couldn't talk to Dad until he'd read it front to back.</p>
+          </div>
+          <div class="figure culture-rail-thumb"><img src="images/reflect-dad-newspaper.jpg" alt=""></div>
+        </div>
+        <div class="culture-rail-item">
+          <div class="rail-text">
+            <p class="kicker plum">The paper anniversary</p>
+            <h4 class="headline">Then, I made the paper.</h4>
+            <p class="dek">Mum saved our wedding announcement as our first paper anniversary gift.</p>
+          </div>
+          <div class="figure culture-rail-thumb"><img src="images/reflect-lymington-times.jpg" alt=""></div>
+        </div>
+        <div class="culture-rail-item">
+          <div class="rail-text">
+            <p class="kicker plum">The morning edition</p>
+            <h4 class="headline">Now, the news comes with milk.</h4>
+            <p class="dek">Jasper gives us his morning news briefing over breakfast. Same ritual. Different generation.</p>
+          </div>
+          <div class="figure culture-rail-thumb"><img src="images/reflect-son-jasper.jpg" alt=""></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="page-ad">
+    <p class="ad-label">Advertisement</p>
+    <div class="page-ad-banner"><img src="images/footer-ad-times-radio.jpg" alt="Times Radio advertisement"></div>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <a href="#page-top" class="back-to-top">
+    <svg><use href="#ic-chevron"/></svg>
+    <span>Back to top</span>
+  </a>
+
+  <div class="page footer-main">
+    <p class="footer-wordmark">Caroline Edwards</p>
+
+    <div class="divided footer-columns">
+      <div class="footer-col">
+        <h4 class="footer-heading">Get in touch</h4>
+        <p class="footer-kicker">About Caroline</p>
+        <p class="footer-bio">A product designer who makes complex digital experiences feel simple, accessible and genuinely useful.</p>
+        <ul class="footer-links">
+          <li><a href="https://mostlycaroline.com" target="_blank" rel="noopener">My portfolio</a></li>
+          <li><a href="https://www.linkedin.com/in/mostlycaroline/" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="mailto:sayhello@mostlycaroline.com">Email me</a></li>
+          <li><a href="https://mostlycaroline.com/CarolineEdwards_CV.pdf" target="_blank" rel="noopener">Download my CV</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">More from Caroline</h4>
+
+        <div class="footer-skills-grid">
+          <div>
+            <p class="footer-group-title">Product &amp; discovery</p>
+            <ul class="footer-links plain">
+              <li>Product thinking</li>
+              <li>User research</li>
+              <li>User interviews</li>
+              <li>Discovery</li>
+              <li>Journey mapping</li>
+              <li>Problem definition</li>
+              <li>Requirements &amp; prioritisation</li>
+            </ul>
+          </div>
+          <div>
+            <p class="footer-group-title">UX &amp; interaction</p>
+            <ul class="footer-links plain">
+              <li>UX design</li>
+              <li>Interaction design</li>
+              <li>Information architecture</li>
+              <li>Wireframing</li>
+              <li>Prototyping</li>
+              <li>Usability testing</li>
+              <li>Mobile &amp; responsive design</li>
+            </ul>
+          </div>
+          <div>
+            <p class="footer-group-title">Design &amp; delivery</p>
+            <ul class="footer-links plain">
+              <li>UI design</li>
+              <li>Design systems</li>
+              <li>Accessibility</li>
+              <li>WCAG 2.1 AA</li>
+              <li>Developer handoff</li>
+              <li>Design QA</li>
+              <li>Agile delivery</li>
+            </ul>
+          </div>
+          <div>
+            <p class="footer-group-title">People &amp; collaboration</p>
+            <ul class="footer-links plain">
+              <li>Stakeholder management</li>
+              <li>Cross-functional working</li>
+              <li>Design leadership</li>
+              <li>Workshop facilitation</li>
+              <li>Presenting &amp; storytelling</li>
+              <li>Challenging assumptions</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-copyright">
+      <p class="footer-tagline">Built with curiosity. Tested with people. Designed to make things simpler.</p>
+      <p>&copy; Caroline Edwards 2026</p>
+      <p>Product Designer &middot; London</p>
+      <p>This is an interview experiment, not an official Times product.</p>
+    </div>
+  </div>
+</footer>

@@ -112,12 +112,12 @@
   .hero-cta{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:28px;}
 
   .proto-wrap{max-width:1040px;margin:48px auto 0;padding:0 40px;}
-  .proto-frame{position:relative;aspect-ratio:4/3;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--coral-tint);}
-  .proto-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
-  .proto-meta{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-top:12px;}
-  .proto-meta .cs-caption{margin:0;}
-  .proto-link{font-size:14px;font-weight:700;color:var(--coral-deep);text-decoration:underline;text-underline-offset:3px;}
-  .proto-mobile{display:none;text-align:center;}
+  .proto-preview{position:relative;display:block;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--coral-tint);}
+  .proto-preview img{width:100%;height:auto;display:block;transition:transform .6s ease, opacity .3s ease;}
+  .proto-preview:hover img{transform:scale(1.02);opacity:.85;}
+  .proto-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);box-shadow:0 6px 24px rgba(35,26,46,.18);}
+  .proto-preview:hover .proto-play{background:var(--coral-deep);}
+  .proto-wrap .cs-caption{margin-top:12px;}
   .hero-cta .btn:hover{background:var(--coral);border-color:var(--coral);color:#fff;}
 
   .meta-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:48px;}
@@ -225,8 +225,6 @@
     .cs-title{font-size:56px;}
     .who-grid{grid-template-columns:1fr;gap:20px;}
     .status-banner{border-radius:16px;}
-    .proto-frame,.proto-meta{display:none;}
-    .proto-mobile{display:block;}
     .proto-wrap{padding:0 22px;}
   }
   @media screen and (max-height:450px){
@@ -380,17 +378,11 @@
     </figure>
 
     <div class="proto-wrap reveal">
-      <div class="proto-frame">
-        <iframe src="https://embed.figma.com/make/mIhVqqaJiksmIh2rH9HTqq/Accessible-Drink-Ordering-App?embed-host=mostlycaroline" title="Interactive prototype of the accessible drink ordering app" loading="lazy" allowfullscreen></iframe>
-      </div>
-      <div class="proto-meta">
-        <p class="cs-caption">The hi-fi prototype - tap through an order the way an employee would.</p>
-        <a href="https://www.figma.com/make/mIhVqqaJiksmIh2rH9HTqq/Accessible-Drink-Ordering-App?p=f&amp;fullscreen=1" class="proto-link" target="_blank" rel="noopener">Open full screen</a>
-      </div>
-      <div class="proto-mobile">
-        <p class="cs-caption">The prototype is built for a tablet, so it's best opened full screen.</p>
-        <a href="https://www.figma.com/make/mIhVqqaJiksmIh2rH9HTqq/Accessible-Drink-Ordering-App?p=f&amp;fullscreen=1" class="btn btn-fill" target="_blank" rel="noopener" style="margin-top:14px;">Try the prototype</a>
-      </div>
+      <a href="https://www.figma.com/make/mIhVqqaJiksmIh2rH9HTqq/Accessible-Drink-Ordering-App?p=f&amp;fullscreen=1" class="proto-preview" target="_blank" rel="noopener">
+        <img src="images/restaurant-hifi.png" alt="Hi-fi prototype of the employee ordering app, showing a table grid the employee chooses from to start an order">
+        <span class="proto-play btn btn-fill">Try the prototype</span>
+      </a>
+      <p class="cs-caption">The hi-fi prototype opens in Figma - tap through an order the way an employee would.</p>
     </div>
 
     <div class="wrap">

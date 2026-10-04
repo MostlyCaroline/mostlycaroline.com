@@ -3,19 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Levelling the playing field - Caroline Edwards</title>
-<meta name="description" content="UX case study: how I vibe coded my own portfolio site with Claude, by Caroline Edwards.">
+<title>Front page thinking - Caroline Edwards</title>
+<meta name="description" content="Case study: a newspaper-style pitch page I designed and built to show The Times how I think and work, by Caroline Edwards.">
 <meta name="author" content="Caroline Edwards, Product Designer">
 <link rel="icon" type="image/svg+xml" href="https://mostlycaroline.com/favicon.svg">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://mostlycaroline.com/vibe-coding.html">
-<meta property="og:title" content="Levelling the playing field - Caroline Edwards">
-<meta property="og:description" content="UX case study: how I vibe coded my own portfolio site with Claude, by Caroline Edwards.">
-<meta property="og:image" content="https://mostlycaroline.com/me.png">
+<meta property="og:url" content="https://mostlycaroline.com/times-pitch.html">
+<meta property="og:title" content="Front page thinking - Caroline Edwards">
+<meta property="og:description" content="Case study: a newspaper-style pitch page I designed and built to show The Times how I think and work, by Caroline Edwards.">
+<meta property="og:image" content="https://mostlycaroline.com/images/times-pitch-devices.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Levelling the playing field - Caroline Edwards">
-<meta name="twitter:description" content="UX case study: how I vibe coded my own portfolio site with Claude, by Caroline Edwards.">
-<meta name="twitter:image" content="https://mostlycaroline.com/me.png">
+<meta name="twitter:title" content="Front page thinking - Caroline Edwards">
+<meta name="twitter:description" content="Case study: a newspaper-style pitch page I designed and built to show The Times how I think and work, by Caroline Edwards.">
+<meta name="twitter:image" content="https://mostlycaroline.com/images/times-pitch-devices.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Urbanist:wght@700;800;900&display=swap" rel="stylesheet">
@@ -100,10 +100,25 @@
   .cs-title{font-family:'Urbanist', sans-serif;font-size:100px;font-weight:900;line-height:0.88;letter-spacing:-0.03em;max-width:920px;margin:0 auto;text-align:center;}
   .cs-intro{max-width:920px;margin:24px auto 0;color:var(--ink-soft);font-size:20px;text-align:center;}
 
+  .status-banner{
+    display:flex;align-items:center;gap:10px;width:fit-content;
+    background:var(--orange-tint);color:var(--ink);
+    padding:12px 20px;border-radius:999px;
+    font-family:'Archivo', sans-serif;font-size:13px;font-weight:700;
+    margin:24px auto 0;
+  }
+  .status-dot{width:8px;height:8px;border-radius:50%;background:var(--orange);flex-shrink:0;}
+
+  .hero-cta{display:flex;justify-content:center;margin-top:28px;}
+  .hero-cta .btn:hover{background:var(--coral);border-color:var(--coral);color:#fff;}
+
   .meta-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:48px;}
   .meta-item{background:#fff;padding:22px 24px;}
   .meta-item .label{color:var(--ink-soft);}
   .meta-item .value{font-family:'Archivo', sans-serif;font-weight:800;font-size:16px;margin-top:8px;}
+
+  .cs-hero-img{width:100vw;margin:48px calc(50% - 50vw) 0;background:var(--line);}
+  .cs-hero-img img{width:100%;height:auto;display:block;}
 
   .star-tag{
     font-family:'Archivo', sans-serif;
@@ -121,16 +136,6 @@
   }
   .pull-callout cite{font-style:normal;font-weight:500;color:var(--ink-soft);font-size:15px;display:block;margin-top:10px;}
 
-  .cs-hero-img{width:100vw;margin:48px calc(50% - 50vw) 0;background:var(--line);}
-  .cs-hero-img img{width:100%;height:auto;display:block;}
-
-  .cs-figure{margin:36px 0 0;max-width:760px;}
-  .cs-figure img{width:100%;height:auto;border-radius:8px;background:var(--line);}
-  .cs-caption{color:var(--ink-soft);font-size:14px;margin-top:12px;}
-  .cs-figure-full{width:100vw;max-width:100vw;margin:40px calc(50% - 50vw) 0;}
-  .cs-figure-full img{border-radius:0;}
-  .cs-figure-full .cs-caption{padding:12px 40px 0;}
-
   .who-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:32px;padding-top:28px;border-top:1px solid var(--line);}
   .who-label{font-family:'Archivo', sans-serif;text-transform:uppercase;letter-spacing:0.1em;font-size:12px;font-weight:700;color:var(--coral);margin-bottom:10px;}
   .who-text{font-family:'Archivo', sans-serif;font-size:16px;color:var(--ink-soft);line-height:1.5;}
@@ -142,8 +147,14 @@
     padding:9px 0;border-bottom:1px solid var(--line);break-inside:avoid;
   }
   .client-list li strong{color:var(--ink);font-weight:700;}
-  .client-list li.done{text-decoration:line-through;text-decoration-color:var(--coral);text-decoration-thickness:1.5px;}
   .client-list li .note{display:block;font-size:13px;color:var(--ink-soft);margin-top:2px;}
+
+  .cs-figure{margin:36px 0 0;max-width:760px;}
+  .cs-figure img{width:100%;height:auto;border-radius:8px;background:var(--line);}
+  .cs-caption{color:var(--ink-soft);font-size:14px;margin-top:12px;}
+  .cs-figure-full{width:100vw;max-width:100vw;margin:40px calc(50% - 50vw) 0;}
+  .cs-figure-full img{border-radius:0;}
+  .cs-figure-full .cs-caption{padding:12px 40px 0;}
 
   .result-list{list-style:none;margin:22px 0 0;padding:0;max-width:760px;}
   .result-list li{position:relative;padding-left:26px;margin-bottom:12px;font-family:'Archivo', sans-serif;font-size:20px;color:var(--ink-soft);}
@@ -203,8 +214,9 @@
     .navlinks a.navlink{width:100%;padding:16px 22px;border-bottom:1px solid var(--line);display:flex !important;}
     .navlinks a.navlink::after{display:none;}
     .navlinks .btn-nav-cv{margin:16px 22px;justify-content:center;}
-    .cs-title{font-size:52px;}
+    .cs-title{font-size:56px;}
     .who-grid{grid-template-columns:1fr;gap:20px;}
+    .status-banner{border-radius:16px;}
   }
   @media screen and (max-height:450px){
     header{position:static;}
@@ -233,20 +245,26 @@
 
   <section class="cs-hero section-pad" style="padding-bottom:0;">
     <div class="wrap">
-      <div class="cs-tags reveal">Personal Project &middot; Vibe Coding &middot; Portfolio Build</div>
-      <h1 class="cs-title reveal">Levelling the playing field</h1>
-      <p class="cs-intro reveal">My own portfolio, built end-to-end with Claude directing the code. I design well. My code has never quite matched. This is what happened when I stopped trying to close that gap alone.</p>
+      <div class="cs-tags reveal">Interview Pitch &middot; Product Thinking &middot; Vibe Coding</div>
+      <h1 class="cs-title reveal">Front page thinking</h1>
+      <p class="cs-intro reveal">A portfolio shows what I've done. For a final-round interview at The Times, I wanted to show how I'd think about their problem - so I built it as a newspaper.</p>
+
+      <div class="status-banner reveal"><span class="status-dot"></span>Interview experiment - made for a hiring process, not an official Times product.</div>
 
       <div class="meta-grid reveal">
-        <div class="meta-item"><div class="label">Client</div><div class="value">Personal Project</div></div>
-        <div class="meta-item"><div class="label">My Role</div><div class="value">Designer &amp; Vibe Coder</div></div>
-        <div class="meta-item"><div class="label">Duration</div><div class="value">~4 weeks, 2026</div></div>
-        <div class="meta-item"><div class="label">Platform</div><div class="value">Claude &amp; GitHub Pages</div></div>
+        <div class="meta-item"><div class="label">Audience</div><div class="value">Head of Product, The Times</div></div>
+        <div class="meta-item"><div class="label">My Role</div><div class="value">Designer &amp; Builder</div></div>
+        <div class="meta-item"><div class="label">Year</div><div class="value">2026</div></div>
+        <div class="meta-item"><div class="label">Platform</div><div class="value">Responsive web &middot; Claude</div></div>
+      </div>
+
+      <div class="hero-cta reveal">
+        <a href="thetimes/aj/" class="btn btn-outline" target="_blank" rel="noopener">Read the pitch page</a>
       </div>
     </div>
 
     <figure class="cs-hero-img reveal">
-      <img src="images/vibecoding-devices.png" alt="This site's homepage shown on a laptop and phone, propped up on a garden table">
+      <img src="images/times-pitch-devices.png" alt="The newspaper-style pitch page shown on a laptop and phone">
     </figure>
   </section>
 
@@ -254,17 +272,17 @@
     <div class="wrap">
     <div class="star-content">
       <h2 class="star-tag reveal"><span class="hl hl-coral">Situation</span></h2>
-      <h3 class="section-title reveal">I could design it. I couldn't build it.</h3>
-      <p class="prose reveal">Fifteen years into design, my code skill still hadn't caught up with my design skill. I'd built the brand system, the case-study template and the content for this site - what I hadn't done was own the code behind it. A templated builder would get something live, but it wasn't going to prove anything about how I actually work, especially applying into EdTech and public-sector roles where an AI-forward workflow is a real asset, not a gimmick. My husband had already built his own portfolio this way. Watching him do it is what convinced me I could too.</p>
+      <h3 class="section-title reveal">A portfolio only shows the past</h3>
+      <p class="prose reveal">I was in the interview process for a Product Designer role at The Times. My portfolio covered what I'd already delivered. What it couldn't show was how I'd approach their product - a newsroom with extraordinary journalism, facing big changes in how people find, read and listen to news.</p>
 
       <div class="who-grid">
         <div class="who-col reveal">
           <div class="who-label">Users</div>
-          <p class="who-text">Recruiters and hiring managers reading the site the way anyone reads a portfolio - fast, a little skeptical, looking for a reason to shortlist or move on.</p>
+          <p class="who-text">The Head of Product and the interview panel - people who read a lot of portfolios and needed a reason to remember this one.</p>
         </div>
         <div class="who-col reveal">
           <div class="who-label">Stakeholders</div>
-          <p class="who-text">Me, as both client and design authority. The only person who had to sign off on every decision - and the only one with any brand guidelines to defend.</p>
+          <p class="who-text">Me. The page had to go above and beyond the portfolio without pretending to know things I couldn't know from the outside.</p>
         </div>
       </div>
     </div>
@@ -275,13 +293,13 @@
     <div class="wrap">
     <div class="star-content">
       <h2 class="star-tag reveal"><span class="hl hl-orange">Insight</span></h2>
-      <h3 class="section-title reveal">I didn't need to learn to code. I needed a coder who'd listen.</h3>
-      <p class="prose reveal">I was vibe coding before it had a name - describing what I wanted and nudging it into shape, rather than writing it myself. My value here was never going to be syntax. It's taste, structure and knowing what to reject. Once I stopped trying to become a developer and started treating Claude as one, the whole thing levelled out.</p>
-      <blockquote class="pull-callout reveal">Claude could code. I could vibe and tweak.</blockquote>
+      <h3 class="section-title reveal">Show the questions, not fake answers</h3>
+      <p class="prose reveal">I didn't have their user research, analytics, business priorities or roadmap. Walking in with solutions would have meant guessing. So the page was about how I think - observing behaviour, spotting opportunities, asking questions and framing hypotheses that research and data could test.</p>
+      <blockquote class="pull-callout reveal">Less about the solutions. More about how I think.</blockquote>
       <ol class="hmw-list">
-        <li class="hmw-item reveal"><span class="hmw-tag">HMW</span><span class="hmw-text">find a partner who could code as fast as I could decide?</span></li>
-        <li class="hmw-item reveal"><span class="hmw-tag">HMW</span><span class="hmw-text">stop treating "can't code" as a blocker rather than a role?</span></li>
-        <li class="hmw-item reveal"><span class="hmw-tag">HMW</span><span class="hmw-text">keep real ownership of the code without writing all of it myself?</span></li>
+        <li class="hmw-item reveal"><span class="hmw-tag">HMW</span><span class="hmw-text">show product thinking without pretending to know their data?</span></li>
+        <li class="hmw-item reveal"><span class="hmw-tag">HMW</span><span class="hmw-text">speak their language without copying their product?</span></li>
+        <li class="hmw-item reveal"><span class="hmw-tag">HMW</span><span class="hmw-text">make it stick for someone who reads dozens of portfolios?</span></li>
       </ol>
     </div>
     </div>
@@ -291,15 +309,15 @@
     <div class="wrap">
     <div class="star-content">
       <h2 class="star-tag reveal"><span class="hl hl-coral">Task</span></h2>
-      <h3 class="section-title reveal">Build the site myself - properly, this time</h3>
-      <p class="prose reveal">Ship a coded, self-hosted portfolio that actually reflected how I work - not another prototype, and not another tool doing the deciding for me. Roughly four weeks, around an active job search.</p>
+      <h3 class="section-title reveal">Build it in their language</h3>
+      <p class="prose reveal">Design and build a single page, in time for the final round, that read like a newspaper and worked like a product - on every device someone might open it on.</p>
       <ol class="process-pills">
-        <li class="process-pill reveal"><span class="pill-num">01</span>Sketch the pages</li>
-        <li class="process-pill reveal"><span class="pill-num">02</span>Build the design system</li>
-        <li class="process-pill reveal"><span class="pill-num">03</span>Attempt it in Framer</li>
-        <li class="process-pill reveal"><span class="pill-num">04</span>Detour through Figma Make</li>
-        <li class="process-pill reveal"><span class="pill-num">05</span>Rebuild from scratch with Claude</li>
-        <li class="process-pill reveal"><span class="pill-num">06</span>Ship on GitHub Pages</li>
+        <li class="process-pill reveal"><span class="pill-num">01</span>Decode the role brief</li>
+        <li class="process-pill reveal"><span class="pill-num">02</span>Map it to my process</li>
+        <li class="process-pill reveal"><span class="pill-num">03</span>Newspaper concept</li>
+        <li class="process-pill reveal"><span class="pill-num">04</span>Vibe code with Claude</li>
+        <li class="process-pill reveal"><span class="pill-num">05</span>Hand-tune HTML &amp; CSS</li>
+        <li class="process-pill reveal"><span class="pill-num">06</span>Test across breakpoints</li>
       </ol>
     </div>
     </div>
@@ -309,40 +327,44 @@
     <div class="wrap">
     <div class="star-content">
       <h2 class="star-tag reveal"><span class="hl hl-orange">Action</span></h2>
-      <h3 class="section-title reveal">Interviews, not instructions</h3>
-      <p class="prose reveal">The build worked more like an interview than a set of instructions. I'd describe what I wanted, Claude would ask questions, and answering them is where most of the actual thinking happened. GitHub, directed by Claude, turned out to be the simple part - the back-and-forth was the real work, and it moved fast.</p>
-      <blockquote class="pull-callout reveal">Faster iteration is great - unless it's having one of its bloated days.</blockquote>
-      <p class="prose reveal">Most of what "vibing and tweaking" meant in practice was saying no. Some of these were Claude's first pass. Some were my own early ideas that didn't survive a second look. Either way, this is most of what taste actually looked like on this project.</p>
+      <h3 class="section-title reveal">A newspaper that works like a product</h3>
+      <p class="prose reveal"><strong>The format carried the message.</strong> The navigation reads like newspaper sections, but each one is a stage of how I work: Problem, Discover, Define, Make and Test, Learn and Iterate, Reflect. Headlines, standfirsts and an opinion column set out what I believe. Small details kept it human - a product forecast with a 100% chance of curiosity, and advert slots doing the job of a pull quote.</p>
+      <p class="prose reveal"><strong>The brief, decoded.</strong> I broke the job description into four things they needed - challenge assumptions, use evidence, make and test, bring people with you - and linked my existing case studies as the evidence for each.</p>
+      <p class="prose reveal"><strong>Questions for day one.</strong> Instead of solutions, I set out the five questions I'd start asking if I joined tomorrow - from making brilliant content easier to discover, to helping younger audiences feel trusted journalism is for them too.</p>
+    </div>
+    </div>
 
-      <div class="client-list-wrap reveal">
-        <div class="who-label">What I said no to</div>
-        <ul class="client-list">
-          <li class="done">Animated blob photo frame</li>
-          <li class="done">Solid coral How-I-Work cards</li>
-          <li class="done">Left border stripe on cards</li>
-          <li class="done">Emoji icons</li>
-          <li class="done">Rounded square icon containers</li>
-          <li class="done">Em dashes (this makes me really sad)</li>
-          <li class="done">Speech marks on pull quotes</li>
-          <li class="done">Modal overlays for blog posts</li>
-          <li class="done">Cool Summer blue palette</li>
-        </ul>
-      </div>
+    <figure class="cs-figure cs-figure-full reveal">
+      <img src="images/times-pitch-sections.png" alt="Sections of the pitch page - the decoded brief, the product forecast and the five questions I'd ask on day one">
+      <div class="cs-caption wrap">The brief decoded, a product forecast, and the questions I'd ask first.</div>
+    </figure>
+
+    <div class="wrap">
+    <div class="star-content">
+      <p class="prose reveal"><strong>A personal thread.</strong> The page ends with three generations of my family and the news - waiting for Dad to finish the paper, our wedding announcement in print, and now my son's morning news briefing over breakfast. Same ritual, different generation. It showed why the problem mattered to me, not just that I could solve it.</p>
+      <p class="prose reveal"><strong>Built, not mocked up.</strong> I vibe coded it with Claude and edited the HTML and CSS by hand where I needed control, then tested it across device breakpoints until it held up everywhere. Branded assets were recreated for the page rather than lifted.</p>
     </div>
     </div>
+
+    <figure class="cs-figure cs-figure-full reveal">
+      <img src="images/times-pitch-family.png" alt="The Reflect section of the pitch page, showing three photos of my family's newspaper rituals across generations">
+      <div class="cs-caption wrap">The Reflect section - why news matters to me, across three generations.</div>
+    </figure>
   </section>
 
   <section class="section-pad">
     <div class="wrap">
     <div class="star-content">
       <h2 class="star-tag reveal"><span class="hl hl-coral">Result</span></h2>
-      <h3 class="section-title reveal">A real site, not another prototype</h3>
+      <h3 class="section-title reveal">Final round, and a lesson in what I control</h3>
       <ul class="result-list reveal">
-        <li>It's live, it's mine, and I can keep changing it myself - which is exactly what I was doing the day I started writing this case study, despite promising I wouldn't.</li>
-        <li>The interview-style process made me think harder about my own site than any visual tool did.</li>
-        <li>The iteration loop is faster than designing alone ever was, bloated days notwithstanding.</li>
-        <li>It's a live demonstration of the AI-forward workflow I'm pitching for EdTech and public-sector roles - not a claim on a CV.</li>
+        <li>The Head of Product at The Times - now Director of Product at Dow Jones - received the page and praised it.</li>
+        <li>I reached the final round, an interview with the working squad I would have joined.</li>
+        <li>The role went to an internal candidate who wasn't part of the interview process, decided as the final round was taking place.</li>
+        <li>The page stands on its own as an example of how I approach a product I don't yet have the data for.</li>
       </ul>
+      <blockquote class="pull-callout reveal">This is very creative, to be honest. They would get shocked a little bit because you're very creative.<cite>- Head of Product, The Times</cite></blockquote>
+      <blockquote class="pull-callout reveal">You can navigate difficult conversations. You speak very well, so you can articulate very easily.<cite>- Head of Product, The Times</cite></blockquote>
     </div>
     </div>
   </section>
@@ -351,22 +373,23 @@
     <div class="wrap">
     <div class="star-content">
       <h2 class="star-tag reveal"><span class="hl hl-orange">Reflection</span></h2>
-      <h3 class="section-title reveal">What this project changed for me</h3>
-      <p class="prose reveal">The line between "designer" and "person who ships things" got a lot thinner. I don't need to become a developer to own a product end-to-end - I need to be good at directing one, and honest about which parts aren't mine to do. That's not a compromise. For the kind of AI-forward EdTech and public-sector work I'm applying for, it's the actual pitch.</p>
-      <p class="prose reveal">I also learned I'm not very good at leaving a finished thing alone. I said I wouldn't touch this site again. This case study exists because I did.</p>
+      <h3 class="section-title reveal">I'd make it again</h3>
+      <p class="prose reveal">I wouldn't change the design or the process. The page did what I built it to do - it showed how I think, in a way a CV and portfolio couldn't.</p>
+      <p class="prose reveal">What I can't control is the outcome. Hiring decisions get shaped by things no candidate sees from the outside. That's frustrating, but it isn't a reason to put in less next time.</p>
+      <p class="prose reveal">The work is the part I own. I'd rather lose a role having shown exactly who I am than win one by playing it safe.</p>
     </div>
     </div>
   </section>
 
   <section class="section-pad">
     <div class="wrap">
-      <a href="restaurant-ordering.html" class="next-card reveal">
+      <a href="hospital.html" class="next-card reveal">
         <div>
           <span class="label">Next case study</span>
-          <h3>Support without taking control</h3>
-          <p>A proof of concept helping employees with learning difficulties take and serve drinks orders more independently.</p>
+          <h3>Making healthcare booking feel human</h3>
+          <p>A mobile booking experience for a private healthcare network, built with design agency Creative Navy.</p>
         </div>
-        <img src="images/restaurant-hifi.png" alt="Hi-fi prototype of the employee ordering app, showing a table grid the employee chooses from to start an order">
+        <img src="https://mostlycaroline.com/harley-empathy-map-raw.png" alt="Raw empathy map from the hospital booking research synthesis workshop">
       </a>
     </div>
   </section>

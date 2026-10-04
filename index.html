@@ -139,11 +139,17 @@
   .specialisms .label{display:block;color:var(--ink-soft);margin-bottom:14px;}
   .specialism-list{list-style:none;margin:0;padding:0;}
   .specialism-list li{
-    display:flex;align-items:baseline;gap:12px;
+    display:flex;align-items:center;gap:12px;
     padding:14px 0;border-top:1px solid var(--line);
     font-family:'Archivo', sans-serif;font-weight:700;font-size:16px;
   }
   .specialism-list li:last-child{border-bottom:1px solid var(--line);}
+  .specialism-list li::before{
+    content:'';flex-shrink:0;
+    width:7px;height:7px;
+    border-top:2px solid var(--coral);border-right:2px solid var(--coral);
+    transform:rotate(45deg);
+  }
 
   .section-head{display:flex;align-items:baseline;gap:14px;margin-bottom:52px;}
   .section-head .num{
@@ -390,10 +396,24 @@
 
       <div class="work-list" style="margin-top:60px;">
 
+        <a class="work-card reveal" href="restaurant-ordering.html">
+          <div class="work-media">
+            <img src="images/restaurant-hifi.png" alt="Hi-fi prototype of the employee ordering app, showing a table grid the employee chooses from to start an order" loading="lazy">
+            <span class="work-media-num">01</span>
+          </div>
+          <div class="work-content">
+            <div class="work-tags">Product Designer &middot; Service Design &middot; Inclusive Design</div>
+            <h3 class="work-title">Support without taking control</h3>
+            <p class="work-desc">A proof of concept helping employees with learning difficulties take drinks orders more independently. I mapped the riskiest assumptions, compared three concepts and chose when not to test on wireframes.</p>
+            <span class="work-link btn btn-outline">View case study</span>
+          </div>
+        </a>
+
+
         <a class="work-card reveal" href="public-sector.html">
           <div class="work-media">
             <img src="images/lincolnshire-c4yp-devices.png" alt="A desktop monitor showing the Lincolnshire County Council homepage, with a laptop in front showing C4YP, the council's Connecting 4 Young People site" loading="lazy">
-            <span class="work-media-num">01</span>
+            <span class="work-media-num">02</span>
           </div>
           <div class="work-content">
             <div class="work-tags">Lead Designer &middot; Public Sector &middot; Accessibility</div>
@@ -403,10 +423,11 @@
           </div>
         </a>
 
+
         <a class="work-card reveal" href="habithero.html">
           <div class="work-media">
             <img src="https://mostlycaroline.com/hh-hero.png" alt="HabitHero daily dashboard showing steps, distance, calories and streak" loading="lazy">
-            <span class="work-media-num">02</span>
+            <span class="work-media-num">03</span>
           </div>
           <div class="work-content">
             <div class="work-tags">Product Designer &middot; Behaviour Change &middot; Mobile App</div>
@@ -416,10 +437,25 @@
           </div>
         </a>
 
+
+        <a class="work-card reveal" href="times-pitch.html">
+          <div class="work-media">
+            <img src="images/times-pitch-devices.png" alt="The newspaper-style pitch page shown on a laptop and phone" loading="lazy">
+            <span class="work-media-num">04</span>
+          </div>
+          <div class="work-content">
+            <div class="work-tags">Self-initiated &middot; Interview Pitch &middot; Product Thinking</div>
+            <h3 class="work-title">Front page thinking</h3>
+            <p class="work-desc">A newspaper-style pitch I designed and built for a final-round interview at The Times - showing how I'd think about their product before I had any of their data.</p>
+            <span class="work-link btn btn-outline">View case study</span>
+          </div>
+        </a>
+
+
         <a class="work-card reveal" href="hospital.html">
           <div class="work-media">
             <img src="https://mostlycaroline.com/harley-empathy-map-raw.png" alt="Raw empathy map from the hospital booking research synthesis workshop" loading="lazy">
-            <span class="work-media-num">03</span>
+            <span class="work-media-num">05</span>
           </div>
           <div class="work-content">
             <div class="work-tags">Project Lead, team of 7 &middot; Healthcare &middot; Mobile App</div>
@@ -429,10 +465,11 @@
           </div>
         </a>
 
+
         <a class="work-card reveal" href="publishing.html">
           <div class="work-media">
             <img src="images/publishing-brands-collage.jpg" alt="A collage of publishing website homepages built on the shared platform, including Music Week, The Grocer, The Lawyer, Creative Review and Bridal Buyer" loading="lazy">
-            <span class="work-media-num">04</span>
+            <span class="work-media-num">06</span>
           </div>
           <div class="work-content">
             <div class="work-tags">Design Lead &middot; Publishing &amp; Media &middot; Design Systems</div>
@@ -442,10 +479,11 @@
           </div>
         </a>
 
+
         <a class="work-card reveal" href="https://medium.com/design-bootcamp/less-friction-for-parents-less-admin-for-schools-880387ad793b" target="_blank" rel="noopener">
           <div class="work-media">
             <img src="https://miro.medium.com/v2/resize:fit:1200/1*F_v5KMhdJT93qFSeG2E0gw.png" alt="Parent outside a primary school using a redesigned Arbor app to find event tickets" loading="lazy">
-            <span class="work-media-num">05</span>
+            <span class="work-media-num">07</span>
           </div>
           <div class="work-content">
             <div class="work-tags">Self-initiated &middot; EdTech &middot; Mobile App</div>
@@ -455,10 +493,11 @@
           </div>
         </a>
 
+
         <a class="work-card reveal" href="vibe-coding.html">
           <div class="work-media">
             <img src="images/vibecoding-devices.png" alt="This site's homepage shown on a laptop and phone, propped up on a garden table" loading="lazy">
-            <span class="work-media-num">06</span>
+            <span class="work-media-num">08</span>
           </div>
           <div class="work-content">
             <div class="work-tags">Personal Project &middot; Vibe Coding &middot; Portfolio Build</div>

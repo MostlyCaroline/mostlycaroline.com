@@ -254,7 +254,8 @@
   .js .work-list.show-all .work-card.work-more{display:flex;}
   .work-more-wrap{display:none;justify-content:center;margin-top:56px;}
   .js .work-more-wrap{display:flex;}
-  .work-more-wrap .btn:hover{background:var(--coral);border-color:var(--coral);color:#fff;}
+  .work-more-wrap .btn{line-height:inherit;}
+  .work-more-wrap .btn:hover{background:var(--orange);}
   .work-link:hover .arrow{transform:translateX(6px);}
 
   .reviews-cols{columns:3 320px;column-gap:24px;}
@@ -516,7 +517,7 @@
       </div>
 
       <div class="work-more-wrap" id="workMoreWrap">
-        <button type="button" class="btn btn-outline" id="workMoreBtn" aria-controls="workList" aria-expanded="false">View more work</button>
+        <button type="button" class="btn btn-fill" id="workMoreBtn" aria-controls="workList" aria-expanded="false">View more work</button>
       </div>
     </div>
   </section>

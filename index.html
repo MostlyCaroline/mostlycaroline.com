@@ -250,6 +250,11 @@
   .work-link{margin-top:22px;}
   .work-link:hover{background:var(--coral);border-color:var(--coral);color:#fff;}
   .arrow{transition:transform .25s ease;}
+  .js .work-card.work-more{display:none;}
+  .js .work-list.show-all .work-card.work-more{display:flex;}
+  .work-more-wrap{display:none;justify-content:center;margin-top:56px;}
+  .js .work-more-wrap{display:flex;}
+  .work-more-wrap .btn:hover{background:var(--coral);border-color:var(--coral);color:#fff;}
   .work-link:hover .arrow{transform:translateX(6px);}
 
   .reviews-cols{columns:3 320px;column-gap:24px;}
@@ -325,6 +330,7 @@
 </style>
 </head>
 <body>
+<script>document.documentElement.classList.add('js');</script>
 
 <div id="progress"></div>
 
@@ -394,7 +400,7 @@
     <div class="wrap">
       <h2 class="section-title reveal"><span class="hl hl-orange">Work</span></h2>
 
-      <div class="work-list" style="margin-top:60px;">
+      <div class="work-list" id="workList" style="margin-top:60px;">
 
         <a class="work-card reveal" href="restaurant-ordering.html">
           <div class="work-media">
@@ -424,7 +430,7 @@
         </a>
 
 
-        <a class="work-card reveal" href="habithero.html">
+        <a class="work-card work-more reveal" href="habithero.html">
           <div class="work-media">
             <img src="https://mostlycaroline.com/hh-hero.png" alt="HabitHero daily dashboard showing steps, distance, calories and streak" loading="lazy">
             <span class="work-media-num">03</span>
@@ -438,7 +444,7 @@
         </a>
 
 
-        <a class="work-card reveal" href="times-pitch.html">
+        <a class="work-card work-more reveal" href="times-pitch.html">
           <div class="work-media">
             <img src="images/times-pitch-devices.png" alt="The newspaper-style pitch page shown on a laptop and phone" loading="lazy">
             <span class="work-media-num">04</span>
@@ -452,7 +458,7 @@
         </a>
 
 
-        <a class="work-card reveal" href="hospital.html">
+        <a class="work-card work-more reveal" href="hospital.html">
           <div class="work-media">
             <img src="https://mostlycaroline.com/harley-empathy-map-raw.png" alt="Raw empathy map from the hospital booking research synthesis workshop" loading="lazy">
             <span class="work-media-num">05</span>
@@ -466,7 +472,7 @@
         </a>
 
 
-        <a class="work-card reveal" href="publishing.html">
+        <a class="work-card work-more reveal" href="publishing.html">
           <div class="work-media">
             <img src="images/publishing-brands-collage.jpg" alt="A collage of publishing website homepages built on the shared platform, including Music Week, The Grocer, The Lawyer, Creative Review and Bridal Buyer" loading="lazy">
             <span class="work-media-num">06</span>
@@ -480,7 +486,7 @@
         </a>
 
 
-        <a class="work-card reveal" href="https://medium.com/design-bootcamp/less-friction-for-parents-less-admin-for-schools-880387ad793b" target="_blank" rel="noopener">
+        <a class="work-card work-more reveal" href="https://medium.com/design-bootcamp/less-friction-for-parents-less-admin-for-schools-880387ad793b" target="_blank" rel="noopener">
           <div class="work-media">
             <img src="https://miro.medium.com/v2/resize:fit:1200/1*F_v5KMhdJT93qFSeG2E0gw.png" alt="Parent outside a primary school using a redesigned Arbor app to find event tickets" loading="lazy">
             <span class="work-media-num">07</span>
@@ -494,7 +500,7 @@
         </a>
 
 
-        <a class="work-card reveal" href="vibe-coding.html">
+        <a class="work-card work-more reveal" href="vibe-coding.html">
           <div class="work-media">
             <img src="images/vibecoding-devices.png" alt="This site's homepage shown on a laptop and phone, propped up on a garden table" loading="lazy">
             <span class="work-media-num">08</span>
@@ -507,6 +513,10 @@
           </div>
         </a>
 
+      </div>
+
+      <div class="work-more-wrap" id="workMoreWrap">
+        <button type="button" class="btn btn-outline" id="workMoreBtn" aria-controls="workList" aria-expanded="false">View more work</button>
       </div>
     </div>
   </section>
@@ -625,6 +635,16 @@
       navToggle.classList.remove('open');
       navToggle.setAttribute('aria-expanded', 'false');
     });
+  });
+
+  var workList = document.getElementById('workList');
+  var workMoreBtn = document.getElementById('workMoreBtn');
+  workMoreBtn.addEventListener('click', function(){
+    workList.classList.add('show-all');
+    workMoreBtn.setAttribute('aria-expanded', 'true');
+    document.getElementById('workMoreWrap').style.display = 'none';
+    var firstNew = workList.querySelector('.work-more');
+    if(firstNew){ firstNew.focus({preventScroll:true}); }
   });
 </script>
 
